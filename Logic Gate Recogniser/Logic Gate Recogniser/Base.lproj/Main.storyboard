@@ -10,7 +10,7 @@
         <!--Drawing View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController title="Drawing View Controller" id="BYZ-38-t0r" customClass="DrawingViewController" customModule="Logic_Gate_Recogniser" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Drawing View Controller" id="BYZ-38-t0r" customClass="DrawingViewController" customModule="Recogniser" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC" userLabel="Canvas View">
                         <rect key="frame" x="0.0" y="0.0" width="1194" height="834"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -30,6 +30,11 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" id="Izw-j8-hEu">
+                        <barButtonItem key="leftBarButtonItem" title="Save" id="lXs-dB-Dcp" userLabel="Save">
+                            <connections>
+                                <action selector="saveButtonTapped:" destination="BYZ-38-t0r" id="bY0-VS-Nll"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="ShareButton" image="square.and.arrow.up" catalog="system" id="r9Z-dS-kzp">
                             <connections>
                                 <action selector="shareButtonTapped:" destination="BYZ-38-t0r" id="O74-sP-KfH"/>
@@ -38,6 +43,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="canvasView" destination="3ee-VR-Vbu" id="r0X-nX-87O"/>
+                        <outlet property="saveButton" destination="lXs-dB-Dcp" id="Tae-sf-wsa"/>
                         <outlet property="shareButton" destination="r9Z-dS-kzp" id="rAU-FF-wyQ"/>
                     </connections>
                 </viewController>

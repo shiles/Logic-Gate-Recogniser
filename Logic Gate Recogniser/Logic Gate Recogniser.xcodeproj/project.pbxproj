@@ -14,6 +14,7 @@
 		AB36BBF2235735CB006B8607 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB36BBF1235735CB006B8607 /* Assets.xcassets */; };
 		AB36BBF5235735CB006B8607 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB36BBF3235735CB006B8607 /* LaunchScreen.storyboard */; };
 		AB36BC00235735CC006B8607 /* Logic_Gate_RecogniserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB36BBFF235735CC006B8607 /* Logic_Gate_RecogniserTests.swift */; };
+		ABD0D38723577CAD0069DA93 /* GateClassifier.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = ABD0D38623577CAC0069DA93 /* GateClassifier.mlmodel */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,6 +40,7 @@
 		AB36BBFF235735CC006B8607 /* Logic_Gate_RecogniserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logic_Gate_RecogniserTests.swift; sourceTree = "<group>"; };
 		AB36BC01235735CC006B8607 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AB36BC0A23574305006B8607 /* Logic Gate Recogniser.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Logic Gate Recogniser.entitlements"; sourceTree = "<group>"; };
+		ABD0D38623577CAC0069DA93 /* GateClassifier.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = GateClassifier.mlmodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +90,7 @@
 				AB36BBF1235735CB006B8607 /* Assets.xcassets */,
 				AB36BBF3235735CB006B8607 /* LaunchScreen.storyboard */,
 				AB36BBF6235735CB006B8607 /* Info.plist */,
+				ABD0D38623577CAC0069DA93 /* GateClassifier.mlmodel */,
 			);
 			path = "Logic Gate Recogniser";
 			sourceTree = "<group>";
@@ -202,6 +205,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ABD0D38723577CAD0069DA93 /* GateClassifier.mlmodel in Sources */,
 				AB36BBED235735CA006B8607 /* DrawingViewController.swift in Sources */,
 				AB36BBE9235735CA006B8607 /* AppDelegate.swift in Sources */,
 				AB36BBEB235735CA006B8607 /* SceneDelegate.swift in Sources */,

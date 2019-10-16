@@ -13,9 +13,9 @@ class DrawingViewController: UIViewController, PKCanvasViewDelegate, PKToolPicke
 
     @IBOutlet weak var canvasView: PKCanvasView!
     @IBOutlet weak var shareButton: UIBarButtonItem!
+    @IBOutlet weak var saveButton: UIBarButtonItem!
     
-    let thumbnailSize = CGSize(width: 192, height: 256)
-    let canvasWidth: CGFloat = 768
+    let gateClassifier = GateClassifier()
 
     override func viewWillAppear(_ animated: Bool) {
         // General Setup
@@ -35,17 +35,28 @@ class DrawingViewController: UIViewController, PKCanvasViewDelegate, PKToolPicke
         }
     }
     
+    func canvasViewDrawingDidChange(_ canvasView: PKCanvasView) { }
+    
     @IBAction func shareButtonTapped(_ sender: Any) {
-        var canvasImage: UIImage?
+        let activityViewController = UIActivityViewController(activityItems: [getCanvasImage()] , applicationActivities: nil)
+        activityViewController.popoverPresentationController?.barButtonItem = navigationItem.rightBarButtonItem
+        self.present(activityViewController, animated: true, completion: nil)
+    }
+    
+    @IBAction func saveButtonTapped(_ sender: Any) {
+        UIImageWriteToSavedPhotosAlbum(getCanvasImage(), self, nil, nil)
+        canvasView.drawing = PKDrawing()
+    }
+    
+    private func getCanvasImage() -> UIImage {
+        var image: UIImage?
         
         UITraitCollection(userInterfaceStyle: .light).performAsCurrent {
             let drawing = canvasView.drawing
-            canvasImage = drawing.image(from: drawing.bounds, scale: 1.0)
+            image = drawing.image(from: drawing.bounds, scale: 1.0)
         }
         
-        let activityViewController = UIActivityViewController(activityItems: [canvasImage!] , applicationActivities: nil)
-        activityViewController.popoverPresentationController?.barButtonItem = navigationItem.rightBarButtonItem
-        self.present(activityViewController, animated: true, completion: nil)
+        return image!
     }
 }
 
