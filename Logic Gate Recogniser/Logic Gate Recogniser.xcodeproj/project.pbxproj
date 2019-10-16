@@ -38,6 +38,7 @@
 		AB36BBFB235735CC006B8607 /* Logic Gate RecogniserTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Logic Gate RecogniserTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB36BBFF235735CC006B8607 /* Logic_Gate_RecogniserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logic_Gate_RecogniserTests.swift; sourceTree = "<group>"; };
 		AB36BC01235735CC006B8607 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AB36BC0A23574305006B8607 /* Logic Gate Recogniser.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Logic Gate Recogniser.entitlements"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +80,7 @@
 		AB36BBE7235735CA006B8607 /* Logic Gate Recogniser */ = {
 			isa = PBXGroup;
 			children = (
+				AB36BC0A23574305006B8607 /* Logic Gate Recogniser.entitlements */,
 				AB36BBE8235735CA006B8607 /* AppDelegate.swift */,
 				AB36BBEA235735CA006B8607 /* SceneDelegate.swift */,
 				AB36BBEC235735CA006B8607 /* DrawingViewController.swift */,
@@ -362,6 +364,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Logic Gate Recogniser/Logic Gate Recogniser.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 88Z75G4GDY;
 				INFOPLIST_FILE = "Logic Gate Recogniser/Info.plist";
@@ -371,8 +374,9 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.sonniehiles.Logic-Gate-Recogniser";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 2;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -380,6 +384,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Logic Gate Recogniser/Logic Gate Recogniser.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 88Z75G4GDY;
 				INFOPLIST_FILE = "Logic Gate Recogniser/Info.plist";
@@ -389,8 +394,9 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.sonniehiles.Logic-Gate-Recogniser";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 2;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};

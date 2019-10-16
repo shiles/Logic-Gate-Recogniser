@@ -12,6 +12,12 @@ import PencilKit
 class DrawingViewController: UIViewController, PKCanvasViewDelegate, PKToolPickerObserver {
 
     @IBOutlet weak var canvasView: PKCanvasView!
+    @IBOutlet weak var shareButton: UIBarButtonItem!
+    
+    let thumbnailSize = CGSize(width: 192, height: 256)
+    let canvasWidth: CGFloat = 768
+    
+    let drawing = PKDrawing()
     
     override func viewWillAppear(_ animated: Bool) {
         // General Setup
@@ -19,6 +25,7 @@ class DrawingViewController: UIViewController, PKCanvasViewDelegate, PKToolPicke
         
         // Set up the canvas view
         canvasView.delegate = self
+        canvasView.drawing = drawing
         canvasView.alwaysBounceVertical = true
         canvasView.allowsFingerDrawing = true
         
@@ -31,8 +38,16 @@ class DrawingViewController: UIViewController, PKCanvasViewDelegate, PKToolPicke
         }
     }
     
-
-
-
+    @IBAction func shareButtonTapped(_ sender: Any) {
+        var canvasImage: UIImage?
+        
+        UITraitCollection(userInterfaceStyle: .light).performAsCurrent {
+            canvasImage = self.canvasView.drawing.image(from: canvasView.frame, scale: 1.0)
+        }
+        
+        let activityViewController = UIActivityViewController(activityItems: [canvasImage!] , applicationActivities: nil)
+        activityViewController.popoverPresentationController?.barButtonItem = navigationItem.rightBarButtonItem
+        self.present(activityViewController, animated: true, completion: nil)
+    }
 }
 

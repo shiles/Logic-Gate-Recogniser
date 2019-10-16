@@ -29,9 +29,16 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" id="Izw-j8-hEu"/>
+                    <navigationItem key="navigationItem" id="Izw-j8-hEu">
+                        <barButtonItem key="rightBarButtonItem" title="ShareButton" image="square.and.arrow.up" catalog="system" id="r9Z-dS-kzp">
+                            <connections>
+                                <action selector="shareButtonTapped:" destination="BYZ-38-t0r" id="O74-sP-KfH"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="canvasView" destination="3ee-VR-Vbu" id="r0X-nX-87O"/>
+                        <outlet property="shareButton" destination="r9Z-dS-kzp" id="rAU-FF-wyQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -57,4 +64,7 @@
             <point key="canvasLocation" x="138.69346733668343" y="137.41007194244605"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="square.and.arrow.up" catalog="system" width="56" height="64"/>
+    </resources>
 </document>
