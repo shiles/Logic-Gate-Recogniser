@@ -16,16 +16,13 @@ class DrawingViewController: UIViewController, PKCanvasViewDelegate, PKToolPicke
     
     let thumbnailSize = CGSize(width: 192, height: 256)
     let canvasWidth: CGFloat = 768
-    
-    let drawing = PKDrawing()
-    
+
     override func viewWillAppear(_ animated: Bool) {
         // General Setup
         self.title = "Logic Gate Recogniser"
         
         // Set up the canvas view
         canvasView.delegate = self
-        canvasView.drawing = drawing
         canvasView.alwaysBounceVertical = true
         canvasView.allowsFingerDrawing = true
         
@@ -42,7 +39,8 @@ class DrawingViewController: UIViewController, PKCanvasViewDelegate, PKToolPicke
         var canvasImage: UIImage?
         
         UITraitCollection(userInterfaceStyle: .light).performAsCurrent {
-            canvasImage = self.canvasView.drawing.image(from: canvasView.frame, scale: 1.0)
+            let drawing = canvasView.drawing
+            canvasImage = drawing.image(from: drawing.bounds, scale: 1.0)
         }
         
         let activityViewController = UIActivityViewController(activityItems: [canvasImage!] , applicationActivities: nil)
