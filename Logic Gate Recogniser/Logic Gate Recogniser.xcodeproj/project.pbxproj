@@ -1,0 +1,474 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		AB36BBE9235735CA006B8607 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB36BBE8235735CA006B8607 /* AppDelegate.swift */; };
+		AB36BBEB235735CA006B8607 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB36BBEA235735CA006B8607 /* SceneDelegate.swift */; };
+		AB36BBED235735CA006B8607 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB36BBEC235735CA006B8607 /* ViewController.swift */; };
+		AB36BBF0235735CA006B8607 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB36BBEE235735CA006B8607 /* Main.storyboard */; };
+		AB36BBF2235735CB006B8607 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB36BBF1235735CB006B8607 /* Assets.xcassets */; };
+		AB36BBF5235735CB006B8607 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB36BBF3235735CB006B8607 /* LaunchScreen.storyboard */; };
+		AB36BC00235735CC006B8607 /* Logic_Gate_RecogniserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB36BBFF235735CC006B8607 /* Logic_Gate_RecogniserTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		AB36BBFC235735CC006B8607 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AB36BBDD235735CA006B8607 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AB36BBE4235735CA006B8607;
+			remoteInfo = "Logic Gate Recogniser";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		AB36BBE5235735CA006B8607 /* Logic Gate Recogniser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Logic Gate Recogniser.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		AB36BBE8235735CA006B8607 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		AB36BBEA235735CA006B8607 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		AB36BBEC235735CA006B8607 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		AB36BBEF235735CA006B8607 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		AB36BBF1235735CB006B8607 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		AB36BBF4235735CB006B8607 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		AB36BBF6235735CB006B8607 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AB36BBFB235735CC006B8607 /* Logic Gate RecogniserTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Logic Gate RecogniserTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		AB36BBFF235735CC006B8607 /* Logic_Gate_RecogniserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logic_Gate_RecogniserTests.swift; sourceTree = "<group>"; };
+		AB36BC01235735CC006B8607 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		AB36BBE2235735CA006B8607 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AB36BBF8235735CC006B8607 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		AB36BBDC235735CA006B8607 = {
+			isa = PBXGroup;
+			children = (
+				AB36BBE7235735CA006B8607 /* Logic Gate Recogniser */,
+				AB36BBFE235735CC006B8607 /* Logic Gate RecogniserTests */,
+				AB36BBE6235735CA006B8607 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		AB36BBE6235735CA006B8607 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AB36BBE5235735CA006B8607 /* Logic Gate Recogniser.app */,
+				AB36BBFB235735CC006B8607 /* Logic Gate RecogniserTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		AB36BBE7235735CA006B8607 /* Logic Gate Recogniser */ = {
+			isa = PBXGroup;
+			children = (
+				AB36BBE8235735CA006B8607 /* AppDelegate.swift */,
+				AB36BBEA235735CA006B8607 /* SceneDelegate.swift */,
+				AB36BBEC235735CA006B8607 /* ViewController.swift */,
+				AB36BBEE235735CA006B8607 /* Main.storyboard */,
+				AB36BBF1235735CB006B8607 /* Assets.xcassets */,
+				AB36BBF3235735CB006B8607 /* LaunchScreen.storyboard */,
+				AB36BBF6235735CB006B8607 /* Info.plist */,
+			);
+			path = "Logic Gate Recogniser";
+			sourceTree = "<group>";
+		};
+		AB36BBFE235735CC006B8607 /* Logic Gate RecogniserTests */ = {
+			isa = PBXGroup;
+			children = (
+				AB36BBFF235735CC006B8607 /* Logic_Gate_RecogniserTests.swift */,
+				AB36BC01235735CC006B8607 /* Info.plist */,
+			);
+			path = "Logic Gate RecogniserTests";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		AB36BBE4235735CA006B8607 /* Logic Gate Recogniser */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AB36BC04235735CC006B8607 /* Build configuration list for PBXNativeTarget "Logic Gate Recogniser" */;
+			buildPhases = (
+				AB36BBE1235735CA006B8607 /* Sources */,
+				AB36BBE2235735CA006B8607 /* Frameworks */,
+				AB36BBE3235735CA006B8607 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Logic Gate Recogniser";
+			productName = "Logic Gate Recogniser";
+			productReference = AB36BBE5235735CA006B8607 /* Logic Gate Recogniser.app */;
+			productType = "com.apple.product-type.application";
+		};
+		AB36BBFA235735CC006B8607 /* Logic Gate RecogniserTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AB36BC07235735CC006B8607 /* Build configuration list for PBXNativeTarget "Logic Gate RecogniserTests" */;
+			buildPhases = (
+				AB36BBF7235735CC006B8607 /* Sources */,
+				AB36BBF8235735CC006B8607 /* Frameworks */,
+				AB36BBF9235735CC006B8607 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AB36BBFD235735CC006B8607 /* PBXTargetDependency */,
+			);
+			name = "Logic Gate RecogniserTests";
+			productName = "Logic Gate RecogniserTests";
+			productReference = AB36BBFB235735CC006B8607 /* Logic Gate RecogniserTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		AB36BBDD235735CA006B8607 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1110;
+				LastUpgradeCheck = 1110;
+				ORGANIZATIONNAME = "Sonnie Hiles";
+				TargetAttributes = {
+					AB36BBE4235735CA006B8607 = {
+						CreatedOnToolsVersion = 11.1;
+					};
+					AB36BBFA235735CC006B8607 = {
+						CreatedOnToolsVersion = 11.1;
+						TestTargetID = AB36BBE4235735CA006B8607;
+					};
+				};
+			};
+			buildConfigurationList = AB36BBE0235735CA006B8607 /* Build configuration list for PBXProject "Logic Gate Recogniser" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = AB36BBDC235735CA006B8607;
+			productRefGroup = AB36BBE6235735CA006B8607 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				AB36BBE4235735CA006B8607 /* Logic Gate Recogniser */,
+				AB36BBFA235735CC006B8607 /* Logic Gate RecogniserTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		AB36BBE3235735CA006B8607 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AB36BBF5235735CB006B8607 /* LaunchScreen.storyboard in Resources */,
+				AB36BBF2235735CB006B8607 /* Assets.xcassets in Resources */,
+				AB36BBF0235735CA006B8607 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AB36BBF9235735CC006B8607 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		AB36BBE1235735CA006B8607 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AB36BBED235735CA006B8607 /* ViewController.swift in Sources */,
+				AB36BBE9235735CA006B8607 /* AppDelegate.swift in Sources */,
+				AB36BBEB235735CA006B8607 /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AB36BBF7235735CC006B8607 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AB36BC00235735CC006B8607 /* Logic_Gate_RecogniserTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		AB36BBFD235735CC006B8607 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AB36BBE4235735CA006B8607 /* Logic Gate Recogniser */;
+			targetProxy = AB36BBFC235735CC006B8607 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		AB36BBEE235735CA006B8607 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AB36BBEF235735CA006B8607 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		AB36BBF3235735CB006B8607 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AB36BBF4235735CB006B8607 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		AB36BC02235735CC006B8607 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		AB36BC03235735CC006B8607 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		AB36BC05235735CC006B8607 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 88Z75G4GDY;
+				INFOPLIST_FILE = "Logic Gate Recogniser/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.sonniehiles.Logic-Gate-Recogniser";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 2;
+			};
+			name = Debug;
+		};
+		AB36BC06235735CC006B8607 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 88Z75G4GDY;
+				INFOPLIST_FILE = "Logic Gate Recogniser/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.sonniehiles.Logic-Gate-Recogniser";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 2;
+			};
+			name = Release;
+		};
+		AB36BC08235735CC006B8607 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 88Z75G4GDY;
+				INFOPLIST_FILE = "Logic Gate RecogniserTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.sonniehiles.Logic-Gate-RecogniserTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Logic Gate Recogniser.app/Logic Gate Recogniser";
+			};
+			name = Debug;
+		};
+		AB36BC09235735CC006B8607 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 88Z75G4GDY;
+				INFOPLIST_FILE = "Logic Gate RecogniserTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.sonniehiles.Logic-Gate-RecogniserTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Logic Gate Recogniser.app/Logic Gate Recogniser";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		AB36BBE0235735CA006B8607 /* Build configuration list for PBXProject "Logic Gate Recogniser" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AB36BC02235735CC006B8607 /* Debug */,
+				AB36BC03235735CC006B8607 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AB36BC04235735CC006B8607 /* Build configuration list for PBXNativeTarget "Logic Gate Recogniser" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AB36BC05235735CC006B8607 /* Debug */,
+				AB36BC06235735CC006B8607 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AB36BC07235735CC006B8607 /* Build configuration list for PBXNativeTarget "Logic Gate RecogniserTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AB36BC08235735CC006B8607 /* Debug */,
+				AB36BC09235735CC006B8607 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = AB36BBDD235735CA006B8607 /* Project object */;
+}
