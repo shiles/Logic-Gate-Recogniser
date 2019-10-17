@@ -8,6 +8,7 @@
 
 import UIKit
 import PencilKit
+import Combine
 
 class DrawingViewController: UIViewController, PKCanvasViewDelegate, PKToolPickerObserver {
 
@@ -17,7 +18,7 @@ class DrawingViewController: UIViewController, PKCanvasViewDelegate, PKToolPicke
     @IBOutlet weak var saveButton: UIBarButtonItem!
     
     let gateClassifier = GateClassifier()
-
+    
     override func viewWillAppear(_ animated: Bool) {
         // General Setup
         self.title = "Logic Gate Recogniser"
@@ -25,7 +26,7 @@ class DrawingViewController: UIViewController, PKCanvasViewDelegate, PKToolPicke
         // Set up the canvas view
         canvasView.delegate = self
         canvasView.alwaysBounceVertical = true
-        canvasView.allowsFingerDrawing = false
+        canvasView.allowsFingerDrawing = true
         
         // Set up the tool picker, using the window of our parent because our view has not been added to a window yet.
         if let window = parent?.view.window, let toolPicker = PKToolPicker.shared(for: window) {
@@ -36,10 +37,18 @@ class DrawingViewController: UIViewController, PKCanvasViewDelegate, PKToolPicke
         }
     }
     
-    func canvasViewDrawingDidChange(_ canvasView: PKCanvasView) { }
+    func canvasViewDrawingDidChange(_ canvasView: PKCanvasView) {
+        let image = getCanvasImage().toBuffer()!
+        let guess = try? gateClassifier.prediction(image: image)
+    
+        guard let g = guess else { return }
+        gateInfoView.recognisedGate.text = g.classLabel
+        gateInfoView.confidence.text = "Confidence: " + String(format: "%.0f", g.classLabelProbs[g.classLabel]! * 100) + "%"
+        print(g.classLabelProbs)
+    }
     
     @IBAction func shareButtonTapped(_ sender: Any) {
-        let activityViewController = UIActivityViewController(activityItems: [getCanvasImage()] , applicationActivities: nil)
+        let activityViewController = UIActivityViewController(activityItems: [getCanvasImage()], applicationActivities: nil)
         activityViewController.popoverPresentationController?.barButtonItem = navigationItem.rightBarButtonItem
         self.present(activityViewController, animated: true, completion: nil)
     }
@@ -57,7 +66,7 @@ class DrawingViewController: UIViewController, PKCanvasViewDelegate, PKToolPicke
             image = drawing.image(from: drawing.bounds, scale: 1.0)
         }
         
-        return image!
+        return (image?.resized()?.addBackground()!)!
     }
 }
 

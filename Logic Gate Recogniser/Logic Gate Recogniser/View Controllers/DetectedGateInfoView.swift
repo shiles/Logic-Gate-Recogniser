@@ -25,11 +25,13 @@ class DetectedGateInfoView: UIView {
     }
     
     private func commonInit() {
+        //Load XIB
         Bundle.main.loadNibNamed("DetectedGateInfo", owner: self, options: nil)
         addSubview(contentView)
         contentView.frame = self.bounds
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         
+        //Style
         self.roundCorners()
     }
 }
