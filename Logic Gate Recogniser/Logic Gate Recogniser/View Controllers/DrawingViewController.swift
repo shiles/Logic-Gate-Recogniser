@@ -12,6 +12,7 @@ import PencilKit
 class DrawingViewController: UIViewController, PKCanvasViewDelegate, PKToolPickerObserver {
 
     @IBOutlet weak var canvasView: PKCanvasView!
+    @IBOutlet weak var gateInfoView: DetectedGateInfoView!
     @IBOutlet weak var shareButton: UIBarButtonItem!
     @IBOutlet weak var saveButton: UIBarButtonItem!
     
@@ -24,7 +25,7 @@ class DrawingViewController: UIViewController, PKCanvasViewDelegate, PKToolPicke
         // Set up the canvas view
         canvasView.delegate = self
         canvasView.alwaysBounceVertical = true
-        canvasView.allowsFingerDrawing = true
+        canvasView.allowsFingerDrawing = false
         
         // Set up the tool picker, using the window of our parent because our view has not been added to a window yet.
         if let window = parent?.view.window, let toolPicker = PKToolPicker.shared(for: window) {

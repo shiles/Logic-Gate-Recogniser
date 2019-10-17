@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="ipad11_0rounded" orientation="landscape" layout="fullscreen" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DetectedGateInfoView" customModule="Recogniser" customModuleProvider="target">
+            <connections>
+                <outlet property="confidence" destination="PpO-l6-nzb" id="Djt-jq-O9j"/>
+                <outlet property="contentView" destination="iN0-l3-epB" id="RlW-JT-clC"/>
+                <outlet property="recognisedGate" destination="iY1-a0-hag" id="Ee5-FS-K9T"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="312" height="93"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="8Bl-FL-iSz">
+                    <rect key="frame" x="32" y="16" width="248" height="61"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="No Gate Recognised" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iY1-a0-hag">
+                            <rect key="frame" x="0.0" y="0.0" width="248" height="43"/>
+                            <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Confidence: 100%" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PpO-l6-nzb">
+                            <rect key="frame" x="62" y="43" width="124.5" height="18"/>
+                            <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                            <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                </stackView>
+            </subviews>
+            <color key="backgroundColor" systemColor="tertiarySystemFillColor" red="0.46274509800000002" green="0.46274509800000002" blue="0.50196078430000002" alpha="0.12" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="8Bl-FL-iSz" secondAttribute="trailing" constant="32" id="Nbm-lz-TYR"/>
+                <constraint firstItem="8Bl-FL-iSz" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="16" id="WeG-fv-WvK"/>
+                <constraint firstItem="8Bl-FL-iSz" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="YhD-vs-EJf"/>
+                <constraint firstItem="8Bl-FL-iSz" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="Zie-70-sHQ"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="8Bl-FL-iSz" secondAttribute="bottom" constant="16" id="frt-Ac-EUV"/>
+                <constraint firstItem="8Bl-FL-iSz" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="32" id="hj8-QI-keX"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <point key="canvasLocation" x="-86.4321608040201" y="-117.62589928057555"/>
+        </view>
+    </objects>
+</document>
