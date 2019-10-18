@@ -21,7 +21,7 @@ class DrawingViewController: UIViewController, PKCanvasViewDelegate, PKToolPicke
     
     override func viewWillAppear(_ animated: Bool) {
         // General Setup
-        self.title = "Logic Gate Recogniser"
+        self.title = "Recogniser"
         
         // Set up the canvas view
         canvasView.delegate = self
@@ -56,6 +56,8 @@ class DrawingViewController: UIViewController, PKCanvasViewDelegate, PKToolPicke
     @IBAction func saveButtonTapped(_ sender: Any) {
         UIImageWriteToSavedPhotosAlbum(getCanvasImage(), self, nil, nil)
         canvasView.drawing = PKDrawing()
+        gateInfoView.recognisedGate.text = "Not Gate Recognised"
+        gateInfoView.confidence.text = "Confidence: 100%"
     }
     
     private func getCanvasImage() -> UIImage {
