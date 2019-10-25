@@ -1,5 +1,5 @@
 //
-//  CanvasViewViewController.swift
+//  CanvasView.swift
 //  Logic Gate Recogniser
 //
 //  Created by Sonnie Hiles on 25/10/2019.
@@ -14,7 +14,7 @@ enum DrawingTools {
     case erasor
 }
 
-class CanvasViewViewController: UIImageView {
+class CanvasView: UIImageView {
     
     // Tool Settings
     private var defaultLineWidth: CGFloat = 10

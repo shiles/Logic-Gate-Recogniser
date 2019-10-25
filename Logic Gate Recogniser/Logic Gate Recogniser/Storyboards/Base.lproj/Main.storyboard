@@ -15,7 +15,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="1194" height="834"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3ee-VR-Vbu" userLabel="Canvas View" customClass="CanvasViewViewController" customModule="Recogniser" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3ee-VR-Vbu" userLabel="Canvas View" customClass="CanvasView" customModule="Recogniser" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="1194" height="814"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </view>

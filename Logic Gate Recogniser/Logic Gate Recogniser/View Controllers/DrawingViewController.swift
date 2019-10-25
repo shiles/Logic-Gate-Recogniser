@@ -13,13 +13,16 @@ import Combine
 class DrawingViewController: UIViewController  {
 
     @IBOutlet weak var gateInfoView: DetectedGateInfoView!
-    @IBOutlet weak var canvasView: CanvasViewViewController!
+    @IBOutlet weak var canvasView: CanvasView!
     @IBOutlet weak var penToolButton: UIBarButtonItem!
     @IBOutlet weak var erasorToolButton: UIBarButtonItem!
     
-    override func viewWillAppear(_ animated: Bool) {
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
         // General Setup
         self.title = "Recogniser"
+        setupPencilInteractions()
     }
     
     @IBAction func penToolTapped(_ sender: Any) {
@@ -29,5 +32,28 @@ class DrawingViewController: UIViewController  {
     @IBAction func erasorToolTapped(_ sender: Any) {
         canvasView.tool = .erasor
     }
+}
+
+extension DrawingViewController: UIPencilInteractionDelegate {
+    
+    func setupPencilInteractions() {
+        let interaction = UIPencilInteraction()
+        interaction.delegate = self
+        view.addInteraction(interaction)
+    }
+    
+    func pencilInteractionDidTap(_ interaction: UIPencilInteraction) {
+        switch UIPencilInteraction.preferredTapAction {
+        case .ignore:
+            break
+        default:
+            if canvasView.tool == .pen {
+                canvasView.tool = .erasor
+            } else {
+                canvasView.tool = .pen
+            }
+        }
+    }
+    
 }
 
