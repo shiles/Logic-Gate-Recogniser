@@ -15,9 +15,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="1194" height="834"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3ee-VR-Vbu" userLabel="Canvas View" customClass="PKCanvasView">
-                                <rect key="frame" x="0.0" y="35" width="1194" height="764"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3ee-VR-Vbu" userLabel="Canvas View" customClass="CanvasViewViewController" customModule="Recogniser" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="1194" height="814"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </view>
                             <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yJf-Bs-aEP" customClass="DetectedGateInfoView" customModule="Recogniser" customModuleProvider="target">
@@ -27,28 +26,19 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="3ee-VR-Vbu" secondAttribute="bottom" id="3dx-XO-1m7"/>
                             <constraint firstItem="yJf-Bs-aEP" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="8" id="6tg-tL-pQR"/>
+                            <constraint firstItem="3ee-VR-Vbu" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="ibT-3V-Hbv"/>
+                            <constraint firstItem="3ee-VR-Vbu" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="jfC-dv-2v4"/>
                             <constraint firstItem="yJf-Bs-aEP" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="uqK-QX-XA0"/>
+                            <constraint firstItem="3ee-VR-Vbu" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="xfJ-Gi-7Os"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" id="Izw-j8-hEu">
-                        <barButtonItem key="leftBarButtonItem" title="Save" id="lXs-dB-Dcp" userLabel="Save">
-                            <connections>
-                                <action selector="saveButtonTapped:" destination="BYZ-38-t0r" id="bY0-VS-Nll"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="ShareButton" image="square.and.arrow.up" catalog="system" id="r9Z-dS-kzp">
-                            <connections>
-                                <action selector="shareButtonTapped:" destination="BYZ-38-t0r" id="O74-sP-KfH"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="Izw-j8-hEu"/>
                     <connections>
-                        <outlet property="canvasView" destination="3ee-VR-Vbu" id="r0X-nX-87O"/>
+                        <outlet property="canvasView" destination="3ee-VR-Vbu" id="pq0-TK-zdb"/>
                         <outlet property="gateInfoView" destination="yJf-Bs-aEP" id="I8K-kf-vLB"/>
-                        <outlet property="saveButton" destination="lXs-dB-Dcp" id="Tae-sf-wsa"/>
-                        <outlet property="shareButton" destination="r9Z-dS-kzp" id="rAU-FF-wyQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -74,7 +64,4 @@
             <point key="canvasLocation" x="138.69346733668343" y="137.41007194244605"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="square.and.arrow.up" catalog="system" width="56" height="64"/>
-    </resources>
 </document>
