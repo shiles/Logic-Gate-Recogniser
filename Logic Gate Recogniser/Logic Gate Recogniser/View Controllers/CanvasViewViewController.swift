@@ -9,11 +9,31 @@
 import Foundation
 import UIKit
 
+enum DrawingTools {
+    case pen
+    case erasor
+}
+
 class CanvasViewViewController: UIImageView {
     
-    // Pen Settings
-    private let defaultLineWidth: CGFloat = 10
+    // Tool Settings
+    private var defaultLineWidth: CGFloat = 10
     private var drawColor: UIColor = .label
+    
+    // Tool Selection
+    var tool: DrawingTools? {
+        didSet {
+            switch tool {
+                case .pen:
+                    drawColor = .label
+                    defaultLineWidth = 10
+                case .erasor:
+                    drawColor = .systemBackground
+                    defaultLineWidth = 30
+                case .none:   fatalError()
+            }
+        }
+    }
     
     // Predictive Drawing
     private var drawingImage: UIImage?

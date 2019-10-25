@@ -14,10 +14,20 @@ class DrawingViewController: UIViewController  {
 
     @IBOutlet weak var gateInfoView: DetectedGateInfoView!
     @IBOutlet weak var canvasView: CanvasViewViewController!
+    @IBOutlet weak var penToolButton: UIBarButtonItem!
+    @IBOutlet weak var erasorToolButton: UIBarButtonItem!
     
     override func viewWillAppear(_ animated: Bool) {
         // General Setup
         self.title = "Recogniser"
+    }
+    
+    @IBAction func penToolTapped(_ sender: Any) {
+        canvasView.tool = .pen
+    }
+    
+    @IBAction func erasorToolTapped(_ sender: Any) {
+        canvasView.tool = .erasor
     }
 }
 

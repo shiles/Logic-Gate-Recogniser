@@ -35,10 +35,25 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" id="Izw-j8-hEu"/>
+                    <navigationItem key="navigationItem" id="Izw-j8-hEu">
+                        <rightBarButtonItems>
+                            <barButtonItem title="Item" image="pencil.slash" catalog="system" id="wYw-hY-znR">
+                                <connections>
+                                    <action selector="erasorToolTapped:" destination="BYZ-38-t0r" id="Act-qC-GAD"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="Item" image="pencil" catalog="system" id="3xj-yy-UmH" userLabel="Pen Tool">
+                                <connections>
+                                    <action selector="penToolTapped:" destination="BYZ-38-t0r" id="5hf-ox-rIs"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
+                    </navigationItem>
                     <connections>
                         <outlet property="canvasView" destination="3ee-VR-Vbu" id="pq0-TK-zdb"/>
+                        <outlet property="erasorToolButton" destination="wYw-hY-znR" id="mDd-RD-gJZ"/>
                         <outlet property="gateInfoView" destination="yJf-Bs-aEP" id="I8K-kf-vLB"/>
+                        <outlet property="penToolButton" destination="3xj-yy-UmH" id="xvu-kn-6jQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -64,4 +79,8 @@
             <point key="canvasLocation" x="138.69346733668343" y="137.41007194244605"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="pencil" catalog="system" width="64" height="56"/>
+        <image name="pencil.slash" catalog="system" width="64" height="56"/>
+    </resources>
 </document>
