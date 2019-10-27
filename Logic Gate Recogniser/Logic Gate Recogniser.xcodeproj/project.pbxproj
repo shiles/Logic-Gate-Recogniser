@@ -14,6 +14,7 @@
 		AB36BBF2235735CB006B8607 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB36BBF1235735CB006B8607 /* Assets.xcassets */; };
 		AB36BBF5235735CB006B8607 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB36BBF3235735CB006B8607 /* LaunchScreen.storyboard */; };
 		AB36BC00235735CC006B8607 /* Logic_Gate_RecogniserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB36BBFF235735CC006B8607 /* Logic_Gate_RecogniserTests.swift */; };
+		AB44795523630972000BF2A5 /* DrawingRecogniser.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB44795423630972000BF2A5 /* DrawingRecogniser.swift */; };
 		AB9F33792358862300A39A44 /* DetectedGateInfo.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB9F33782358862300A39A44 /* DetectedGateInfo.xib */; };
 		AB9F337C235887C300A39A44 /* DetectedGateInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9F337B235887C300A39A44 /* DetectedGateInfoView.swift */; };
 		ABBDAB882362EDEE00DBFDC1 /* CanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABBDAB872362EDEE00DBFDC1 /* CanvasView.swift */; };
@@ -43,6 +44,7 @@
 		AB36BBFF235735CC006B8607 /* Logic_Gate_RecogniserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logic_Gate_RecogniserTests.swift; sourceTree = "<group>"; };
 		AB36BC01235735CC006B8607 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AB36BC0A23574305006B8607 /* Logic Gate Recogniser.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Logic Gate Recogniser.entitlements"; sourceTree = "<group>"; };
+		AB44795423630972000BF2A5 /* DrawingRecogniser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingRecogniser.swift; sourceTree = "<group>"; };
 		AB9F33782358862300A39A44 /* DetectedGateInfo.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetectedGateInfo.xib; sourceTree = "<group>"; };
 		AB9F337B235887C300A39A44 /* DetectedGateInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetectedGateInfoView.swift; sourceTree = "<group>"; };
 		ABBDAB872362EDEE00DBFDC1 /* CanvasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasView.swift; sourceTree = "<group>"; };
@@ -89,6 +91,7 @@
 			isa = PBXGroup;
 			children = (
 				ABF06A5623588CA3006C8E2B /* Extentions */,
+				AB4479532363095E000BF2A5 /* Drawing Recognition */,
 				AB9F337A235887A100A39A44 /* View Controllers */,
 				AB9F3375235885A700A39A44 /* Storyboards */,
 				AB36BC0A23574305006B8607 /* Logic Gate Recogniser.entitlements */,
@@ -107,6 +110,14 @@
 				AB36BC01235735CC006B8607 /* Info.plist */,
 			);
 			path = "Logic Gate RecogniserTests";
+			sourceTree = "<group>";
+		};
+		AB4479532363095E000BF2A5 /* Drawing Recognition */ = {
+			isa = PBXGroup;
+			children = (
+				AB44795423630972000BF2A5 /* DrawingRecogniser.swift */,
+			);
+			path = "Drawing Recognition";
 			sourceTree = "<group>";
 		};
 		AB9F3375235885A700A39A44 /* Storyboards */ = {
@@ -243,6 +254,7 @@
 				AB36BBED235735CA006B8607 /* DrawingViewController.swift in Sources */,
 				ABF06A5823588CF6006C8E2B /* UIView+Extentions.swift in Sources */,
 				ABBDAB882362EDEE00DBFDC1 /* CanvasView.swift in Sources */,
+				AB44795523630972000BF2A5 /* DrawingRecogniser.swift in Sources */,
 				AB36BBE9235735CA006B8607 /* AppDelegate.swift in Sources */,
 				AB36BBEB235735CA006B8607 /* SceneDelegate.swift in Sources */,
 			);

@@ -16,6 +16,8 @@ enum DrawingTools {
 
 class CanvasView: UIImageView {
     
+    private let recogniser = DrawingRecogniser()
+    
     // Tool Settings
     private var defaultLineWidth: CGFloat = 10
     private var drawColor: UIColor = .label
@@ -37,10 +39,11 @@ class CanvasView: UIImageView {
     
     // Predictive Drawing
     private var drawingImage: UIImage?
+    private var points: [CGPoint] = []
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         guard let touch = touches.first else { return }
-
+        
         UIGraphicsBeginImageContextWithOptions(bounds.size, false, 0.0)
         let context = UIGraphicsGetCurrentContext()!
 
@@ -76,6 +79,8 @@ class CanvasView: UIImageView {
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         image = drawingImage
+        print(recogniser.recogniseStraitLine(points: points))
+        points = []
     }
     
     override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -86,6 +91,8 @@ class CanvasView: UIImageView {
         let previousLocation = touch.previousLocation(in: self)
         let location = touch.location(in: self)
 
+        points.append(location)
+        
         // Set color
         drawColor.setStroke()
 
