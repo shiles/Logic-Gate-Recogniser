@@ -9,6 +9,8 @@
 import Foundation
 import UIKit
 
+typealias Line = [CGPoint]
+
 enum DrawingTools {
     case pen
     case erasor
@@ -17,6 +19,7 @@ enum DrawingTools {
 class CanvasView: UIImageView {
     
     private let recogniser = DrawingRecogniser()
+    private var recognisedLines: [Line] = []
     
     // Tool Settings
     private var defaultLineWidth: CGFloat = 10
@@ -79,7 +82,14 @@ class CanvasView: UIImageView {
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         image = drawingImage
-        print(recogniser.recogniseStraitLine(points: points))
+        
+        let lines = recogniser.recogniseStraitLines(points: points)
+        
+        lines.forEach { points in
+             recognisedLines.append(points)
+             drawRecognisedLine(line: points)
+        }
+        
         points = []
     }
     
@@ -107,5 +117,33 @@ class CanvasView: UIImageView {
         // Draw the stroke
         context.strokePath()
      }
+    
+    func drawRecognisedLine(line: Line) {
+        guard let start = line.first, let end = line.last, start != end else { return }
+
+        UIGraphicsBeginImageContextWithOptions(bounds.size, false, 0.0)
+        let context = UIGraphicsGetCurrentContext()!
+
+        // Draw previous image into context
+        drawingImage?.draw(in: bounds)
+        
+        // Line setup
+        context.setLineCap(.round)
+        context.setLineWidth(6.0)
+        context.setStrokeColor(UIColor(hue: CGFloat(drand48()), saturation: 1, brightness: 1, alpha: 1).cgColor)
+
+        // Add lines
+        context.move(to: start)
+        context.addLine(to: end)
+
+        // Draw line
+        context.strokePath()
+
+        // Update real image
+        drawingImage = UIGraphicsGetImageFromCurrentImageContext()
+        image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+    }
+
     
 }

@@ -12,14 +12,24 @@ import Accelerate
 
 class DrawingRecogniser {
 
-    private let allowedDevience: CGFloat = 10
+    private let allowedDevience: CGFloat = 5
+    
+    ///Returns a list of lines that it's found with the points
+    func recogniseStraitLines(points: [CGPoint]) -> [Line] {
+        if recogniseStraitLine(points: points) {
+            return [[points.first!, points.last!]]
+        }
+        
+        let split = points.split()
+        return recogniseStraitLines(points: split.right) + recogniseStraitLines(points: split.left)
+    }
     
     func recogniseStraitLine(points: [CGPoint]) -> Bool {
         let xCoords = translate(points: points).map { $0.x }
         let rms = rootMeanSqaure(points: xCoords)
         return rms < allowedDevience
     }
-
+    
     private func rotationAngle(between first: CGPoint, _ last: CGPoint) -> CGFloat{
         // Need to consider when x and when y depending on the dirrection of travel
         let slope: CGFloat = (last.x - first.x) / (last.y - first.y)
