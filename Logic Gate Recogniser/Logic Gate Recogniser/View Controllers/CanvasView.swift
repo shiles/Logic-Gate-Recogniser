@@ -9,8 +9,6 @@
 import Foundation
 import UIKit
 
-typealias Line = [CGPoint]
-
 enum DrawingTools {
     case pen
     case erasor
@@ -35,7 +33,7 @@ class CanvasView: UIImageView {
                 case .erasor:
                     drawColor = .systemBackground
                     defaultLineWidth = 30
-                case .none:   fatalError()
+                case .none: fatalError()
             }
         }
     }
@@ -63,7 +61,8 @@ class CanvasView: UIImageView {
         }
         
         for touch in touches {
-         self.drawStroke(context: context, touch: touch)
+            points.append(touch.location(in: self))
+            self.drawStroke(context: context, touch: touch)
         }
         
         // Draws a dispsoable image using predicted data from apple
@@ -83,11 +82,17 @@ class CanvasView: UIImageView {
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         image = drawingImage
         
-        let lines = recogniser.recogniseStraitLines(points: points)
+        let debugDraw = recogniser.recogniseShape(points: points)
         
-        lines.forEach { points in
-             recognisedLines.append(points)
-             drawRecognisedLine(line: points)
+        debugDraw.forEach { line in
+             recognisedLines.append(line)
+             drawRecognisedLine(line: line)
+        }
+        
+        for i in 0...debugDraw.count {
+            guard let first = debugDraw[safe: i], let second = debugDraw[safe: i+1] else { break }
+            let line = Line(startPoint: second.endPoint, endPoint: first.startPoint)
+            drawRecognisedLine(line: line, colour: UIColor.red)
         }
         
         points = []
@@ -100,8 +105,6 @@ class CanvasView: UIImageView {
     private func drawStroke(context: CGContext, touch: UITouch) {
         let previousLocation = touch.previousLocation(in: self)
         let location = touch.location(in: self)
-
-        points.append(location)
         
         // Set color
         drawColor.setStroke()
@@ -118,9 +121,7 @@ class CanvasView: UIImageView {
         context.strokePath()
      }
     
-    func drawRecognisedLine(line: Line) {
-        guard let start = line.first, let end = line.last, start != end else { return }
-
+    func drawRecognisedLine(line: Line, colour: UIColor = UIColor(hue: CGFloat(drand48()), saturation: 1, brightness: 1, alpha: 1)) {
         UIGraphicsBeginImageContextWithOptions(bounds.size, false, 0.0)
         let context = UIGraphicsGetCurrentContext()!
 
@@ -130,11 +131,11 @@ class CanvasView: UIImageView {
         // Line setup
         context.setLineCap(.round)
         context.setLineWidth(6.0)
-        context.setStrokeColor(UIColor(hue: CGFloat(drand48()), saturation: 1, brightness: 1, alpha: 1).cgColor)
+        context.setStrokeColor(colour.cgColor)
 
         // Add lines
-        context.move(to: start)
-        context.addLine(to: end)
+        context.move(to: line.startPoint)
+        context.addLine(to: line.endPoint)
 
         // Draw line
         context.strokePath()
