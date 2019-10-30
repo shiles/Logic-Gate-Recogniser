@@ -16,6 +16,7 @@
 		AB36BC00235735CC006B8607 /* Logic_Gate_RecogniserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB36BBFF235735CC006B8607 /* Logic_Gate_RecogniserTests.swift */; };
 		AB41AE09236878C800273845 /* Angle+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB41AE08236878C800273845 /* Angle+Extensions.swift */; };
 		AB41AE0B23688D4200273845 /* Collection+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB41AE0A23688D4200273845 /* Collection+Extensions.swift */; };
+		AB41AE0D2369A1EE00273845 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB41AE0C2369A1EE00273845 /* UIColor+Extensions.swift */; };
 		AB44795523630972000BF2A5 /* DrawingRecogniser.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB44795423630972000BF2A5 /* DrawingRecogniser.swift */; };
 		AB9F33792358862300A39A44 /* DetectedGateInfo.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB9F33782358862300A39A44 /* DetectedGateInfo.xib */; };
 		AB9F337C235887C300A39A44 /* DetectedGateInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9F337B235887C300A39A44 /* DetectedGateInfoView.swift */; };
@@ -50,6 +51,7 @@
 		AB36BC0A23574305006B8607 /* Logic Gate Recogniser.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Logic Gate Recogniser.entitlements"; sourceTree = "<group>"; };
 		AB41AE08236878C800273845 /* Angle+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Angle+Extensions.swift"; sourceTree = "<group>"; };
 		AB41AE0A23688D4200273845 /* Collection+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+Extensions.swift"; sourceTree = "<group>"; };
+		AB41AE0C2369A1EE00273845 /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
 		AB44795423630972000BF2A5 /* DrawingRecogniser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingRecogniser.swift; sourceTree = "<group>"; };
 		AB9F33782358862300A39A44 /* DetectedGateInfo.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetectedGateInfo.xib; sourceTree = "<group>"; };
 		AB9F337B235887C300A39A44 /* DetectedGateInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetectedGateInfoView.swift; sourceTree = "<group>"; };
@@ -152,10 +154,11 @@
 			isa = PBXGroup;
 			children = (
 				ABF06A5723588CF6006C8E2B /* UIView+Extentions.swift */,
-				AB9FC19823673BEB003D1A85 /* Array+Extensions.swift */,
 				ABCE4B9B2368515400D2F4BE /* CGFloat+Extensions.swift */,
+				AB9FC19823673BEB003D1A85 /* Array+Extensions.swift */,
 				AB41AE08236878C800273845 /* Angle+Extensions.swift */,
 				AB41AE0A23688D4200273845 /* Collection+Extensions.swift */,
+				AB41AE0C2369A1EE00273845 /* UIColor+Extensions.swift */,
 			);
 			path = Extentions;
 			sourceTree = "<group>";
@@ -269,6 +272,7 @@
 				ABF06A5823588CF6006C8E2B /* UIView+Extentions.swift in Sources */,
 				AB9FC19923673BEB003D1A85 /* Array+Extensions.swift in Sources */,
 				AB41AE09236878C800273845 /* Angle+Extensions.swift in Sources */,
+				AB41AE0D2369A1EE00273845 /* UIColor+Extensions.swift in Sources */,
 				ABBDAB882362EDEE00DBFDC1 /* CanvasView.swift in Sources */,
 				AB44795523630972000BF2A5 /* DrawingRecogniser.swift in Sources */,
 				AB36BBE9235735CA006B8607 /* AppDelegate.swift in Sources */,

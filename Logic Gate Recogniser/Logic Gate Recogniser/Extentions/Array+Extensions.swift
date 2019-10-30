@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 extension Array {
     
@@ -16,4 +17,12 @@ extension Array {
         //Adding one for an overlap to reduce gaps that may occure between lines
         return (left: Array(self[0 ..< half+1]), right: Array(self[half ..< max]))
     }
+}
+
+extension Array where Element : FloatingPoint {
+    
+    func rootMeanSquared() -> CGFloat {
+        return (self.map { ($0 as! CGFloat) * ($0 as! CGFloat) }.reduce(0, +) / CGFloat(self.count)).squareRoot()
+    }
+    
 }

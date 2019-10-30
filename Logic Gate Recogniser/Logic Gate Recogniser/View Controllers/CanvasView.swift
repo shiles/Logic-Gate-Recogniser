@@ -121,7 +121,7 @@ class CanvasView: UIImageView {
         context.strokePath()
      }
     
-    func drawRecognisedLine(line: Line, colour: UIColor = UIColor(hue: CGFloat(drand48()), saturation: 1, brightness: 1, alpha: 1)) {
+    func drawRecognisedLine(line: Line, colour: UIColor = UIColor(hue: drand48())) {
         UIGraphicsBeginImageContextWithOptions(bounds.size, false, 0.0)
         let context = UIGraphicsGetCurrentContext()!
 
