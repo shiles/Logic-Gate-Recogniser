@@ -17,6 +17,7 @@
 		AB41AE09236878C800273845 /* Angle+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB41AE08236878C800273845 /* Angle+Extensions.swift */; };
 		AB41AE0B23688D4200273845 /* Collection+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB41AE0A23688D4200273845 /* Collection+Extensions.swift */; };
 		AB41AE0D2369A1EE00273845 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB41AE0C2369A1EE00273845 /* UIColor+Extensions.swift */; };
+		AB41AE0F2369AEDB00273845 /* Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB41AE0E2369AEDB00273845 /* Line.swift */; };
 		AB44795523630972000BF2A5 /* DrawingRecogniser.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB44795423630972000BF2A5 /* DrawingRecogniser.swift */; };
 		AB9F33792358862300A39A44 /* DetectedGateInfo.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB9F33782358862300A39A44 /* DetectedGateInfo.xib */; };
 		AB9F337C235887C300A39A44 /* DetectedGateInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9F337B235887C300A39A44 /* DetectedGateInfoView.swift */; };
@@ -52,6 +53,7 @@
 		AB41AE08236878C800273845 /* Angle+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Angle+Extensions.swift"; sourceTree = "<group>"; };
 		AB41AE0A23688D4200273845 /* Collection+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+Extensions.swift"; sourceTree = "<group>"; };
 		AB41AE0C2369A1EE00273845 /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
+		AB41AE0E2369AEDB00273845 /* Line.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Line.swift; sourceTree = "<group>"; };
 		AB44795423630972000BF2A5 /* DrawingRecogniser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingRecogniser.swift; sourceTree = "<group>"; };
 		AB9F33782358862300A39A44 /* DetectedGateInfo.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetectedGateInfo.xib; sourceTree = "<group>"; };
 		AB9F337B235887C300A39A44 /* DetectedGateInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetectedGateInfoView.swift; sourceTree = "<group>"; };
@@ -126,6 +128,7 @@
 			isa = PBXGroup;
 			children = (
 				AB44795423630972000BF2A5 /* DrawingRecogniser.swift */,
+				AB41AE0E2369AEDB00273845 /* Line.swift */,
 			);
 			path = "Drawing Recognition";
 			sourceTree = "<group>";
@@ -272,6 +275,7 @@
 				ABF06A5823588CF6006C8E2B /* UIView+Extentions.swift in Sources */,
 				AB9FC19923673BEB003D1A85 /* Array+Extensions.swift in Sources */,
 				AB41AE09236878C800273845 /* Angle+Extensions.swift in Sources */,
+				AB41AE0F2369AEDB00273845 /* Line.swift in Sources */,
 				AB41AE0D2369A1EE00273845 /* UIColor+Extensions.swift in Sources */,
 				ABBDAB882362EDEE00DBFDC1 /* CanvasView.swift in Sources */,
 				AB44795523630972000BF2A5 /* DrawingRecogniser.swift in Sources */,

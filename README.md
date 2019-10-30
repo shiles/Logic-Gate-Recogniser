@@ -1,8 +1,7 @@
 # Logic-Gate-Recogniser
 
-A test PencilKit app developed to test the feasibility of detecting logic gates drawn on the canvas. It will detect when a logic gate is drawn and then attempt to resolve which it is using a model created in CreateML and then implemented using the CoreML frameworks.
+A test app, being developed to test the feasibility of detecting logic gates draw with either a apple pencil or finger. 
 
-Supported Logic Gates:
-- And
-- Or
-- Not
+The first attempt was implemented using CoreML, and can be found on the *machine-learning-test* branch. This used a model trained on using createML on drawings of the gates, which were input using the PencilKit framework. Accuracy with this quanity of drawings wasn't sufficient for the application. 
+
+Currently implementing recognition through the point data using a custom drawing implementation.

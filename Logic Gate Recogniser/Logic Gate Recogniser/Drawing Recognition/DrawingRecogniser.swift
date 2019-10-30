@@ -10,26 +10,19 @@ import Foundation
 import UIKit
 import Accelerate
 
-struct Line: Equatable {
-    var startPoint: CGPoint
-    var endPoint: CGPoint
-    
-    var length: CGFloat {
-        return ((endPoint.x - startPoint.x).squared() + (endPoint.y - startPoint.y).squared()).squareRoot()
-    }
-}
-
 class DrawingRecogniser {
     
     func recogniseShape(points: [CGPoint]) -> [Line] {
+        print("Recognising a new stroke")
+        
         let orderedPoints = points.reversed().map { $0 }
         let straitLines = recogniseStraitLines(points: orderedPoints)
         let connectedStraitLines = connectCloseLines(lines: straitLines)
         
         for i in 0...connectedStraitLines.count {
             guard let first = connectedStraitLines[safe: i], let second = connectedStraitLines[safe: i+1] else { break }
-            let _ = angleBetwen(between: first, second)
-            //print(angle?.toDegrees() as Any)
+            let angle = angleBetwen(between: first, second)
+            print(angle!.toDegrees() as Any)
         }
         return connectedStraitLines
     }
@@ -60,28 +53,7 @@ class DrawingRecogniser {
         let split = points.split()
         return recogniseStraitLines(points: split.right) + recogniseStraitLines(points: split.left)
     }
-    
-    // MARK: Boolean Check Functions
-    
-    ///Checks if the lines strait based on an allowed devience via root mean squared of all the points.
-    ///- Parameter points: Points of the line to check if is straight
-    ///- Parameter allowedDevience: Allowed devience to determine if the line is strait or not, defualt is 5.0
-    ///- Returns: A boolean indicating if the line is strait or not
-    private func isStraitLine(points: [CGPoint], allowedDevience: CGFloat = 5.0) -> Bool {
-        let xCoords = translate(points: points).map { $0.x }
-        let rms = xCoords.rootMeanSquared()
-        return rms < allowedDevience
-    }
-    
-    ///Checks if last stroke point is close to connecting to the first, within a allowed devience
-    ///- Parameter first: First point, the point to use as a base for the bounding box
-    ///- Parameter second: Second point, the point to check if is within the bounding box
-    ///- Parameter allowedDevience: Allowed devience to determine if the lines should be connecting or not
-    private func isStrokeCloseToConnecting(between first: CGPoint, _ last: CGPoint, allowedDevience: CGFloat = 50.0) -> Bool {
-        let hDev = allowedDevience/2
-        return CGRect(x: first.x - hDev, y: first.y - hDev, width: allowedDevience, height: allowedDevience).contains(last)
-    }
-    
+        
     // MARK: Manipulation Functions
     
     ///Connects the first and last line in the list if their start and end points are within an allowed devience
@@ -104,7 +76,7 @@ class DrawingRecogniser {
     ///- Parameter points: Points of the line to translate
     ///- Returns: Translated points relative to input
     private func translate(points: [CGPoint]) -> [CGPoint] {
-        guard let first = points.first, let last = points.last, first != last else { fatalError() }
+        guard let first = points.first, let last = points.last else { fatalError() }
         
         let translation = CGAffineTransform(translationX: -first.x, y: -first.y)
         let rotation = CGAffineTransform(rotationAngle: rotationAngle(between: first, last))
@@ -121,4 +93,24 @@ class DrawingRecogniser {
         return atan(slope)
     }
 
+    // MARK: Boolean Check Functions
+    
+    ///Checks if the lines strait based on an allowed devience via root mean squared of all the points.
+    ///- Parameter points: Points of the line to check if is straight
+    ///- Parameter allowedDevience: Allowed devience to determine if the line is strait or not, defualt is 5.0
+    ///- Returns: A boolean indicating if the line is strait or not
+    private func isStraitLine(points: [CGPoint], allowedDevience: CGFloat = 5.0) -> Bool {
+        let xCoords = translate(points: points).map { $0.x }
+        let rms = xCoords.rootMeanSquared()
+        return rms < allowedDevience
+    }
+    
+    ///Checks if last stroke point is close to connecting to the first, within a allowed devience
+    ///- Parameter first: First point, the point to use as a base for the bounding box
+    ///- Parameter second: Second point, the point to check if is within the bounding box
+    ///- Parameter allowedDevience: Allowed devience to determine if the lines should be connecting or not
+    private func isStrokeCloseToConnecting(between first: CGPoint, _ last: CGPoint, allowedDevience: CGFloat = 50.0) -> Bool {
+        let hDev = allowedDevience/2
+        return CGRect(x: first.x - hDev, y: first.y - hDev, width: allowedDevience, height: allowedDevience).contains(last)
+    }
 }
