@@ -89,11 +89,11 @@ class CanvasView: UIImageView {
              drawRecognisedLine(line: line)
         }
         
-        for i in 0...debugDraw.count {
-            guard let first = debugDraw[safe: i], let second = debugDraw[safe: i+1] else { break }
-            let line = Line(startPoint: second.endPoint, endPoint: first.startPoint)
-            drawRecognisedLine(line: line, colour: UIColor.red)
-        }
+//        for i in 0...debugDraw.count {
+//            guard let first = debugDraw[safe: i], let second = debugDraw[safe: i+1] else { break }
+//            let line = Line(startPoint: second.endPoint, endPoint: first.startPoint)
+//            drawRecognisedLine(line: line, colour: UIColor.red)
+//        }
         
         points = []
     }

@@ -17,6 +17,13 @@ extension Array {
         //Adding one for an overlap to reduce gaps that may occure between lines
         return (left: Array(self[0 ..< half+1]), right: Array(self[half ..< max]))
     }
+    
+    func replaceLast(_ element: Element) -> [Element] {
+        var array = self.dropLast()
+        array.append(element)
+        return Array(array)
+    }
+    
 }
 
 extension Array where Element : FloatingPoint {
