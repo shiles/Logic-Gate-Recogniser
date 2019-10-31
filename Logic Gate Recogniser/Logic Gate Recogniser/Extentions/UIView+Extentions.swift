@@ -10,8 +10,10 @@ import UIKit
 
 extension UIView {
     
-    func roundCorners() {
-        self.layer.cornerRadius = 40;
+    ///Adds rounded corners to a view
+    ///- Parameter radious: Radious of the corners, defualt value is 40
+    func roundCorners(radious: CGFloat = 40) {
+        self.layer.cornerRadius = radious;
         self.layer.masksToBounds = true;
     }
 }

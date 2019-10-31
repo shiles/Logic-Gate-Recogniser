@@ -11,6 +11,8 @@ import UIKit
 
 extension UIColor {
     
+    ///Convenience initialiser for hue with full staturation, brightness and transparency
+    ///- parameter hue: Hue for the colour
     convenience init(hue: Double) {
         self.init(hue: CGFloat(hue), saturation: 1, brightness: 1, alpha: 1)
     }

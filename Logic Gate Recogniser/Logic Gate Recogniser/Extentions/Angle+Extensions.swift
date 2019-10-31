@@ -13,6 +13,8 @@ typealias Angle = CGFloat
 
 extension Angle {
     
+    ///Converts a radion to degrees
+    ///- Returns: Degree value of the radion
     func toDegrees() -> Angle {
         return (self * 180) / .pi
     }

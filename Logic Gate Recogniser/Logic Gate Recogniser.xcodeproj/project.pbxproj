@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AB21A206236B256000BCE5E0 /* CGVector+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB21A205236B256000BCE5E0 /* CGVector+Extensions.swift */; };
+		AB21A208236B678700BCE5E0 /* CGFloat+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB21A207236B678700BCE5E0 /* CGFloat+Extensions.swift */; };
 		AB36BBE9235735CA006B8607 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB36BBE8235735CA006B8607 /* AppDelegate.swift */; };
 		AB36BBEB235735CA006B8607 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB36BBEA235735CA006B8607 /* SceneDelegate.swift */; };
 		AB36BBED235735CA006B8607 /* DrawingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB36BBEC235735CA006B8607 /* DrawingViewController.swift */; };
@@ -23,7 +25,6 @@
 		AB9F337C235887C300A39A44 /* DetectedGateInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9F337B235887C300A39A44 /* DetectedGateInfoView.swift */; };
 		AB9FC19923673BEB003D1A85 /* Array+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9FC19823673BEB003D1A85 /* Array+Extensions.swift */; };
 		ABBDAB882362EDEE00DBFDC1 /* CanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABBDAB872362EDEE00DBFDC1 /* CanvasView.swift */; };
-		ABCE4B9C2368515400D2F4BE /* CGFloat+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCE4B9B2368515400D2F4BE /* CGFloat+Extensions.swift */; };
 		ABF06A5823588CF6006C8E2B /* UIView+Extentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF06A5723588CF6006C8E2B /* UIView+Extentions.swift */; };
 /* End PBXBuildFile section */
 
@@ -38,6 +39,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		AB21A205236B256000BCE5E0 /* CGVector+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGVector+Extensions.swift"; sourceTree = "<group>"; };
+		AB21A207236B678700BCE5E0 /* CGFloat+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGFloat+Extensions.swift"; sourceTree = "<group>"; };
 		AB36BBE5235735CA006B8607 /* Recogniser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Recogniser.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB36BBE8235735CA006B8607 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AB36BBEA235735CA006B8607 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -59,7 +62,6 @@
 		AB9F337B235887C300A39A44 /* DetectedGateInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetectedGateInfoView.swift; sourceTree = "<group>"; };
 		AB9FC19823673BEB003D1A85 /* Array+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extensions.swift"; sourceTree = "<group>"; };
 		ABBDAB872362EDEE00DBFDC1 /* CanvasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasView.swift; sourceTree = "<group>"; };
-		ABCE4B9B2368515400D2F4BE /* CGFloat+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGFloat+Extensions.swift"; sourceTree = "<group>"; };
 		ABF06A5723588CF6006C8E2B /* UIView+Extentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extentions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -157,11 +159,12 @@
 			isa = PBXGroup;
 			children = (
 				ABF06A5723588CF6006C8E2B /* UIView+Extentions.swift */,
-				ABCE4B9B2368515400D2F4BE /* CGFloat+Extensions.swift */,
 				AB9FC19823673BEB003D1A85 /* Array+Extensions.swift */,
 				AB41AE08236878C800273845 /* Angle+Extensions.swift */,
 				AB41AE0A23688D4200273845 /* Collection+Extensions.swift */,
 				AB41AE0C2369A1EE00273845 /* UIColor+Extensions.swift */,
+				AB21A205236B256000BCE5E0 /* CGVector+Extensions.swift */,
+				AB21A207236B678700BCE5E0 /* CGFloat+Extensions.swift */,
 			);
 			path = Extentions;
 			sourceTree = "<group>";
@@ -269,13 +272,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				AB9F337C235887C300A39A44 /* DetectedGateInfoView.swift in Sources */,
-				ABCE4B9C2368515400D2F4BE /* CGFloat+Extensions.swift in Sources */,
 				AB36BBED235735CA006B8607 /* DrawingViewController.swift in Sources */,
+				AB21A208236B678700BCE5E0 /* CGFloat+Extensions.swift in Sources */,
 				AB41AE0B23688D4200273845 /* Collection+Extensions.swift in Sources */,
 				ABF06A5823588CF6006C8E2B /* UIView+Extentions.swift in Sources */,
 				AB9FC19923673BEB003D1A85 /* Array+Extensions.swift in Sources */,
 				AB41AE09236878C800273845 /* Angle+Extensions.swift in Sources */,
 				AB41AE0F2369AEDB00273845 /* Line.swift in Sources */,
+				AB21A206236B256000BCE5E0 /* CGVector+Extensions.swift in Sources */,
 				AB41AE0D2369A1EE00273845 /* UIColor+Extensions.swift in Sources */,
 				ABBDAB882362EDEE00DBFDC1 /* CanvasView.swift in Sources */,
 				AB44795523630972000BF2A5 /* DrawingRecogniser.swift in Sources */,

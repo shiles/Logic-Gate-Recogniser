@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import Accelerate
+import simd
 
 class DrawingRecogniser {
     
@@ -18,15 +19,12 @@ class DrawingRecogniser {
         let orderedPoints = points.reversed().map { $0 }
         let straitLines = recogniseStraitLines(points: orderedPoints)
         let connectedStraitLines = connectCloseLines(lines: straitLines)
-        
-        for i in 0...connectedStraitLines.count {
-            guard let first = connectedStraitLines[safe: i], let second = connectedStraitLines[safe: i+1] else { break }
-            let angle = angleBetwen(between: first, second)
-            print(angle!.toDegrees() as Any)
-        }
-        return connectedStraitLines
+        print("Starting with \(connectedStraitLines.count)")
+        let connectedSimilarLines = connectSimilarLines(lines: connectedStraitLines)
+        print("Ending with \(connectedSimilarLines.count)")
+        return connectedSimilarLines
     }
-    
+        
     ///Finds the angle between two lines if the first point's end and the second point's line interesect
     ///- Parameter first: First line drawn cronologically
     ///- Parameter second: Second line drawn cronologically
@@ -69,6 +67,23 @@ class DrawingRecogniser {
         return lines
     }
     
+    ///Connects adjacent lines if their vectors are similar, combining the lines into one strait line
+    private func connectSimilarLines(lines: [Line], allowedDevience: CGFloat = 20.0) -> [Line] {
+        var combinedLines = lines
+        
+        for i in 0...combinedLines.count {
+            guard let first = combinedLines[safe: i], let second = combinedLines[safe: i+1] else { break }
+            
+            if isVectorSimilar(between: first.vector, second.vector) {
+                let replacementLine = Line(startPoint: first.startPoint, endPoint: second.endPoint)
+                combinedLines[i] = replacementLine
+                combinedLines.remove(at: i+1)
+            }
+        }
+
+        return combinedLines
+    }
+    
     // MARK: Translation Functions
  
     ///Translates a list of points so to the origin, (0,0) and then rotates the line proportionally along the y axis to allow comparison along the x co-ordinates
@@ -109,8 +124,27 @@ class DrawingRecogniser {
     ///- Parameter first: First point, the point to use as a base for the bounding box
     ///- Parameter second: Second point, the point to check if is within the bounding box
     ///- Parameter allowedDevience: Allowed devience to determine if the lines should be connecting or not
+    ///- Returns: A boolean indicating if the points is close to connecting
     private func isStrokeCloseToConnecting(between first: CGPoint, _ last: CGPoint, allowedDevience: CGFloat = 50.0) -> Bool {
         let hDev = allowedDevience/2
         return CGRect(x: first.x - hDev, y: first.y - hDev, width: allowedDevience, height: allowedDevience).contains(last)
     }
+    
+    ///Checks if two vectors are similar, and therefore can be combined
+    ///- Parameter first: First point, the vector to use as a base for the bounding box
+    ///- Parameter second: Second point, the vector to check if is within the bounding box
+    ///- Parameter allowedDevience: Allowed devience to determine if the lines should be connecting or not
+    ///- Returns: A boolean indicating if the vector is similar in magnitude and direction
+    private func isVectorSimilar(between first: CGVector, _ second: CGVector, allowedDevience: CGFloat = 0.3) -> Bool {
+        let v1 = first.normalized()
+        let v2 = second.normalized()
+        
+        let xDif = abs(v1.dx - v2.dx)
+        let yDif = abs(v1.dy - v2.dy)
+        
+        print("xDif = \(xDif) | yDif = \(yDif) | Should combine = \(xDif < allowedDevience && yDif < allowedDevience)")
+        
+        return xDif < allowedDevience && yDif < allowedDevience
+    }
+    
 }
