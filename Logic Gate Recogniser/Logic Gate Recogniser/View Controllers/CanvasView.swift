@@ -85,6 +85,9 @@ class CanvasView: UIImageView {
         let hull = recogniser.convexHull(of: points)
         drawConvexHull(convexHull: hull)
         
+        let triangle = recogniser.largestAreaTriangle(using: hull)
+        drawTriangle(triangle: triangle)
+        
 //        debugDraw.forEach { line in
 //             recognisedLines.append(line)
 //             drawRecognisedLine(line: line)
@@ -165,6 +168,35 @@ class CanvasView: UIImageView {
         context.move(to: convexHull.first!)
         convexHull.forEach { context.addLine(to: $0) }
         context.addLine(to: convexHull.first!)
+        
+        // Draw line
+        context.strokePath()
+
+        // Update real image
+        drawingImage = UIGraphicsGetImageFromCurrentImageContext()
+        image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+    }
+    
+    func drawTriangle(triangle: Triangle?, colour: UIColor = UIColor.blue) {
+        guard let triangle = triangle else { return }
+        
+        UIGraphicsBeginImageContextWithOptions(bounds.size, false, 0.0)
+        let context = UIGraphicsGetCurrentContext()!
+
+        // Draw previous image into context
+        drawingImage?.draw(in: bounds)
+        
+        // Line setup
+        context.setLineCap(.round)
+        context.setLineWidth(6.0)
+        context.setStrokeColor(colour.cgColor)
+
+        // Add lines
+        context.move(to: triangle.a)
+        context.addLine(to: triangle.b)
+        context.addLine(to: triangle.c)
+        context.addLine(to: triangle.a)
         
         // Draw line
         context.strokePath()

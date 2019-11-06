@@ -13,6 +13,45 @@ typealias ConvexHull = [CGPoint]
 
 class Recogniser {
     
+    ///Find the triangle within a convex hull with the largest area using
+    ///- Parameter convexHull: Convex hull to find the triangle in
+    ///- Returns: Triangle with the largest area
+    func largestAreaTriangle(using cH: ConvexHull) -> Triangle? {
+        let count = cH.count
+        if count < 3 { return nil }
+        var iA = 0, iB = 1, iC = 2
+        var bestA = cH[iA], bestB = cH[iB], bestC = cH[iC]
+    
+        while true {
+            while true {
+                // Move point c around until the area of the next iteration's area is smaller
+                while Triangle.area(a: cH[iA], b: cH[iB], c: cH[iC]) <= Triangle.area(a: cH[iA], b: cH[iB], c: cH[(iC+1) % count]) {
+                    iC = (iC+1) % count
+                }
+                // Move point b one place, and keep it that way if the area is larger
+                if Triangle.area(a: cH[iA], b: cH[iB], c: cH[iC]) <= Triangle.area(a: cH[iA], b: cH[(iB+1) % count], c: cH[iC]) {
+                    iB = (iB + 1) % count  // Incremenet, then loop again increasing C
+                } else { break }
+            }
+            
+            // If the new triangle is better than our old one, use it
+            if Triangle.area(a: bestA, b: bestB, c: bestC) < Triangle.area(a: cH[iA], b: cH[iB], c: cH[iC]) {
+                bestA = cH[iA]; bestB = cH[iB]; bestC = cH[iC]
+            }
+            
+            // Increment A, rotate shape if needed
+            iA = (iA + 1) % count
+            if iA == iB { iB += 1 }
+            if iB == iC { iC += 1 }
+            if iA == 0  { break }
+        }
+    
+        return Triangle(a: bestA, b: bestB, c: bestC)
+    }
+    
+    ///Find the convex hull of a set of points using Graham Scan Algorithm
+    ///- Parameter cgPoints: Points to find convex hull of
+    ///- Returns: Convex hull of the points
     func convexHull(of cgPoints: [CGPoint]) -> ConvexHull {
         var points = cgPoints
         let minPoint = points.min { $0.y < $1.y }!
@@ -37,7 +76,6 @@ class Recogniser {
         
         //If there is less than three points the algorithm isn't possible
         if points.count < 3 { return ConvexHull() }
-        
         var stack = Stack<CGPoint>(items: [minPoint, points[0], points[1]])
         
         //Build the convextHull
@@ -47,7 +85,6 @@ class Recogniser {
             stack.push(point)
         }
             
-        
         return stack.asList()
     }
     
