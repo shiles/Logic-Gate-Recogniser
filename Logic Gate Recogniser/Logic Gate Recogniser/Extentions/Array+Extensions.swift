@@ -11,6 +11,9 @@ import UIKit
 
 extension Array {
     
+    ///The index of the last object within the arrray
+    var lastIndex: Int { self.count - 1 }
+    
     ///Splits the array into two parts, with a single element overlap between the left and right sides of the split
     ///- Returns: Touple with left half and right half of array
     func split() -> (left: [Element], right: [Element]) {

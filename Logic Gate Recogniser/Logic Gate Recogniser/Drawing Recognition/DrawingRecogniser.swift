@@ -19,12 +19,43 @@ class DrawingRecogniser {
         let orderedPoints = points.reversed().map { $0 }
         let straitLines = recogniseStraitLines(points: orderedPoints)
         let connectedStraitLines = connectCloseLines(lines: straitLines)
-        print("Starting with \(connectedStraitLines.count)")
         let connectedSimilarLines = connectSimilarLines(lines: connectedStraitLines)
-        print("Ending with \(connectedSimilarLines.count)")
+        
+        switch significantCorners(lines: connectedStraitLines) {
+        case 0:
+            print("StriatLine?")
+        case 1...2:
+            print("Curved Line?")
+        case 3...4:
+            print("Not Shape?")
+        case 5...8:
+            print("And Shape?")
+        case 8...15:
+            print("Circle Shape?")
+        default:
+            print("No Idea...")
+        }
+        
         return connectedSimilarLines
     }
         
+    private func significantCorners(lines: [Line]) -> Int {
+        var signifcantCorners = 0
+        
+        for i in 0...lines.count {
+            guard let first = lines[safe: i], let second = lines[safe: i+1] ?? lines.first, let angle = angleBetwen(between: first, second) else { break }
+            
+            print(angle.toDegrees())
+            if angle.toDegrees() < 180 {
+                signifcantCorners += 1
+            }
+        }
+        
+        print(signifcantCorners)
+    
+        return signifcantCorners
+    }
+    
     ///Finds the angle between two lines if the first point's end and the second point's line interesect
     ///- Parameter first: First line drawn cronologically
     ///- Parameter second: Second line drawn cronologically
@@ -135,14 +166,14 @@ class DrawingRecogniser {
     ///- Parameter second: Second point, the vector to check if is within the bounding box
     ///- Parameter allowedDevience: Allowed devience to determine if the lines should be connecting or not
     ///- Returns: A boolean indicating if the vector is similar in magnitude and direction
-    private func isVectorSimilar(between first: CGVector, _ second: CGVector, allowedDevience: CGFloat = 0.3) -> Bool {
+    private func isVectorSimilar(between first: CGVector, _ second: CGVector, allowedDevience: CGFloat = 0.5) -> Bool {
         let v1 = first.normalized()
         let v2 = second.normalized()
         
         let xDif = abs(v1.dx - v2.dx)
         let yDif = abs(v1.dy - v2.dy)
         
-        print("xDif = \(xDif) | yDif = \(yDif) | Should combine = \(xDif < allowedDevience && yDif < allowedDevience)")
+        //print("xDif = \(xDif) | yDif = \(yDif) | Should combine = \(xDif < allowedDevience && yDif < allowedDevience)")
         
         return xDif < allowedDevience && yDif < allowedDevience
     }

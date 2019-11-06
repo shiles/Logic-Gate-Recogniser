@@ -16,7 +16,7 @@ enum DrawingTools {
 
 class CanvasView: UIImageView {
     
-    private let recogniser = DrawingRecogniser()
+    private let recogniser = Recogniser()
     private var recognisedLines: [Line] = []
     
     // Tool Settings
@@ -82,12 +82,13 @@ class CanvasView: UIImageView {
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         image = drawingImage
         
-        let debugDraw = recogniser.recogniseShape(points: points)
+        let hull = recogniser.convexHull(of: points)
+        drawConvexHull(convexHull: hull)
         
-        debugDraw.forEach { line in
-             recognisedLines.append(line)
-             drawRecognisedLine(line: line)
-        }
+//        debugDraw.forEach { line in
+//             recognisedLines.append(line)
+//             drawRecognisedLine(line: line)
+//        }
         
 //        for i in 0...debugDraw.count {
 //            guard let first = debugDraw[safe: i], let second = debugDraw[safe: i+1] else { break }
@@ -145,6 +146,35 @@ class CanvasView: UIImageView {
         image = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
     }
+    
+    func drawConvexHull(convexHull: ConvexHull, colour: UIColor = UIColor.red) {
+        if convexHull.isEmpty { return }
+        
+        UIGraphicsBeginImageContextWithOptions(bounds.size, false, 0.0)
+        let context = UIGraphicsGetCurrentContext()!
+
+        // Draw previous image into context
+        drawingImage?.draw(in: bounds)
+        
+        // Line setup
+        context.setLineCap(.round)
+        context.setLineWidth(6.0)
+        context.setStrokeColor(colour.cgColor)
+
+        // Add lines
+        context.move(to: convexHull.first!)
+        convexHull.forEach { context.addLine(to: $0) }
+        context.addLine(to: convexHull.first!)
+        
+        // Draw line
+        context.strokePath()
+
+        // Update real image
+        drawingImage = UIGraphicsGetImageFromCurrentImageContext()
+        image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+    }
+
 
     
 }
