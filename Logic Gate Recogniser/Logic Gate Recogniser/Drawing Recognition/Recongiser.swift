@@ -41,8 +41,8 @@ class Recogniser {
             
             // Increment A, rotate shape if needed
             iA = (iA + 1) % count
-            if iA == iB { iB += 1 }
-            if iB == iC { iC += 1 }
+            if iA == iB { iB = (iB + 1) % count }
+            if iB == iC { iC = (iC+1) % count }
             if iA == 0  { break }
         }
     
@@ -52,7 +52,8 @@ class Recogniser {
     ///Find the convex hull of a set of points using Graham Scan Algorithm
     ///- Parameter cgPoints: Points to find convex hull of
     ///- Returns: Convex hull of the points
-    func convexHull(of cgPoints: [CGPoint]) -> ConvexHull {
+    func convexHull(of cgPoints: [CGPoint]) -> ConvexHull? {
+        if cgPoints.count < 3 { return nil }
         var points = cgPoints
         let minPoint = points.min { $0.y < $1.y }!
         
@@ -75,7 +76,7 @@ class Recogniser {
         }
         
         //If there is less than three points the algorithm isn't possible
-        if points.count < 3 { return ConvexHull() }
+        if points.count < 2 { return nil }
         var stack = Stack<CGPoint>(items: [minPoint, points[0], points[1]])
         
         //Build the convextHull
@@ -104,7 +105,7 @@ class Recogniser {
     private func orientation(from minPoint: CGPoint, p1: CGPoint, p2: CGPoint) -> Orientation {
         let val = (p1.y - minPoint.y) * (p2.x - p1.x) - (p1.x - minPoint.x) * (p2.y - p1.y)
         if val == 0 { return .colinear }
-        return val > 0 ? .clockwise : .anticlockwise
+        return val > 0 ? .anticlockwise : .clockwise
     }
     
 }

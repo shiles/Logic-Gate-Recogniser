@@ -82,10 +82,10 @@ class CanvasView: UIImageView {
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         image = drawingImage
         
-        let hull = recogniser.convexHull(of: points)
+        guard let hull = recogniser.convexHull(of: points) else { points = []; return}
         drawConvexHull(convexHull: hull)
         
-        let triangle = recogniser.largestAreaTriangle(using: hull)
+        guard let triangle = recogniser.largestAreaTriangle(using: hull) else { points = []; return}
         drawTriangle(triangle: triangle)
         
 //        debugDraw.forEach { line in
@@ -178,9 +178,7 @@ class CanvasView: UIImageView {
         UIGraphicsEndImageContext()
     }
     
-    func drawTriangle(triangle: Triangle?, colour: UIColor = UIColor.blue) {
-        guard let triangle = triangle else { return }
-        
+    func drawTriangle(triangle: Triangle, colour: UIColor = UIColor.blue) {        
         UIGraphicsBeginImageContextWithOptions(bounds.size, false, 0.0)
         let context = UIGraphicsGetCurrentContext()!
 
