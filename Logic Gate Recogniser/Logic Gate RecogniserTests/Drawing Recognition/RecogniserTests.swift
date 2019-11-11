@@ -23,6 +23,17 @@ class RecogniserTests: XCTestCase {
         
         // Then
     }
+    
+    func test2() {
+        // Given
+        let points = [CGPoint(x: 0, y: 0), CGPoint(x: 0, y: 100), CGPoint(x: 100, y: 100), CGPoint(x: 100, y: 0)]
+        let convexHull = recogniser.convexHull(of: points)!
+        
+        // When
+        let minBound = recogniser.boundingBox(using: convexHull)
+        
+        // Then
+    }
 
 
 }

@@ -11,7 +11,69 @@ import UIKit
 
 typealias ConvexHull = [CGPoint]
 
+struct MinAreaRect {
+    // Normalised & Converted Axis'
+    let xAxis: CGVector
+    let yAxis: CGVector
+    
+    // Corners - Index in convexHull
+    let bIndex: Int
+    let rIndex: Int
+    let tIndex: Int
+    let lIndex: Int
+
+    // Total are
+    let area: CGFloat
+}
+
 class Recogniser {
+    
+    // MARK: - Minimum Area Bounding Box
+    
+    func boundingBox(using convexHull: ConvexHull) -> MinAreaRect {
+        let vectors = convexHull.map { $0.toVector() }
+        return minimumAreaRectangle(p1Index: vectors.count-1, p2Index: 0, convexHull: vectors)
+    }
+    
+    private func minimumAreaRectangle(p1Index: Int, p2Index: Int, convexHull: [CGVector]) -> MinAreaRect {
+        // Get Points
+        let point1 = convexHull[p1Index], point2 = convexHull[p2Index]
+        
+        // Axises & Origin to convert all the points too
+        let origin = point2
+        let xAxis  = point2 - point1
+        let yAxis  = xAxis.perpendicular()
+        
+        // Temporary storage
+        var bIndex = p2Index, rIndex = 0, tIndex = 0, lIndex = 0
+        var right = CGVector(), top = CGVector(), left = CGVector()
+        
+        // Find Extreme Points
+        for i in 0..<convexHull.count {
+            let diff = convexHull[i] - origin
+            let vertex = CGVector(dx: xAxis.dotProduct(diff), dy: yAxis.dotProduct(diff))
+            
+            if vertex.dx > right.dx || (vertex.dx == right.dx && vertex.dy > right.dy) {
+                right = vertex
+                rIndex = i
+            }
+            
+            if vertex.dy > top.dy || (vertex.dy == top.dy && vertex.dx < top.dx) {
+                top = vertex
+                tIndex = i
+            }
+            
+            if vertex.dx < left.dx || (vertex.dx == left.dx && vertex.dy < left.dy) {
+                left = vertex
+                lIndex = i
+            }
+        }
+        
+        let area = (right.dx - left.dx) * top.dy
+        return MinAreaRect(xAxis: xAxis, yAxis: yAxis, bIndex: bIndex, rIndex: rIndex, tIndex: tIndex, lIndex: lIndex, area: area)
+    }
+    
+    // MARK: - Largest Area Triangle
     
     ///Find the triangle within a convex hull with the largest area using
     ///- Parameter convexHull: Convex hull to find the triangle in
@@ -48,6 +110,8 @@ class Recogniser {
     
         return Triangle(a: bestA, b: bestB, c: bestC)
     }
+    
+    // MARK: - Convex Hull
     
     ///Find the convex hull of a set of points using Graham Scan Algorithm
     ///- Parameter cgPoints: Points to find convex hull of

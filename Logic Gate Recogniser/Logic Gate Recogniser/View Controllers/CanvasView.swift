@@ -204,7 +204,5 @@ class CanvasView: UIImageView {
         image = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
     }
-
-
     
 }

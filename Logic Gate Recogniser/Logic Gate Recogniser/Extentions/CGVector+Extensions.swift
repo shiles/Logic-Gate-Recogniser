@@ -19,12 +19,29 @@ extension CGVector {
     }
 
     /// Returns the length (magnitude) of the vector described by the CGVector.
-    public func length() -> CGFloat {
+    ///- Returns: Lenght of the current vector
+    func length() -> CGFloat {
         return sqrt(dx*dx + dy*dy)
+    }
+    
+    ///Returns the perpendicular vector
+    ///- Returns: Perpendicular vector of current vector
+    func perpendicular() -> CGVector {
+        return CGVector(dx: -dy, dy: dx)
+    }
+    
+    /* Calculate the dot product of two vectors */
+    func dotProduct(_ vector: CGVector) -> CGFloat {
+      return dx * vector.dx + dy * vector.dy
     }
     
     ///Divides the dx and dy fields of a CGVector by the same scalar value and
     static public func / (vector: CGVector, scalar: CGFloat) -> CGVector {
       return CGVector(dx: vector.dx / scalar, dy: vector.dy / scalar)
     }
+    
+    static public func - (rhs: CGVector, lhs: CGVector) -> CGVector {
+        return CGVector(dx: rhs.dx - lhs.dx, dy: rhs.dy - lhs.dy)
+    }
+
 }
