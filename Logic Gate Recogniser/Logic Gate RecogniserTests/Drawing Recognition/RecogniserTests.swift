@@ -34,6 +34,15 @@ class RecogniserTests: XCTestCase {
         
         // Then
     }
+    
+    func test3() {
+        // Given
+        let m1 = Matrix<Int>(from: [1,2])
+        let m2 = Matrix<Int>(from: [[10,10], [100,100]])
+        let r = m1.strassenMatrixMultiply(by: m2)
+        
+        
+    }
 
 
 }

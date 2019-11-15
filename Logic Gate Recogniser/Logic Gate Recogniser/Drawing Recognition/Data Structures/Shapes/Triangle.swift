@@ -19,6 +19,7 @@ struct Triangle {
 }
 
 extension Triangle {
+    
     static func area(a: CGPoint, b: CGPoint, c: CGPoint) -> CGFloat {
         return 0.5 * ((b.x - a.x)*(c.y - a.y) - (c.x - a.x)*(b.y - a.y))
     }

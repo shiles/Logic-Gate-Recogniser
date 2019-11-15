@@ -9,70 +9,53 @@
 import Foundation
 import UIKit
 
-typealias ConvexHull = [CGPoint]
-
-struct MinAreaRect {
-    // Normalised & Converted Axis'
-    let xAxis: CGVector
-    let yAxis: CGVector
-    
-    // Corners - Index in convexHull
-    let bIndex: Int
-    let rIndex: Int
-    let tIndex: Int
-    let lIndex: Int
-
-    // Total are
-    let area: CGFloat
-}
-
 class Recogniser {
     
     // MARK: - Minimum Area Bounding Box
+        
+    ///Find the bouding box within a convex hull with the smallest ara
+    ///- Parameter convexHull: Convex hull to find the bounding box for
+    ///- Returns: Boudning box with the smallest area
+    func boundingBox(using convexHull: ConvexHull) -> BoundingBox {
+        let edgeAngles = convexHull
+            .edges                                                       // Calculate all the edges on the convex hull
+            .map { atan2($0.dy, $0.dx) }                                 // Calculate the edge angles
+            .map { abs($0.truncatingRemainder(dividingBy: (.pi/2)) ) }   // Check the angles are in the first quadrant (modulo)
+            .unique                                                      // Find all the unique edges
+        
+        // Test each angle to find bounding box with smallest area
+        var minBox = MinBoudingRect(rotAngle: 0, area: CGFloat.greatestFiniteMagnitude, width: 0, height: 0, minX: 0, maxX: 0, minY: 0, maxY: 0)
+        edgeAngles.forEach { angle in
+            // Rotate the points
+            let rotation = Matrix<CGFloat>.forRotation(angle: angle)
+            let rotatedPoints = rotation.strassenMatrixMultiply(by: convexHull.transposedMatrix)
     
-    func boundingBox(using convexHull: ConvexHull) -> MinAreaRect {
-        let vectors = convexHull.map { $0.toVector() }
-        return minimumAreaRectangle(p1Index: vectors.count-1, p2Index: 0, convexHull: vectors)
-    }
-    
-    private func minimumAreaRectangle(p1Index: Int, p2Index: Int, convexHull: [CGVector]) -> MinAreaRect {
-        // Get Points
-        let point1 = convexHull[p1Index], point2 = convexHull[p2Index]
-        
-        // Axises & Origin to convert all the points too
-        let origin = point2
-        let xAxis  = point2 - point1
-        let yAxis  = xAxis.perpendicular()
-        
-        // Temporary storage
-        var bIndex = p2Index, rIndex = 0, tIndex = 0, lIndex = 0
-        var right = CGVector(), top = CGVector(), left = CGVector()
-        
-        // Find Extreme Points
-        for i in 0..<convexHull.count {
-            let diff = convexHull[i] - origin
-            let vertex = CGVector(dx: xAxis.dotProduct(diff), dy: yAxis.dotProduct(diff))
+            // Find min/max x & y points
+            let minX = rotatedPoints[.row, 0].min()!
+            let maxX = rotatedPoints[.row, 0].max()!
+            let minY = rotatedPoints[.row, 1].min()!
+            let maxY = rotatedPoints[.row, 1].max()!
             
-            if vertex.dx > right.dx || (vertex.dx == right.dx && vertex.dy > right.dy) {
-                right = vertex
-                rIndex = i
-            }
+            // Find attributes
+            let width  = maxX - minX
+            let height = maxY - minY
+            let area   = width * height
             
-            if vertex.dy > top.dy || (vertex.dy == top.dy && vertex.dx < top.dx) {
-                top = vertex
-                tIndex = i
-            }
-            
-            if vertex.dx < left.dx || (vertex.dx == left.dx && vertex.dy < left.dy) {
-                left = vertex
-                lIndex = i
+            if area < minBox.area {
+                minBox = MinBoudingRect(rotAngle: angle, area: area, width: width, height: height, minX: minX, maxX: maxX, minY: minY, maxY: maxY)
             }
         }
         
-        let area = (right.dx - left.dx) * top.dy
-        return MinAreaRect(xAxis: xAxis, yAxis: yAxis, bIndex: bIndex, rIndex: rIndex, tIndex: tIndex, lIndex: lIndex, area: area)
+        // Re-create smallest rotation angle and rotate back to reference frame
+        let rotation = Matrix<CGFloat>.forRotation(angle: minBox.rotAngle)
+        let point1 = Matrix<CGFloat>(from: [minBox.maxX, minBox.minY]).strassenMatrixMultiply(by: rotation).toPoint()
+        let point2 = Matrix<CGFloat>(from: [minBox.minX, minBox.minY]).strassenMatrixMultiply(by: rotation).toPoint()
+        let point3 = Matrix<CGFloat>(from: [minBox.minX, minBox.maxY]).strassenMatrixMultiply(by: rotation).toPoint()
+        let point4 = Matrix<CGFloat>(from: [minBox.maxX, minBox.maxY]).strassenMatrixMultiply(by: rotation).toPoint()
+
+        return BoundingBox(cornerPoints: CornerPoints(p1: point1, p2: point2, p3: point3, p4: point4), area: minBox.area)
     }
-    
+ 
     // MARK: - Largest Area Triangle
     
     ///Find the triangle within a convex hull with the largest area using
@@ -140,7 +123,7 @@ class Recogniser {
         }
         
         //If there is less than three points the algorithm isn't possible
-        if points.count < 2 { return nil }
+        if points.count < 3  { return nil }
         var stack = Stack<CGPoint>(items: [minPoint, points[0], points[1]])
         
         //Build the convextHull

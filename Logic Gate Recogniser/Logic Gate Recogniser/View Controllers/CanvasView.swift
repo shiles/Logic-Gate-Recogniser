@@ -81,23 +81,15 @@ class CanvasView: UIImageView {
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         image = drawingImage
-        
+    
         guard let hull = recogniser.convexHull(of: points) else { points = []; return}
         drawConvexHull(convexHull: hull)
         
         guard let triangle = recogniser.largestAreaTriangle(using: hull) else { points = []; return}
         drawTriangle(triangle: triangle)
         
-//        debugDraw.forEach { line in
-//             recognisedLines.append(line)
-//             drawRecognisedLine(line: line)
-//        }
-        
-//        for i in 0...debugDraw.count {
-//            guard let first = debugDraw[safe: i], let second = debugDraw[safe: i+1] else { break }
-//            let line = Line(startPoint: second.endPoint, endPoint: first.startPoint)
-//            drawRecognisedLine(line: line, colour: UIColor.red)
-//        }
+        let minRect = recogniser.boundingBox(using: hull)
+        drawCorners(boundingBox: minRect)
         
         points = []
     }
@@ -205,4 +197,33 @@ class CanvasView: UIImageView {
         UIGraphicsEndImageContext()
     }
     
+    func drawCorners(boundingBox: BoundingBox, colour: UIColor = UIColor.green) {
+        UIGraphicsBeginImageContextWithOptions(bounds.size, false, 0.0)
+        let context = UIGraphicsGetCurrentContext()!
+
+        // Draw previous image into context
+        drawingImage?.draw(in: bounds)
+        
+        // Line setup
+        context.setLineCap(.round)
+        context.setLineWidth(6.0)
+        context.setStrokeColor(colour.cgColor)
+
+        let cornerPoints = boundingBox.cornerPoints
+        
+        // Add lines
+        context.move(to: cornerPoints.p1)
+        context.addLine(to: cornerPoints.p2)
+        context.addLine(to: cornerPoints.p3)
+        context.addLine(to: cornerPoints.p4)
+        context.addLine(to: cornerPoints.p1)
+        
+        // Draw line
+        context.strokePath()
+
+        // Update real image
+        drawingImage = UIGraphicsGetImageFromCurrentImageContext()
+        image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+    }
 }

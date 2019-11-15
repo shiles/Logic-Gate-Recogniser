@@ -33,7 +33,7 @@ extension Array {
     
 }
 
-extension Array where Element : FloatingPoint {
+extension Array where Element: FloatingPoint {
     
     ///Root mean squares the value within the array to find average devience
     ///- Returns: Root mean square value for the values within the array 
@@ -41,4 +41,21 @@ extension Array where Element : FloatingPoint {
         return (self.map { ($0 as! CGFloat).squared() }.reduce(0, +) / CGFloat(self.count)).squareRoot()
     }
     
+}
+
+extension Array where Element: Hashable {
+    
+    ///Return all the unique values in the array
+    ///- Returns: Unquie values within the array
+    var unique: [Element] {
+        return Array(Set(self))
+    }
+}
+
+extension Array where Element == CGPoint {
+    
+    ///Transposed matrix of all the points, with the first row being all X values and second row being Y values
+    var transposedMatrix: Matrix<CGFloat> {
+        return Matrix<CGFloat>(from: [self.map { $0.x }, self.map { $0.y }])
+    }
 }

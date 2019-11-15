@@ -24,15 +24,10 @@ extension CGVector {
         return sqrt(dx*dx + dy*dy)
     }
     
-    ///Returns the perpendicular vector
-    ///- Returns: Perpendicular vector of current vector
-    func perpendicular() -> CGVector {
-        return CGVector(dx: -dy, dy: dx)
-    }
-    
-    /* Calculate the dot product of two vectors */
-    func dotProduct(_ vector: CGVector) -> CGFloat {
-      return dx * vector.dx + dy * vector.dy
+    /// Converts the vector to a point
+    ///- Returns: CGPoint represening the vector
+    func toPoint() -> CGPoint {
+        return CGPoint(x: dx, y: dy)
     }
     
     ///Divides the dx and dy fields of a CGVector by the same scalar value and
@@ -43,5 +38,4 @@ extension CGVector {
     static public func - (rhs: CGVector, lhs: CGVector) -> CGVector {
         return CGVector(dx: rhs.dx - lhs.dx, dy: rhs.dy - lhs.dy)
     }
-
 }

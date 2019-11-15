@@ -25,6 +25,10 @@
 		AB41AE0F2369AEDB00273845 /* Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB41AE0E2369AEDB00273845 /* Line.swift */; };
 		AB44795523630972000BF2A5 /* DrawingRecogniser.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB44795423630972000BF2A5 /* DrawingRecogniser.swift */; };
 		AB6EE323236C44F20060F475 /* LineType.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB6EE322236C44F20060F475 /* LineType.swift */; };
+		AB84F128237EC31200D4CE37 /* Matrix.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB84F127237EC31200D4CE37 /* Matrix.swift */; };
+		AB84F12A237EC38800D4CE37 /* Number.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB84F129237EC38800D4CE37 /* Number.swift */; };
+		AB84F12E237F010A00D4CE37 /* BoundingBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB84F12D237F010A00D4CE37 /* BoundingBox.swift */; };
+		AB84F130237F012E00D4CE37 /* ConvexHull.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB84F12F237F012E00D4CE37 /* ConvexHull.swift */; };
 		AB8F6906237444C30024BC6D /* RecogniserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8F6905237444C30024BC6D /* RecogniserTests.swift */; };
 		AB9F1DA82372F45900E9E81C /* Triangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9F1DA72372F45900E9E81C /* Triangle.swift */; };
 		AB9F1DAA2372F8F600E9E81C /* TriangleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9F1DA92372F8F600E9E81C /* TriangleTests.swift */; };
@@ -70,6 +74,10 @@
 		AB41AE0E2369AEDB00273845 /* Line.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Line.swift; sourceTree = "<group>"; };
 		AB44795423630972000BF2A5 /* DrawingRecogniser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingRecogniser.swift; sourceTree = "<group>"; };
 		AB6EE322236C44F20060F475 /* LineType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineType.swift; sourceTree = "<group>"; };
+		AB84F127237EC31200D4CE37 /* Matrix.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Matrix.swift; sourceTree = "<group>"; };
+		AB84F129237EC38800D4CE37 /* Number.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Number.swift; sourceTree = "<group>"; };
+		AB84F12D237F010A00D4CE37 /* BoundingBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoundingBox.swift; sourceTree = "<group>"; };
+		AB84F12F237F012E00D4CE37 /* ConvexHull.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvexHull.swift; sourceTree = "<group>"; };
 		AB8F6905237444C30024BC6D /* RecogniserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecogniserTests.swift; sourceTree = "<group>"; };
 		AB9F1DA72372F45900E9E81C /* Triangle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Triangle.swift; sourceTree = "<group>"; };
 		AB9F1DA92372F8F600E9E81C /* TriangleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriangleTests.swift; sourceTree = "<group>"; };
@@ -134,8 +142,8 @@
 				AB4479532363095E000BF2A5 /* Drawing Recognition */,
 				AB9F337A235887A100A39A44 /* View Controllers */,
 				AB9F3375235885A700A39A44 /* Storyboards */,
-				AB36BC0A23574305006B8607 /* Logic Gate Recogniser.entitlements */,
 				AB36BBE8235735CA006B8607 /* AppDelegate.swift */,
+				AB36BC0A23574305006B8607 /* Logic Gate Recogniser.entitlements */,
 				AB36BBEA235735CA006B8607 /* SceneDelegate.swift */,
 				AB36BBF1235735CB006B8607 /* Assets.xcassets */,
 				AB36BBF6235735CB006B8607 /* Info.plist */,
@@ -155,15 +163,51 @@
 		AB4479532363095E000BF2A5 /* Drawing Recognition */ = {
 			isa = PBXGroup;
 			children = (
+				AB84F125237EC29400D4CE37 /* Data Structures */,
 				AB44795423630972000BF2A5 /* DrawingRecogniser.swift */,
-				AB41AE0E2369AEDB00273845 /* Line.swift */,
-				AB6EE322236C44F20060F475 /* LineType.swift */,
 				AB34F9092371B34F000E7B86 /* Recongiser.swift */,
-				AB34F90B2371D22D000E7B86 /* Orientation.swift */,
-				AB34F90D2372D1FD000E7B86 /* Stack.swift */,
-				AB9F1DA72372F45900E9E81C /* Triangle.swift */,
 			);
 			path = "Drawing Recognition";
+			sourceTree = "<group>";
+		};
+		AB84F125237EC29400D4CE37 /* Data Structures */ = {
+			isa = PBXGroup;
+			children = (
+				AB84F12B237EFFBF00D4CE37 /* Shapes */,
+				AB84F126237EC2A000D4CE37 /* Matrix */,
+				AB84F12C237EFFDD00D4CE37 /* Stack */,
+			);
+			path = "Data Structures";
+			sourceTree = "<group>";
+		};
+		AB84F126237EC2A000D4CE37 /* Matrix */ = {
+			isa = PBXGroup;
+			children = (
+				AB84F127237EC31200D4CE37 /* Matrix.swift */,
+				AB84F129237EC38800D4CE37 /* Number.swift */,
+			);
+			path = Matrix;
+			sourceTree = "<group>";
+		};
+		AB84F12B237EFFBF00D4CE37 /* Shapes */ = {
+			isa = PBXGroup;
+			children = (
+				AB41AE0E2369AEDB00273845 /* Line.swift */,
+				AB6EE322236C44F20060F475 /* LineType.swift */,
+				AB9F1DA72372F45900E9E81C /* Triangle.swift */,
+				AB84F12D237F010A00D4CE37 /* BoundingBox.swift */,
+				AB84F12F237F012E00D4CE37 /* ConvexHull.swift */,
+			);
+			path = Shapes;
+			sourceTree = "<group>";
+		};
+		AB84F12C237EFFDD00D4CE37 /* Stack */ = {
+			isa = PBXGroup;
+			children = (
+				AB34F90B2371D22D000E7B86 /* Orientation.swift */,
+				AB34F90D2372D1FD000E7B86 /* Stack.swift */,
+			);
+			path = Stack;
 			sourceTree = "<group>";
 		};
 		AB9F3375235885A700A39A44 /* Storyboards */ = {
@@ -306,6 +350,7 @@
 				AB9F337C235887C300A39A44 /* DetectedGateInfoView.swift in Sources */,
 				AB36BBED235735CA006B8607 /* DrawingViewController.swift in Sources */,
 				AB21A208236B678700BCE5E0 /* CGFloat+Extensions.swift in Sources */,
+				AB84F130237F012E00D4CE37 /* ConvexHull.swift in Sources */,
 				AB9F1DA82372F45900E9E81C /* Triangle.swift in Sources */,
 				AB41AE0B23688D4200273845 /* Collection+Extensions.swift in Sources */,
 				ABF06A5823588CF6006C8E2B /* UIView+Extentions.swift in Sources */,
@@ -313,11 +358,14 @@
 				AB9FC19923673BEB003D1A85 /* Array+Extensions.swift in Sources */,
 				AB41AE09236878C800273845 /* Angle+Extensions.swift in Sources */,
 				AB41AE0F2369AEDB00273845 /* Line.swift in Sources */,
+				AB84F12E237F010A00D4CE37 /* BoundingBox.swift in Sources */,
 				AB21A206236B256000BCE5E0 /* CGVector+Extensions.swift in Sources */,
 				AB41AE0D2369A1EE00273845 /* UIColor+Extensions.swift in Sources */,
 				AB34F90E2372D1FD000E7B86 /* Stack.swift in Sources */,
 				ABBDAB882362EDEE00DBFDC1 /* CanvasView.swift in Sources */,
+				AB84F128237EC31200D4CE37 /* Matrix.swift in Sources */,
 				AB44795523630972000BF2A5 /* DrawingRecogniser.swift in Sources */,
+				AB84F12A237EC38800D4CE37 /* Number.swift in Sources */,
 				AB34F90A2371B34F000E7B86 /* Recongiser.swift in Sources */,
 				AB34F90C2371D22D000E7B86 /* Orientation.swift in Sources */,
 				AB6EE323236C44F20060F475 /* LineType.swift in Sources */,
