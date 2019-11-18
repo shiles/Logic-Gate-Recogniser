@@ -20,4 +20,7 @@ extension ConvexHull {
             return CGVector(dx: (next.x - current.x), dy: (next.y - current.y))
         }
     }
+    
+    /// Perimeter lenght for the convex hull
+    var perimeter: Perimeter? { Perimeter.perimeter(of: self) }
 }

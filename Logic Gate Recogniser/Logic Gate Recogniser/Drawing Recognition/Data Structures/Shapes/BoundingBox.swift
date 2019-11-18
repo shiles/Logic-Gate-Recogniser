@@ -11,6 +11,8 @@ import UIKit
 struct BoundingBox {
     let cornerPoints: CornerPoints
     let area: CGFloat
+    
+    var perimeter: Perimeter? { Perimeter.perimeter(of: cornerPoints.points) }
 }
 
 struct CornerPoints {
@@ -18,8 +20,11 @@ struct CornerPoints {
     let p2: CGPoint
     let p3: CGPoint
     let p4: CGPoint
+    
+    var points: [CGPoint] { [p1,p2,p3,p4] }
 }
 
+///Used internally for computation
 struct MinBoudingRect {
     let rotAngle: CGFloat
     let area: CGFloat

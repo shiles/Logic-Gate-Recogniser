@@ -37,6 +37,10 @@
 		AB9FC19923673BEB003D1A85 /* Array+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9FC19823673BEB003D1A85 /* Array+Extensions.swift */; };
 		ABBDAB882362EDEE00DBFDC1 /* CanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABBDAB872362EDEE00DBFDC1 /* CanvasView.swift */; };
 		ABC76DF223798A22001A7A29 /* CGPoint+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC76DF123798A21001A7A29 /* CGPoint+Extensions.swift */; };
+		ABD5F1A72382B8B9002FFD16 /* Perimeter.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABD5F1A62382B8B9002FFD16 /* Perimeter.swift */; };
+		ABD5F1AA2382BB79002FFD16 /* Stroke.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABD5F1A92382BB79002FFD16 /* Stroke.swift */; };
+		ABD5F1AD2382BC61002FFD16 /* PerimeterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABD5F1AC2382BC61002FFD16 /* PerimeterTests.swift */; };
+		ABD5F1B02382C0EB002FFD16 /* StrokeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABD5F1AF2382C0EB002FFD16 /* StrokeTests.swift */; };
 		ABF06A5823588CF6006C8E2B /* UIView+Extentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF06A5723588CF6006C8E2B /* UIView+Extentions.swift */; };
 /* End PBXBuildFile section */
 
@@ -86,6 +90,10 @@
 		AB9FC19823673BEB003D1A85 /* Array+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extensions.swift"; sourceTree = "<group>"; };
 		ABBDAB872362EDEE00DBFDC1 /* CanvasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasView.swift; sourceTree = "<group>"; };
 		ABC76DF123798A21001A7A29 /* CGPoint+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGPoint+Extensions.swift"; sourceTree = "<group>"; };
+		ABD5F1A62382B8B9002FFD16 /* Perimeter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Perimeter.swift; sourceTree = "<group>"; };
+		ABD5F1A92382BB79002FFD16 /* Stroke.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stroke.swift; sourceTree = "<group>"; };
+		ABD5F1AC2382BC61002FFD16 /* PerimeterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerimeterTests.swift; sourceTree = "<group>"; };
+		ABD5F1AF2382C0EB002FFD16 /* StrokeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StrokeTests.swift; sourceTree = "<group>"; };
 		ABF06A5723588CF6006C8E2B /* UIView+Extentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extentions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -107,11 +115,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		AB34F9112372D367000E7B86 /* Drawing Recognition */ = {
+		AB0D122F237F0813000776A5 /* Stack */ = {
 			isa = PBXGroup;
 			children = (
 				AB34F90F2372D362000E7B86 /* StackTests.swift */,
+			);
+			path = Stack;
+			sourceTree = "<group>";
+		};
+		AB0D1230237F081C000776A5 /* Shapes */ = {
+			isa = PBXGroup;
+			children = (
 				AB9F1DA92372F8F600E9E81C /* TriangleTests.swift */,
+				ABD5F1AC2382BC61002FFD16 /* PerimeterTests.swift */,
+			);
+			path = Shapes;
+			sourceTree = "<group>";
+		};
+		AB34F9112372D367000E7B86 /* Drawing Recognition */ = {
+			isa = PBXGroup;
+			children = (
+				ABD5F1AB2382BC39002FFD16 /* Data Structures */,
 				AB8F6905237444C30024BC6D /* RecogniserTests.swift */,
 			);
 			path = "Drawing Recognition";
@@ -173,6 +197,7 @@
 		AB84F125237EC29400D4CE37 /* Data Structures */ = {
 			isa = PBXGroup;
 			children = (
+				ABD5F1A82382BB6A002FFD16 /* Drawing */,
 				AB84F12B237EFFBF00D4CE37 /* Shapes */,
 				AB84F126237EC2A000D4CE37 /* Matrix */,
 				AB84F12C237EFFDD00D4CE37 /* Stack */,
@@ -197,6 +222,7 @@
 				AB9F1DA72372F45900E9E81C /* Triangle.swift */,
 				AB84F12D237F010A00D4CE37 /* BoundingBox.swift */,
 				AB84F12F237F012E00D4CE37 /* ConvexHull.swift */,
+				ABD5F1A62382B8B9002FFD16 /* Perimeter.swift */,
 			);
 			path = Shapes;
 			sourceTree = "<group>";
@@ -228,6 +254,32 @@
 				ABBDAB872362EDEE00DBFDC1 /* CanvasView.swift */,
 			);
 			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		ABD5F1A82382BB6A002FFD16 /* Drawing */ = {
+			isa = PBXGroup;
+			children = (
+				ABD5F1A92382BB79002FFD16 /* Stroke.swift */,
+			);
+			path = Drawing;
+			sourceTree = "<group>";
+		};
+		ABD5F1AB2382BC39002FFD16 /* Data Structures */ = {
+			isa = PBXGroup;
+			children = (
+				ABD5F1AE2382C0DA002FFD16 /* Drawing */,
+				AB0D122F237F0813000776A5 /* Stack */,
+				AB0D1230237F081C000776A5 /* Shapes */,
+			);
+			path = "Data Structures";
+			sourceTree = "<group>";
+		};
+		ABD5F1AE2382C0DA002FFD16 /* Drawing */ = {
+			isa = PBXGroup;
+			children = (
+				ABD5F1AF2382C0EB002FFD16 /* StrokeTests.swift */,
+			);
+			path = Drawing;
 			sourceTree = "<group>";
 		};
 		ABF06A5623588CA3006C8E2B /* Extentions */ = {
@@ -360,9 +412,11 @@
 				AB41AE0F2369AEDB00273845 /* Line.swift in Sources */,
 				AB84F12E237F010A00D4CE37 /* BoundingBox.swift in Sources */,
 				AB21A206236B256000BCE5E0 /* CGVector+Extensions.swift in Sources */,
+				ABD5F1AA2382BB79002FFD16 /* Stroke.swift in Sources */,
 				AB41AE0D2369A1EE00273845 /* UIColor+Extensions.swift in Sources */,
 				AB34F90E2372D1FD000E7B86 /* Stack.swift in Sources */,
 				ABBDAB882362EDEE00DBFDC1 /* CanvasView.swift in Sources */,
+				ABD5F1A72382B8B9002FFD16 /* Perimeter.swift in Sources */,
 				AB84F128237EC31200D4CE37 /* Matrix.swift in Sources */,
 				AB44795523630972000BF2A5 /* DrawingRecogniser.swift in Sources */,
 				AB84F12A237EC38800D4CE37 /* Number.swift in Sources */,
@@ -379,8 +433,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				AB34F9102372D362000E7B86 /* StackTests.swift in Sources */,
+				ABD5F1B02382C0EB002FFD16 /* StrokeTests.swift in Sources */,
 				AB8F6906237444C30024BC6D /* RecogniserTests.swift in Sources */,
 				AB9F1DAA2372F8F600E9E81C /* TriangleTests.swift in Sources */,
+				ABD5F1AD2382BC61002FFD16 /* PerimeterTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
