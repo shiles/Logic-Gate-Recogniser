@@ -16,7 +16,7 @@ enum DrawingTools {
 
 class CanvasView: UIImageView {
     
-    private let recogniser = Recogniser()
+    private let recogniser = ShapeAnalyser()
     private var recognisedLines: [Line] = []
     
     // Tool Settings

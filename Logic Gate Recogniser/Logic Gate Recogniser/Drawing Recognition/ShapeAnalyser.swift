@@ -9,8 +9,8 @@
 import Foundation
 import UIKit
 
-class Recogniser {
-    
+class ShapeAnalyser {
+        
     // MARK: - Minimum Area Bounding Box
         
     ///Find the bouding box within a convex hull with the smallest ara
@@ -99,9 +99,9 @@ class Recogniser {
     ///Find the convex hull of a set of points using Graham Scan Algorithm
     ///- Parameter cgPoints: Points to find convex hull of
     ///- Returns: Convex hull of the points
-    func convexHull(of cgPoints: [CGPoint]) -> ConvexHull? {
-        if cgPoints.count < 3 { return nil }
-        var points = cgPoints
+    func convexHull(of stroke: Stroke) -> ConvexHull? {
+        if stroke.count < 3 { return nil }
+        var points = stroke
         let minPoint = points.min { $0.y < $1.y }!
         
         //Remove smallest point before sorting

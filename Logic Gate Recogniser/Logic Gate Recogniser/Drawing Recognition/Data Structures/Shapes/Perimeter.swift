@@ -20,7 +20,7 @@ extension Perimeter {
         if points.count < 3 { return nil }
         
         return (0...points.lastIndex).map {
-            let current = points[$0], next = points[($0+1) % points.count]
+            let current = points[$0], next = points[circular: $0+1]!
             return ((current.x - next.x).squared() + (current.y - next.y).squared()).squareRoot()
         }.reduce(0, +)
     }

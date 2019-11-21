@@ -31,6 +31,15 @@ extension Array {
         return Array(array)
     }
     
+    /// Returns the element at the speficic index, if it passes the length of the array use a circular
+    /// method to retrieve the value.
+    ///- Parameter index: Index to access
+    ///- Returns: Optional value
+    subscript (circular index: Int) -> Element? {
+        if isEmpty || index < 0 { return nil }
+        return self[(index+1) % self.count]
+    }
+    
 }
 
 extension Array where Element: FloatingPoint {

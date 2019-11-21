@@ -3,6 +3,7 @@
 //  Logic Gate Recogniser
 //
 //  Created by Richard Ash on 10/28/16 for Swift Alorithm Club, under MIT open source license.
+//  With updates for Swift 5, and updates and extensions for project made by Sonnie Hiles.
 //  https://github.com/raywenderlich/swift-algorithm-club/tree/master/Strassen%20Matrix%20Multiplication
 //
 
