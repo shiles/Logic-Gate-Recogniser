@@ -11,13 +11,13 @@ import GameKit
 
 struct ShapeAttributes {
     ///Convex Hull Perimeter Squared / Area Convex Hull
-    let PchSrdVsAch: CGFloat
+    let thinnessRatio: CGFloat
     
     ///Area Largest Triangle / Area Convex Hull
-    let AltVsAch: CGFloat
+    let triangleAreaRatio: CGFloat
     
     ///Perimeter Convex Hull / Perimeter Bounding Box
-    let PchVsPbb: CGFloat
+    let rectanglePerimeterRatio: CGFloat
 }
 
 class ShapeRecogniser {
@@ -52,7 +52,7 @@ class ShapeRecogniser {
         let PchSrdVsAch = hull.perimeter!.squared() / hull.area
         let AltVsAch = triangle.area / hull.area
         let PchVsPbb = hull.perimeter! / boundingBox.perimeter!
-        return ShapeAttributes(PchSrdVsAch: PchSrdVsAch, AltVsAch: AltVsAch, PchVsPbb: PchVsPbb)
+        return ShapeAttributes(thinnessRatio: PchSrdVsAch, triangleAreaRatio: AltVsAch, rectanglePerimeterRatio: PchVsPbb)
     }
     
 }
