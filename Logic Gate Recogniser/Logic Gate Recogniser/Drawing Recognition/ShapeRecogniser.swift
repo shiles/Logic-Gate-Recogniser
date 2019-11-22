@@ -49,10 +49,10 @@ class ShapeRecogniser {
     ///- parameter boundingbox: Minimum area bounding box for shape
     ///- Returns: ShapeAttribues to allow for a decision on the shape that was drawn
     private func findShapeAttributes(stroke: Stroke, hull: ConvexHull, triangle: Triangle, boundingBox: BoundingBox) -> ShapeAttributes {
-        let PchSrdVsAch = hull.perimeter!.squared() / hull.area
-        let AltVsAch = triangle.area / hull.area
-        let PchVsPbb = hull.perimeter! / boundingBox.perimeter!
-        return ShapeAttributes(thinnessRatio: PchSrdVsAch, triangleAreaRatio: AltVsAch, rectanglePerimeterRatio: PchVsPbb)
+        let thinnessRatio = hull.perimeter!.squared() / hull.area
+        let triangleAreaRatio = triangle.area / hull.area
+        let rectanglePerimeterRatio = hull.perimeter! / boundingBox.perimeter!
+        return ShapeAttributes(thinnessRatio: thinnessRatio, triangleAreaRatio: triangleAreaRatio, rectanglePerimeterRatio: rectanglePerimeterRatio)
     }
     
 }

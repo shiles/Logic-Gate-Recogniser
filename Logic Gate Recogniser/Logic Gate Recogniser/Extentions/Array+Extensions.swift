@@ -37,7 +37,7 @@ extension Array {
     ///- Returns: Optional value
     subscript (circular index: Int) -> Element? {
         if isEmpty || index < 0 { return nil }
-        return self[(index+1) % self.count]
+        return self[index % self.count]
     }
     
 }
@@ -66,5 +66,16 @@ extension Array where Element == CGPoint {
     ///Transposed matrix of all the points, with the first row being all X values and second row being Y values
     var transposedMatrix: Matrix<CGFloat> {
         return Matrix<CGFloat>(from: [self.map { $0.x }, self.map { $0.y }])
+    }
+    
+    ///Finds the value with the smallest Y co-ordinate, if there are multiple returns the leftmost. Removing it from the array
+    ///- Returns: Minimum x, y point
+    mutating func removeMinPoint() -> CGPoint {
+        let minPoint = self.min {
+            if $0.y == $1.y { return $0.x < $1.x }
+            return $0.y < $1.y
+        }!
+        self.remove(at: self.firstIndex(of: minPoint)!)
+        return minPoint
     }
 }

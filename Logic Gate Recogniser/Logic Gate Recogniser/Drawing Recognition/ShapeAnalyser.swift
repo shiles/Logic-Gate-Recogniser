@@ -102,10 +102,9 @@ class ShapeAnalyser {
     func convexHull(of stroke: Stroke) -> ConvexHull? {
         if stroke.count < 3 { return nil }
         var points = stroke
-        let minPoint = points.min { $0.y < $1.y }!
         
         //Remove smallest point before sorting
-        points.remove(at: points.firstIndex(of: minPoint)!)
+        let minPoint = points.removeMinPoint()
         
         //Sort by polar clockwise from minPoint
         points.sort {

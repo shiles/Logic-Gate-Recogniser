@@ -11,7 +11,7 @@ import XCTest
 
 class RecogniserTests: XCTestCase {
 
-    let recogniser = Recogniser()
+    let recogniser = ShapeAnalyser()
     
     func testExample() {
         // Given
@@ -22,6 +22,19 @@ class RecogniserTests: XCTestCase {
         let convexHull = recogniser.convexHull(of: points)
         
         // Then
+    }
+    
+    func testExample2() {
+        // Given
+        let points = [CGPoint(x: 4, y: 10), CGPoint(x: 9, y: 7), CGPoint(x: 11, y: 2), CGPoint(x: 2, y: 2)]
+        
+        // When
+        let convexHull = recogniser.convexHull(of: points)
+        let area = convexHull!.area
+        
+        
+        // Then
+        XCTAssertEqual(area, 45.5)
     }
     
     func test2() {
