@@ -17,6 +17,7 @@ enum DrawingTools {
 class CanvasView: UIImageView {
     
     private let recogniser = ShapeAnalyser()
+    private let drawingRecogniser = ShapeRecogniser()
     private var recognisedLines: [Line] = []
     
     // Tool Settings
@@ -90,6 +91,8 @@ class CanvasView: UIImageView {
         
         let minRect = recogniser.boundingBox(using: hull)
         drawCorners(boundingBox: minRect)
+        
+        drawingRecogniser.recogniseShape(from: points)
         
         points = []
     }

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AB0866FF2386C97000E30B50 /* ShapeDecider.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0866FE2386C97000E30B50 /* ShapeDecider.swift */; };
 		AB21A206236B256000BCE5E0 /* CGVector+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB21A205236B256000BCE5E0 /* CGVector+Extensions.swift */; };
 		AB21A208236B678700BCE5E0 /* CGFloat+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB21A207236B678700BCE5E0 /* CGFloat+Extensions.swift */; };
 		AB34F90A2371B34F000E7B86 /* ShapeAnalyser.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB34F9092371B34F000E7B86 /* ShapeAnalyser.swift */; };
@@ -56,6 +57,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		AB0866FE2386C97000E30B50 /* ShapeDecider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShapeDecider.swift; sourceTree = "<group>"; };
 		AB21A205236B256000BCE5E0 /* CGVector+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGVector+Extensions.swift"; sourceTree = "<group>"; };
 		AB21A207236B678700BCE5E0 /* CGFloat+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGFloat+Extensions.swift"; sourceTree = "<group>"; };
 		AB34F9092371B34F000E7B86 /* ShapeAnalyser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShapeAnalyser.swift; sourceTree = "<group>"; };
@@ -193,6 +195,7 @@
 				AB44795423630972000BF2A5 /* DrawingRecogniser.swift */,
 				AB34F9092371B34F000E7B86 /* ShapeAnalyser.swift */,
 				ABD5F1B12382CBCC002FFD16 /* ShapeRecogniser.swift */,
+				AB0866FE2386C97000E30B50 /* ShapeDecider.swift */,
 			);
 			path = "Drawing Recognition";
 			sourceTree = "<group>";
@@ -412,6 +415,7 @@
 				ABF06A5823588CF6006C8E2B /* UIView+Extentions.swift in Sources */,
 				ABC76DF223798A22001A7A29 /* CGPoint+Extensions.swift in Sources */,
 				AB9FC19923673BEB003D1A85 /* Array+Extensions.swift in Sources */,
+				AB0866FF2386C97000E30B50 /* ShapeDecider.swift in Sources */,
 				AB41AE09236878C800273845 /* Angle+Extensions.swift in Sources */,
 				AB41AE0F2369AEDB00273845 /* Line.swift in Sources */,
 				AB84F12E237F010A00D4CE37 /* BoundingBox.swift in Sources */,
