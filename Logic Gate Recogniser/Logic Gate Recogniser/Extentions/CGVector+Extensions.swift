@@ -14,14 +14,8 @@ extension CGVector {
     ///Normalizes the vector described by the CGVector to length 1.0
     ///- Returns: Vector normalised to lenght of 1.0
     func normalized() -> CGVector {
-      let len = length()
+      let len = sqrt(dx*dx + dy*dy)
       return len>0 ? self / len : CGVector.zero
-    }
-
-    /// Returns the length (magnitude) of the vector described by the CGVector.
-    ///- Returns: Lenght of the current vector
-    func length() -> CGFloat {
-        return sqrt(dx*dx + dy*dy)
     }
     
     /// Converts the vector to a point

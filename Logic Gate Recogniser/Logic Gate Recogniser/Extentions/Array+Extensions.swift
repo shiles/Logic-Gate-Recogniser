@@ -42,12 +42,12 @@ extension Array {
     
 }
 
-extension Array where Element: FloatingPoint {
+extension Array where Element == CGFloat{
     
     ///Root mean squares the value within the array to find average devience
     ///- Returns: Root mean square value for the values within the array 
     func rootMeanSquared() -> CGFloat {
-        return (self.map { ($0 as! CGFloat).squared() }.reduce(0, +) / CGFloat(self.count)).squareRoot()
+        return (self.map { $0.squared() }.reduce(0, +) / CGFloat(self.count)).squareRoot()
     }
     
 }

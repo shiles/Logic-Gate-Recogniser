@@ -165,7 +165,7 @@ class DrawingRecogniser {
     ///- Parameter first: First point, the vector to use as a base for the bounding box
     ///- Parameter second: Second point, the vector to check if is within the bounding box
     ///- Parameter allowedDevience: Allowed devience to determine if the lines should be connecting or not
-    ///- Returns: A boolean indicating if the vector is similar in magnitude and direction
+    ///- Returns: A boolean indicating if the vector is similar in direction
     private func isVectorSimilar(between first: CGVector, _ second: CGVector, allowedDevience: CGFloat = 0.5) -> Bool {
         let v1 = first.normalized()
         let v2 = second.normalized()
