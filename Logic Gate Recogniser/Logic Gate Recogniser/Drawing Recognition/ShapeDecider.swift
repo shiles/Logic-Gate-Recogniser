@@ -32,7 +32,7 @@ class ShapeDecider {
                 _ = isRec.createBranch(predicate: NSPredicate(format: "SELF <= %@", NSNumber(0.85)), attribute: NSString(string: Shape.Unknown.rawValue))
     }
     
-    func findShape(for attributes: ShapeAttributes ) -> Shape {
+    func findShape(for attributes: ShapeAttributes) -> Shape {
         let answers = [
             NSString(string: "ThinnessRatio?") : NSNumber(value: Float(attributes.thinnessRatio)),
             NSString(string: "TriangleAreaRatio?") : NSNumber(value: Float(attributes.triangleAreaRatio)),
