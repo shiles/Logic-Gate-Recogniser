@@ -9,10 +9,6 @@
 import Foundation
 import GameKit
 
-enum Shape: String {
-    case Line, Circle, Triangle, Rectangle, Unknown
-}
-
 class ShapeDecider {
     
     let decisionTree: GKDecisionTree

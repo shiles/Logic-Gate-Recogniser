@@ -94,6 +94,9 @@ class CanvasView: UIImageView {
         
         let shape = drawingRecogniser.recogniseShape(from: points)
         
+        if let shape = shape {
+            NotificationCenter.default.post(name: .gateRecognised, object: shape)
+        }
         
         points = []
     }

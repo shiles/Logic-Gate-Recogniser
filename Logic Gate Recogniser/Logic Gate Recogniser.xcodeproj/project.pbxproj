@@ -45,6 +45,8 @@
 		AB9FC19923673BEB003D1A85 /* Array+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9FC19823673BEB003D1A85 /* Array+Extensions.swift */; };
 		ABBDAB882362EDEE00DBFDC1 /* CanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABBDAB872362EDEE00DBFDC1 /* CanvasView.swift */; };
 		ABC76DF223798A22001A7A29 /* CGPoint+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC76DF123798A21001A7A29 /* CGPoint+Extensions.swift */; };
+		ABCA2C6823E171D400746742 /* Notifications+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCA2C6723E171D400746742 /* Notifications+Extensions.swift */; };
+		ABCA2C6A23E173D200746742 /* Shape.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCA2C6923E173D200746742 /* Shape.swift */; };
 		ABD5F1A72382B8B9002FFD16 /* Perimeter.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABD5F1A62382B8B9002FFD16 /* Perimeter.swift */; };
 		ABD5F1AA2382BB79002FFD16 /* Stroke.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABD5F1A92382BB79002FFD16 /* Stroke.swift */; };
 		ABD5F1AD2382BC61002FFD16 /* PerimeterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABD5F1AC2382BC61002FFD16 /* PerimeterTests.swift */; };
@@ -107,6 +109,8 @@
 		AB9FC19823673BEB003D1A85 /* Array+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extensions.swift"; sourceTree = "<group>"; };
 		ABBDAB872362EDEE00DBFDC1 /* CanvasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasView.swift; sourceTree = "<group>"; };
 		ABC76DF123798A21001A7A29 /* CGPoint+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGPoint+Extensions.swift"; sourceTree = "<group>"; };
+		ABCA2C6723E171D400746742 /* Notifications+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notifications+Extensions.swift"; sourceTree = "<group>"; };
+		ABCA2C6923E173D200746742 /* Shape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shape.swift; sourceTree = "<group>"; };
 		ABD5F1A62382B8B9002FFD16 /* Perimeter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Perimeter.swift; sourceTree = "<group>"; };
 		ABD5F1A92382BB79002FFD16 /* Stroke.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stroke.swift; sourceTree = "<group>"; };
 		ABD5F1AC2382BC61002FFD16 /* PerimeterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerimeterTests.swift; sourceTree = "<group>"; };
@@ -257,6 +261,7 @@
 				AB84F12D237F010A00D4CE37 /* BoundingBox.swift */,
 				AB84F12F237F012E00D4CE37 /* ConvexHull.swift */,
 				ABD5F1A62382B8B9002FFD16 /* Perimeter.swift */,
+				ABCA2C6923E173D200746742 /* Shape.swift */,
 			);
 			path = Shapes;
 			sourceTree = "<group>";
@@ -328,6 +333,7 @@
 				AB21A205236B256000BCE5E0 /* CGVector+Extensions.swift */,
 				AB21A207236B678700BCE5E0 /* CGFloat+Extensions.swift */,
 				ABC76DF123798A21001A7A29 /* CGPoint+Extensions.swift */,
+				ABCA2C6723E171D400746742 /* Notifications+Extensions.swift */,
 			);
 			path = Extentions;
 			sourceTree = "<group>";
@@ -448,6 +454,7 @@
 				AB41AE09236878C800273845 /* Angle+Extensions.swift in Sources */,
 				AB41AE0F2369AEDB00273845 /* Line.swift in Sources */,
 				AB84F12E237F010A00D4CE37 /* BoundingBox.swift in Sources */,
+				ABCA2C6823E171D400746742 /* Notifications+Extensions.swift in Sources */,
 				AB21A206236B256000BCE5E0 /* CGVector+Extensions.swift in Sources */,
 				ABD5F1AA2382BB79002FFD16 /* Stroke.swift in Sources */,
 				AB41AE0D2369A1EE00273845 /* UIColor+Extensions.swift in Sources */,
@@ -458,6 +465,7 @@
 				AB44795523630972000BF2A5 /* DrawingRecogniser.swift in Sources */,
 				AB84F12A237EC38800D4CE37 /* Number.swift in Sources */,
 				AB34F90A2371B34F000E7B86 /* ShapeAnalyser.swift in Sources */,
+				ABCA2C6A23E173D200746742 /* Shape.swift in Sources */,
 				AB34F90C2371D22D000E7B86 /* Orientation.swift in Sources */,
 				AB6EE323236C44F20060F475 /* LineType.swift in Sources */,
 				AB36BBE9235735CA006B8607 /* AppDelegate.swift in Sources */,
