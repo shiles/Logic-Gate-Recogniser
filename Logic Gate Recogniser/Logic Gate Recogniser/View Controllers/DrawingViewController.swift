@@ -34,6 +34,8 @@ class DrawingViewController: UIViewController  {
     }
 }
 
+// MARK: - Drawing Extensions
+
 extension DrawingViewController: UIPencilInteractionDelegate {
     
     func setupPencilInteractions() {

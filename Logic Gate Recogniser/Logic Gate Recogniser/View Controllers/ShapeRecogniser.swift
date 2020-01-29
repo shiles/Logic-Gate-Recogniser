@@ -30,14 +30,14 @@ class ShapeRecogniser {
         self.decider = decider
     }
     
-    func recogniseShape(from stroke: Stroke) {
+    func recogniseShape(from stroke: Stroke) -> Shape? {
         // TODO: - MultiThread this for performance
-        guard let hull = analyser.convexHull(of: stroke) else { return }
-        guard let triangle = analyser.largestAreaTriangle(using: hull) else { return }
+        guard let hull = analyser.convexHull(of: stroke) else { return nil }
+        guard let triangle = analyser.largestAreaTriangle(using: hull) else { return nil }
         let container = analyser.boundingBox(using: hull)
 
         let attributes = findShapeAttributes(stroke: stroke, hull: hull, triangle: triangle, boundingBox: container)
-        print(decider.findShape(for: attributes))
+        return decider.findShape(for: attributes)
     }
     
     // MARK: -  Helper Functions

@@ -12,7 +12,6 @@ class DetectedGateInfoView: UIView {
 
     @IBOutlet var contentView: UIView!
     @IBOutlet weak var recognisedGate: UILabel!
-    @IBOutlet weak var confidence: UILabel!
     
     override init(frame: CGRect) {
         super.init(frame: frame)

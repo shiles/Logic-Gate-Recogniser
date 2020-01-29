@@ -210,7 +210,6 @@
 				AB84F125237EC29400D4CE37 /* Data Structures */,
 				AB44795423630972000BF2A5 /* DrawingRecogniser.swift */,
 				AB34F9092371B34F000E7B86 /* ShapeAnalyser.swift */,
-				ABD5F1B12382CBCC002FFD16 /* ShapeRecogniser.swift */,
 				AB0866FE2386C97000E30B50 /* ShapeDecider.swift */,
 			);
 			path = "Drawing Recognition";
@@ -286,6 +285,7 @@
 			children = (
 				AB36BBEC235735CA006B8607 /* DrawingViewController.swift */,
 				AB9F337B235887C300A39A44 /* DetectedGateInfoView.swift */,
+				ABD5F1B12382CBCC002FFD16 /* ShapeRecogniser.swift */,
 				ABBDAB872362EDEE00DBFDC1 /* CanvasView.swift */,
 			);
 			path = "View Controllers";
