@@ -17,6 +17,7 @@ class ShapeAnalyser {
     ///- Parameter convexHull: Convex hull to find the bounding box for
     ///- Returns: Boudning box with the smallest area
     func boundingBox(using convexHull: ConvexHull) -> BoundingBox {
+        let transposedMatrix = convexHull.transposedMatrix               // Calculated once to save doing it for each edge
         let edgeAngles = convexHull
             .edges                                                       // Calculate all the edges on the convex hull
             .map { atan2($0.dy, $0.dx) }                                 // Calculate the edge angles
@@ -28,7 +29,7 @@ class ShapeAnalyser {
         edgeAngles.forEach { angle in
             // Rotate the points
             let rotation = Matrix<CGFloat>.forRotation(angle: angle)
-            let rotatedPoints = rotation.strassenMatrixMultiply(by: convexHull.transposedMatrix)
+            let rotatedPoints = rotation.matrixMultiply(by: transposedMatrix)
     
             // Find min/max x & y points
             let minX = rotatedPoints[.row, 0].min()!
@@ -48,10 +49,10 @@ class ShapeAnalyser {
         
         // Re-create smallest rotation angle and rotate back to reference frame
         let rotation = Matrix<CGFloat>.forRotation(angle: minBox.rotAngle)
-        let point1 = Matrix<CGFloat>(from: [minBox.maxX, minBox.minY]).strassenMatrixMultiply(by: rotation).toPoint()
-        let point2 = Matrix<CGFloat>(from: [minBox.minX, minBox.minY]).strassenMatrixMultiply(by: rotation).toPoint()
-        let point3 = Matrix<CGFloat>(from: [minBox.minX, minBox.maxY]).strassenMatrixMultiply(by: rotation).toPoint()
-        let point4 = Matrix<CGFloat>(from: [minBox.maxX, minBox.maxY]).strassenMatrixMultiply(by: rotation).toPoint()
+        let point1 = Matrix<CGFloat>(from: [minBox.maxX, minBox.minY]).matrixMultiply(by: rotation).toPoint()
+        let point2 = Matrix<CGFloat>(from: [minBox.minX, minBox.minY]).matrixMultiply(by: rotation).toPoint()
+        let point3 = Matrix<CGFloat>(from: [minBox.minX, minBox.maxY]).matrixMultiply(by: rotation).toPoint()
+        let point4 = Matrix<CGFloat>(from: [minBox.maxX, minBox.maxY]).matrixMultiply(by: rotation).toPoint()
 
         return BoundingBox(cornerPoints: CornerPoints(p1: point1, p2: point2, p3: point3, p4: point4), area: minBox.area)
     }
@@ -109,8 +110,8 @@ class ShapeAnalyser {
         //Sort by polar clockwise from minPoint
         points.sort {
             switch(orientation(from: minPoint, p1: $0, p2: $1)) {
-            case .clockwise: return true
-            case .anticlockwise: return false
+            case .clockwise: return false
+            case .anticlockwise: return true
             case .colinear: return squaredDistance(from: minPoint, to: $0) < squaredDistance(from: minPoint, to: $1)
             }
         }
@@ -127,8 +128,8 @@ class ShapeAnalyser {
         
         //Build the convextHull
         for i in 2...points.lastIndex {
-            guard let point = points[safe: i] else { break }
-            while(orientation(from: stack.sndItem!, p1: stack.topItem!, p2:point) != .clockwise) { _ = stack.pop() }
+            let point = points[i]
+            while(orientation(from: stack.sndItem!, p1: stack.topItem!, p2:point) != .anticlockwise) { _ = stack.pop() }
             stack.push(point)
         }
             

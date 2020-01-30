@@ -124,93 +124,23 @@ public struct Matrix<T: Number> {
     }
 }
 
-// MARK: - Strassen Multiplication
+// MARK: - Multiplication
 
 extension Matrix {
-    
-    func strassenMatrixMultiply(by B: Matrix<T>) -> Matrix<T> {
-        let A = self
-        assert(A.columns == B.rows, "Two matricies can only be matrix mulitiplied if one has dimensions mxn & the other has dimensions nxp where m, n, p are in R")
+  public func matrixMultiply(by B: Matrix<T>) -> Matrix<T> {
+    let A = self
+    assert(A.columns == B.rows, "Two matricies can only be matrix mulitiplied if one has dimensions mxn & the other has dimensions nxp where m, n, p are in R")
 
-        let n = max(A.rows, A.columns, B.rows, B.columns)
-        let m = nextPowerOfTwo(after: n)
+    var C = Matrix<T>(rows: A.rows, columns: B.columns)
 
-        var APrep = Matrix(size: m)
-        var BPrep = Matrix(size: m)
-
-        A.forEach { APrep[$0, $1] = A[$0, $1] }
-        B.forEach { BPrep[$0, $1] = B[$0, $1] }
-
-        let CPrep = APrep.strassenR(by: BPrep)
-        var C = Matrix(rows: A.rows, columns: B.columns)
-        for i in 0..<A.rows {
-            for j in 0..<B.columns {
-                C[i, j] = CPrep[i, j]
-            }
-        }
-
-        return C
+    for i in 0..<A.rows {
+      for j in 0..<B.columns {
+        C[i, j] = A[.row, i].dot(B[.column, j])
+      }
     }
 
-    private func strassenR(by B: Matrix<T>) -> Matrix<T> {
-        let A = self
-        assert(A.isSquare && B.isSquare, "This function requires square matricies!")
-        guard A.rows > 1 && B.rows > 1 else { return A * B }
-
-        let n    = A.rows
-        let nBy2 = n / 2
-
-        var a = Matrix(size: nBy2)
-        var b = Matrix(size: nBy2)
-        var c = Matrix(size: nBy2)
-        var d = Matrix(size: nBy2)
-        var e = Matrix(size: nBy2)
-        var f = Matrix(size: nBy2)
-        var g = Matrix(size: nBy2)
-        var h = Matrix(size: nBy2)
-
-        for i in 0..<nBy2 {
-            for j in 0..<nBy2 {
-                a[i, j] = A[i, j]
-                b[i, j] = A[i, j+nBy2]
-                c[i, j] = A[i+nBy2, j]
-                d[i, j] = A[i+nBy2, j+nBy2]
-                e[i, j] = B[i, j]
-                f[i, j] = B[i, j+nBy2]
-                g[i, j] = B[i+nBy2, j]
-                h[i, j] = B[i+nBy2, j+nBy2]
-            }
-        }
-
-        let p1 = a.strassenR(by: f-h)       // a * (f - h)
-        let p2 = (a+b).strassenR(by: h)     // (a + b) * h
-        let p3 = (c+d).strassenR(by: e)     // (c + d) * e
-        let p4 = d.strassenR(by: g-e)       // d * (g - e)
-        let p5 = (a+d).strassenR(by: e+h)   // (a + d) * (e + h)
-        let p6 = (b-d).strassenR(by: g+h)   // (b - d) * (g + h)
-        let p7 = (a-c).strassenR(by: e+f)   // (a - c) * (e + f)
-
-        let c11 = p5 + p4 - p2 + p6         // p5 + p4 - p2 + p6
-        let c12 = p1 + p2                   // p1 + p2
-        let c21 = p3 + p4                   // p3 + p4
-        let c22 = p1 + p5 - p3 - p7         // p1 + p5 - p3 - p7
-
-        var C = Matrix(size: n)
-        for i in 0..<nBy2 {
-            for j in 0..<nBy2 {
-                C[i, j]           = c11[i, j]
-                C[i, j+nBy2]      = c12[i, j]
-                C[i+nBy2, j]      = c21[i, j]
-                C[i+nBy2, j+nBy2] = c22[i, j]
-            }
-        }
-
-        return C
-    }
-
-    private func nextPowerOfTwo(after n: Int) -> Int {
-        return Int(pow(2, ceil(log2(Double(n)))))
-    }
+    return C
+  }
 }
 
 // Term-by-term Matrix Math
