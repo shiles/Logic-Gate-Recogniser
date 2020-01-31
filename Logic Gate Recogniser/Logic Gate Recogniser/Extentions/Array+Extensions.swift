@@ -68,13 +68,17 @@ extension Array where Element == CGPoint {
         return Matrix<CGFloat>(from: [self.map { $0.x }, self.map { $0.y }])
     }
     
+    ///The minimum point of the convex hull
+    var minPoint: CGPoint {
+        return self.min {
+          if $0.y == $1.y { return $0.x < $1.x }
+          return $0.y < $1.y
+      }!
+    }
+    
     ///Finds the value with the smallest Y co-ordinate, if there are multiple returns the leftmost. Removing it from the array
     ///- Returns: Minimum x, y point
     mutating func removeMinPoint() -> CGPoint {
-        let minPoint = self.min {
-            if $0.y == $1.y { return $0.x < $1.x }
-            return $0.y < $1.y
-        }!
         self.remove(at: self.firstIndex(of: minPoint)!)
         return minPoint
     }

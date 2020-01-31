@@ -7,9 +7,11 @@
 //
 
 import Foundation
+import UIKit
 
 struct Shape {
     let type: ShapeType
+    let location: CGPoint
 }
 
 enum ShapeType: String {

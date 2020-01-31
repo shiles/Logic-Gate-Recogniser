@@ -40,7 +40,7 @@ class ShapeDecider {
         
         let type = ShapeType.init(rawValue: String(decisionTree.findAction(forAnswers: answers) as! NSString))!
         
-        return Shape(type: type)
+        return Shape(type: type, location: attributes.minPoint)
     }
     
 }

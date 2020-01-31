@@ -10,6 +10,9 @@ import Foundation
 import GameKit
 
 struct ShapeAttributes {
+    ///Minimum point of the convex hull
+    let minPoint: CGPoint
+    
     ///Convex Hull Perimeter Squared / Area Convex Hull
     let thinnessRatio: CGFloat
     
@@ -60,7 +63,7 @@ class ShapeRecogniser {
         let thinnessRatio = hull.perimeter!.squared() / hull.area
         let triangleAreaRatio = triangle.area / hull.area
         let rectanglePerimeterRatio = hull.perimeter! / boundingBox.perimeter!
-        return ShapeAttributes(thinnessRatio: thinnessRatio, triangleAreaRatio: triangleAreaRatio, rectanglePerimeterRatio: rectanglePerimeterRatio)
+        return ShapeAttributes(minPoint: hull.minPoint, thinnessRatio: thinnessRatio, triangleAreaRatio: triangleAreaRatio, rectanglePerimeterRatio: rectanglePerimeterRatio)
     }
     
 }
