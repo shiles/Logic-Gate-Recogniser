@@ -92,12 +92,7 @@ class CanvasView: UIImageView {
 //        let minRect = recogniser.boundingBox(using: hull)
 //        drawCorners(boundingBox: minRect)
         
-        let shape = drawingRecogniser.recogniseShape(from: points)
-        
-        if let shape = shape {
-            NotificationCenter.default.post(name: .gateRecognised, object: shape)
-        }
-        
+        drawingRecogniser.recogniseShape(from: points)
         points = []
     }
     

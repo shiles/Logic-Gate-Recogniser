@@ -8,6 +8,10 @@
 
 import Foundation
 
-enum Shape: String {
+struct Shape {
+    let type: ShapeType
+}
+
+enum ShapeType: String {
     case Line, Circle, Triangle, Rectangle, Unknown
 }

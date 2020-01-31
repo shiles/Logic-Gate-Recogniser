@@ -38,6 +38,6 @@ class DetectedGateInfoView: UIView {
         // Listener
         subscriber = NotificationCenter.Publisher(center: .default, name: .gateRecognised, object: nil)
             .map { notification in return notification.object as! Shape}
-            .sink(receiveValue: { shape in self.recognisedGate.text = shape.rawValue } )
+            .sink(receiveValue: { shape in self.recognisedGate.text = shape.type.rawValue } )
     }
 }

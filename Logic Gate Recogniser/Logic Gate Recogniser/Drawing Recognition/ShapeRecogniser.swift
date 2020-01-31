@@ -25,19 +25,27 @@ class ShapeRecogniser {
     let analyser: ShapeAnalyser
     let decider: ShapeDecider
     
+    private var recognisedShapes: [Shape] = []
+    
     init(analyser: ShapeAnalyser = ShapeAnalyser(), decider: ShapeDecider = ShapeDecider()) {
         self.analyser = analyser
         self.decider = decider
     }
     
-    func recogniseShape(from stroke: Stroke) -> Shape? {
+    func recogniseShape(from stroke: Stroke) {
         // TODO: - MultiThread this for performance
-        guard let hull = analyser.convexHull(of: stroke) else { return nil }
-        guard let triangle = analyser.largestAreaTriangle(using: hull) else { return nil }
+        guard let hull = analyser.convexHull(of: stroke) else { return }
+        guard let triangle = analyser.largestAreaTriangle(using: hull) else { return }
         let container = analyser.boundingBox(using: hull)
 
         let attributes = findShapeAttributes(stroke: stroke, hull: hull, triangle: triangle, boundingBox: container)
-        return decider.findShape(for: attributes)
+    
+        let shape = decider.findShape(for: attributes)
+        NotificationCenter.default.post(name: .gateRecognised, object: shape)
+        
+        // Don't process if the shape is unknown
+        if shape.type == .Unknown { return }
+        recognisedShapes.append(shape)
     }
     
     // MARK: -  Helper Functions
