@@ -33,6 +33,7 @@
 		AB44795523630972000BF2A5 /* DrawingRecogniser.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB44795423630972000BF2A5 /* DrawingRecogniser.swift */; };
 		AB6EE323236C44F20060F475 /* LineType.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB6EE322236C44F20060F475 /* LineType.swift */; };
 		AB826CBA23A3C04F00A01D23 /* Array+ExtensionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB826CB923A3C04F00A01D23 /* Array+ExtensionsTests.swift */; };
+		AB84D0BC23E85652005E7DC7 /* CGRect+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB84D0BB23E85652005E7DC7 /* CGRect+Extensions.swift */; };
 		AB84F128237EC31200D4CE37 /* Matrix.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB84F127237EC31200D4CE37 /* Matrix.swift */; };
 		AB84F12A237EC38800D4CE37 /* Number.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB84F129237EC38800D4CE37 /* Number.swift */; };
 		AB84F12E237F010A00D4CE37 /* BoundingBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB84F12D237F010A00D4CE37 /* BoundingBox.swift */; };
@@ -97,6 +98,7 @@
 		AB44795423630972000BF2A5 /* DrawingRecogniser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingRecogniser.swift; sourceTree = "<group>"; };
 		AB6EE322236C44F20060F475 /* LineType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineType.swift; sourceTree = "<group>"; };
 		AB826CB923A3C04F00A01D23 /* Array+ExtensionsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+ExtensionsTests.swift"; sourceTree = "<group>"; };
+		AB84D0BB23E85652005E7DC7 /* CGRect+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGRect+Extensions.swift"; sourceTree = "<group>"; };
 		AB84F127237EC31200D4CE37 /* Matrix.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Matrix.swift; sourceTree = "<group>"; };
 		AB84F129237EC38800D4CE37 /* Number.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Number.swift; sourceTree = "<group>"; };
 		AB84F12D237F010A00D4CE37 /* BoundingBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoundingBox.swift; sourceTree = "<group>"; };
@@ -333,6 +335,7 @@
 				AB21A205236B256000BCE5E0 /* CGVector+Extensions.swift */,
 				AB21A207236B678700BCE5E0 /* CGFloat+Extensions.swift */,
 				ABC76DF123798A21001A7A29 /* CGPoint+Extensions.swift */,
+				AB84D0BB23E85652005E7DC7 /* CGRect+Extensions.swift */,
 				ABCA2C6723E171D400746742 /* Notifications+Extensions.swift */,
 			);
 			path = Extentions;
@@ -462,6 +465,7 @@
 				ABBDAB882362EDEE00DBFDC1 /* CanvasView.swift in Sources */,
 				ABD5F1A72382B8B9002FFD16 /* Perimeter.swift in Sources */,
 				AB84F128237EC31200D4CE37 /* Matrix.swift in Sources */,
+				AB84D0BC23E85652005E7DC7 /* CGRect+Extensions.swift in Sources */,
 				AB44795523630972000BF2A5 /* DrawingRecogniser.swift in Sources */,
 				AB84F12A237EC38800D4CE37 /* Number.swift in Sources */,
 				AB34F90A2371B34F000E7B86 /* ShapeAnalyser.swift in Sources */,

@@ -94,6 +94,13 @@ class CanvasView: UIImageView {
         
         drawingRecogniser.recogniseShape(from: points)
         points = []
+        
+//        drawingRecogniser.recognisedShapes.forEach {
+//            let box = $0.inflatedBoundingBox
+//            let list = [CGPoint(x: box.minX, y: box.minY), CGPoint(x: box.minX, y: box.maxY),
+//                        CGPoint(x: box.maxX, y: box.maxY), CGPoint(x: box.maxX, y: box.minY)]
+//            drawConvexHull(convexHull: list)
+//        }
     }
     
     override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {

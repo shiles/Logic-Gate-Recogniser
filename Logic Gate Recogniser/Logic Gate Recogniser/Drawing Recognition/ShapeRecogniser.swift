@@ -10,8 +10,8 @@ import Foundation
 import GameKit
 
 struct ShapeAttributes {
-    ///Minimum point of the convex hull
-    let minPoint: CGPoint
+    ///Convex Hull 
+    let convexHull: ConvexHull
     
     ///Convex Hull Perimeter Squared / Area Convex Hull
     let thinnessRatio: CGFloat
@@ -28,7 +28,7 @@ class ShapeRecogniser {
     let analyser: ShapeAnalyser
     let decider: ShapeDecider
     
-    private var recognisedShapes: [Shape] = []
+    var recognisedShapes: [Shape] = []
     
     init(analyser: ShapeAnalyser = ShapeAnalyser(), decider: ShapeDecider = ShapeDecider()) {
         self.analyser = analyser
@@ -49,6 +49,7 @@ class ShapeRecogniser {
         // Don't process if the shape is unknown
         if shape.type == .Unknown { return }
         recognisedShapes.append(shape)
+        findAdjacentShapes()
     }
     
     // MARK: -  Helper Functions
@@ -63,7 +64,20 @@ class ShapeRecogniser {
         let thinnessRatio = hull.perimeter!.squared() / hull.area
         let triangleAreaRatio = triangle.area / hull.area
         let rectanglePerimeterRatio = hull.perimeter! / boundingBox.perimeter!
-        return ShapeAttributes(minPoint: hull.minPoint, thinnessRatio: thinnessRatio, triangleAreaRatio: triangleAreaRatio, rectanglePerimeterRatio: rectanglePerimeterRatio)
+        return ShapeAttributes(convexHull: hull, thinnessRatio: thinnessRatio, triangleAreaRatio: triangleAreaRatio, rectanglePerimeterRatio: rectanglePerimeterRatio)
+    }
+    
+    ///Find the shape that are ajacent to eachother based on what has been found
+    private func findAdjacentShapes() {
+        for (i, x) in recognisedShapes.enumerated() {
+            for y in recognisedShapes[i+1 ..< recognisedShapes.count] {
+                
+                if(x.inflatedBoundingBox.intersects(y.inflatedBoundingBox)) {
+                    print("Pairs Intersect") // Do some further processing here.
+                }
+                
+            }
+        }
     }
     
 }

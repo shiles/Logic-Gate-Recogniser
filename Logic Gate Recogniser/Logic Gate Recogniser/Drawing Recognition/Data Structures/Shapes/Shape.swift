@@ -11,9 +11,23 @@ import UIKit
 
 struct Shape {
     let type: ShapeType
-    let location: CGPoint
+    let convexHull: ConvexHull
 }
 
 enum ShapeType: String {
     case Line, Circle, Triangle, Rectangle, Unknown
+}
+
+extension Shape {
+    
+    /// Gets the non-rotated bounding box of the shape
+    private var boundingBox: CGRect {
+        let path = UIBezierPath()
+        path.move(to: convexHull.first!)
+        (1...convexHull.lastIndex).forEach { path.addLine(to: convexHull[$0]) }
+        return path.bounds
+    }
+    
+    ///Bounding box inflated to 110% size
+    var inflatedBoundingBox: CGRect { boundingBox.inflate(by: 1.4) }
 }
