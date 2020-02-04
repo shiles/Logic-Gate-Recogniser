@@ -21,7 +21,7 @@ class ShapeDeciderTests: XCTestCase {
         let shape = sut.findShape(for: shapeAttributes)
         
         // Then
-        XCTAssertEqual(shape, Shape.Circle)
+        XCTAssertEqual(shape.type, ShapeType.Circle)
     }
     
     func testLine() {
@@ -32,7 +32,7 @@ class ShapeDeciderTests: XCTestCase {
         let shape = sut.findShape(for: shapeAttributes)
         
         // Then
-        XCTAssertEqual(shape, Shape.Line)
+        XCTAssertEqual(shape.type, ShapeType.Line)
     }
     
     func testTriangle() {
@@ -43,7 +43,7 @@ class ShapeDeciderTests: XCTestCase {
         let shape = sut.findShape(for: shapeAttributes)
 
         // Then
-        XCTAssertEqual(shape, Shape.Triangle)
+        XCTAssertEqual(shape.type, ShapeType.Triangle)
     }
     
     func testRectangle() {
@@ -54,7 +54,7 @@ class ShapeDeciderTests: XCTestCase {
         let shape = sut.findShape(for: shapeAttributes)
 
         // Then
-        XCTAssertEqual(shape, Shape.Rectangle)
+        XCTAssertEqual(shape.type, ShapeType.Rectangle)
     }
     
     func testUnknown() {
@@ -65,11 +65,11 @@ class ShapeDeciderTests: XCTestCase {
         let shape = sut.findShape(for: shapeAttributes)
 
         // Then
-        XCTAssertEqual(shape, Shape.Unknown)
+        XCTAssertEqual(shape.type, ShapeType.Unknown)
     }
     
     private func buildShapeAttributes(tr: CGFloat, tar: CGFloat, rpr: CGFloat) -> ShapeAttributes {
-         return ShapeAttributes(thinnessRatio: tr,
+        return ShapeAttributes(convexHull: [], thinnessRatio: tr,
                                 triangleAreaRatio: tar,
                                 rectanglePerimeterRatio: rpr)
     }

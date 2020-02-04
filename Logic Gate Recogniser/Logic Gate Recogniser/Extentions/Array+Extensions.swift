@@ -79,7 +79,6 @@ extension Array where Element == CGPoint {
     ///Finds the value with the smallest Y co-ordinate, if there are multiple returns the leftmost. Removing it from the array
     ///- Returns: Minimum x, y point
     mutating func removeMinPoint() -> CGPoint {
-        self.remove(at: self.firstIndex(of: minPoint)!)
-        return minPoint
+        return self.remove(at: self.firstIndex(of: minPoint)!)
     }
 }

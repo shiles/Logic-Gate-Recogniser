@@ -50,10 +50,14 @@ class RecogniserTests: XCTestCase {
     
     func test3() {
         // Given
-        let m1 = Matrix<Int>(from: [1,2])
-        let m2 = Matrix<Int>(from: [[10,10], [100,100]])
-        let r = m1.strassenMatrixMultiply(by: m2)
+        let points = [CGPoint(x: 445.0, y: 354.0), CGPoint(x: 445.0, y: 363.0),
+                      CGPoint(x: 445.0, y: 376.0), CGPoint(x: 445.0, y: 395.0),
+                      CGPoint(x: 445.0, y: 432.0), CGPoint(x: 445.0, y: 496.5),
+                      CGPoint(x: 456.5, y: 545.5), CGPoint(x: 475.0, y: 580.0),
+                      CGPoint(x: 495.5, y: 604.0)]
         
+        // When
+        let hull = recogniser.convexHull(of: points)
         
     }
 
