@@ -110,8 +110,8 @@ class ShapeAnalyser {
         //Sort by polar clockwise from minPoint
         points.sort {
             switch(orientation(from: minPoint, p1: $0, p2: $1)) {
-            case .clockwise: return false
-            case .anticlockwise: return true
+            case .clockwise: return true
+            case .anticlockwise: return false
             case .colinear: return squaredDistance(from: minPoint, to: $0) < squaredDistance(from: minPoint, to: $1)
             }
         }
@@ -123,13 +123,15 @@ class ShapeAnalyser {
         }
         
         //If there is less than three points the algorithm isn't possible
-        if points.count < 3  { return nil }
+        if points.count < 3 { return nil }
         var stack = Stack<CGPoint>(items: [minPoint, points[0], points[1]])
         
         //Build the convextHull
         for i in 2...points.lastIndex {
             let point = points[i]
-            while(orientation(from: stack.sndItem!, p1: stack.topItem!, p2:point) != .anticlockwise) { _ = stack.pop() }
+            while(orientation(from: stack.sndItem!, p1: stack.topItem!, p2:point) != .clockwise) {
+                _ = stack.pop()
+            }
             stack.push(point)
         }
             
@@ -151,7 +153,9 @@ class ShapeAnalyser {
     ///- Returns: The orientation of the triplet (minPoint, p1, p2)
     private func orientation(from minPoint: CGPoint, p1: CGPoint, p2: CGPoint) -> Orientation {
         let val = (p1.y - minPoint.y) * (p2.x - p1.x) - (p1.x - minPoint.x) * (p2.y - p1.y)
-        if val == 0 { return .colinear }
+        if val == 0 {
+            return .colinear
+        }
         return val > 0 ? .anticlockwise : .clockwise
     }
     
