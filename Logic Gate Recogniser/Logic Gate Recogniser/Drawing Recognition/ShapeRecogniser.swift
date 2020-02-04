@@ -28,7 +28,8 @@ class ShapeRecogniser {
     let analyser: ShapeAnalyser
     let decider: ShapeDecider
     
-    var recognisedShapes: [Shape] = []
+    var recognisedShapes: [Shape] = [] // Temporary for debugging
+    private var adjacentShapes: [[Shape]] = []
     
     init(analyser: ShapeAnalyser = ShapeAnalyser(), decider: ShapeDecider = ShapeDecider()) {
         self.analyser = analyser
@@ -49,7 +50,7 @@ class ShapeRecogniser {
         // Don't process if the shape is unknown
         if shape.type == .Unknown { return }
         recognisedShapes.append(shape)
-        findAdjacentShapes()
+        findAdjacentShapes(shape: shape)
     }
     
     // MARK: -  Helper Functions
@@ -68,16 +69,18 @@ class ShapeRecogniser {
     }
     
     ///Find the shape that are ajacent to eachother based on what has been found
-    private func findAdjacentShapes() {
-        for (i, x) in recognisedShapes.enumerated() {
-            for y in recognisedShapes[i+1 ..< recognisedShapes.count] {
-                
-                if(x.inflatedBoundingBox.intersects(y.inflatedBoundingBox)) {
-                    print("Pairs Intersect") // Do some further processing here.
-                }
-                
-            }
+    ///- Parameter shape: Shape to add adjacent values too
+    private func findAdjacentShapes(shape: Shape) {
+        let boundingBox = shape.inflatedBoundingBox
+        
+        for (i, list) in adjacentShapes.enumerated() {
+            if list.contains(where: { $0.inflatedBoundingBox.intersects(boundingBox) }) {
+                adjacentShapes[i].append(shape)
+                return
+           }
         }
+        
+        adjacentShapes.append([shape])
     }
     
 }

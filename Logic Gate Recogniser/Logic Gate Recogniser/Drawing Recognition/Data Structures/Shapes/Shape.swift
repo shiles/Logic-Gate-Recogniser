@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-struct Shape {
+struct Shape: CustomStringConvertible {
     let type: ShapeType
     let convexHull: ConvexHull
 }
@@ -20,7 +20,10 @@ enum ShapeType: String {
 
 extension Shape {
     
-    /// Gets the non-rotated bounding box of the shape
+    ///Representation when printing for easier debug
+    var description: String { "\(type.rawValue)" }
+    
+    ///Gets the non-rotated bounding box of the shape
     private var boundingBox: CGRect {
         let path = UIBezierPath()
         path.move(to: convexHull.first!)
