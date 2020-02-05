@@ -32,7 +32,6 @@
 		AB41AE0D2369A1EE00273845 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB41AE0C2369A1EE00273845 /* UIColor+Extensions.swift */; };
 		AB41AE0F2369AEDB00273845 /* Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB41AE0E2369AEDB00273845 /* Line.swift */; };
 		AB44795523630972000BF2A5 /* DetailAnalyser.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB44795423630972000BF2A5 /* DetailAnalyser.swift */; };
-		AB6EE323236C44F20060F475 /* LineType.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB6EE322236C44F20060F475 /* LineType.swift */; };
 		AB826CBA23A3C04F00A01D23 /* Array+ExtensionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB826CB923A3C04F00A01D23 /* Array+ExtensionsTests.swift */; };
 		AB84D0BC23E85652005E7DC7 /* CGRect+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB84D0BB23E85652005E7DC7 /* CGRect+Extensions.swift */; };
 		AB84F128237EC31200D4CE37 /* Matrix.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB84F127237EC31200D4CE37 /* Matrix.swift */; };
@@ -100,7 +99,6 @@
 		AB41AE0C2369A1EE00273845 /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
 		AB41AE0E2369AEDB00273845 /* Line.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Line.swift; sourceTree = "<group>"; };
 		AB44795423630972000BF2A5 /* DetailAnalyser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailAnalyser.swift; sourceTree = "<group>"; };
-		AB6EE322236C44F20060F475 /* LineType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineType.swift; sourceTree = "<group>"; };
 		AB826CB923A3C04F00A01D23 /* Array+ExtensionsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+ExtensionsTests.swift"; sourceTree = "<group>"; };
 		AB84D0BB23E85652005E7DC7 /* CGRect+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGRect+Extensions.swift"; sourceTree = "<group>"; };
 		AB84F127237EC31200D4CE37 /* Matrix.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Matrix.swift; sourceTree = "<group>"; };
@@ -265,7 +263,6 @@
 			isa = PBXGroup;
 			children = (
 				AB41AE0E2369AEDB00273845 /* Line.swift */,
-				AB6EE322236C44F20060F475 /* LineType.swift */,
 				AB9F1DA72372F45900E9E81C /* Triangle.swift */,
 				AB84F12D237F010A00D4CE37 /* BoundingBox.swift */,
 				AB84F12F237F012E00D4CE37 /* ConvexHull.swift */,
@@ -479,7 +476,6 @@
 				AB34F90A2371B34F000E7B86 /* ShapeAnalyser.swift in Sources */,
 				ABCA2C6A23E173D200746742 /* Shape.swift in Sources */,
 				AB34F90C2371D22D000E7B86 /* Orientation.swift in Sources */,
-				AB6EE323236C44F20060F475 /* LineType.swift in Sources */,
 				AB36BBE9235735CA006B8607 /* AppDelegate.swift in Sources */,
 				AB36BBEB235735CA006B8607 /* SceneDelegate.swift in Sources */,
 			);

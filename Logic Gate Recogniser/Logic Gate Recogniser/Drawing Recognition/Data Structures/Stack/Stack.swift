@@ -30,7 +30,6 @@ extension Stack {
     ///Initialise the stack with an initial ordered list of items
     ///- Parameter items: Elements to add to stack
     init(items: [Element]) {
-        self.init()
         elements = items
     }
     
@@ -46,7 +45,5 @@ extension Stack {
     
     ///Returns the stack as a list, with the bottom most item first
     ///- Returns: Stack as a list
-    func asList() -> [Element] {
-        return elements
-    }
+    func asList() -> [Element] { elements }
 }

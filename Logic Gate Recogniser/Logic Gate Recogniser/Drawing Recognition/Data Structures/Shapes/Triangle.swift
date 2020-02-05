@@ -15,7 +15,7 @@ struct Triangle {
     let c: CGPoint
     
     ///Area of the triangle
-    var area: CGFloat { 0.5 * ((b.x - a.x)*(c.y - a.y) - (c.x - a.x)*(b.y - a.y)) }
+    var area: CGFloat { Triangle.area(a: a, b: b, c: c)}
 }
 
 extension Triangle {

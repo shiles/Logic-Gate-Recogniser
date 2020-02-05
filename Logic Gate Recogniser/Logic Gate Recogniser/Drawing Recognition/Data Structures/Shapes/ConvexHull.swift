@@ -25,8 +25,7 @@ extension ConvexHull {
     
     /// Area fot the convex hull (Shoelace Method)
     var area: CGFloat {
-        var lhs: CGFloat = 0
-        var rhs: CGFloat = 0
+        var lhs: CGFloat = 0, rhs: CGFloat = 0
         
         for i in 0...self.lastIndex {
             let current = self[i], next = self[circular: i+1]!
