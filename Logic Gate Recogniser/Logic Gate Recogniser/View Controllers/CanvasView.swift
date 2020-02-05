@@ -83,14 +83,14 @@ class CanvasView: UIImageView {
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         image = drawingImage
     
-        guard let hull = recogniser.convexHull(of: points) else { points = []; return}
-        drawConvexHull(convexHull: hull)
-
-        guard let triangle = recogniser.largestAreaTriangle(using: hull) else { points = []; return}
-        drawTriangle(triangle: triangle)
-
-        let minRect = recogniser.boundingBox(using: hull)
-        drawCorners(boundingBox: minRect)
+//        guard let hull = recogniser.convexHull(of: points) else { points = []; return}
+//        drawConvexHull(convexHull: hull)
+//
+//        guard let triangle = recogniser.largestAreaTriangle(using: hull) else { points = []; return}
+//        drawTriangle(triangle: triangle)
+//
+//        let minRect = recogniser.boundingBox(using: hull)
+//        drawCorners(boundingBox: minRect)
         
         drawingRecogniser.recogniseShape(from: points)
         points = []

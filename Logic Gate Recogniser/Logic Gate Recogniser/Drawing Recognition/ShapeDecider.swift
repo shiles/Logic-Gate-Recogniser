@@ -21,7 +21,7 @@ class ShapeDecider {
                 _ = root.createBranch(predicate: NSPredicate(format: "SELF > %@", NSNumber(100.0)), attribute: NSString(string: ShapeType.Line.rawValue))
         let isTri = root.createBranch(predicate: NSPredicate(format: "SELF => %@ && SELF <= %@", NSNumber(13.2), NSNumber(100.0)), attribute: NSString(string: "TriangleAreaRatio?"))
         // Decides if its a triangle. or something else
-                _ = isTri.createBranch(predicate: NSPredicate(format: "SELF > %@", NSNumber(0.75)), attribute:  NSString(string: ShapeType.Triangle.rawValue))
+                _ = isTri.createBranch(predicate: NSPredicate(format: "SELF > %@", NSNumber(0.75)), attribute:  NSString(string: ShapeType.UnanalysedTriangle.rawValue))
         let isRec = isTri.createBranch(predicate: NSPredicate(format: "SELF <= %@", NSNumber(0.75)), attribute:  NSString(string: "RectanglePerimeterRatio?"))
         // Decides if its a rectangle. or unknown as we aren't sure what it might be
                 _ = isRec.createBranch(predicate: NSPredicate(format: "SELF > %@", NSNumber(0.85)), attribute: NSString(string: ShapeType.Rectangle.rawValue))

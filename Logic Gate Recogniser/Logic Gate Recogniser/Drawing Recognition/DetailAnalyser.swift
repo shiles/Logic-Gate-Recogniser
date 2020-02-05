@@ -1,5 +1,5 @@
 //
-//  DrawingRecogniser.swift
+//  DetailAnalyser.swift
 //  Logic Gate Recogniser
 //
 //  Created by Sonnie Hiles on 25/10/2019.
@@ -11,34 +11,21 @@ import UIKit
 import Accelerate
 import simd
 
-class DrawingRecogniser {
+class DetailAnalyser {
     
-    func recogniseShape(points: [CGPoint]) -> [Line] {
-        print("Recognising a new stroke")
-        
-        let orderedPoints = points.reversed().map { $0 }
-        let straitLines = recogniseStraitLines(points: orderedPoints)
-        let connectedStraitLines = connectCloseLines(lines: straitLines)
-        let connectedSimilarLines = connectSimilarLines(lines: connectedStraitLines)
-        
-        switch significantCorners(lines: connectedStraitLines) {
-        case 0:
-            print("StriatLine?")
-        case 1...2:
-            print("Curved Line?")
-        case 3...4:
-            print("Not Shape?")
-        case 5...8:
-            print("And Shape?")
-        case 8...15:
-            print("Circle Shape?")
-        default:
-            print("No Idea...")
+    
+    ///Analyses a triangle to determine if each of it's lines are strait or curved
+    ///- Parameter triangle: Input triangle
+    ///- Returns: Detailed triangle
+    func analyseTriangle(triangle: Stroke) -> ShapeType {
+        //TODO: Possibly refactor recogniseStraitLines into connectSimilarLines
+        if connectSimilarLines(lines: recogniseStraitLines(points: triangle)).count == 3 {
+            return .StraitTringle
         }
         
-        return connectedSimilarLines
+        return .CurvedTriangle
     }
-        
+    
     private func significantCorners(lines: [Line]) -> Int {
         var signifcantCorners = 0
         
@@ -99,15 +86,16 @@ class DrawingRecogniser {
     }
     
     ///Connects adjacent lines if their vectors are similar, combining the lines into one strait line
-    private func connectSimilarLines(lines: [Line], allowedDevience: CGFloat = 20.0) -> [Line] {
+    ///- Parameter lines: Input lines
+    ///- Returns: Connected straitlines
+    private func connectSimilarLines(lines: [Line]) -> [Line] {
         var combinedLines = lines
         
         for i in 0...combinedLines.count {
             guard let first = combinedLines[safe: i], let second = combinedLines[safe: i+1] else { break }
             
             if isVectorSimilar(between: first.vector, second.vector) {
-                let replacementLine = Line(startPoint: first.startPoint, endPoint: second.endPoint)
-                combinedLines[i] = replacementLine
+                combinedLines[i] = Line(startPoint: first.startPoint, endPoint: second.endPoint)
                 combinedLines.remove(at: i+1)
             }
         }

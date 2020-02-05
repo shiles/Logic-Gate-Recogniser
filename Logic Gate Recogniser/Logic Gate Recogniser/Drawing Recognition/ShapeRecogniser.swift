@@ -27,13 +27,17 @@ class ShapeRecogniser {
     
     let analyser: ShapeAnalyser
     let decider: ShapeDecider
+    let detailAnalyser: DetailAnalyser
     
     var recognisedShapes: [Shape] = [] // Temporary for debugging
     private var adjacentShapes: [[Shape]] = []
     
-    init(analyser: ShapeAnalyser = ShapeAnalyser(), decider: ShapeDecider = ShapeDecider()) {
+    init(analyser: ShapeAnalyser = ShapeAnalyser(),
+         decider: ShapeDecider = ShapeDecider(),
+         detailAnalyser: DetailAnalyser = DetailAnalyser()) {
         self.analyser = analyser
         self.decider = decider
+        self.detailAnalyser = detailAnalyser
     }
     
     func recogniseShape(from stroke: Stroke) {
@@ -44,11 +48,17 @@ class ShapeRecogniser {
 
         let attributes = findShapeAttributes(stroke: stroke, hull: hull, triangle: triangle, boundingBox: container)
     
-        let shape = decider.findShape(for: attributes)
+        var shape = decider.findShape(for: attributes)
         NotificationCenter.default.post(name: .gateRecognised, object: shape)
         
-        // Don't process if the shape is unknown
         if shape.type == .Unknown { return }
+        
+        if shape.type == .UnanalysedTriangle {
+            let analysedType = detailAnalyser.analyseTriangle(triangle: stroke)
+            shape = Shape(type: analysedType, convexHull: shape.convexHull)
+            NotificationCenter.default.post(name: .gateRecognised, object: shape)
+        }
+        
         recognisedShapes.append(shape)
         findAdjacentShapes(shape: shape)
     }
