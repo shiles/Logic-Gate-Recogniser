@@ -65,7 +65,7 @@ extension Array where Element == CGPoint {
     
     ///Transposed matrix of all the points, with the first row being all X values and second row being Y values
     var transposedMatrix: Matrix<CGFloat> {
-        return Matrix<CGFloat>(from: [self.map { $0.x }, self.map { $0.y }])
+        return Matrix<CGFloat>(from: [self.map(\.x), self.map(\.y)])
     }
     
     ///The minimum point of the convex hull

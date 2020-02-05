@@ -134,7 +134,7 @@ class DetailAnalyser {
     ///- Parameter allowedDevience: Allowed devience to determine if the line is strait or not, defualt is 5.0
     ///- Returns: A boolean indicating if the line is strait or not
     private func isStraitLine(points: [CGPoint], allowedDevience: CGFloat = 5.0) -> Bool {
-        let xCoords = translate(points: points).map { $0.x }
+        let xCoords = translate(points: points).map(\.x)
         let rms = xCoords.rootMeanSquared()
         return rms < allowedDevience
     }

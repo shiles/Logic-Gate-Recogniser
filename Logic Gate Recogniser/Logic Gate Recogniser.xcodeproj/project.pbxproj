@@ -10,6 +10,7 @@
 		AB0866FF2386C97000E30B50 /* ShapeDecider.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0866FE2386C97000E30B50 /* ShapeDecider.swift */; };
 		AB21A206236B256000BCE5E0 /* CGVector+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB21A205236B256000BCE5E0 /* CGVector+Extensions.swift */; };
 		AB21A208236B678700BCE5E0 /* CGFloat+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB21A207236B678700BCE5E0 /* CGFloat+Extensions.swift */; };
+		AB27163D23EAF92100323FAA /* Sequence+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB27163C23EAF92100323FAA /* Sequence+Extensions.swift */; };
 		AB2A444823A3C77800AD3849 /* Angle+ExtensionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2A444723A3C77800AD3849 /* Angle+ExtensionsTests.swift */; };
 		AB2A444A23A3C9DB00AD3849 /* Collection+ExtensionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2A444923A3C9DB00AD3849 /* Collection+ExtensionsTests.swift */; };
 		AB2A444C23A3CB6900AD3849 /* CGVector+ExtensionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2A444B23A3CB6900AD3849 /* CGVector+ExtensionsTests.swift */; };
@@ -72,6 +73,7 @@
 		AB0866FE2386C97000E30B50 /* ShapeDecider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShapeDecider.swift; sourceTree = "<group>"; };
 		AB21A205236B256000BCE5E0 /* CGVector+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGVector+Extensions.swift"; sourceTree = "<group>"; };
 		AB21A207236B678700BCE5E0 /* CGFloat+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGFloat+Extensions.swift"; sourceTree = "<group>"; };
+		AB27163C23EAF92100323FAA /* Sequence+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sequence+Extensions.swift"; sourceTree = "<group>"; };
 		AB2A444723A3C77800AD3849 /* Angle+ExtensionsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Angle+ExtensionsTests.swift"; sourceTree = "<group>"; };
 		AB2A444923A3C9DB00AD3849 /* Collection+ExtensionsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+ExtensionsTests.swift"; sourceTree = "<group>"; };
 		AB2A444B23A3CB6900AD3849 /* CGVector+ExtensionsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGVector+ExtensionsTests.swift"; sourceTree = "<group>"; };
@@ -341,6 +343,7 @@
 				ABC76DF123798A21001A7A29 /* CGPoint+Extensions.swift */,
 				AB84D0BB23E85652005E7DC7 /* CGRect+Extensions.swift */,
 				ABCA2C6723E171D400746742 /* Notifications+Extensions.swift */,
+				AB27163C23EAF92100323FAA /* Sequence+Extensions.swift */,
 			);
 			path = Extentions;
 			sourceTree = "<group>";
@@ -453,6 +456,7 @@
 				AB84F130237F012E00D4CE37 /* ConvexHull.swift in Sources */,
 				ABD5F1B22382CBCC002FFD16 /* ShapeRecogniser.swift in Sources */,
 				AB9F1DA82372F45900E9E81C /* Triangle.swift in Sources */,
+				AB27163D23EAF92100323FAA /* Sequence+Extensions.swift in Sources */,
 				AB41AE0B23688D4200273845 /* Collection+Extensions.swift in Sources */,
 				ABF06A5823588CF6006C8E2B /* UIView+Extentions.swift in Sources */,
 				ABC76DF223798A22001A7A29 /* CGPoint+Extensions.swift in Sources */,
