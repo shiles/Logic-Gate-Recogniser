@@ -25,7 +25,7 @@ class ShapeAnalyser {
             .unique                                                      // Find all the unique edges
         
         // Test each angle to find bounding box with smallest area
-        var minBox = MinBoudingRect(rotAngle: 0, area: CGFloat.greatestFiniteMagnitude, width: 0, height: 0, minX: 0, maxX: 0, minY: 0, maxY: 0)
+        var minBox = MinBoudingRect(rotAngle: 0, area: CGFloat.greatestFiniteMagnitude, minX: 0, maxX: 0, minY: 0, maxY: 0)
         edgeAngles.forEach { angle in
             // Rotate the points
             let rotation = Matrix<CGFloat>.forRotation(angle: angle)
@@ -43,7 +43,7 @@ class ShapeAnalyser {
             let area   = width * height
             
             if area < minBox.area {
-                minBox = MinBoudingRect(rotAngle: angle, area: area, width: width, height: height, minX: minX, maxX: maxX, minY: minY, maxY: maxY)
+                minBox = MinBoudingRect(rotAngle: angle, area: area, minX: minX, maxX: maxX, minY: minY, maxY: maxY)
             }
         }
         

@@ -28,8 +28,6 @@ struct CornerPoints {
 struct MinBoudingRect {
     let rotAngle: CGFloat
     let area: CGFloat
-    let width: CGFloat
-    let height: CGFloat
     let minX: CGFloat
     let maxX: CGFloat
     let minY: CGFloat
