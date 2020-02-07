@@ -117,9 +117,11 @@ class ShapeAnalyser {
         }
     
         //Remove any points where a futher point is colinear
-        for i in 0..<points.count {
-            guard let p1 = points[safe: i], let p2 = points[safe: i+1] else { break}
-            if orientation(from: minPoint, p1: p1, p2: p2) == .colinear { points.remove(at: i) }
+        var i = 0
+        while(i < points.lastIndex) {
+            if orientation(from: minPoint, p1: points[i], p2: points[i+1]) == .colinear {
+                points.remove(at: i)
+            } else { i += 1 }
         }
         
         //If there is less than three points the algorithm isn't possible
@@ -143,7 +145,7 @@ class ShapeAnalyser {
     ///- Parameter p2: A Point within the drawing
     ///- Returns: Square of the distance between the two points
     private func squaredDistance(from p1: CGPoint, to p2: CGPoint) -> CGFloat {
-        return (p1.x - p2.x)*(p1.x - p2.x) + (p1.y - p2.y)*(p1.y - p2.y);
+        return (p1.x - p2.x).squared() + (p1.y - p2.y).squared();
     }
     
     ///Finds the orientation of the triplet (minPoint, p1, p2)

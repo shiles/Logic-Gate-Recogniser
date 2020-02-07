@@ -17,7 +17,7 @@ class ShapeDecider {
         decisionTree = GKDecisionTree(attribute: NSString(string: "ThinnessRatio?"))
         let root  = decisionTree.rootNode!
         // Decides if its a line or a circle, or something else and moves to the next node
-                _ = root.createBranch(predicate: NSPredicate(format: "SELF < %@", NSNumber(13.2)), attribute:  NSString(string: ShapeType.Circle.rawValue))
+        _ = root.createBranch(predicate: NSPredicate(format: "SELF < %@", NSNumber(14.0)), attribute:  NSString(string: ShapeType.Circle.rawValue))
                 _ = root.createBranch(predicate: NSPredicate(format: "SELF > %@", NSNumber(100.0)), attribute: NSString(string: ShapeType.Line.rawValue))
         let isTri = root.createBranch(predicate: NSPredicate(format: "SELF => %@ && SELF <= %@", NSNumber(13.2), NSNumber(100.0)), attribute: NSString(string: "TriangleAreaRatio?"))
         // Decides if its a triangle. or something else

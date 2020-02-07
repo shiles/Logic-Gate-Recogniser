@@ -50,16 +50,49 @@ class RecogniserTests: XCTestCase {
     
     func test3() {
         // Given
-        let points = [CGPoint(x: 445.0, y: 354.0), CGPoint(x: 445.0, y: 363.0),
-                      CGPoint(x: 445.0, y: 376.0), CGPoint(x: 445.0, y: 395.0),
-                      CGPoint(x: 445.0, y: 432.0), CGPoint(x: 445.0, y: 496.5),
-                      CGPoint(x: 456.5, y: 545.5), CGPoint(x: 475.0, y: 580.0),
-                      CGPoint(x: 495.5, y: 604.0)]
+        let points = [CGPoint(x: 564.5, y: 449.5), CGPoint(x: 574.0, y: 449.5), CGPoint(x: 582.5, y: 449.5), CGPoint(x: 592.5, y: 449.5), CGPoint(x: 603.5, y: 449.5), CGPoint(x: 618.0, y: 449.5), CGPoint(x: 629.5, y: 454.0), CGPoint(x: 638.5, y: 465.5), CGPoint(x: 644.0, y: 476.5), CGPoint(x: 645.5, y: 486.5),
+        CGPoint(x: 648.0, y: 501.5), CGPoint(x: 648.0, y: 513.0), CGPoint(x: 648.0, y: 525.0), CGPoint(x: 643.0, y: 533.0), CGPoint(x: 637.5, y: 537.0), CGPoint(x: 634.0, y: 538.0), CGPoint(x: 629.5, y: 539.5), CGPoint(x: 620.5, y: 541.5), CGPoint(x: 608.5, y: 544.0), CGPoint(x: 599.5, y: 544.0),
+        CGPoint(x: 588.0, y: 544.0),
+        CGPoint(x: 576.5, y: 538.5),
+        CGPoint(x: 566.5, y: 533.5),
+        CGPoint(x: 562.0, y: 531.5),
+        CGPoint(x: 556.5, y: 528.0),
+        CGPoint(x: 554.0, y: 524.5),
+        CGPoint(x: 551.0, y: 521.5),
+        CGPoint(x: 549.5, y: 519.5),
+        CGPoint(x: 548.0, y: 517.0),
+        CGPoint(x: 547.0, y: 514.5),
+        CGPoint(x: 546.0, y: 510.0),
+        CGPoint(x: 546.0, y: 503.0),
+        CGPoint(x: 546.0, y: 498.0),
+        CGPoint(x: 546.0, y: 492.5),
+        CGPoint(x: 548.0, y: 489.0),
+        CGPoint(x: 548.5, y: 487.5),
+        CGPoint(x: 550.5, y: 485.5),
+        CGPoint(x: 553.5, y: 483.5),
+        CGPoint(x: 557.5, y: 482.5),
+        CGPoint(x: 559.5, y: 482.0),
+        CGPoint(x: 564.0, y: 481.5),
+        CGPoint(x: 567.5, y: 481.0),
+        CGPoint(x: 574.5, y: 481.0),
+        CGPoint(x: 577.5, y: 481.0),
+        CGPoint(x: 583.0, y: 481.0),
+        CGPoint(x: 585.5, y: 481.0),
+        CGPoint(x: 588.0, y: 481.0),
+        CGPoint(x: 589.5, y: 481.0),
+        CGPoint(x: 590.5, y: 481.0),
+        CGPoint(x: 592.0, y: 481.0),
+        CGPoint(x: 596.0, y: 481.0),
+        CGPoint(x: 598.0, y: 481.5),
+        CGPoint(x: 599.0, y: 482.0),
+        CGPoint(x: 600.0, y: 482.0),
+        CGPoint(x: 600.0, y: 482.5),
+        CGPoint(x: 600.0, y: 483.0)]
+
         
         // When
         let hull = recogniser.convexHull(of: points)
         
     }
-
 
 }
