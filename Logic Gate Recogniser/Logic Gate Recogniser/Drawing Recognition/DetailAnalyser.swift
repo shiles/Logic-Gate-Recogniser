@@ -21,10 +21,10 @@ class DetailAnalyser {
     func analyseTriangle(triangle: Stroke) -> ShapeType {
         //TODO: Possibly refactor recogniseStraitLines into connectSimilarLines
         if connectSimilarLines(lines: recogniseStraitLines(points: triangle)).count == 3 {
-            return .StraitTringle
+            return .straitTringle
         }
         
-        return .CurvedTriangle
+        return .curvedTriangle
     }
     
     ///Analyses a rectangle to determine if it's rectangular or a curved line
@@ -33,10 +33,10 @@ class DetailAnalyser {
     func analyseRectangle(rectangle: Stroke) -> ShapeType {
         //TODO: Possibly refactor recogniseStraitLines into connectSimilarLines
         if connectSimilarLines(lines: recogniseStraitLines(points: rectangle)).count <= 4 {
-            return .CurvedLine
+            return .curvedLine
         }
         
-        return .Rectangle
+        return .rectangle
     }
     
     ///Finds the angle between two lines if the first point's end and the second point's line interesect

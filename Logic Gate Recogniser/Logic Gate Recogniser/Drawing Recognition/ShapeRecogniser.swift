@@ -51,15 +51,15 @@ class ShapeRecogniser {
         var shape = decider.findShape(for: attributes)
         NotificationCenter.default.post(name: .gateRecognised, object: shape)
         
-        if shape.type == .Unknown { return }
+        if shape.type == .unknown { return }
         
-        if shape.type == .UnanalysedTriangle {
+        if shape.type == .unanalysedTriangle {
             let analysedType = detailAnalyser.analyseTriangle(triangle: stroke)
             shape = Shape(type: analysedType, convexHull: shape.convexHull)
             NotificationCenter.default.post(name: .gateRecognised, object: shape)
         }
         
-        if shape.type == .Rectangle {
+        if shape.type == .rectangle {
             let analysedType = detailAnalyser.analyseRectangle(rectangle: stroke)
             shape = Shape(type: analysedType, convexHull: shape.convexHull)
             NotificationCenter.default.post(name: .gateRecognised, object: shape)
