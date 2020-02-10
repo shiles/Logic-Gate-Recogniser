@@ -59,6 +59,12 @@ class ShapeRecogniser {
             NotificationCenter.default.post(name: .gateRecognised, object: shape)
         }
         
+        if shape.type == .Rectangle {
+            let analysedType = detailAnalyser.analyseRectangle(rectangle: stroke)
+            shape = Shape(type: analysedType, convexHull: shape.convexHull)
+            NotificationCenter.default.post(name: .gateRecognised, object: shape)
+        }
+        
         recognisedShapes.append(shape)
         findAdjacentShapes(shape: shape)
     }

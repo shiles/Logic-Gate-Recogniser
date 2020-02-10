@@ -13,6 +13,7 @@ import simd
 
 class DetailAnalyser {
     
+    // MARK: Shape Analysis Functions
     
     ///Analyses a triangle to determine if each of it's lines are strait or curved
     ///- Parameter triangle: Input triangle
@@ -26,21 +27,16 @@ class DetailAnalyser {
         return .CurvedTriangle
     }
     
-    private func significantCorners(lines: [Line]) -> Int {
-        var signifcantCorners = 0
-        
-        for i in 0...lines.count {
-            guard let first = lines[safe: i], let second = lines[safe: i+1] ?? lines.first, let angle = angleBetwen(between: first, second) else { break }
-            
-            print(angle.toDegrees())
-            if angle.toDegrees() < 180 {
-                signifcantCorners += 1
-            }
+    ///Analyses a rectangle to determine if it's rectangular or a curved line
+    ///- Parameter rectangle: Input rectangle
+    ///- Returns: Detailed rectangle
+    func analyseRectangle(rectangle: Stroke) -> ShapeType {
+        //TODO: Possibly refactor recogniseStraitLines into connectSimilarLines
+        if connectSimilarLines(lines: recogniseStraitLines(points: rectangle)).count <= 4 {
+            return .CurvedLine
         }
         
-        print(signifcantCorners)
-    
-        return signifcantCorners
+        return .Rectangle
     }
     
     ///Finds the angle between two lines if the first point's end and the second point's line interesect
