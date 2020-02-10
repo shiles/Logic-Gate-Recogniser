@@ -16,7 +16,6 @@ enum DrawingTools {
 
 class CanvasView: UIImageView {
     
-    private let recogniser = ShapeAnalyser()
     private let drawingRecogniser = ShapeRecogniser()
     private var recognisedLines: [Line] = []
     
@@ -95,11 +94,15 @@ class CanvasView: UIImageView {
         drawingRecogniser.recogniseShape(from: points)
         points = []
         
-        drawingRecogniser.recognisedShapes.forEach {
-            let box = $0.inflatedBoundingBox
-            let list = [CGPoint(x: box.minX, y: box.minY), CGPoint(x: box.minX, y: box.maxY),
-                        CGPoint(x: box.maxX, y: box.maxY), CGPoint(x: box.maxX, y: box.minY)]
-            drawConvexHull(convexHull: list)
+//        drawingRecogniser.recognisedShapes.forEach {
+//            let box = $0.inflatedBoundingBox
+//            let list = [CGPoint(x: box.minX, y: box.minY), CGPoint(x: box.minX, y: box.maxY),
+//                        CGPoint(x: box.maxX, y: box.maxY), CGPoint(x: box.maxX, y: box.minY)]
+//            drawConvexHull(convexHull: list, colour: .blue)
+//        }
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            self.drawingRecogniser.combineShapes()
         }
     }
     

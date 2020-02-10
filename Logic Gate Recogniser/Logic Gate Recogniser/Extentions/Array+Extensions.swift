@@ -82,3 +82,13 @@ extension Array where Element == CGPoint {
         return self.remove(at: self.firstIndex(of: minPoint)!)
     }
 }
+
+extension Array where Element == Shape {
+    
+    ///Applies a predicate and returns values matching true
+    ///- Parameter predicate: Predicate to apply
+    ///- Returns: List of values that fit predicate
+    func shapes(matching predicate: Predicate<Shape>) -> [Shape] {
+        self.filter(predicate.matches)
+    }
+}

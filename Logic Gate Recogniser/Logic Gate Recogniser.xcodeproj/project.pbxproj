@@ -41,6 +41,8 @@
 		AB882DE423E97A7400467451 /* CGRect+ExtensionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB882DE323E97A7400467451 /* CGRect+ExtensionsTests.swift */; };
 		AB882DE523E97B3200467451 /* CGRect+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB84D0BB23E85652005E7DC7 /* CGRect+Extensions.swift */; };
 		AB8F6906237444C30024BC6D /* RecogniserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8F6905237444C30024BC6D /* RecogniserTests.swift */; };
+		AB93C97023F1841600CD8006 /* ShapeCombiner.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB93C96F23F1841500CD8006 /* ShapeCombiner.swift */; };
+		AB93C97323F185FB00CD8006 /* Predicate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB93C97223F185FB00CD8006 /* Predicate.swift */; };
 		AB9F1DA82372F45900E9E81C /* Triangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9F1DA72372F45900E9E81C /* Triangle.swift */; };
 		AB9F1DAA2372F8F600E9E81C /* TriangleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9F1DA92372F8F600E9E81C /* TriangleTests.swift */; };
 		AB9F33792358862300A39A44 /* DetectedGateInfo.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB9F33782358862300A39A44 /* DetectedGateInfo.xib */; };
@@ -107,6 +109,8 @@
 		AB84F12F237F012E00D4CE37 /* ConvexHull.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvexHull.swift; sourceTree = "<group>"; };
 		AB882DE323E97A7400467451 /* CGRect+ExtensionsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGRect+ExtensionsTests.swift"; sourceTree = "<group>"; };
 		AB8F6905237444C30024BC6D /* RecogniserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecogniserTests.swift; sourceTree = "<group>"; };
+		AB93C96F23F1841500CD8006 /* ShapeCombiner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShapeCombiner.swift; sourceTree = "<group>"; };
+		AB93C97223F185FB00CD8006 /* Predicate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Predicate.swift; sourceTree = "<group>"; };
 		AB9F1DA72372F45900E9E81C /* Triangle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Triangle.swift; sourceTree = "<group>"; };
 		AB9F1DA92372F8F600E9E81C /* TriangleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriangleTests.swift; sourceTree = "<group>"; };
 		AB9F33782358862300A39A44 /* DetectedGateInfo.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetectedGateInfo.xib; sourceTree = "<group>"; };
@@ -221,6 +225,7 @@
 				AB34F9092371B34F000E7B86 /* ShapeAnalyser.swift */,
 				AB0866FE2386C97000E30B50 /* ShapeDecider.swift */,
 				ABD5F1B12382CBCC002FFD16 /* ShapeRecogniser.swift */,
+				AB93C96F23F1841500CD8006 /* ShapeCombiner.swift */,
 			);
 			path = "Drawing Recognition";
 			sourceTree = "<group>";
@@ -242,6 +247,7 @@
 		AB84F125237EC29400D4CE37 /* Data Structures */ = {
 			isa = PBXGroup;
 			children = (
+				AB93C97123F185EC00CD8006 /* Predicate */,
 				ABD5F1A82382BB6A002FFD16 /* Drawing */,
 				AB84F12B237EFFBF00D4CE37 /* Shapes */,
 				AB84F126237EC2A000D4CE37 /* Matrix */,
@@ -279,6 +285,14 @@
 				AB34F90D2372D1FD000E7B86 /* Stack.swift */,
 			);
 			path = Stack;
+			sourceTree = "<group>";
+		};
+		AB93C97123F185EC00CD8006 /* Predicate */ = {
+			isa = PBXGroup;
+			children = (
+				AB93C97223F185FB00CD8006 /* Predicate.swift */,
+			);
+			path = Predicate;
 			sourceTree = "<group>";
 		};
 		AB9F3375235885A700A39A44 /* Storyboards */ = {
@@ -461,6 +475,7 @@
 				AB0866FF2386C97000E30B50 /* ShapeDecider.swift in Sources */,
 				AB41AE09236878C800273845 /* Angle+Extensions.swift in Sources */,
 				AB41AE0F2369AEDB00273845 /* Line.swift in Sources */,
+				AB93C97023F1841600CD8006 /* ShapeCombiner.swift in Sources */,
 				AB84F12E237F010A00D4CE37 /* BoundingBox.swift in Sources */,
 				ABCA2C6823E171D400746742 /* Notifications+Extensions.swift in Sources */,
 				AB21A206236B256000BCE5E0 /* CGVector+Extensions.swift in Sources */,
@@ -468,6 +483,7 @@
 				AB41AE0D2369A1EE00273845 /* UIColor+Extensions.swift in Sources */,
 				AB34F90E2372D1FD000E7B86 /* Stack.swift in Sources */,
 				ABBDAB882362EDEE00DBFDC1 /* CanvasView.swift in Sources */,
+				AB93C97323F185FB00CD8006 /* Predicate.swift in Sources */,
 				ABD5F1A72382B8B9002FFD16 /* Perimeter.swift in Sources */,
 				AB84F128237EC31200D4CE37 /* Matrix.swift in Sources */,
 				AB84D0BC23E85652005E7DC7 /* CGRect+Extensions.swift in Sources */,

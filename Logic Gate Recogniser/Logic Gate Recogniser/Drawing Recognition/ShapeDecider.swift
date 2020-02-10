@@ -35,8 +35,8 @@ class ShapeDecider {
             NSString(string: "RectanglePerimeterRatio?") : NSNumber(value: Float(attributes.rectanglePerimeterRatio))
         ]
         
-        print(answers)
-        print(decisionTree)
+//        print(answers)
+//        print(decisionTree)
         
         let type = ShapeType.init(rawValue: String(decisionTree.findAction(forAnswers: answers) as! NSString))!
         

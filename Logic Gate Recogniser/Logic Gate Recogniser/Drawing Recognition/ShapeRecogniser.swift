@@ -28,18 +28,23 @@ class ShapeRecogniser {
     let analyser: ShapeAnalyser
     let decider: ShapeDecider
     let detailAnalyser: DetailAnalyser
+    let combiner: ShapeCombiner
     
     var recognisedShapes: [Shape] = [] // Temporary for debugging
     private var adjacentShapes: [[Shape]] = []
     
     init(analyser: ShapeAnalyser = ShapeAnalyser(),
          decider: ShapeDecider = ShapeDecider(),
-         detailAnalyser: DetailAnalyser = DetailAnalyser()) {
+         detailAnalyser: DetailAnalyser = DetailAnalyser(),
+         shapeCombiner: ShapeCombiner = ShapeCombiner() ) {
         self.analyser = analyser
         self.decider = decider
         self.detailAnalyser = detailAnalyser
+        self.combiner = shapeCombiner
     }
     
+    ///Recognises the shape from a stroke that the user entered
+    ///- Parameter stroke: CGPoints of users input on the canvas
     func recogniseShape(from stroke: Stroke) {
         // TODO: - MultiThread this for performance
         guard let hull = analyser.convexHull(of: stroke) else { return }
@@ -67,6 +72,19 @@ class ShapeRecogniser {
         
         recognisedShapes.append(shape)
         findAdjacentShapes(shape: shape)
+    }
+    
+    ///Combines the shapes that have already been recognised into more complex shapes or gates
+    func combineShapes() {
+
+        for (i, list) in adjacentShapes.enumerated() {
+            //Do some stuff if there are multiple shapes....
+            if let triangle = combiner.combineLinesToTriangle(shapes: list) {
+                adjacentShapes[i].removeAll(where: Predicate.isLine.matches)
+                adjacentShapes[i].append(triangle)
+                NotificationCenter.default.post(name: .gateRecognised, object: triangle)
+            }
+       }
     }
     
     // MARK: -  Helper Functions
