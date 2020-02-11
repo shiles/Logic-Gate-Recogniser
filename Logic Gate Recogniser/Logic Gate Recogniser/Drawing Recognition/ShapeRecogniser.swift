@@ -84,6 +84,8 @@ class ShapeRecogniser {
                 adjacentShapes[i].append(triangle)
                 NotificationCenter.default.post(name: .gateRecognised, object: triangle)
             }
+            
+            combiner.findGates(shapes: list)
        }
     }
     

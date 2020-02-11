@@ -42,6 +42,30 @@ extension Array {
     
 }
 
+extension Array {
+    
+    ///Applies a predicate and returns values matching true
+    ///- Parameter predicate: Predicate to apply
+    ///- Returns: List of values that fit predicate
+    func shapes(matching predicate: Predicate<Element>) -> [Element] {
+        self.filter(predicate.matches)
+    }
+    
+    ///Applies a predicate and returns if any values match
+    ///- Parameter predicate: Predicate to apply
+    ///- Returns: if values match
+    func has(matching predicate: Predicate<Element>) -> Bool {
+        self.contains(where: predicate.matches)
+    }
+    
+    ///Removes the values that match the predicate
+    ///- Parameter predicate: Predicate to apply
+    mutating func remove(matching predicate: Predicate<Element>) {
+        self.removeAll(where: predicate.matches)
+    }
+    
+}
+
 extension Array where Element == CGFloat{
     
     ///Root mean squares the value within the array to find average devience
@@ -80,15 +104,5 @@ extension Array where Element == CGPoint {
     ///- Returns: Minimum x, y point
     mutating func removeMinPoint() -> CGPoint {
         return self.remove(at: self.firstIndex(of: minPoint)!)
-    }
-}
-
-extension Array where Element == Shape {
-    
-    ///Applies a predicate and returns values matching true
-    ///- Parameter predicate: Predicate to apply
-    ///- Returns: List of values that fit predicate
-    func shapes(matching predicate: Predicate<Shape>) -> [Shape] {
-        self.filter(predicate.matches)
     }
 }
