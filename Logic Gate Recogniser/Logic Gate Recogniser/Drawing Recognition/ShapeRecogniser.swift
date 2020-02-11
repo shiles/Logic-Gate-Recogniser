@@ -75,8 +75,7 @@ class ShapeRecogniser {
     }
     
     ///Combines the shapes that have already been recognised into more complex shapes or gates
-    func combineShapes() {
-
+    @objc func combineShapes() {
         for (i, list) in adjacentShapes.enumerated() {
             //Do some stuff if there are multiple shapes....
             if let triangle = combiner.combineLinesToTriangle(shapes: list) {

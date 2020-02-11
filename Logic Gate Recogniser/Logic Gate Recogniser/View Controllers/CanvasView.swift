@@ -17,6 +17,7 @@ enum DrawingTools {
 class CanvasView: UIImageView {
     
     private let drawingRecogniser = ShapeRecogniser()
+    private weak var analysisTimer: Timer?
     private var recognisedLines: [Line] = []
     
     // Tool Settings
@@ -43,6 +44,7 @@ class CanvasView: UIImageView {
     private var points: [CGPoint] = []
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+        analysisTimer?.invalidate()
         guard let touch = touches.first else { return }
         
         UIGraphicsBeginImageContextWithOptions(bounds.size, false, 0.0)
@@ -94,20 +96,27 @@ class CanvasView: UIImageView {
         drawingRecogniser.recogniseShape(from: points)
         points = []
         
-        drawingRecogniser.recognisedShapes.forEach {
-            let box = $0.inflatedBoundingBox
-            let list = [CGPoint(x: box.minX, y: box.minY), CGPoint(x: box.minX, y: box.maxY),
-                        CGPoint(x: box.maxX, y: box.maxY), CGPoint(x: box.maxX, y: box.minY)]
-            drawConvexHull(convexHull: list, colour: .blue)
-        }
+//        drawingRecogniser.recognisedShapes.forEach {
+//            let box = $0.inflatedBoundingBox
+//            let list = [CGPoint(x: box.minX, y: box.minY), CGPoint(x: box.minX, y: box.maxY),
+//                        CGPoint(x: box.maxX, y: box.maxY), CGPoint(x: box.maxX, y: box.minY)]
+//            drawConvexHull(convexHull: list, colour: .blue)
+//        }
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-            self.drawingRecogniser.combineShapes()
-        }
+        analysisTimer = Timer.scheduledTimer(
+            timeInterval: 1.5,
+            target: self,
+            selector: #selector(performAnalysis),
+            userInfo: nil,
+            repeats: false)
     }
     
     override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
         image = drawingImage
+    }
+    
+    @objc private func performAnalysis() {
+        drawingRecogniser.combineShapes()
     }
     
     private func drawStroke(context: CGContext, touch: UITouch) {
