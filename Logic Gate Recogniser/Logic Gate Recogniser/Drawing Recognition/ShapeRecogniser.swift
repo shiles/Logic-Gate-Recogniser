@@ -54,38 +54,38 @@ class ShapeRecogniser {
         let attributes = findShapeAttributes(stroke: stroke, hull: hull, triangle: triangle, boundingBox: container)
     
         var shape = decider.findShape(for: attributes)
-        NotificationCenter.default.post(name: .gateRecognised, object: shape)
+        NotificationCenter.default.post(name: .shapeRecognised, object: shape)
         
         if shape.type == .unknown { return }
         
         if shape.type == .unanalysedTriangle {
             let analysedType = detailAnalyser.analyseTriangle(triangle: stroke)
             shape = Shape(type: analysedType, convexHull: shape.convexHull)
-            NotificationCenter.default.post(name: .gateRecognised, object: shape)
+            NotificationCenter.default.post(name: .shapeRecognised, object: shape)
         }
         
         if shape.type == .rectangle {
             let analysedType = detailAnalyser.analyseRectangle(rectangle: stroke)
             shape = Shape(type: analysedType, convexHull: shape.convexHull)
-            NotificationCenter.default.post(name: .gateRecognised, object: shape)
+            NotificationCenter.default.post(name: .shapeRecognised, object: shape)
         }
         
         recognisedShapes.append(shape)
         findAdjacentShapes(shape: shape)
+        print(adjacentShapes)
     }
     
     ///Combines the shapes that have already been recognised into more complex shapes or gates
-    @objc func combineShapes() {
+    @objc func performAnalysis() {
         for (i, list) in adjacentShapes.enumerated() {
-            //Do some stuff if there are multiple shapes....
-            if let triangle = combiner.combineLinesToTriangle(shapes: list) {
-                adjacentShapes[i].removeAll(where: Predicate.isLine.matches)
-                adjacentShapes[i].append(triangle)
-                NotificationCenter.default.post(name: .gateRecognised, object: triangle)
-            }
+            adjacentShapes[i] = combiner.combineLinesToTriangle(shapes: list)
             
-            combiner.findGates(shapes: list)
-       }
+            if let newList = combiner.combineShapesToGates(shapes: list) {
+                adjacentShapes[i] = newList
+            } else {
+                adjacentShapes.remove(at: i)
+            }
+        }
     }
     
     // MARK: -  Helper Functions

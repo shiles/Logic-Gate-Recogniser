@@ -39,21 +39,6 @@ class DetailAnalyser {
         return .rectangle
     }
     
-    ///Finds the angle between two lines if the first point's end and the second point's line interesect
-    ///- Parameter first: First line drawn cronologically
-    ///- Parameter second: Second line drawn cronologically
-    ///- Returns: Angle between lines if valid, or nil.
-    private func angleBetwen(between first: Line, _ second: Line) -> Angle? {
-        guard first.endPoint == second.startPoint else { return nil }
-       
-        let missingSide = Line(startPoint: second.endPoint, endPoint: first.startPoint)
-        let a = missingSide.length
-        let b = first.length
-        let c = second.length
-        
-        return acos((b.squared() + c.squared() - a.squared()) / (2.0 * b * c))
-    }
-    
     ///Finds all the strait lines within the points.
     ///- Parameter points: Points of the line to check for strait lines
     ///- Returns: A list of strait lines
@@ -67,19 +52,6 @@ class DetailAnalyser {
     }
         
     // MARK: Manipulation Functions
-    
-    ///Connects the first and last line in the list if their start and end points are within an allowed devience
-    ///- Parameter lines: A list of the strait lines to connect
-    ///- Returns: List of strait lines with the last point connected if within devience
-    private func connectCloseLines(lines: [Line]) -> [Line] {
-        guard let first = lines.first, let last = lines.last, first != last else { return lines }
-        
-        if isStrokeCloseToConnecting(between: first.startPoint, last.endPoint) {
-           return lines.replaceLast(Line(startPoint: last.startPoint, endPoint: first.startPoint))
-        }
-    
-        return lines
-    }
     
     ///Connects adjacent lines if their vectors are similar, combining the lines into one strait line
     ///- Parameter lines: Input lines
@@ -106,7 +78,7 @@ class DetailAnalyser {
     ///- Parameter points: Points of the line to translate
     ///- Returns: Translated points relative to input
     private func translate(points: [CGPoint]) -> [CGPoint] {
-        guard let first = points.first, let last = points.last else { fatalError() }
+        guard let first = points.first, let last = points.last else { fatalError("Translation needs at least 2 points") }
         
         let translation = CGAffineTransform(translationX: -first.x, y: -first.y)
         let rotation = CGAffineTransform(rotationAngle: rotationAngle(between: first, last))
@@ -131,8 +103,7 @@ class DetailAnalyser {
     ///- Returns: A boolean indicating if the line is strait or not
     private func isStraitLine(points: [CGPoint], allowedDevience: CGFloat = 5.0) -> Bool {
         let xCoords = translate(points: points).map(\.x)
-        let rms = xCoords.rootMeanSquared()
-        return rms < allowedDevience
+        return xCoords.rootMeanSquared() < allowedDevience
     }
     
     ///Checks if last stroke point is close to connecting to the first, within a allowed devience
@@ -156,8 +127,6 @@ class DetailAnalyser {
         
         let xDif = abs(v1.dx - v2.dx)
         let yDif = abs(v1.dy - v2.dy)
-        
-        //print("xDif = \(xDif) | yDif = \(yDif) | Should combine = \(xDif < allowedDevience && yDif < allowedDevience)")
         
         return xDif < allowedDevience && yDif < allowedDevience
     }

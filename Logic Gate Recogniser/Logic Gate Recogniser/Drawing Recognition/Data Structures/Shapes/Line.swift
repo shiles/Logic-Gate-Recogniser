@@ -19,7 +19,6 @@ struct Line: Equatable {
     
     ///Transform the line into a vector which has been transfromed to the origin (0,0).
     var vector: CGVector {
-        let transEnd = endPoint.applying(CGAffineTransform(translationX: -startPoint.x, y: -startPoint.y))
-        return CGVector(dx: transEnd.x, dy: transEnd.y)
+        endPoint.applying(CGAffineTransform(translationX: -startPoint.x, y: -startPoint.y)).toVector()
     }
 }

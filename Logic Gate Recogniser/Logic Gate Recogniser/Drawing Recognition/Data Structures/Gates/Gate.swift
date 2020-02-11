@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum Gate {
+enum Gate: String {
     case not, or, nor, and, nand, xor, xnor
 }
 

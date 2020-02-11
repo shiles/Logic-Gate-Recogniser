@@ -104,7 +104,7 @@ class CanvasView: UIImageView {
 //        }
         
         analysisTimer = Timer.scheduledTimer(
-            timeInterval: 1.5,
+            timeInterval: 1,
             target: self,
             selector: #selector(performAnalysis),
             userInfo: nil,
@@ -116,7 +116,7 @@ class CanvasView: UIImageView {
     }
     
     @objc private func performAnalysis() {
-        drawingRecogniser.combineShapes()
+        drawingRecogniser.performAnalysis()
     }
     
     private func drawStroke(context: CGContext, touch: UITouch) {

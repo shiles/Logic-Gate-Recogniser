@@ -17,7 +17,7 @@ extension Stroke {
         if self.count < 2 { return 0 }
         
         return (0...self.lastIndex-1).map {
-            let next = self[($0+1)], current = self[$0]
+            let next = self[$0+1], current = self[$0]
             return ((next.x - current.x).squared() + (next.y - current.y).squared()).squareRoot()
         }.reduce(0, +)
     }

@@ -27,7 +27,6 @@
 		AB36BBF0235735CA006B8607 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB36BBEE235735CA006B8607 /* Main.storyboard */; };
 		AB36BBF2235735CB006B8607 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB36BBF1235735CB006B8607 /* Assets.xcassets */; };
 		AB36BBF5235735CB006B8607 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB36BBF3235735CB006B8607 /* LaunchScreen.storyboard */; };
-		AB41AE09236878C800273845 /* Angle+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB41AE08236878C800273845 /* Angle+Extensions.swift */; };
 		AB41AE0B23688D4200273845 /* Collection+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB41AE0A23688D4200273845 /* Collection+Extensions.swift */; };
 		AB41AE0D2369A1EE00273845 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB41AE0C2369A1EE00273845 /* UIColor+Extensions.swift */; };
 		AB41AE0F2369AEDB00273845 /* Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB41AE0E2369AEDB00273845 /* Line.swift */; };
@@ -97,7 +96,6 @@
 		AB36BBFB235735CC006B8607 /* Logic Gate RecogniserTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Logic Gate RecogniserTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB36BC01235735CC006B8607 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AB36BC0A23574305006B8607 /* Logic Gate Recogniser.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Logic Gate Recogniser.entitlements"; sourceTree = "<group>"; };
-		AB41AE08236878C800273845 /* Angle+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Angle+Extensions.swift"; sourceTree = "<group>"; };
 		AB41AE0A23688D4200273845 /* Collection+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+Extensions.swift"; sourceTree = "<group>"; };
 		AB41AE0C2369A1EE00273845 /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
 		AB41AE0E2369AEDB00273845 /* Line.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Line.swift; sourceTree = "<group>"; };
@@ -357,7 +355,6 @@
 			children = (
 				ABF06A5723588CF6006C8E2B /* UIView+Extentions.swift */,
 				AB9FC19823673BEB003D1A85 /* Array+Extensions.swift */,
-				AB41AE08236878C800273845 /* Angle+Extensions.swift */,
 				AB41AE0A23688D4200273845 /* Collection+Extensions.swift */,
 				AB41AE0C2369A1EE00273845 /* UIColor+Extensions.swift */,
 				AB21A205236B256000BCE5E0 /* CGVector+Extensions.swift */,
@@ -484,7 +481,6 @@
 				ABC76DF223798A22001A7A29 /* CGPoint+Extensions.swift in Sources */,
 				AB9FC19923673BEB003D1A85 /* Array+Extensions.swift in Sources */,
 				AB0866FF2386C97000E30B50 /* ShapeDecider.swift in Sources */,
-				AB41AE09236878C800273845 /* Angle+Extensions.swift in Sources */,
 				AB41AE0F2369AEDB00273845 /* Line.swift in Sources */,
 				AB557E9823F2B0AE00D9FA5F /* Gate.swift in Sources */,
 				AB93C97023F1841600CD8006 /* ShapeCombiner.swift in Sources */,

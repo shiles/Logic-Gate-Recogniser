@@ -13,7 +13,9 @@ class DetectedGateInfoView: UIView {
 
     @IBOutlet var contentView: UIView!
     @IBOutlet weak var recognisedGate: UILabel!
-    private var subscriber: AnyCancellable?
+    @IBOutlet weak var recognisedShape: UILabel!
+    private var gateSubscriber: AnyCancellable?
+    private var shapeSubscriber: AnyCancellable?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -36,8 +38,12 @@ class DetectedGateInfoView: UIView {
         self.roundCorners()
         
         // Listener
-        subscriber = NotificationCenter.Publisher(center: .default, name: .gateRecognised, object: nil)
+        gateSubscriber = NotificationCenter.Publisher(center: .default, name: .gateRecognised, object: nil)
+            .map { notification in return notification.object as! Gate}
+            .sink(receiveValue: { gate in self.recognisedGate.text = gate.rawValue } )
+           
+        shapeSubscriber = NotificationCenter.Publisher(center: .default, name: .shapeRecognised, object: nil)
             .map { notification in return notification.object as! Shape}
-            .sink(receiveValue: { shape in self.recognisedGate.text = shape.type.rawValue } )
+            .sink(receiveValue: { shape in self.recognisedShape.text = shape.type.rawValue } )
     }
 }

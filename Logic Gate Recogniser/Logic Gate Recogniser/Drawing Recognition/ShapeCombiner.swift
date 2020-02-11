@@ -14,7 +14,7 @@ class ShapeCombiner {
     
     // MARK: Logic Gate Recognisers
     
-    func findGates(shapes: [Shape]) {
+    func combineShapesToGates(shapes: [Shape]) -> [Shape]? {
         var gates = Gate.allTypes
         
         //Filter out gates that contain or don't contain circles
@@ -49,9 +49,9 @@ class ShapeCombiner {
             gates.remove(matching: .containsLine)
         }
         
-        if(gates.count == 1) {
-            print(gates)
-        }
+        guard let gate = gates.first, gates.count == 1 else { return shapes }
+        NotificationCenter.default.post(name: .gateRecognised, object: gate)
+        return nil
     }
     
     // MARK: Shape Combinators
@@ -59,19 +59,21 @@ class ShapeCombiner {
     ///Combines the lines into a triangle if possible
     ///- Parameter shapes: A list of shapes to analyse
     ///- Returns: A tirangle from combined lines or nil
-    func combineLinesToTriangle(shapes: [Shape]) -> Shape? {
+    func combineLinesToTriangle(shapes: [Shape]) -> [Shape] {
         let lines = shapes.shapes(matching: .isLine)
         
         if lines.count == 3 {
-            guard let combinedHull = analyser.convexHull(of: lines.map(\.convexHull).reduce([],+)) else { return nil }
+            guard let combinedHull = analyser.convexHull(of: lines.map(\.convexHull).reduce([],+)) else { return shapes }
+            let type: ShapeType = lines.has(matching: \.type == .curvedLine) ? .curvedTriangle : .straitTringle
             
-            if lines.has(matching: \.type == .curvedLine) {
-                return Shape(type: .curvedTriangle, convexHull: combinedHull)
-            }
+            let triangle = Shape(type: type, convexHull: combinedHull)
+            NotificationCenter.default.post(name: .shapeRecognised, object: triangle)
             
-            return Shape(type: .straitTringle, convexHull: combinedHull)
+            var newList = shapes.shapes(matching: .notLine)
+            newList.append(triangle)
+            return newList
         }
-        
-        return nil
+            
+        return shapes
     }
 }
