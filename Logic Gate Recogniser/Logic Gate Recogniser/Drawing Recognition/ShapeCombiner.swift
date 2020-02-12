@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 class ShapeCombiner {
     
@@ -15,7 +16,7 @@ class ShapeCombiner {
     // MARK: Logic Gate Recognisers
     
     func combineShapesToGates(shapes: [Shape]) -> [Shape]? {
-        var gates = Gate.allTypes
+        var gates = GateType.allTypes
         
         //Filter out gates that contain or don't contain circles
         if shapes.has(matching: \.type == .circle) {
@@ -50,7 +51,8 @@ class ShapeCombiner {
         }
         
         guard let gate = gates.first, gates.count == 1 else { return shapes }
-        NotificationCenter.default.post(name: .gateRecognised, object: gate)
+        let boundingBox = shapes.reduce(shapes.first!.boundingBox, { $0.union($1.boundingBox) })
+        NotificationCenter.default.post(name: .gateRecognised, object: GateType.buildGate(of: gate, at: boundingBox))
         return nil
     }
     

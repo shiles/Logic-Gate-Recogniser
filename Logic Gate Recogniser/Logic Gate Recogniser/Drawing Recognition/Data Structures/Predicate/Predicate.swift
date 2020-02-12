@@ -48,7 +48,7 @@ extension Predicate where Target == Shape {
     }
 }
 
-extension Predicate where Target == Gate {
+extension Predicate where Target == GateType {
     
     ///Predicate for the gates that contain circles
     static var containsCircle: Self {

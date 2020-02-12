@@ -26,7 +26,7 @@ extension Shape {
     var description: String { "\(type.rawValue)" }
     
     ///Gets the non-rotated bounding box of the shape
-    private var boundingBox: CGRect {
+    var boundingBox: CGRect {
         let path = UIBezierPath()
         path.move(to: convexHull.first!)
         (1...convexHull.lastIndex).forEach { path.addLine(to: convexHull[$0]) }

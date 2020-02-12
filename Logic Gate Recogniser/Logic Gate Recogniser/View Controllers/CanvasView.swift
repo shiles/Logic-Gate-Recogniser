@@ -17,8 +17,8 @@ enum DrawingTools {
 class CanvasView: UIImageView {
     
     private let drawingRecogniser = ShapeRecogniser()
+    private let gateModel = GateModel()
     private weak var analysisTimer: Timer?
-    private var recognisedLines: [Line] = []
     
     // Tool Settings
     private var defaultLineWidth: CGFloat = 10

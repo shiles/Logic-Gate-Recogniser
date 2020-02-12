@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		AB0866FF2386C97000E30B50 /* ShapeDecider.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0866FE2386C97000E30B50 /* ShapeDecider.swift */; };
+		AB0BA48223F4006E00288D37 /* GateModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0BA48123F4006E00288D37 /* GateModel.swift */; };
+		AB0BA48423F400F800288D37 /* Gate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0BA48323F400F800288D37 /* Gate.swift */; };
 		AB21A206236B256000BCE5E0 /* CGVector+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB21A205236B256000BCE5E0 /* CGVector+Extensions.swift */; };
 		AB21A208236B678700BCE5E0 /* CGFloat+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB21A207236B678700BCE5E0 /* CGFloat+Extensions.swift */; };
 		AB27163D23EAF92100323FAA /* Sequence+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB27163C23EAF92100323FAA /* Sequence+Extensions.swift */; };
@@ -31,7 +33,7 @@
 		AB41AE0D2369A1EE00273845 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB41AE0C2369A1EE00273845 /* UIColor+Extensions.swift */; };
 		AB41AE0F2369AEDB00273845 /* Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB41AE0E2369AEDB00273845 /* Line.swift */; };
 		AB44795523630972000BF2A5 /* DetailAnalyser.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB44795423630972000BF2A5 /* DetailAnalyser.swift */; };
-		AB557E9823F2B0AE00D9FA5F /* Gate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB557E9723F2B0AE00D9FA5F /* Gate.swift */; };
+		AB557E9823F2B0AE00D9FA5F /* GateType.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB557E9723F2B0AE00D9FA5F /* GateType.swift */; };
 		AB826CBA23A3C04F00A01D23 /* Array+ExtensionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB826CB923A3C04F00A01D23 /* Array+ExtensionsTests.swift */; };
 		AB84D0BC23E85652005E7DC7 /* CGRect+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB84D0BB23E85652005E7DC7 /* CGRect+Extensions.swift */; };
 		AB84F128237EC31200D4CE37 /* Matrix.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB84F127237EC31200D4CE37 /* Matrix.swift */; };
@@ -72,6 +74,8 @@
 
 /* Begin PBXFileReference section */
 		AB0866FE2386C97000E30B50 /* ShapeDecider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShapeDecider.swift; sourceTree = "<group>"; };
+		AB0BA48123F4006E00288D37 /* GateModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GateModel.swift; sourceTree = "<group>"; };
+		AB0BA48323F400F800288D37 /* Gate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gate.swift; sourceTree = "<group>"; };
 		AB21A205236B256000BCE5E0 /* CGVector+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGVector+Extensions.swift"; sourceTree = "<group>"; };
 		AB21A207236B678700BCE5E0 /* CGFloat+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGFloat+Extensions.swift"; sourceTree = "<group>"; };
 		AB27163C23EAF92100323FAA /* Sequence+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sequence+Extensions.swift"; sourceTree = "<group>"; };
@@ -100,7 +104,7 @@
 		AB41AE0C2369A1EE00273845 /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
 		AB41AE0E2369AEDB00273845 /* Line.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Line.swift; sourceTree = "<group>"; };
 		AB44795423630972000BF2A5 /* DetailAnalyser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailAnalyser.swift; sourceTree = "<group>"; };
-		AB557E9723F2B0AE00D9FA5F /* Gate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gate.swift; sourceTree = "<group>"; };
+		AB557E9723F2B0AE00D9FA5F /* GateType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GateType.swift; sourceTree = "<group>"; };
 		AB826CB923A3C04F00A01D23 /* Array+ExtensionsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+ExtensionsTests.swift"; sourceTree = "<group>"; };
 		AB84D0BB23E85652005E7DC7 /* CGRect+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGRect+Extensions.swift"; sourceTree = "<group>"; };
 		AB84F127237EC31200D4CE37 /* Matrix.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Matrix.swift; sourceTree = "<group>"; };
@@ -146,6 +150,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AB0BA48023F4005000288D37 /* Gate Model */ = {
+			isa = PBXGroup;
+			children = (
+				AB557E9623F2B08D00D9FA5F /* Gates */,
+				AB0BA48123F4006E00288D37 /* GateModel.swift */,
+			);
+			path = "Gate Model";
+			sourceTree = "<group>";
+		};
 		AB0D122F237F0813000776A5 /* Stack */ = {
 			isa = PBXGroup;
 			children = (
@@ -196,6 +209,7 @@
 			children = (
 				ABF06A5623588CA3006C8E2B /* Extentions */,
 				AB4479532363095E000BF2A5 /* Drawing Recognition */,
+				AB0BA48023F4005000288D37 /* Gate Model */,
 				AB9F337A235887A100A39A44 /* View Controllers */,
 				AB9F3375235885A700A39A44 /* Storyboards */,
 				AB36BBE8235735CA006B8607 /* AppDelegate.swift */,
@@ -233,7 +247,8 @@
 		AB557E9623F2B08D00D9FA5F /* Gates */ = {
 			isa = PBXGroup;
 			children = (
-				AB557E9723F2B0AE00D9FA5F /* Gate.swift */,
+				AB557E9723F2B0AE00D9FA5F /* GateType.swift */,
+				AB0BA48323F400F800288D37 /* Gate.swift */,
 			);
 			path = Gates;
 			sourceTree = "<group>";
@@ -258,7 +273,6 @@
 				AB93C97123F185EC00CD8006 /* Predicate */,
 				ABD5F1A82382BB6A002FFD16 /* Drawing */,
 				AB84F12B237EFFBF00D4CE37 /* Shapes */,
-				AB557E9623F2B08D00D9FA5F /* Gates */,
 				AB84F126237EC2A000D4CE37 /* Matrix */,
 				AB84F12C237EFFDD00D4CE37 /* Stack */,
 			);
@@ -471,6 +485,7 @@
 			files = (
 				AB9F337C235887C300A39A44 /* DetectedGateInfoView.swift in Sources */,
 				AB36BBED235735CA006B8607 /* DrawingViewController.swift in Sources */,
+				AB0BA48223F4006E00288D37 /* GateModel.swift in Sources */,
 				AB21A208236B678700BCE5E0 /* CGFloat+Extensions.swift in Sources */,
 				AB84F130237F012E00D4CE37 /* ConvexHull.swift in Sources */,
 				ABD5F1B22382CBCC002FFD16 /* ShapeRecogniser.swift in Sources */,
@@ -482,8 +497,9 @@
 				AB9FC19923673BEB003D1A85 /* Array+Extensions.swift in Sources */,
 				AB0866FF2386C97000E30B50 /* ShapeDecider.swift in Sources */,
 				AB41AE0F2369AEDB00273845 /* Line.swift in Sources */,
-				AB557E9823F2B0AE00D9FA5F /* Gate.swift in Sources */,
+				AB557E9823F2B0AE00D9FA5F /* GateType.swift in Sources */,
 				AB93C97023F1841600CD8006 /* ShapeCombiner.swift in Sources */,
+				AB0BA48423F400F800288D37 /* Gate.swift in Sources */,
 				AB84F12E237F010A00D4CE37 /* BoundingBox.swift in Sources */,
 				ABCA2C6823E171D400746742 /* Notifications+Extensions.swift in Sources */,
 				AB21A206236B256000BCE5E0 /* CGVector+Extensions.swift in Sources */,
