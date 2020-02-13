@@ -17,7 +17,7 @@ class GateModel {
     init() {
         // When a gate is found it adds it to the model
         gateSubscriber = NotificationCenter.Publisher(center: .default, name: .gateRecognised, object: nil)
-            .map { notification in return GateType.getGateType(from: notification.object) }
+            .map { notification in return notification.object as AnyObject as! Gate }
             .sink(receiveValue: { gate in self.gates.append(gate) })
     }
 }

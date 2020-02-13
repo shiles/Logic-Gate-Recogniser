@@ -42,20 +42,4 @@ extension GateType {
             return Xnor(boundingBox: boundingBox)
         }
     }
-    
-    ///Get the type of an any object if it's a gate used in notifications
-    ///- Parameter any: Any typed object to check
-    ///- Returns: Type of gate
-    static func getGateType(from any: Any?) -> Gate {
-        switch any {
-        case let not  as Not:  return not
-        case let or   as Or:   return or
-        case let nor  as Nor:  return nor
-        case let and  as And:  return and
-        case let nand as Nand: return nand
-        case let xor  as Xor:  return xor
-        case let xnor as Xnor: return xnor
-        default: fatalError("\(any!) isn't a type!")
-        }
-    }
 }
