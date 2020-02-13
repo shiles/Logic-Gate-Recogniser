@@ -8,8 +8,6 @@
 
 import Foundation
 import UIKit
-import Accelerate
-import simd
 
 class DetailAnalyser {
     
@@ -19,7 +17,6 @@ class DetailAnalyser {
     ///- Parameter triangle: Input triangle
     ///- Returns: Detailed triangle
     func analyseTriangle(triangle: Stroke) -> ShapeType {
-        //TODO: Possibly refactor recogniseStraitLines into connectSimilarLines
         if connectSimilarLines(lines: recogniseStraitLines(points: triangle)).count == 3 {
             return .straitTringle
         }
@@ -31,7 +28,6 @@ class DetailAnalyser {
     ///- Parameter rectangle: Input rectangle
     ///- Returns: Detailed rectangle
     func analyseRectangle(rectangle: Stroke) -> ShapeType {
-        //TODO: Possibly refactor recogniseStraitLines into connectSimilarLines
         if connectSimilarLines(lines: recogniseStraitLines(points: rectangle)).count <= 4 {
             return .curvedLine
         }
@@ -106,22 +102,12 @@ class DetailAnalyser {
         return xCoords.rootMeanSquared() < allowedDevience
     }
     
-    ///Checks if last stroke point is close to connecting to the first, within a allowed devience
-    ///- Parameter first: First point, the point to use as a base for the bounding box
-    ///- Parameter second: Second point, the point to check if is within the bounding box
-    ///- Parameter allowedDevience: Allowed devience to determine if the lines should be connecting or not
-    ///- Returns: A boolean indicating if the points is close to connecting
-    private func isStrokeCloseToConnecting(between first: CGPoint, _ last: CGPoint, allowedDevience: CGFloat = 50.0) -> Bool {
-        let hDev = allowedDevience/2
-        return CGRect(x: first.x - hDev, y: first.y - hDev, width: allowedDevience, height: allowedDevience).contains(last)
-    }
-    
     ///Checks if two vectors are similar, and therefore can be combined
     ///- Parameter first: First point, the vector to use as a base for the bounding box
     ///- Parameter second: Second point, the vector to check if is within the bounding box
     ///- Parameter allowedDevience: Allowed devience to determine if the lines should be connecting or not
     ///- Returns: A boolean indicating if the vector is similar in direction
-    private func isVectorSimilar(between first: CGVector, _ second: CGVector, allowedDevience: CGFloat = 0.5) -> Bool {
+    private func isVectorSimilar(between first: CGVector, _ second: CGVector, allowedDevience: CGFloat = 0.7) -> Bool {
         let v1 = first.normalized()
         let v2 = second.normalized()
         
