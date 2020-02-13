@@ -11,6 +11,14 @@ import UIKit
 
 extension UIBezierPath {
     
+    ///Sets the default drawing style for the path
+    func setDefaultAttributes() {
+        self.lineWidth = 10
+        self.lineCapStyle = .round
+        self.lineJoinStyle = .round
+        UIColor.label.setStroke()
+    }
+    
     ///Scales the path to fit the bounding box and moves it to the location
     ///- Parameter boundingBox: Bounding box to scale too
     func scaleToFit(_ boundingBox: CGRect) {

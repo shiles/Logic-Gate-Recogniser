@@ -17,12 +17,19 @@ class DrawingViewController: UIViewController  {
     @IBOutlet weak var penToolButton: UIBarButtonItem!
     @IBOutlet weak var erasorToolButton: UIBarButtonItem!
     
+    private let gateModel = GateModel()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // General Setup
         self.title = "Recogniser"
         setupPencilInteractions()
+        
+        // Canvas Setup
+        gateModel.drawGatesClosure = {
+            self.canvasView.drawGates(gates: self.gateModel.gates)
+        }
     }
     
     @IBAction func penToolTapped(_ sender: Any) {

@@ -13,6 +13,8 @@
 		AB21A206236B256000BCE5E0 /* CGVector+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB21A205236B256000BCE5E0 /* CGVector+Extensions.swift */; };
 		AB21A208236B678700BCE5E0 /* CGFloat+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB21A207236B678700BCE5E0 /* CGFloat+Extensions.swift */; };
 		AB2540DD23F55A9400204C5F /* UIBezierPath+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2540DC23F55A9400204C5F /* UIBezierPath+Extensions.swift */; };
+		AB2540DF23F56FB000204C5F /* DrawingTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2540DE23F56FB000204C5F /* DrawingTools.swift */; };
+		AB2540E123F57A4100204C5F /* ShapeAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2540E023F57A4100204C5F /* ShapeAttributes.swift */; };
 		AB27163D23EAF92100323FAA /* Sequence+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB27163C23EAF92100323FAA /* Sequence+Extensions.swift */; };
 		AB2A444823A3C77800AD3849 /* Angle+ExtensionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2A444723A3C77800AD3849 /* Angle+ExtensionsTests.swift */; };
 		AB2A444A23A3C9DB00AD3849 /* Collection+ExtensionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2A444923A3C9DB00AD3849 /* Collection+ExtensionsTests.swift */; };
@@ -80,6 +82,8 @@
 		AB21A205236B256000BCE5E0 /* CGVector+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGVector+Extensions.swift"; sourceTree = "<group>"; };
 		AB21A207236B678700BCE5E0 /* CGFloat+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGFloat+Extensions.swift"; sourceTree = "<group>"; };
 		AB2540DC23F55A9400204C5F /* UIBezierPath+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIBezierPath+Extensions.swift"; sourceTree = "<group>"; };
+		AB2540DE23F56FB000204C5F /* DrawingTools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingTools.swift; sourceTree = "<group>"; };
+		AB2540E023F57A4100204C5F /* ShapeAttributes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShapeAttributes.swift; sourceTree = "<group>"; };
 		AB27163C23EAF92100323FAA /* Sequence+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sequence+Extensions.swift"; sourceTree = "<group>"; };
 		AB2A444723A3C77800AD3849 /* Angle+ExtensionsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Angle+ExtensionsTests.swift"; sourceTree = "<group>"; };
 		AB2A444923A3C9DB00AD3849 /* Collection+ExtensionsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+ExtensionsTests.swift"; sourceTree = "<group>"; };
@@ -299,6 +303,7 @@
 				AB84F12F237F012E00D4CE37 /* ConvexHull.swift */,
 				ABD5F1A62382B8B9002FFD16 /* Perimeter.swift */,
 				ABCA2C6923E173D200746742 /* Shape.swift */,
+				AB2540E023F57A4100204C5F /* ShapeAttributes.swift */,
 			);
 			path = Shapes;
 			sourceTree = "<group>";
@@ -344,6 +349,7 @@
 			isa = PBXGroup;
 			children = (
 				ABD5F1A92382BB79002FFD16 /* Stroke.swift */,
+				AB2540DE23F56FB000204C5F /* DrawingTools.swift */,
 			);
 			path = Drawing;
 			sourceTree = "<group>";
@@ -492,6 +498,7 @@
 				AB21A208236B678700BCE5E0 /* CGFloat+Extensions.swift in Sources */,
 				AB84F130237F012E00D4CE37 /* ConvexHull.swift in Sources */,
 				ABD5F1B22382CBCC002FFD16 /* ShapeRecogniser.swift in Sources */,
+				AB2540DF23F56FB000204C5F /* DrawingTools.swift in Sources */,
 				AB9F1DA82372F45900E9E81C /* Triangle.swift in Sources */,
 				AB27163D23EAF92100323FAA /* Sequence+Extensions.swift in Sources */,
 				AB41AE0B23688D4200273845 /* Collection+Extensions.swift in Sources */,
@@ -521,6 +528,7 @@
 				ABCA2C6A23E173D200746742 /* Shape.swift in Sources */,
 				AB34F90C2371D22D000E7B86 /* Orientation.swift in Sources */,
 				AB36BBE9235735CA006B8607 /* AppDelegate.swift in Sources */,
+				AB2540E123F57A4100204C5F /* ShapeAttributes.swift in Sources */,
 				AB36BBEB235735CA006B8607 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -11,8 +11,12 @@ import Combine
 
 class GateModel {
     
-    private(set) var gates: [Gate] = []
     private var gateSubscriber: AnyCancellable?
+    private(set) var gates: [Gate] = [] {
+        didSet { drawGatesClosure?() }
+    }
+    
+    var drawGatesClosure: (()->())?
     
     init() {
         // When a gate is found it adds it to the model

@@ -9,20 +9,6 @@
 import Foundation
 import GameKit
 
-struct ShapeAttributes {
-    ///Convex Hull 
-    let convexHull: ConvexHull
-    
-    ///Convex Hull Perimeter Squared / Area Convex Hull
-    let thinnessRatio: CGFloat
-    
-    ///Area Largest Triangle / Area Convex Hull
-    let triangleAreaRatio: CGFloat
-    
-    ///Perimeter Convex Hull / Perimeter Bounding Box
-    let rectanglePerimeterRatio: CGFloat
-}
-
 class ShapeRecogniser {
     
     let analyser: ShapeAnalyser
@@ -31,7 +17,9 @@ class ShapeRecogniser {
     let combiner: ShapeCombiner
     
     var recognisedShapes: [Shape] = [] // Temporary for debugging
-    private var adjacentShapes: [[Shape]] = []
+    private var adjacentShapes: [[Shape]] = [] {
+        didSet { print(adjacentShapes) }
+    }
     
     init(analyser: ShapeAnalyser = ShapeAnalyser(),
          decider: ShapeDecider = ShapeDecider(),
@@ -72,7 +60,6 @@ class ShapeRecogniser {
         
         recognisedShapes.append(shape)
         findAdjacentShapes(shape: shape)
-        print(adjacentShapes)
     }
     
     ///Combines the shapes that have already been recognised into more complex shapes or gates

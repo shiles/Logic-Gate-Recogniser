@@ -9,15 +9,9 @@
 import Foundation
 import UIKit
 
-enum DrawingTools {
-    case pen
-    case erasor
-}
-
 class CanvasView: UIImageView {
     
     private let drawingRecogniser = ShapeRecogniser()
-    private let gateModel = GateModel()
     private weak var analysisTimer: Timer?
     
     // Tool Settings
@@ -42,6 +36,8 @@ class CanvasView: UIImageView {
     // Predictive Drawing
     private var drawingImage: UIImage?
     private var points: [CGPoint] = []
+    
+    // MARK: Drawing Methods
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         analysisTimer?.invalidate()
@@ -115,9 +111,28 @@ class CanvasView: UIImageView {
         image = drawingImage
     }
     
+    func drawGates(gates: [Gate]) {
+        UIGraphicsBeginImageContextWithOptions(bounds.size, false, 0.0)
+        let context = UIGraphicsGetCurrentContext()!
+        
+        // Draw previous image into context
+        //drawingImage?.draw(in: bounds)
+        
+        gates.forEach { $0.draw(with: context) }
+        
+        // Update real image
+        drawingImage = UIGraphicsGetImageFromCurrentImageContext()
+        image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+    }
+    
+    // MARK: Analysis Methods
+    
     @objc private func performAnalysis() {
         drawingRecogniser.performAnalysis()
     }
+    
+    // MARK: Debug Drawing Methods
     
     private func drawStroke(context: CGContext, touch: UITouch) {
         let previousLocation = touch.previousLocation(in: self)
