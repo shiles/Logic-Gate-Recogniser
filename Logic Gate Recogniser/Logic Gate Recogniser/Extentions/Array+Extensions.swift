@@ -74,7 +74,7 @@ extension Array {
     }
 }
 
-extension Array where Element == CGFloat{
+extension Array where Element == CGFloat {
     
     ///Root mean squares the value within the array to find average devience
     ///- Returns: Root mean square value for the values within the array 

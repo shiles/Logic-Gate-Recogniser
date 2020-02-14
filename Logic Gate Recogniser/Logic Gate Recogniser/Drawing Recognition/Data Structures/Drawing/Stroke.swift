@@ -21,4 +21,13 @@ extension Stroke {
             return ((next.x - current.x).squared() + (next.y - current.y).squared()).squareRoot()
         }.reduce(0, +)
     }
+    
+    ///Gets the non-rotated bounding box of the stroke
+    var boundingBox: CGRect {
+        let path = UIBezierPath()
+        path.move(to: self.first!)
+        (1...self.lastIndex).forEach { path.addLine(to: self[$0]) }
+        return path.bounds
+    }
+    
 }

@@ -36,6 +36,7 @@ class CanvasView: UIImageView {
     // Predictive Drawing
     private var drawingImage: UIImage?
     private var points: [CGPoint] = []
+    private var strokes: [Stroke] = []
     
     // MARK: Drawing Methods
     
@@ -60,7 +61,7 @@ class CanvasView: UIImageView {
         
         for touch in touches {
             points.append(touch.location(in: self))
-            self.drawStroke(context: context, touch: touch)
+            self.drawTouchEvent(context: context, touch: touch)
         }
         
         // Draws a dispsoable image using predicted data from apple
@@ -68,7 +69,7 @@ class CanvasView: UIImageView {
         
         if let predictedTouches = event?.predictedTouches(for: touch) {
             for touch in predictedTouches {
-                self.drawStroke(context: context, touch: touch)
+                self.drawTouchEvent(context: context, touch: touch)
             }
         }
 
@@ -90,6 +91,7 @@ class CanvasView: UIImageView {
 //        drawCorners(boundingBox: minRect)
         
         drawingRecogniser.recogniseShape(from: points)
+        strokes.append(points)
         points = []
         
 //        drawingRecogniser.adjacentShapes.flatMap({ $0 }).forEach {
@@ -98,7 +100,7 @@ class CanvasView: UIImageView {
 //                        CGPoint(x: box.maxX, y: box.maxY), CGPoint(x: box.maxX, y: box.minY)]
 //            drawConvexHull(convexHull: list, colour: .blue)
 //        }
-//        
+        
         analysisTimer = Timer.scheduledTimer(
             timeInterval: 1,
             target: self,
@@ -111,14 +113,18 @@ class CanvasView: UIImageView {
         image = drawingImage
     }
     
+    ///Draws the logic gates that have been recognised onto the canvas
+    ///- Parameter gates: The gates that have been found
     func drawGates(gates: [Gate]) {
         UIGraphicsBeginImageContextWithOptions(bounds.size, false, 0.0)
         let context = UIGraphicsGetCurrentContext()!
         
-        // Draw previous image into context
-        //drawingImage?.draw(in: bounds)
+        gates.forEach { gate in
+            strokes.removeAll(where: { gate.boundingBox.intersects($0.boundingBox) })
+            gate.draw(with: context)
+        }
         
-        gates.forEach { $0.draw(with: context) }
+        strokes.forEach { drawStroke(context: context, stroke: $0) }
         
         // Update real image
         drawingImage = UIGraphicsGetImageFromCurrentImageContext()
@@ -128,13 +134,15 @@ class CanvasView: UIImageView {
     
     // MARK: Analysis Methods
     
+    ///Performs the analysis on the shapes that have been recognised once theyre
     @objc private func performAnalysis() {
         drawingRecogniser.performAnalysis()
     }
     
-    // MARK: Debug Drawing Methods
-    
-    private func drawStroke(context: CGContext, touch: UITouch) {
+    ///Draw the touch event on the canvas
+    ///- Parameter context: Context to draw the event too
+    ///- Parameter touch: Touch event to draw
+    private func drawTouchEvent(context: CGContext, touch: UITouch) {
         let previousLocation = touch.previousLocation(in: self)
         let location = touch.location(in: self)
         
@@ -151,7 +159,28 @@ class CanvasView: UIImageView {
         
         // Draw the stroke
         context.strokePath()
-     }
+    }
+    
+    private func drawStroke(context: CGContext, stroke: Stroke) {
+        // Set color
+        drawColor.setStroke()
+
+        // Configure line
+        context.setLineWidth(defaultLineWidth)
+        context.setLineCap(.round)
+        
+        // Draw Lines
+        context.move(to: stroke.first!)
+        (1...stroke.lastIndex).forEach {
+            context.addLine(to: stroke[$0])
+        }
+        
+        // Draw the stroke
+        context.strokePath()
+    }
+    
+    
+    // MARK: Debug Drawing Methods
     
     func drawRecognisedLine(line: Line, colour: UIColor = UIColor(hue: drand48())) {
         UIGraphicsBeginImageContextWithOptions(bounds.size, false, 0.0)
