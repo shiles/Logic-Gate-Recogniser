@@ -34,7 +34,7 @@ class ShapeCombiner {
         
         //Filter out gates that contain or don't contain triangle
         if shapes.has(matching: .isTriangle) {
-            if shapes.has(matching: \.type == .straitTringle) {
+            if shapes.has(matching: \.type == .straightTriangle) {
                 gates.remove(matching: .notContainsStraightTriangle)
             } else {
                 gates.remove(matching: .notContainsCurvedTriangle)
@@ -60,22 +60,42 @@ class ShapeCombiner {
     
     ///Combines the lines into a triangle if possible
     ///- Parameter shapes: A list of shapes to analyse
-    ///- Returns: A tirangle from combined lines or nil
-    func combineLinesToTriangle(shapes: [Shape]) -> [Shape] {
+    ///- Returns: An updated list of shapes
+    func combineToTriangle(shapes: [Shape]) -> [Shape] {
         let lines = shapes.shapes(matching: .isLine)
         
         if lines.count == 3 {
             guard let combinedHull = analyser.convexHull(of: lines.map(\.convexHull).reduce([],+)) else { return shapes }
-            let type: ShapeType = lines.has(matching: \.type == .curvedLine) ? .curvedTriangle : .straitTringle
+            let type: ShapeType = lines.has(matching: \.type == .curvedLine) ? .curvedTriangle : .straightTriangle
             
             let triangle = Shape(type: type, convexHull: combinedHull)
             NotificationCenter.default.post(name: .shapeRecognised, object: triangle)
             
-            var newList = shapes.shapes(matching: .notLine)
+            var newList = shapes.withOut(matching: .isLine)
             newList.append(triangle)
             return newList
         }
             
+        return shapes
+    }
+    
+    ///Combines a line and rectangle into a rectangle
+    ///- Parameter shapes: A list of shapes to analyse
+    ///- Returns: An updated list of shapes
+    func combineToRectangle(shapes: [Shape]) -> [Shape] {
+        let list = shapes.shapes(matching: \.type == .straightTriangle && \.type == .rectangle)
+        
+        if list.count == 2 {
+            guard let combinedHull = analyser.convexHull(of: list.map(\.convexHull).reduce([], +)) else { return shapes }
+            
+            let rect = Shape(type: .rectangle, convexHull: combinedHull)
+            NotificationCenter.default.post(name: .shapeRecognised, object: rect)
+            
+            var newList = shapes.withOut(matching: \.type == .straightTriangle && \.type == .rectangle)
+            newList.append(rect)
+            return newList
+        }
+        
         return shapes
     }
 }

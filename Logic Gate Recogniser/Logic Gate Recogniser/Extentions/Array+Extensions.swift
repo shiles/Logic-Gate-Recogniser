@@ -64,6 +64,14 @@ extension Array {
         self.removeAll(where: predicate.matches)
     }
     
+    //Removes the values that match the predicate
+    ///- Parameter predicate: Predicate to apply
+    ///- Returns: A list with values removed
+    func withOut(matching predicate: Predicate<Element>) -> [Element] {
+        var list = self
+        list.removeAll(where: predicate.matches)
+        return list
+    }
 }
 
 extension Array where Element == CGFloat{

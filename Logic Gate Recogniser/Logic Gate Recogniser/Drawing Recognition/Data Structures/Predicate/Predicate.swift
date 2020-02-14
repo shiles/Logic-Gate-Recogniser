@@ -24,6 +24,14 @@ prefix func !<T>(rhs: KeyPath<T, Bool>) -> Predicate<T> {
     rhs == false
 }
 
+func &&<T>(lhs: Predicate<T>, rhs: Predicate<T>) -> Predicate<T> {
+    Predicate { lhs.matches($0) && rhs.matches($0) }
+}
+
+func ||<T>(lhs: Predicate<T>, rhs: Predicate<T>) -> Predicate<T> {
+    Predicate { lhs.matches($0) || rhs.matches($0) }
+}
+
 extension Predicate where Target == Shape {
    
     ///Predicate to check if the shape is a line, either `line` or `curvedLine`
@@ -33,17 +41,10 @@ extension Predicate where Target == Shape {
         }
     }
     
-    ///Predicate to check if the shape isn't a line
-    static var notLine: Self {
-        Predicate {
-            $0.type != .line || $0.type != .curvedLine
-        }
-    }
-    
     ///Predicate to check if the shape is a triangle, either `line` or `curvedLine`
     static var isTriangle: Self {
         Predicate {
-            $0.type == .curvedTriangle || $0.type == .straitTringle
+            $0.type == .curvedTriangle || $0.type == .straightTriangle
         }
     }
 }

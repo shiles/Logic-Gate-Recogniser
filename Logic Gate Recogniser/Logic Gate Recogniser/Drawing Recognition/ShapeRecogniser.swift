@@ -16,8 +16,7 @@ class ShapeRecogniser {
     let detailAnalyser: DetailAnalyser
     let combiner: ShapeCombiner
     
-    var recognisedShapes: [Shape] = [] // Temporary for debugging
-    private var adjacentShapes: [[Shape]] = [] {
+    private(set) var adjacentShapes: [[Shape]] = [] {
         didSet { print(adjacentShapes) }
     }
     
@@ -58,14 +57,14 @@ class ShapeRecogniser {
             NotificationCenter.default.post(name: .shapeRecognised, object: shape)
         }
         
-        recognisedShapes.append(shape)
         findAdjacentShapes(shape: shape)
     }
     
     ///Combines the shapes that have already been recognised into more complex shapes or gates
     @objc func performAnalysis() {
         for (i, list) in adjacentShapes.enumerated() {
-            adjacentShapes[i] = combiner.combineLinesToTriangle(shapes: list)
+            adjacentShapes[i] = combiner.combineToTriangle(shapes: list)
+            adjacentShapes[i] = combiner.combineToRectangle(shapes: list)
             
             if let newList = combiner.combineShapesToGates(shapes: list) {
                 adjacentShapes[i] = newList

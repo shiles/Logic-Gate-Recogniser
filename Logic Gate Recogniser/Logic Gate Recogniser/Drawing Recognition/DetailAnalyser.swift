@@ -18,7 +18,7 @@ class DetailAnalyser {
     ///- Returns: Detailed triangle
     func analyseTriangle(triangle: Stroke) -> ShapeType {
         if connectSimilarLines(lines: recogniseStraitLines(points: triangle)).count == 3 {
-            return .straitTringle
+            return .straightTriangle
         }
         
         return .curvedTriangle

@@ -17,7 +17,7 @@ struct Shape: CustomStringConvertible {
 enum ShapeType: String {
     case circle, rectangle, unknown
     case line, curvedLine
-    case unanalysedTriangle, straitTringle, curvedTriangle
+    case unanalysedTriangle, straightTriangle, curvedTriangle
 }
 
 extension Shape {

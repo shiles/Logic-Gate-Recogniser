@@ -92,13 +92,13 @@ class CanvasView: UIImageView {
         drawingRecogniser.recogniseShape(from: points)
         points = []
         
-//        drawingRecogniser.recognisedShapes.forEach {
+//        drawingRecogniser.adjacentShapes.flatMap({ $0 }).forEach {
 //            let box = $0.inflatedBoundingBox
 //            let list = [CGPoint(x: box.minX, y: box.minY), CGPoint(x: box.minX, y: box.maxY),
 //                        CGPoint(x: box.maxX, y: box.maxY), CGPoint(x: box.maxX, y: box.minY)]
 //            drawConvexHull(convexHull: list, colour: .blue)
 //        }
-        
+//        
         analysisTimer = Timer.scheduledTimer(
             timeInterval: 1,
             target: self,
