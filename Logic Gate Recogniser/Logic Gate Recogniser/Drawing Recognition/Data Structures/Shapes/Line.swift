@@ -10,15 +10,19 @@ import Foundation
 import UIKit
 
 struct Line: Equatable {
-    // Variables
     var startPoint: CGPoint
     var endPoint: CGPoint
-    
-    ///Length of the line
-    var length: CGFloat { ((endPoint.x - startPoint.x).squared() + (endPoint.y - startPoint.y).squared()).squareRoot() }
-    
+  
     ///Transform the line into a vector which has been transfromed to the origin (0,0).
     var vector: CGVector {
         endPoint.applying(CGAffineTransform(translationX: -startPoint.x, y: -startPoint.y)).toVector()
+    }
+    
+    ///Gets the non-rotated bounding box of the stroke
+    var boundingBox: CGRect {
+        let path = UIBezierPath()
+        path.move(to: startPoint)
+        path.addLine(to: endPoint)
+        return path.bounds
     }
 }

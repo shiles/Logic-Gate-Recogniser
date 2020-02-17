@@ -19,16 +19,11 @@ class CanvasView: UIImageView {
     private var drawColor: UIColor = .label
     
     // Tool Selection
-    var tool: DrawingTools? {
+    var tool: DrawingTools = .pen {
         didSet {
             switch tool {
-                case .pen:
-                    drawColor = .label
-                    defaultLineWidth = 10
-                case .erasor:
-                    drawColor = .systemBackground
-                    defaultLineWidth = 20
-                case .none: fatalError()
+                case .pen: drawColor = .label
+                case .erasor: drawColor = .systemBackground
             }
         }
     }
@@ -38,7 +33,7 @@ class CanvasView: UIImageView {
     private var points: [CGPoint] = []
     private var strokes: [Stroke] = []
     
-    // MARK: Drawing Methods
+    // MARK: Touch Event Handlers
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         analysisTimer?.invalidate()
@@ -81,21 +76,32 @@ class CanvasView: UIImageView {
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         image = drawingImage
     
+        if tool == .erasor {
+            strokes.filter { $0.interesects(with: points) }.forEach{ NotificationCenter.default.post(name: .shapeRemoved, object: $0) }
+            
+            // Remove and redraw
+            strokes.removeAll(where: { $0.interesects(with: points) })
+            redrawCanvas()
+            return
+        }
+        
         drawingRecogniser.recogniseShape(from: points)
         strokes.append(points)
         points = []
         
         analysisTimer = Timer.scheduledTimer(
-            timeInterval: 1,
-            target: self,
-            selector: #selector(performAnalysis),
-            userInfo: nil,
-            repeats: false)
+                                timeInterval: 1,
+                                target: self,
+                                selector: #selector(performAnalysis),
+                                userInfo: nil,
+                                repeats: false)
     }
     
     override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
         image = drawingImage
     }
+    
+    // MARK: Drawing Code
     
     ///Draws the logic gates that have been recognised onto the canvas
     ///- Parameter gates: The gates that have been found
@@ -116,13 +122,18 @@ class CanvasView: UIImageView {
         UIGraphicsEndImageContext()
     }
     
-    // MARK: Analysis Methods
-    
-    ///Performs the analysis on the shapes that have been recognised once theyre
-    @objc private func performAnalysis() {
-        drawingRecogniser.performAnalysis()
+    ///Redraws the canvas into the current state held by the object
+    private func redrawCanvas() {
+        UIGraphicsBeginImageContextWithOptions(bounds.size, false, 0.0)
+        let context = UIGraphicsGetCurrentContext()!
+        
+        strokes.forEach { drawStroke(context: context, stroke: $0, colour: .label) }
+        
+        drawingImage = UIGraphicsGetImageFromCurrentImageContext()
+        image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
     }
-    
+
     ///Draw the touch event on the canvas
     ///- Parameter context: Context to draw the event too
     ///- Parameter touch: Touch event to draw
@@ -133,9 +144,13 @@ class CanvasView: UIImageView {
     ///Draws a stroke onto the canvas that has occured.
     ///- Parameter context: Context which to draw it in
     ///- Parameter stroke: Stroke to draw,
-    private func drawStroke(context: CGContext, stroke: Stroke) {
+    private func drawStroke(context: CGContext, stroke: Stroke, colour: UIColor? = nil) {
         // Configure line
-        drawColor.setStroke()
+        if let colour = colour {
+            colour.setStroke()
+        } else {
+            drawColor.setStroke()
+        }
         context.setLineWidth(defaultLineWidth)
         context.setLineCap(.round)
         
@@ -143,5 +158,12 @@ class CanvasView: UIImageView {
         context.move(to: stroke.first!)
         (1...stroke.lastIndex).forEach { context.addLine(to: stroke[$0]) }
         context.strokePath()
+    }
+    
+    // MARK: Analysis Methods
+    
+    ///Performs the analysis on the shapes that have been recognised once theyre
+    @objc private func performAnalysis() {
+        drawingRecogniser.performAnalysis()
     }
 }
