@@ -143,42 +143,23 @@ class CanvasView: UIImageView {
     ///- Parameter context: Context to draw the event too
     ///- Parameter touch: Touch event to draw
     private func drawTouchEvent(context: CGContext, touch: UITouch) {
-        let previousLocation = touch.previousLocation(in: self)
-        let location = touch.location(in: self)
-        
-        // Set color
-        drawColor.setStroke()
-
-        // Configure line
-        context.setLineWidth(defaultLineWidth)
-        context.setLineCap(.round)
-
-        // Set up the points
-        context.move(to: CGPoint(x: previousLocation.x, y: previousLocation.y))
-        context.addLine(to: CGPoint(x: location.x, y: location.y))
-        
-        // Draw the stroke
-        context.strokePath()
+        self.drawStroke(context: context, stroke: [touch.previousLocation(in: self), touch.location(in: self)])
     }
     
+    ///Draws a stroke onto the canvas that has occured.
+    ///- Parameter context: Context which to draw it in
+    ///- Parameter stroke: Stroke to draw,
     private func drawStroke(context: CGContext, stroke: Stroke) {
-        // Set color
-        drawColor.setStroke()
-
         // Configure line
+        drawColor.setStroke()
         context.setLineWidth(defaultLineWidth)
         context.setLineCap(.round)
         
         // Draw Lines
         context.move(to: stroke.first!)
-        (1...stroke.lastIndex).forEach {
-            context.addLine(to: stroke[$0])
-        }
-        
-        // Draw the stroke
+        (1...stroke.lastIndex).forEach { context.addLine(to: stroke[$0]) }
         context.strokePath()
     }
-    
     
     // MARK: Debug Drawing Methods
     
