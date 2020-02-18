@@ -24,7 +24,7 @@ enum ShapeType: String {
 extension Shape {
     
     ///Representation when printing for easier debug
-    var description: String { "\(type.rawValue)" }
+    var description: String { "\(type.rawValue) - \(componennts.count) components" }
     
     ///Gets the non-rotated bounding box of the shape
     var boundingBox: CGRect {

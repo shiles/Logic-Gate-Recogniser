@@ -11,7 +11,7 @@ import UIKit
 
 class CanvasView: UIImageView {
     
-    private let canvasViewModel = CanvasViewModel()
+    let canvasViewModel = CanvasViewModel()
     
     // Tool Settings
     private var defaultLineWidth: CGFloat = 10
@@ -83,24 +83,7 @@ class CanvasView: UIImageView {
     
     // MARK: Drawing Code
     
-    ///Draws the logic gates that have been recognised onto the canvas
-    ///- Parameter gates: The gates that have been found
-    func drawGates(gates: [Gate]) {
-        UIGraphicsBeginImageContextWithOptions(bounds.size, false, 0.0)
-        let context = UIGraphicsGetCurrentContext()!
-        
-        gates.forEach { gate in
-//            strokes.removeAll(where: { gate.boundingBox.intersects($0.boundingBox) })
-            gate.draw(with: context)
-        }
-//
-//        strokes.forEach { drawStroke(context: context, stroke: $0) }
-        
-        // Update real image
-        drawingImage = UIGraphicsGetImageFromCurrentImageContext()
-        image = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-    }
+
     
     ///Redraws the canvas into the current state held by the object
     private func redrawCanvas() {
@@ -139,4 +122,25 @@ class CanvasView: UIImageView {
         (1...stroke.lastIndex).forEach { context.addLine(to: stroke[$0]) }
         context.strokePath()
     }
+}
+
+extension CanvasView: GateDrawer {
+    
+        func drawGates(gates: [Gate]) {
+            UIGraphicsBeginImageContextWithOptions(bounds.size, false, 0.0)
+            let context = UIGraphicsGetCurrentContext()!
+            
+            gates.forEach { gate in
+    //            strokes.removeAll(where: { gate.boundingBox.intersects($0.boundingBox) })
+                gate.draw(with: context)
+            }
+    //
+    //        strokes.forEach { drawStroke(context: context, stroke: $0) }
+            
+            // Update real image
+            drawingImage = UIGraphicsGetImageFromCurrentImageContext()
+            image = UIGraphicsGetImageFromCurrentImageContext()
+            UIGraphicsEndImageContext()
+        }
+    
 }

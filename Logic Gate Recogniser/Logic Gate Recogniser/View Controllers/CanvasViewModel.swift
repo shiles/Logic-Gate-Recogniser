@@ -7,22 +7,38 @@
 //
 
 import Foundation
+import Combine
+
+protocol GateDrawer: AnyObject {
+    func drawGates(gates: [Gate])
+}
 
 class CanvasViewModel {
     
     // Internal State
     private let drawingRecogniser = ShapeRecogniser()
     private weak var analysisTimer: Timer?
+    private var gateSubscriber: AnyCancellable?
     
     // External State
-    private(set) var adjacentShapes: [[Shape]] = []
-    private(set) var gates: [Gate] = []
+    weak var delegate: GateDrawer?
+    private(set) var adjacentShapes: [[Shape]] = [] {
+        didSet { print(adjacentShapes) }
+    }
+    private(set) var gates: [Gate] = [] {
+        didSet { self.delegate?.drawGates(gates: gates) }
+    }
+    
+    // MARK: Initialisers
+    
+    init() {
+        // When a gate is found it adds it to the model
+        gateSubscriber = NotificationCenter.Publisher(center: .default, name: .gateRecognised, object: nil)
+            .map { notification in return notification.object as AnyObject as! Gate }
+            .sink(receiveValue: { gate in self.gates.append(gate) })
+    }
     
     // MARK: User Input Functions
-    
-    func strokeMoved() {
-        invalidateTimer()
-    }
     
     func strokeFinished(stroke: Stroke, tool: DrawingTools) {
         if tool == .erasor {
@@ -31,6 +47,10 @@ class CanvasViewModel {
         
         adjacentShapes = drawingRecogniser.recogniseShape(from: stroke , into: adjacentShapes)
         startTimer()
+    }
+    
+    func strokeMoved() {
+        invalidateTimer()
     }
     
     // MARK: Input Timer Functions
