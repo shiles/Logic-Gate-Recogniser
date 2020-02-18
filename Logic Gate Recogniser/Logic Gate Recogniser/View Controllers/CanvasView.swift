@@ -123,7 +123,7 @@ extension CanvasView: CanvasDrawer {
         
         // Draw the shapes that aren't recognised
         for shapes in canvasViewModel.adjacentShapes {
-            shapes.map(\.componennts).flatMap { $0 }.forEach { stroke in
+            shapes.map(\.components).flatMap { $0 }.forEach { stroke in
                 self.drawStroke(context: context, stroke: stroke, colour: .label)
             }
         }

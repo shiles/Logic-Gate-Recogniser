@@ -12,7 +12,7 @@ import UIKit
 struct Shape: CustomStringConvertible {
     let type: ShapeType
     let convexHull: ConvexHull
-    var componennts: [Stroke] = []
+    var components: [Stroke] = []
 }
 
 enum ShapeType: String {
@@ -24,7 +24,7 @@ enum ShapeType: String {
 extension Shape {
     
     ///Representation when printing for easier debug
-    var description: String { "\(type.rawValue) - \(componennts.count) components" }
+    var description: String { "\(type.rawValue) - \(components.count) components" }
     
     ///Gets the non-rotated bounding box of the shape
     var boundingBox: CGRect {

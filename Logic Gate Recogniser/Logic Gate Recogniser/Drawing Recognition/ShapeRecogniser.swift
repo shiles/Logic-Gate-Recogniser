@@ -19,23 +19,17 @@ class ShapeRecogniser {
     ///Recognises the shape from a stroke that the user entered
     ///- Parameter stroke: CGPoints of users input on the canvas
     func recogniseShape(from stroke: Stroke, into adjacentShapes: [[Shape]]) -> [[Shape]] {
-        guard let hull = analyser.convexHull(of: stroke) else { return  adjacentShapes}
-        guard let triangle = analyser.largestAreaTriangle(using: hull) else { return adjacentShapes }
-        let container = analyser.boundingBox(using: hull)
-
-        let attributes = findShapeAttributes(stroke: stroke, hull: hull, triangle: triangle, boundingBox: container)
-    
-        var shape = decider.findShape(for: attributes)
-        shape.componennts.append(stroke)
+        guard let newShape = analyseStroke(from: stroke) else { return adjacentShapes }
+        var shape = newShape
         
         if shape.type == .unanalysedTriangle {
             let analysedType = detailAnalyser.analyseTriangle(triangle: stroke)
-            shape = Shape(type: analysedType, convexHull: shape.convexHull, componennts: shape.componennts)
+            shape = Shape(type: analysedType, convexHull: shape.convexHull, components: shape.components)
         }
         
         if shape.type == .rectangle {
             let analysedType = detailAnalyser.analyseRectangle(rectangle: stroke)
-            shape = Shape(type: analysedType, convexHull: shape.convexHull, componennts: shape.componennts)
+            shape = Shape(type: analysedType, convexHull: shape.convexHull, components: shape.components)
         }
         
         NotificationCenter.default.post(name: .shapeRecognised, object: shape)
@@ -60,7 +54,41 @@ class ShapeRecogniser {
         return shapes
     }
     
+    func eraseShapes(erasorStroke: Stroke, in adjacentShapes: [[Shape]]) -> [[Shape]] {
+        var shapes: [[Shape]] = []
+        
+        adjacentShapes.forEach { list in
+            var closeShapes: [Shape] = []
+            
+            list.forEach { shape in
+                let nonOverlapping = shape.components.filter { !$0.interesects(with: erasorStroke) }
+                
+                if nonOverlapping.count == shape.components.count {
+                    closeShapes.append(shape)
+                } else {
+                    closeShapes.append(contentsOf: nonOverlapping.compactMap(analyseStroke(from:)))
+                }
+            }
+            
+            if closeShapes.hasElements { shapes.append(closeShapes) }
+        }
+        
+        return shapes
+    }
+    
     // MARK: -  Helper Functions
+    
+    private func analyseStroke(from stroke: Stroke) -> Shape? {
+        guard let hull = analyser.convexHull(of: stroke) else { return nil }
+        guard let triangle = analyser.largestAreaTriangle(using: hull) else { return nil }
+        let container = analyser.boundingBox(using: hull)
+
+        let attributes = findShapeAttributes(stroke: stroke, hull: hull, triangle: triangle, boundingBox: container)
+        
+        var shape = decider.findShape(for: attributes)
+        shape.components.append(stroke)
+        return shape
+    }
     
     ///Finds the attributes of the shape that's been drawn by the user that will the be used to classify the shape within the decision tree
     ///- parameter stroke: Users drawn stroke
@@ -91,20 +119,5 @@ class ShapeRecogniser {
         shapes.append([shape])
         return shapes
     }
-    
-    ///Removes the shape that corresponds to a stroke
-//    private func removeShape(stroke: Stroke) {
-//        guard let hull = analyser.convexHull(of: stroke) else { return }
-//
-//        for (i, list) in adjacentShapes.enumerated() {
-//            if let index = list.firstIndex(where: { $0.convexHull == hull }) {
-//                adjacentShapes[i].remove(at: index)
-//                if adjacentShapes[i].isEmpty { adjacentShapes.remove(at: i) }
-//                return
-//            }
-//        }
-//
-//        return
-//    }
     
 }

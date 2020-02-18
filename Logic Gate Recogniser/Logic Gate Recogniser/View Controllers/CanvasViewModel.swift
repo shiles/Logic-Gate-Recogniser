@@ -16,13 +16,13 @@ protocol CanvasDrawer: AnyObject {
 class CanvasViewModel {
     
     // Internal State
-    private let drawingRecogniser = ShapeRecogniser()
+    private let shapeRecogniser = ShapeRecogniser()
     private weak var analysisTimer: Timer?
     private var gateSubscriber: AnyCancellable?
     
     // External State
     weak var delegate: CanvasDrawer?
-    private(set) var gates: [Gate] = [] 
+    private(set) var gates: [Gate] = []
     private(set) var adjacentShapes: [[Shape]] = [] {
         didSet {
             print(adjacentShapes)
@@ -30,7 +30,6 @@ class CanvasViewModel {
         }
     }
 
-    
     // MARK: Initialisers
     
     init() {
@@ -44,10 +43,12 @@ class CanvasViewModel {
     
     func strokeFinished(stroke: Stroke, tool: DrawingTools) {
         if tool == .erasor {
-            // Do something
+            adjacentShapes = shapeRecogniser.eraseShapes(erasorStroke: stroke, in: adjacentShapes)
+        } else {
+            adjacentShapes = shapeRecogniser.recogniseShape(from: stroke , into: adjacentShapes)
         }
         
-        adjacentShapes = drawingRecogniser.recogniseShape(from: stroke , into: adjacentShapes)
+       
         startTimer()
     }
     
@@ -74,7 +75,7 @@ class CanvasViewModel {
     
     ///Performs the analysis on the shapes that have been recognised once theyre
     @objc private func performAnalysis() {
-        adjacentShapes = drawingRecogniser.performAnalysis(in: adjacentShapes)
+        adjacentShapes = shapeRecogniser.performAnalysis(in: adjacentShapes)
     }
     
 }
