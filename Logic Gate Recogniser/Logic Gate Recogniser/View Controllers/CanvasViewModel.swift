@@ -15,8 +15,7 @@ class CanvasViewModel {
     private weak var analysisTimer: Timer?
     
     // External State
-    private(set) var strokes: [Stroke] = []
-    private(set) var shapes: [[Shape]] = []
+    private(set) var adjacentShapes: [[Shape]] = []
     private(set) var gates: [Gate] = []
     
     // MARK: User Input Functions
@@ -30,8 +29,7 @@ class CanvasViewModel {
             // Do something
         }
         
-        drawingRecogniser.recogniseShape(from: stroke)
-        strokes.append(stroke)
+        adjacentShapes = drawingRecogniser.recogniseShape(from: stroke , into: adjacentShapes)
         startTimer()
     }
     
@@ -54,7 +52,7 @@ class CanvasViewModel {
     
     ///Performs the analysis on the shapes that have been recognised once theyre
     @objc private func performAnalysis() {
-        drawingRecogniser.performAnalysis()
+        adjacentShapes = drawingRecogniser.performAnalysis(in: adjacentShapes)
     }
     
 }

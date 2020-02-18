@@ -11,72 +11,53 @@ import Combine
 
 class ShapeRecogniser {
     
-    let analyser: ShapeAnalyser
-    let decider: ShapeDecider
-    let detailAnalyser: DetailAnalyser
-    let combiner: ShapeCombiner
-    
-    private var shapeRemover: AnyCancellable?
-    
-    private(set) var adjacentShapes: [[Shape]] = [] {
-        didSet { print(adjacentShapes) }
-    }
-    
-    init(analyser: ShapeAnalyser = ShapeAnalyser(),
-         decider: ShapeDecider = ShapeDecider(),
-         detailAnalyser: DetailAnalyser = DetailAnalyser(),
-         shapeCombiner: ShapeCombiner = ShapeCombiner() ) {
-        self.analyser = analyser
-        self.decider = decider
-        self.detailAnalyser = detailAnalyser
-        self.combiner = shapeCombiner
-        
-        shapeRemover = NotificationCenter.Publisher(center: .default, name: .shapeRemoved, object: nil)
-                            .map { notification in return notification.object as AnyObject as! Stroke }
-                            .sink(receiveValue: { stroke in self.removeShape(stroke: stroke)})
-    }
+    let analyser: ShapeAnalyser = ShapeAnalyser()
+    let decider: ShapeDecider = ShapeDecider()
+    let detailAnalyser: DetailAnalyser = DetailAnalyser()
+    let combiner: ShapeCombiner = ShapeCombiner()
     
     ///Recognises the shape from a stroke that the user entered
     ///- Parameter stroke: CGPoints of users input on the canvas
-    func recogniseShape(from stroke: Stroke) {
-        guard let hull = analyser.convexHull(of: stroke) else { return }
-        guard let triangle = analyser.largestAreaTriangle(using: hull) else { return }
+    func recogniseShape(from stroke: Stroke, into adjacentShapes: [[Shape]]) -> [[Shape]] {
+        guard let hull = analyser.convexHull(of: stroke) else { return  adjacentShapes}
+        guard let triangle = analyser.largestAreaTriangle(using: hull) else { return adjacentShapes }
         let container = analyser.boundingBox(using: hull)
 
         let attributes = findShapeAttributes(stroke: stroke, hull: hull, triangle: triangle, boundingBox: container)
     
         var shape = decider.findShape(for: attributes)
-        NotificationCenter.default.post(name: .shapeRecognised, object: shape)
-        
-        if shape.type == .unknown { return }
+        shape.componennts.append(stroke)
         
         if shape.type == .unanalysedTriangle {
             let analysedType = detailAnalyser.analyseTriangle(triangle: stroke)
-            shape = Shape(type: analysedType, convexHull: shape.convexHull)
-            NotificationCenter.default.post(name: .shapeRecognised, object: shape)
+            shape = Shape(type: analysedType, convexHull: shape.convexHull, componennts: shape.componennts)
         }
         
         if shape.type == .rectangle {
             let analysedType = detailAnalyser.analyseRectangle(rectangle: stroke)
-            shape = Shape(type: analysedType, convexHull: shape.convexHull)
-            NotificationCenter.default.post(name: .shapeRecognised, object: shape)
+            shape = Shape(type: analysedType, convexHull: shape.convexHull, componennts: shape.componennts)
         }
         
-        findAdjacentShapes(shape: shape)
+        NotificationCenter.default.post(name: .shapeRecognised, object: shape)
+        return findAdjacentShapes(shape: shape, in: adjacentShapes)
     }
     
     ///Combines the shapes that have already been recognised into more complex shapes or gates
-    @objc func performAnalysis() {
-        for (i, _) in adjacentShapes.enumerated() {
-            adjacentShapes[i] = combiner.combineToTriangle(shapes: adjacentShapes[i])
-            adjacentShapes[i] = combiner.combineToRectangle(shapes: adjacentShapes[i])
+    func performAnalysis(in adjacentShapes: [[Shape]]) -> [[Shape]] {
+        var shapes = adjacentShapes
+        
+        for (i, _) in shapes.enumerated() {
+            shapes[i] = combiner.combineToTriangle(shapes: shapes[i])
+            shapes[i] = combiner.combineToRectangle(shapes: shapes[i])
             
-            if let newList = combiner.combineShapesToGates(shapes: adjacentShapes[i]) {
-                adjacentShapes[i] = newList
+            if let newList = combiner.combineShapesToGates(shapes: shapes[i]) {
+                shapes[i] = newList
             } else {
-                adjacentShapes.remove(at: i)
+                shapes.remove(at: i)
             }
         }
+        
+        return shapes
     }
     
     // MARK: -  Helper Functions
@@ -96,32 +77,34 @@ class ShapeRecogniser {
     
     ///Find the shape that are ajacent to eachother based on what has been found
     ///- Parameter shape: Shape to add adjacent values too
-    private func findAdjacentShapes(shape: Shape) {
+    private func findAdjacentShapes(shape: Shape, in adjacentShapes: [[Shape]]) -> [[Shape]] {
+        var shapes = adjacentShapes
         let boundingBox = shape.inflatedBoundingBox
         
-        for (i, list) in adjacentShapes.enumerated() {
+        for (i, list) in shapes.enumerated() {
             if list.contains(where: { $0.inflatedBoundingBox.intersects(boundingBox) }) {
-                adjacentShapes[i].append(shape)
-                return
+                shapes[i].append(shape)
+                return shapes
            }
         }
         
-        adjacentShapes.append([shape])
+        shapes.append([shape])
+        return shapes
     }
     
     ///Removes the shape that corresponds to a stroke
-    private func removeShape(stroke: Stroke) {
-        guard let hull = analyser.convexHull(of: stroke) else { return }
-        
-        for (i, list) in adjacentShapes.enumerated() {
-            if let index = list.firstIndex(where: { $0.convexHull == hull }) {
-                adjacentShapes[i].remove(at: index)
-                if adjacentShapes[i].isEmpty { adjacentShapes.remove(at: i) }
-                return
-            }
-        }
-        
-        return
-    }
+//    private func removeShape(stroke: Stroke) {
+//        guard let hull = analyser.convexHull(of: stroke) else { return }
+//
+//        for (i, list) in adjacentShapes.enumerated() {
+//            if let index = list.firstIndex(where: { $0.convexHull == hull }) {
+//                adjacentShapes[i].remove(at: index)
+//                if adjacentShapes[i].isEmpty { adjacentShapes.remove(at: i) }
+//                return
+//            }
+//        }
+//
+//        return
+//    }
     
 }

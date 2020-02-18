@@ -12,6 +12,7 @@ import UIKit
 struct Shape: CustomStringConvertible {
     let type: ShapeType
     let convexHull: ConvexHull
+    var componennts: [Stroke] = []
 }
 
 enum ShapeType: String {

@@ -67,8 +67,9 @@ class ShapeCombiner {
         if lines.count == 3 {
             guard let combinedHull = analyser.convexHull(of: lines.map(\.convexHull).reduce([],+)) else { return shapes }
             let type: ShapeType = lines.has(matching: \.type == .curvedLine) ? .curvedTriangle : .straightTriangle
+            let components = lines.map(\.componennts).flatMap { $0 }
             
-            let triangle = Shape(type: type, convexHull: combinedHull)
+            let triangle = Shape(type: type, convexHull: combinedHull, componennts: components)
             NotificationCenter.default.post(name: .shapeRecognised, object: triangle)
             
             var newList = shapes.withOut(matching: .isLine)
@@ -87,8 +88,9 @@ class ShapeCombiner {
         
         if list.count == 2 {
             guard let combinedHull = analyser.convexHull(of: list.map(\.convexHull).reduce([], +)) else { return shapes }
+            let components = list.map(\.componennts).flatMap { $0 }
             
-            let rect = Shape(type: .rectangle, convexHull: combinedHull)
+            let rect = Shape(type: .rectangle, convexHull: combinedHull, componennts: components)
             NotificationCenter.default.post(name: .shapeRecognised, object: rect)
             
             var newList = shapes.withOut(matching: \.type == .straightTriangle && \.type == .rectangle)

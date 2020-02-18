@@ -14,10 +14,10 @@
             filePath = "Logic Gate Recogniser/Drawing Recognition/ShapeRecogniser.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "114"
-            endingLineNumber = "114"
-            landmarkName = "removeShape(stroke:)"
-            landmarkType = "7">
+            startingLineNumber = "97"
+            endingLineNumber = "97"
+            landmarkName = "ShapeRecogniser"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -30,42 +30,26 @@
             filePath = "Logic Gate Recogniser/Drawing Recognition/ShapeRecogniser.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "118"
-            endingLineNumber = "118"
-            landmarkName = "removeShape(stroke:)"
+            startingLineNumber = "101"
+            endingLineNumber = "101"
+            landmarkName = "ShapeRecogniser"
+            landmarkType = "3">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "30EFF049-62EF-4989-BB53-DF58F6FA45D9"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Logic Gate Recogniser/Drawing Recognition/ShapeCombiner.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "20"
+            endingLineNumber = "20"
+            landmarkName = "combineShapesToGates(shapes:)"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "4E79AEEE-10A1-4828-9444-5DC9A1FCCF44 - 4c5365860f1a16c1"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Recogniser.ShapeRecogniser.(removeShape in _5DEEBC321718656C1D5E934705B7312D)(stroke: Swift.Array&lt;__C.CGPoint&gt;) -&gt; ()"
-                  moduleName = "Recogniser"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/sonniehiles/Documents/University/Third%20Year/Dissertation/Test%20Projects/Logic-Gate-Recogniser/Logic%20Gate%20Recogniser/Logic%20Gate%20Recogniser/Drawing%20Recognition/ShapeRecogniser.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "118"
-                  endingLineNumber = "118"
-                  offsetFromSymbolStart = "544">
-               </Location>
-               <Location
-                  uuid = "4E79AEEE-10A1-4828-9444-5DC9A1FCCF44 - 792ae03532453fff"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Recogniser.Shape) -&gt; Swift.Bool in Recogniser.ShapeRecogniser.(removeShape in _5DEEBC321718656C1D5E934705B7312D)(stroke: Swift.Array&lt;__C.CGPoint&gt;) -&gt; ()"
-                  moduleName = "Recogniser"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/sonniehiles/Documents/University/Third%20Year/Dissertation/Test%20Projects/Logic-Gate-Recogniser/Logic%20Gate%20Recogniser/Logic%20Gate%20Recogniser/Drawing%20Recognition/ShapeRecogniser.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "118"
-                  endingLineNumber = "118"
-                  offsetFromSymbolStart = "40">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
