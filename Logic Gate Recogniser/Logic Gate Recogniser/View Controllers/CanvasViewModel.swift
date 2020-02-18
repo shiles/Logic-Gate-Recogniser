@@ -9,8 +9,8 @@
 import Foundation
 import Combine
 
-protocol GateDrawer: AnyObject {
-    func drawGates(gates: [Gate])
+protocol CanvasDrawer: AnyObject {
+    func updateCanvas()
 }
 
 class CanvasViewModel {
@@ -21,13 +21,15 @@ class CanvasViewModel {
     private var gateSubscriber: AnyCancellable?
     
     // External State
-    weak var delegate: GateDrawer?
+    weak var delegate: CanvasDrawer?
+    private(set) var gates: [Gate] = [] 
     private(set) var adjacentShapes: [[Shape]] = [] {
-        didSet { print(adjacentShapes) }
+        didSet {
+            print(adjacentShapes)
+            self.delegate?.updateCanvas()
+        }
     }
-    private(set) var gates: [Gate] = [] {
-        didSet { self.delegate?.drawGates(gates: gates) }
-    }
+
     
     // MARK: Initialisers
     

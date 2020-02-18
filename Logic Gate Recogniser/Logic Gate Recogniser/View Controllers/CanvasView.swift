@@ -82,20 +82,6 @@ class CanvasView: UIImageView {
     }
     
     // MARK: Drawing Code
-    
-
-    
-    ///Redraws the canvas into the current state held by the object
-    private func redrawCanvas() {
-        UIGraphicsBeginImageContextWithOptions(bounds.size, false, 0.0)
-        let context = UIGraphicsGetCurrentContext()!
-        
-//        strokes.forEach { drawStroke(context: context, stroke: $0, colour: .label) }
-        
-        drawingImage = UIGraphicsGetImageFromCurrentImageContext()
-        image = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-    }
 
     ///Draw the touch event on the canvas
     ///- Parameter context: Context to draw the event too
@@ -124,23 +110,27 @@ class CanvasView: UIImageView {
     }
 }
 
-extension CanvasView: GateDrawer {
+extension CanvasView: CanvasDrawer {
     
-        func drawGates(gates: [Gate]) {
-            UIGraphicsBeginImageContextWithOptions(bounds.size, false, 0.0)
-            let context = UIGraphicsGetCurrentContext()!
-            
-            gates.forEach { gate in
-    //            strokes.removeAll(where: { gate.boundingBox.intersects($0.boundingBox) })
-                gate.draw(with: context)
-            }
-    //
-    //        strokes.forEach { drawStroke(context: context, stroke: $0) }
-            
-            // Update real image
-            drawingImage = UIGraphicsGetImageFromCurrentImageContext()
-            image = UIGraphicsGetImageFromCurrentImageContext()
-            UIGraphicsEndImageContext()
+    func updateCanvas() {
+        UIGraphicsBeginImageContextWithOptions(bounds.size, false, 0.0)
+        let context = UIGraphicsGetCurrentContext()!
+        
+        // Draw the gates that have been found
+        canvasViewModel.gates.forEach { gate in
+            gate.draw(with: context)
         }
+        
+        // Draw the shapes that aren't recognised
+        for shapes in canvasViewModel.adjacentShapes {
+            shapes.map(\.componennts).flatMap { $0 }.forEach { stroke in
+                self.drawStroke(context: context, stroke: stroke, colour: .label)
+            }
+        }
+        
+        drawingImage = UIGraphicsGetImageFromCurrentImageContext()
+        image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+    }
     
 }
