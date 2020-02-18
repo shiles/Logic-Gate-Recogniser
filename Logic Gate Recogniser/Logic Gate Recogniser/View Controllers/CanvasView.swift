@@ -11,8 +11,7 @@ import UIKit
 
 class CanvasView: UIImageView {
     
-    private let drawingRecogniser = ShapeRecogniser()
-    private weak var analysisTimer: Timer?
+    private let canvasViewModel = CanvasViewModel()
     
     // Tool Settings
     private var defaultLineWidth: CGFloat = 10
@@ -31,12 +30,11 @@ class CanvasView: UIImageView {
     // Predictive Drawing
     private var drawingImage: UIImage?
     private var points: [CGPoint] = []
-    private var strokes: [Stroke] = []
     
     // MARK: Touch Event Handlers
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-        analysisTimer?.invalidate()
+        canvasViewModel.strokeMoved()
         guard let touch = touches.first else { return }
         
         UIGraphicsBeginImageContextWithOptions(bounds.size, false, 0.0)
@@ -75,26 +73,8 @@ class CanvasView: UIImageView {
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         image = drawingImage
-    
-        if tool == .erasor {
-            strokes.filter { $0.interesects(with: points) }.forEach{ NotificationCenter.default.post(name: .shapeRemoved, object: $0) }
-            
-            // Remove and redraw
-            strokes.removeAll(where: { $0.interesects(with: points) })
-            redrawCanvas()
-            return
-        }
-        
-        drawingRecogniser.recogniseShape(from: points)
-        strokes.append(points)
+        canvasViewModel.strokeFinished(stroke: points, tool: tool)
         points = []
-        
-        analysisTimer = Timer.scheduledTimer(
-                                timeInterval: 1,
-                                target: self,
-                                selector: #selector(performAnalysis),
-                                userInfo: nil,
-                                repeats: false)
     }
     
     override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -110,11 +90,11 @@ class CanvasView: UIImageView {
         let context = UIGraphicsGetCurrentContext()!
         
         gates.forEach { gate in
-            strokes.removeAll(where: { gate.boundingBox.intersects($0.boundingBox) })
+//            strokes.removeAll(where: { gate.boundingBox.intersects($0.boundingBox) })
             gate.draw(with: context)
         }
-        
-        strokes.forEach { drawStroke(context: context, stroke: $0) }
+//
+//        strokes.forEach { drawStroke(context: context, stroke: $0) }
         
         // Update real image
         drawingImage = UIGraphicsGetImageFromCurrentImageContext()
@@ -127,7 +107,7 @@ class CanvasView: UIImageView {
         UIGraphicsBeginImageContextWithOptions(bounds.size, false, 0.0)
         let context = UIGraphicsGetCurrentContext()!
         
-        strokes.forEach { drawStroke(context: context, stroke: $0, colour: .label) }
+//        strokes.forEach { drawStroke(context: context, stroke: $0, colour: .label) }
         
         drawingImage = UIGraphicsGetImageFromCurrentImageContext()
         image = UIGraphicsGetImageFromCurrentImageContext()
@@ -158,12 +138,5 @@ class CanvasView: UIImageView {
         context.move(to: stroke.first!)
         (1...stroke.lastIndex).forEach { context.addLine(to: stroke[$0]) }
         context.strokePath()
-    }
-    
-    // MARK: Analysis Methods
-    
-    ///Performs the analysis on the shapes that have been recognised once theyre
-    @objc private func performAnalysis() {
-        drawingRecogniser.performAnalysis()
     }
 }

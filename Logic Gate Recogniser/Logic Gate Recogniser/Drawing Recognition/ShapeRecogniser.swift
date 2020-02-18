@@ -39,7 +39,6 @@ class ShapeRecogniser {
     ///Recognises the shape from a stroke that the user entered
     ///- Parameter stroke: CGPoints of users input on the canvas
     func recogniseShape(from stroke: Stroke) {
-        // TODO: - MultiThread this for performance
         guard let hull = analyser.convexHull(of: stroke) else { return }
         guard let triangle = analyser.largestAreaTriangle(using: hull) else { return }
         let container = analyser.boundingBox(using: hull)
