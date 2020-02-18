@@ -17,6 +17,7 @@ class CanvasViewModel {
     
     // Internal State
     private let shapeRecogniser = ShapeRecogniser()
+    private let gateManager = GateManager()
     private weak var analysisTimer: Timer?
     private var gateSubscriber: AnyCancellable?
     
@@ -43,12 +44,12 @@ class CanvasViewModel {
     
     func strokeFinished(stroke: Stroke, tool: DrawingTools) {
         if tool == .erasor {
+            gates = gateManager.eraseGate(erasorStroke: stroke, in: gates)
             adjacentShapes = shapeRecogniser.eraseShapes(erasorStroke: stroke, in: adjacentShapes)
         } else {
             adjacentShapes = shapeRecogniser.recogniseShape(from: stroke , into: adjacentShapes)
         }
         
-       
         startTimer()
     }
     

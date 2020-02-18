@@ -12,6 +12,7 @@ import UIKit
 protocol Gate {
     var boundingBox: CGRect { get }
     var description: String { get }
+    var path: UIBezierPath { get }
     
     ///Draws the gate at a  starting point to fill a certain size
     func draw(with context: CGContext)
@@ -21,10 +22,8 @@ struct Not: Gate {
     var description: String { "Not" }
     var boundingBox: CGRect
     
-    func draw(with context: CGContext) {
-        UIGraphicsPushContext(context)
+    var path: UIBezierPath {
         let path = UIBezierPath()
-        path.setDefaultAttributes()
         
         // Draw Triangle
         path.move(to: CGPoint(x: 0.1, y: 0.2))
@@ -45,7 +44,14 @@ struct Not: Gate {
         path.addLine(to: CGPoint(x: 1, y: 0.5))
 
         path.scaleToFit(boundingBox)
-        path.stroke()
+        return path
+    }
+    
+    func draw(with context: CGContext) {
+        UIGraphicsPushContext(context)
+        let drawable = path
+        drawable.setDefaultAttributes()
+        drawable.stroke()
         UIGraphicsPopContext()
     }
 }
@@ -54,10 +60,8 @@ struct Or: Gate {
     var description: String { "Or" }
     var boundingBox: CGRect
     
-    func draw(with context: CGContext) {
-        UIGraphicsPushContext(context)
+    var path: UIBezierPath {
         let path = UIBezierPath()
-        path.setDefaultAttributes()
         
         // Draw Triangle
         path.move(to: CGPoint(x: 0.1, y: 0.2))
@@ -76,7 +80,14 @@ struct Or: Gate {
         path.addLine(to: CGPoint(x: 0.8, y: 0.5))
         
         path.scaleToFit(boundingBox)
-        path.stroke()
+        return path
+    }
+    
+    func draw(with context: CGContext) {
+        UIGraphicsPushContext(context)
+        let drawable = path
+        drawable.setDefaultAttributes()
+        drawable.stroke()
         UIGraphicsPopContext()
     }
 }
@@ -84,11 +95,9 @@ struct Or: Gate {
 struct Nor: Gate {
     var description: String { "Nor" }
     var boundingBox: CGRect
-
-    func draw(with context: CGContext) {
-        UIGraphicsPushContext(context)
+    
+    var path: UIBezierPath {
         let path = UIBezierPath()
-        path.setDefaultAttributes()
         
         // Draw Triangle
         path.move(to: CGPoint(x: 0.1, y: 0.2))
@@ -111,7 +120,14 @@ struct Nor: Gate {
         path.addLine(to: CGPoint(x: 1, y: 0.5))
 
         path.scaleToFit(boundingBox)
-        path.stroke()
+        return path
+    }
+
+    func draw(with context: CGContext) {
+        UIGraphicsPushContext(context)
+        let drawable = path
+        drawable.setDefaultAttributes()
+        drawable.stroke()
         UIGraphicsPopContext()
     }
 }
@@ -119,31 +135,36 @@ struct Nor: Gate {
 struct And: Gate {
     var description: String { "And" }
     var boundingBox: CGRect
+    
+    var path: UIBezierPath {
+       let path = UIBezierPath()
+       
+       // Draw "Rectangle"
+       path.move(to: CGPoint(x: 0.1, y: 0.2))
+       path.addLine(to: CGPoint(x: 0.1, y: 0.8))
+       path.addLine(to: CGPoint(x: 0.5, y: 0.8))
+       path.addCurve(to: CGPoint(x: 0.5, y: 0.2), controlPoint1: CGPoint(x: 0.77, y: 0.7), controlPoint2: CGPoint(x: 0.77, y: 0.3))
+       path.addLine(to: CGPoint(x: 0.1, y: 0.2))
+
+       //Draw Inputs
+       path.move(to: CGPoint(x: 0, y: 0.35))
+       path.addLine(to: CGPoint(x: 0.1, y: 0.35))
+       path.move(to: CGPoint(x: 0, y: 0.65))
+       path.addLine(to: CGPoint(x: 0.1, y: 0.65))
+
+       // Draw Ouput
+       path.move(to: CGPoint(x: 0.7, y: 0.5))
+       path.addLine(to: CGPoint(x: 0.8, y: 0.5))
+
+       path.scaleToFit(boundingBox)
+       return path
+   }
 
     func draw(with context: CGContext) {
         UIGraphicsPushContext(context)
-        let path = UIBezierPath()
-        path.setDefaultAttributes()
-        
-        // Draw "Rectangle"
-        path.move(to: CGPoint(x: 0.1, y: 0.2))
-        path.addLine(to: CGPoint(x: 0.1, y: 0.8))
-        path.addLine(to: CGPoint(x: 0.5, y: 0.8))
-        path.addCurve(to: CGPoint(x: 0.5, y: 0.2), controlPoint1: CGPoint(x: 0.77, y: 0.7), controlPoint2: CGPoint(x: 0.77, y: 0.3))
-        path.addLine(to: CGPoint(x: 0.1, y: 0.2))
-
-        //Draw Inputs
-        path.move(to: CGPoint(x: 0, y: 0.35))
-        path.addLine(to: CGPoint(x: 0.1, y: 0.35))
-        path.move(to: CGPoint(x: 0, y: 0.65))
-        path.addLine(to: CGPoint(x: 0.1, y: 0.65))
-
-        // Draw Ouput
-        path.move(to: CGPoint(x: 0.7, y: 0.5))
-        path.addLine(to: CGPoint(x: 0.8, y: 0.5))
-
-        path.scaleToFit(boundingBox)
-        path.stroke()
+        let drawable = path
+        drawable.setDefaultAttributes()
+        drawable.stroke()
         UIGraphicsPopContext()
     }
 }
@@ -152,11 +173,9 @@ struct Nand: Gate {
     var description: String { "Nand" }
     var boundingBox: CGRect
     
-    func draw(with context: CGContext) {
-        UIGraphicsPushContext(context)
+    var path: UIBezierPath {
         let path = UIBezierPath()
-        path.setDefaultAttributes()
-                      
+        
         // Draw "Rectangle"
         path.move(to: CGPoint(x: 0.1, y: 0.2))
         path.addLine(to: CGPoint(x: 0.1, y: 0.8))
@@ -179,7 +198,14 @@ struct Nand: Gate {
         path.addLine(to: CGPoint(x: 1, y: 0.5))
 
         path.scaleToFit(boundingBox)
-        path.stroke()
+        return path
+    }
+    
+    func draw(with context: CGContext) {
+        UIGraphicsPushContext(context)
+        let drawable = path
+        drawable.setDefaultAttributes()
+        drawable.stroke()
         UIGraphicsPopContext()
     }
 }
@@ -187,33 +213,38 @@ struct Nand: Gate {
 struct Xor: Gate {
     var description: String { "Xor" }
     var boundingBox: CGRect
-   
-    func draw(with context: CGContext) {
-        UIGraphicsPushContext(context)
+    
+    var path: UIBezierPath {
         let path = UIBezierPath()
-        path.setDefaultAttributes()
         
         // Draw First Line
         path.move(to: CGPoint(x: 0.1, y: 0.2))
         path.addCurve(to: CGPoint(x: 0.1, y: 0.8), controlPoint1: CGPoint(x: 0.25, y: 0.4), controlPoint2: CGPoint(x: 0.25, y: 0.6))
-        
+
         path.move(to: CGPoint(x: 0.15, y: 0.2))
         path.addCurve(to: CGPoint(x: 0.15, y: 0.8), controlPoint1: CGPoint(x: 0.3, y: 0.4), controlPoint2: CGPoint(x: 0.3, y: 0.6))
         path.addCurve(to: CGPoint(x: 0.7, y: 0.5), controlPoint1: CGPoint(x: 0.2, y: 0.85), controlPoint2: CGPoint(x: 0.6, y: 0.6))
         path.addCurve(to: CGPoint(x: 0.15, y: 0.2), controlPoint1: CGPoint(x: 0.6, y: 0.35), controlPoint2: CGPoint(x: 0.2, y: 0.15))
-        
+
         //Draw Inputs
         path.move(to: CGPoint(x: 0, y: 0.35))
         path.addLine(to: CGPoint(x: 0.182, y: 0.35))
         path.move(to: CGPoint(x: 0, y: 0.65))
         path.addLine(to: CGPoint(x: 0.182, y: 0.65))
-        
+
         //Draw Ouput
         path.move(to: CGPoint(x: 0.7, y: 0.5))
         path.addLine(to: CGPoint(x: 0.8, y: 0.5))
-        
+
         path.scaleToFit(boundingBox)
-        path.stroke()
+        return path
+    }
+   
+    func draw(with context: CGContext) {
+        UIGraphicsPushContext(context)
+        let drawable = path
+        drawable.setDefaultAttributes()
+        drawable.stroke()
         UIGraphicsPopContext()
     }
 }
@@ -221,12 +252,10 @@ struct Xor: Gate {
 struct Xnor: Gate {
     var description: String { "Xnor" }
     var boundingBox: CGRect
-   
-    func draw(with context: CGContext) {
-        UIGraphicsPushContext(context)
+    
+    var path: UIBezierPath {
         let path = UIBezierPath()
-        path.setDefaultAttributes()
-               
+        
         // Draw First Line
         path.move(to: CGPoint(x: 0.1, y: 0.2))
         path.addCurve(to: CGPoint(x: 0.1, y: 0.8), controlPoint1: CGPoint(x: 0.25, y: 0.4), controlPoint2: CGPoint(x: 0.25, y: 0.6))
@@ -249,9 +278,16 @@ struct Xnor: Gate {
         // Draw Ouput
         path.move(to: CGPoint(x: 0.9, y: 0.5))
         path.addLine(to: CGPoint(x: 1, y: 0.5))
-        path.scaleToFit(boundingBox)
-        path.stroke()
         
+        path.scaleToFit(boundingBox)
+        return path
+    }
+   
+    func draw(with context: CGContext) {
+        UIGraphicsPushContext(context)
+        let drawable = path
+        drawable.setDefaultAttributes()
+        drawable.stroke()
         UIGraphicsPopContext()
     }
 }

@@ -36,6 +36,7 @@
 		AB41AE0F2369AEDB00273845 /* Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB41AE0E2369AEDB00273845 /* Line.swift */; };
 		AB44795523630972000BF2A5 /* DetailAnalyser.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB44795423630972000BF2A5 /* DetailAnalyser.swift */; };
 		AB5370BA23FBD7AE00E5FD3F /* CanvasViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5370B723FBD7A400E5FD3F /* CanvasViewModel.swift */; };
+		AB5370BC23FC005600E5FD3F /* GateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5370BB23FC005600E5FD3F /* GateManager.swift */; };
 		AB557E9823F2B0AE00D9FA5F /* GateType.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB557E9723F2B0AE00D9FA5F /* GateType.swift */; };
 		AB826CBA23A3C04F00A01D23 /* Array+ExtensionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB826CB923A3C04F00A01D23 /* Array+ExtensionsTests.swift */; };
 		AB84D0BC23E85652005E7DC7 /* CGRect+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB84D0BB23E85652005E7DC7 /* CGRect+Extensions.swift */; };
@@ -110,6 +111,7 @@
 		AB41AE0E2369AEDB00273845 /* Line.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Line.swift; sourceTree = "<group>"; };
 		AB44795423630972000BF2A5 /* DetailAnalyser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailAnalyser.swift; sourceTree = "<group>"; };
 		AB5370B723FBD7A400E5FD3F /* CanvasViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasViewModel.swift; sourceTree = "<group>"; };
+		AB5370BB23FC005600E5FD3F /* GateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GateManager.swift; sourceTree = "<group>"; };
 		AB557E9723F2B0AE00D9FA5F /* GateType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GateType.swift; sourceTree = "<group>"; };
 		AB826CB923A3C04F00A01D23 /* Array+ExtensionsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+ExtensionsTests.swift"; sourceTree = "<group>"; };
 		AB84D0BB23E85652005E7DC7 /* CGRect+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGRect+Extensions.swift"; sourceTree = "<group>"; };
@@ -160,6 +162,7 @@
 			isa = PBXGroup;
 			children = (
 				AB557E9623F2B08D00D9FA5F /* Gates */,
+				AB5370BB23FC005600E5FD3F /* GateManager.swift */,
 			);
 			path = "Gate Model";
 			sourceTree = "<group>";
@@ -505,6 +508,7 @@
 				ABC76DF223798A22001A7A29 /* CGPoint+Extensions.swift in Sources */,
 				AB9FC19923673BEB003D1A85 /* Array+Extensions.swift in Sources */,
 				AB0866FF2386C97000E30B50 /* ShapeDecider.swift in Sources */,
+				AB5370BC23FC005600E5FD3F /* GateManager.swift in Sources */,
 				AB41AE0F2369AEDB00273845 /* Line.swift in Sources */,
 				AB557E9823F2B0AE00D9FA5F /* GateType.swift in Sources */,
 				AB93C97023F1841600CD8006 /* ShapeCombiner.swift in Sources */,
