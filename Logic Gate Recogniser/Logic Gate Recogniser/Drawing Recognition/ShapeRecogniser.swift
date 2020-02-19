@@ -19,7 +19,7 @@ class ShapeRecogniser {
     ///Recognises the shape from a stroke that the user entered
     ///- Parameter stroke: CGPoints of users input on the canvas
     func recogniseShape(from stroke: Stroke, into adjacentShapes: [[Shape]]) -> [[Shape]] {
-        guard let newShape = analyseStroke(from: stroke) else { return adjacentShapes }
+        guard let newShape = analyseStroke(stroke) else { return adjacentShapes }
         var shape = newShape
         
         if shape.type == .unanalysedTriangle {
@@ -66,7 +66,7 @@ class ShapeRecogniser {
                 if nonOverlapping.count == shape.components.count {
                     closeShapes.append(shape)
                 } else {
-                    closeShapes.append(contentsOf: nonOverlapping.compactMap(analyseStroke(from:)))
+                    closeShapes.append(contentsOf: nonOverlapping.compactMap(analyseStroke))
                 }
             }
             
@@ -78,7 +78,7 @@ class ShapeRecogniser {
     
     // MARK: -  Helper Functions
     
-    private func analyseStroke(from stroke: Stroke) -> Shape? {
+    private func analyseStroke(_ stroke: Stroke) -> Shape? {
         guard let hull = analyser.convexHull(of: stroke) else { return nil }
         guard let triangle = analyser.largestAreaTriangle(using: hull) else { return nil }
         let container = analyser.boundingBox(using: hull)
