@@ -11,7 +11,6 @@ import UIKit
 
 enum GateType: String {
     case not, or, nor, and, nand, xor, xnor
-
 }
 
 extension GateType {

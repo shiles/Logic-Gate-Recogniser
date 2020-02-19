@@ -13,8 +13,11 @@ class ShapeCombiner {
     
     private let analyser = ShapeAnalyser()
     
-    // MARK: Logic Gate Recognisers
+    // MARK: Logic Gate Recogniser
     
+    ///Combines the shapes into gates, when one is found a notification will be sent within the `.gateRecognised` channel
+    ///- Parameter shapes: A list of shapes to analyse and check if a gate can be found
+    ///- Returns: An optional, returns a list of shapes if nothings found and a nil value if one is found indicating they're used
     func combineShapesToGates(shapes: [Shape]) -> [Shape]? {
         var gates = GateType.allTypes
         

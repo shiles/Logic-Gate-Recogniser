@@ -42,6 +42,9 @@ class CanvasViewModel {
     
     // MARK: User Input Functions
     
+    ///Handle the completion of the user stroke on the canvas
+    ///- Parameter stroke: Stroke that the user has drawn
+    ///- Parameter tool: The tool the stroke was drawn with
     func strokeFinished(stroke: Stroke, tool: DrawingTools) {
         if tool == .erasor {
             gates = gateManager.eraseGate(erasorStroke: stroke, in: gates)
@@ -53,19 +56,22 @@ class CanvasViewModel {
         startTimer()
     }
     
+    ///Handle the user moving across canvas
     func strokeMoved() {
         invalidateTimer()
     }
     
     // MARK: Input Timer Functions
     
+    ///Invalidates the timer which is counting down because the user has interacted with the canvas
     private func invalidateTimer() {
         analysisTimer?.invalidate()
     }
     
+    ///Starts the timer which will perform the analysis of the shapes once the user is done with interacting with canvas
     private func startTimer() {
         analysisTimer = Timer.scheduledTimer(
-            timeInterval: 1,
+            timeInterval: 1.5,
             target: self,
             selector: #selector(performAnalysis),
             userInfo: nil,

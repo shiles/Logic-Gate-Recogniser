@@ -18,6 +18,8 @@ class ShapeRecogniser {
     
     ///Recognises the shape from a stroke that the user entered
     ///- Parameter stroke: CGPoints of users input on the canvas
+    ///- Parameter adjacentShapes: The shapes which are grouped togther on the canvas
+    ///- Returns: Retruns adjacent shapes with the analysed stroke added
     func recogniseShape(from stroke: Stroke, into adjacentShapes: [[Shape]]) -> [[Shape]] {
         guard let newShape = analyseStroke(stroke) else { return adjacentShapes }
         var shape = newShape
@@ -37,6 +39,8 @@ class ShapeRecogniser {
     }
     
     ///Combines the shapes that have already been recognised into more complex shapes or gates
+    ///- Parameter adjacentShapes:: The shapes which are grouped togther on the canvas
+    ///- Returns: Retruns adjacent shapes with the analysed stroke added
     func performAnalysis(in adjacentShapes: [[Shape]]) -> [[Shape]] {
         var shapes = adjacentShapes
         
@@ -53,7 +57,11 @@ class ShapeRecogniser {
         
         return shapes
     }
-    
+
+    ///Removes the shapes that the user has indicated via they're stroke
+    ///- Parameter erasorStroke: The stroke indicating what the user would like to remove
+    ///- Parameter adjacentShapes: The shapes which are grouped togther on the canvas
+    ///- Returns: Retruns adjacent shapes with the analysed stroke added
     func eraseShapes(erasorStroke: Stroke, in adjacentShapes: [[Shape]]) -> [[Shape]] {
         var shapes: [[Shape]] = []
         
@@ -78,6 +86,9 @@ class ShapeRecogniser {
     
     // MARK: -  Helper Functions
     
+    ///Analyses the stroke and finds the shape that corresponds to it
+    ///- Parameter stroke: The stroke the user has drawn
+    ///- Returns: A optional, if a shape has been found
     private func analyseStroke(_ stroke: Stroke) -> Shape? {
         guard let hull = analyser.convexHull(of: stroke) else { return nil }
         guard let triangle = analyser.largestAreaTriangle(using: hull) else { return nil }
@@ -105,6 +116,8 @@ class ShapeRecogniser {
     
     ///Find the shape that are ajacent to eachother based on what has been found
     ///- Parameter shape: Shape to add adjacent values too
+    ///- Parameter adjacentShapes: The shapes which are grouped togther on the canvas
+    ///- Returns: Retruns adjacent shapes with the analysed stroke added
     private func findAdjacentShapes(shape: Shape, in adjacentShapes: [[Shape]]) -> [[Shape]] {
         var shapes = adjacentShapes
         let boundingBox = shape.inflatedBoundingBox

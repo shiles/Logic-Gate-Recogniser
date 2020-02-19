@@ -155,9 +155,7 @@ class ShapeAnalyser {
     ///- Returns: The orientation of the triplet (minPoint, p1, p2)
     private func orientation(from minPoint: CGPoint, p1: CGPoint, p2: CGPoint) -> Orientation {
         let val = (p1.y - minPoint.y) * (p2.x - p1.x) - (p1.x - minPoint.x) * (p2.y - p1.y)
-        if val == 0 {
-            return .colinear
-        }
+        if val == 0 { return .colinear }
         return val > 0 ? .anticlockwise : .clockwise
     }
     

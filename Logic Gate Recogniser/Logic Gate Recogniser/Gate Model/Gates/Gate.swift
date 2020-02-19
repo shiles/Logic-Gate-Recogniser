@@ -14,7 +14,8 @@ protocol Gate {
     var description: String { get }
     var path: UIBezierPath { get }
     
-    ///Draws the gate at a  starting point to fill a certain size
+    ///Draws the gate at a starting point to fill a certain size
+    ///- Parameter context: Context to draw the gate into
     func draw(with context: CGContext)
 }
 

@@ -91,7 +91,6 @@ extension Stroke {
         return false;
     }
       
-    
     ///Finds the orientation of the triplet (minPoint, p1, p2)
     ///- Parameter p1: Minimum Y point in convexHull
     ///- Parameter p2: A Point within the drawing
