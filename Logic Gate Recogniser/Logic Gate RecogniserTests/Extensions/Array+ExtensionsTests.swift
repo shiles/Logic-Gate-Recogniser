@@ -69,6 +69,124 @@ class Array_ExtensionsTests: XCTestCase {
         XCTAssertNil(accessed)
     }
     
+    func testHasElements() {
+        // Given
+        let array: [Int] = [1]
+        
+        // When
+        let hasElements = array.hasElements
+        
+        // Then
+        XCTAssertTrue(hasElements)
+    }
+    
+    func testHasElementsEmpty() {
+        // Given
+        let array: [Int] = []
+        
+        // When
+        let hasElements = array.hasElements
+        
+        // Then
+        XCTAssertFalse(hasElements)
+    }
+    
+    // MARK: - Predicate Tests
+    
+    func testShapesMatchPredicate() {
+        // Given
+        let array: [Shape] = [Shape(type: .line, convexHull: [])]
+        let expected: [Shape] = [Shape(type: .line, convexHull: [])]
+        
+        // When
+        let lines = array.shapes(matching: .isLine)
+        
+        // Then
+        XCTAssertEqual(expected, lines)
+    }
+    
+    func testShapesNotMatchPredicate() {
+        // Given
+        let array: [Shape] = [Shape(type: .line, convexHull: [])]
+        let expected: [Shape] = []
+        
+        // When
+        let lines = array.shapes(matching: .isTriangle)
+        
+        // Then
+        XCTAssertEqual(expected, lines)
+    }
+    
+    func testHasMatchPredicate() {
+        // Given
+        let array: [Shape] = [Shape(type: .line, convexHull: [])]
+        
+        // When
+        let hasPredicate = array.has(matching: .isLine)
+        
+        // Then
+        XCTAssertTrue(hasPredicate)
+    }
+    
+    func testHasNotMatchPredicate() {
+        // Given
+        let array: [Shape] = [Shape(type: .line, convexHull: [])]
+        
+        // When
+        let hasPredicate = array.has(matching: .isTriangle)
+        
+        // Then
+        XCTAssertFalse(hasPredicate)
+    }
+    
+    func testRemoveMatchPredicate() {
+        // Given
+        var array: [Shape] = [Shape(type: .line, convexHull: [])]
+        let expected: [Shape] = []
+        
+        // When
+        array.remove(matching: .isLine)
+        
+        // Then
+        XCTAssertEqual(expected, array)
+    }
+    
+    func testRemoveNotMatchPredicate() {
+        // Given
+        var array: [Shape] = [Shape(type: .line, convexHull: [])]
+        let expected: [Shape] = [Shape(type: .line, convexHull: [])]
+        
+        // When
+        array.remove(matching: .isTriangle)
+        
+        // Then
+        XCTAssertEqual(expected, array)
+    }
+    
+    func testWithOutMatchPredicate() {
+        // Given
+        let array: [Shape] = [Shape(type: .line, convexHull: [])]
+        let expected: [Shape] = []
+        
+        // When
+        let lines = array.withOut(matching: .isLine)
+        
+        // Then
+        XCTAssertEqual(expected, lines)
+    }
+    
+    func testWithOutNotMatchPredicate() {
+        // Given
+        let array: [Shape] = [Shape(type: .line, convexHull: [])]
+        let expected: [Shape] = [Shape(type: .line, convexHull: [])]
+        
+        // When
+        let lines = array.withOut(matching: .isTriangle)
+        
+        // Then
+        XCTAssertEqual(expected, lines)
+    }
+    
     // MARK: - FloatingPoint Tests
     
     func testRootMeanSquared() {

@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-struct Shape: CustomStringConvertible {
+struct Shape: Equatable {
     let type: ShapeType
     let convexHull: ConvexHull
     var components: [Stroke] = []
@@ -23,9 +23,6 @@ enum ShapeType: String {
 
 extension Shape {
     
-    ///Representation when printing for easier debug
-    var description: String { "\(type.rawValue) - \(components.count) components" }
-    
     ///Gets the non-rotated bounding box of the shape
     var boundingBox: CGRect {
         let path = UIBezierPath()
@@ -36,4 +33,8 @@ extension Shape {
     
     ///Bounding box inflated to 110% size
     var inflatedBoundingBox: CGRect { boundingBox.inflate(by: 1.4) }
+}
+
+extension Shape: CustomStringConvertible {
+    var description: String { "\(type.rawValue) - \(components.count) components" }
 }
