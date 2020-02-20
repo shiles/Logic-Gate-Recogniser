@@ -50,7 +50,7 @@ extension Stroke {
             let intersects = lines
                 .filter{ line.boundingBox.intersects($0.boundingBox) }
                 .map { areIntersecting(line1: line, line2: $0) }
-                .reduce(false, { return $0 || $1 })
+                .contains(true)
             if intersects == true { return true }
         }
     

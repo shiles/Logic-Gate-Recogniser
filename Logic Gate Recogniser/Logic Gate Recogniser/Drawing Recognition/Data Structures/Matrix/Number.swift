@@ -45,6 +45,6 @@ extension Array where Element: Number {
         let a = self
         assert(a.count == b.count, "Can only take the dot product of arrays of the same length!")
         let c = a.indices.map { a[$0] * b[$0] }
-        return c.reduce(Element.zero, { $0 + $1 })
+        return c.reduce(Element.zero, +)
     }
 }
