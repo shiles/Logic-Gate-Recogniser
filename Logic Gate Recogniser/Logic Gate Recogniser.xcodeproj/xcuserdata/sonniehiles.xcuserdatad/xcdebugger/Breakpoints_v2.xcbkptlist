@@ -7,16 +7,32 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "30EFF049-62EF-4989-BB53-DF58F6FA45D9"
+            uuid = "C8E66E6B-94BD-486A-833A-6B8366A32578"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Logic Gate Recogniser/Drawing Recognition/ShapeCombiner.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "23"
-            endingLineNumber = "23"
-            landmarkName = "combineShapesToGates(shapes:)"
+            startingLineNumber = "96"
+            endingLineNumber = "96"
+            landmarkName = "completeTriangleWithLine(shapes:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "9FE90880-00B2-4673-8FDF-E99F41924D78"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Logic Gate Recogniser/Drawing Recognition/ShapeCombiner.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "91"
+            endingLineNumber = "91"
+            landmarkName = "completeTriangleWithLine(shapes:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

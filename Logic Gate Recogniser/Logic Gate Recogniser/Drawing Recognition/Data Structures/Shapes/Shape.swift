@@ -18,7 +18,7 @@ struct Shape: Equatable {
 enum ShapeType: String {
     case circle, rectangle, unknown
     case line, curvedLine
-    case unanalysedTriangle, straightTriangle, curvedTriangle
+    case unanalysedTriangle, incompleteTriangle, straightTriangle, curvedTriangle
 }
 
 extension Shape {

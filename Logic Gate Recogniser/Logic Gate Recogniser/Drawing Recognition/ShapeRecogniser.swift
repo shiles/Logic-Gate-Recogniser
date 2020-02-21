@@ -22,18 +22,7 @@ class ShapeRecogniser {
     ///- Returns: Retruns adjacent shapes with the analysed stroke added
     func recogniseShape(from stroke: Stroke, into adjacentShapes: [[Shape]]) -> [[Shape]] {
         guard let newShape = analyseStroke(stroke) else { return adjacentShapes }
-        var shape = newShape
-        
-        if shape.type == .unanalysedTriangle {
-            let analysedType = detailAnalyser.analyseTriangle(triangle: stroke)
-            shape = Shape(type: analysedType, convexHull: shape.convexHull, components: shape.components)
-        }
-        
-        if shape.type == .rectangle {
-            let analysedType = detailAnalyser.analyseRectangle(rectangle: stroke)
-            shape = Shape(type: analysedType, convexHull: shape.convexHull, components: shape.components)
-        }
-        
+        let shape = analyseShapeDetails(newShape)
         NotificationCenter.default.post(name: .shapeRecognised, object: shape)
         return findAdjacentShapes(shape: shape, in: adjacentShapes)
     }
@@ -46,8 +35,9 @@ class ShapeRecogniser {
         
         for (i, _) in shapes.enumerated() {
             shapes[i] = combiner.combineToTriangle(shapes: shapes[i])
+            shapes[i] = combiner.completeTriangleWithLine(shapes: shapes[i])
             shapes[i] = combiner.combineToRectangle(shapes: shapes[i])
-            
+
             if let newList = combiner.combineShapesToGates(shapes: shapes[i]) {
                 shapes[i] = newList
             } else {
@@ -74,7 +64,7 @@ class ShapeRecogniser {
                 if nonOverlapping.count == shape.components.count {
                     closeShapes.append(shape)
                 } else {
-                    closeShapes.append(contentsOf: nonOverlapping.compactMap(analyseStroke))
+                    closeShapes.append(contentsOf: nonOverlapping.compactMap(analyseStroke).map(analyseShapeDetails))
                 }
             }
             
@@ -85,6 +75,23 @@ class ShapeRecogniser {
     }
     
     // MARK: -  Helper Functions
+    
+    ///Analyse the details of the shape that has been recognised to get additional information
+    ///- Parameter shape: The shape that has been recognised
+    ///- Returns: A shape with further analysis done
+    private func analyseShapeDetails(_ shape: Shape) -> Shape {
+        if shape.type == .unanalysedTriangle {
+            let analysedType = detailAnalyser.analyseTriangle(triangle: shape.components.flatMap { $0 })
+            return Shape(type: analysedType, convexHull: shape.convexHull, components: shape.components)
+        }
+               
+        if shape.type == .rectangle {
+            let analysedType = detailAnalyser.analyseRectangle(rectangle: shape.components.flatMap { $0 })
+           return Shape(type: analysedType, convexHull: shape.convexHull, components: shape.components)
+        }
+        
+        return shape
+    }
     
     ///Analyses the stroke and finds the shape that corresponds to it
     ///- Parameter stroke: The stroke the user has drawn

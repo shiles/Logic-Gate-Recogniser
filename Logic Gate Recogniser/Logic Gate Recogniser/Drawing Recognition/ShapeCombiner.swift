@@ -12,6 +12,7 @@ import UIKit
 class ShapeCombiner {
     
     private let analyser = ShapeAnalyser()
+    private let details = DetailAnalyser()
     
     // MARK: Logic Gate Recogniser
     
@@ -80,6 +81,29 @@ class ShapeCombiner {
             return newList
         }
             
+        return shapes
+    }
+    
+    func completeTriangleWithLine(shapes: [Shape]) -> [Shape] {
+        let lines = shapes.shapes(matching: .isLine)
+        let incompleteTriangles = shapes.shapes(matching: \.type == .incompleteTriangle)
+        
+        if lines.hasElements && incompleteTriangles.hasElements {
+            guard let line = lines.first, let incompleteTriangle = incompleteTriangles.first else { return shapes }
+            guard let combinedHull = analyser.convexHull(of: [line.convexHull, incompleteTriangle.convexHull].reduce([],+)) else { return shapes }
+            let components = [line, incompleteTriangle].map(\.components).flatMap { $0 }
+            
+            let type: ShapeType = line.type == .line ? .straightTriangle : .curvedTriangle
+            
+            let triangle = Shape(type: type, convexHull: combinedHull, components: components)
+            NotificationCenter.default.post(name: .shapeRecognised, object: triangle)
+            
+            var newList = shapes
+            newList.removeAll(where: { $0 == line || $0 == incompleteTriangle })
+            newList.append(triangle)
+            return newList
+        }
+        
         return shapes
     }
     
