@@ -108,6 +108,10 @@ class CanvasView: UIImageView {
         (1...stroke.lastIndex).forEach { context.addLine(to: stroke[$0]) }
         context.strokePath()
     }
+    
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        updateCanvas()
+    }
 }
 
 extension CanvasView: CanvasDrawer {
