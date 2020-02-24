@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="GTP-EC-d2e">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16085" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="GTP-EC-d2e">
     <device id="ipad11_0rounded" orientation="landscape" layout="fullscreen" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16078.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -36,6 +36,11 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" id="Izw-j8-hEu">
+                        <barButtonItem key="leftBarButtonItem" title="Item" image="arrow.clockwise" catalog="system" id="gcN-MP-9CO" userLabel="Reset Canvas Button">
+                            <connections>
+                                <action selector="resetCanvasTapped:" destination="BYZ-38-t0r" id="dJd-qQ-dJn"/>
+                            </connections>
+                        </barButtonItem>
                         <rightBarButtonItems>
                             <barButtonItem title="Item" image="pencil.slash" catalog="system" id="wYw-hY-znR">
                                 <connections>
@@ -54,6 +59,7 @@
                         <outlet property="erasorToolButton" destination="wYw-hY-znR" id="mDd-RD-gJZ"/>
                         <outlet property="gateInfoView" destination="yJf-Bs-aEP" id="I8K-kf-vLB"/>
                         <outlet property="penToolButton" destination="3xj-yy-UmH" id="xvu-kn-6jQ"/>
+                        <outlet property="resetCanvasButton" destination="gcN-MP-9CO" id="t8t-9n-yFt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -80,7 +86,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="pencil" catalog="system" width="64" height="56"/>
-        <image name="pencil.slash" catalog="system" width="64" height="56"/>
+        <image name="arrow.clockwise" catalog="system" width="115" height="128"/>
+        <image name="pencil" catalog="system" width="128" height="113"/>
+        <image name="pencil.slash" catalog="system" width="128" height="113"/>
     </resources>
 </document>

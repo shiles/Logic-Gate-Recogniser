@@ -61,6 +61,12 @@ class CanvasViewModel {
         invalidateTimer()
     }
     
+    ///Resets the state of held by the canvas
+    func resetState() {
+        gates = []
+        adjacentShapes = []
+    }
+    
     // MARK: Input Timer Functions
     
     ///Invalidates the timer which is counting down because the user has interacted with the canvas

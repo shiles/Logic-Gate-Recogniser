@@ -16,6 +16,7 @@ class DrawingViewController: UIViewController  {
     @IBOutlet weak var canvasView: CanvasView!
     @IBOutlet weak var penToolButton: UIBarButtonItem!
     @IBOutlet weak var erasorToolButton: UIBarButtonItem!
+    @IBOutlet weak var resetCanvasButton: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,6 +35,10 @@ class DrawingViewController: UIViewController  {
     
     @IBAction func erasorToolTapped(_ sender: Any) {
         canvasView.tool = .erasor
+    }
+    
+    @IBAction func resetCanvasTapped(_ sender: Any) {
+        canvasView.canvasViewModel.resetState()
     }
 }
 
