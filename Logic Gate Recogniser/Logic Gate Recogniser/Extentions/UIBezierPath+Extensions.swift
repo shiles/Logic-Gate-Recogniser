@@ -22,7 +22,7 @@ extension UIBezierPath {
     ///Scales the path to fit the bounding box and moves it to the location
     ///- Parameter boundingBox: Bounding box to scale too
     func scaleToFit(_ boundingBox: CGRect) {
-        self.apply(CGAffineTransform(scaleX: boundingBox.width, y: boundingBox.height))
+        self.apply(CGAffineTransform(scaleX: boundingBox.height, y: boundingBox.height))
         self.apply(CGAffineTransform(translationX: boundingBox.minX, y: boundingBox.minY))
     }
     
