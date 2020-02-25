@@ -23,7 +23,11 @@ class CanvasViewModel {
     
     // External State
     weak var delegate: CanvasDrawer?
-    private(set) var gates: [Gate] = []
+    private(set) var gates: [Gate] = [] {
+        didSet {
+            self.delegate?.updateCanvas()
+        }
+    }
     private(set) var adjacentShapes: [[Shape]] = [] {
         didSet {
             print(adjacentShapes)

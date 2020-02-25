@@ -17,9 +17,7 @@ class DetailAnalyser {
     ///- Parameter triangle: Input triangle
     ///- Returns: Detailed triangle
     func analyseTriangle(triangle: Stroke) -> ShapeType {
-        let componentLines = connectSimilarLines(lines: recogniseStraightLines(points: triangle)).count
-        print(componentLines)
-        switch(componentLines) {
+        switch(numberOfStraightLines(in: triangle)) {
         case 0..<3:
             return .incompleteTriangle
         case 3:
@@ -33,11 +31,21 @@ class DetailAnalyser {
     ///- Parameter rectangle: Input rectangle
     ///- Returns: Detailed rectangle
     func analyseRectangle(rectangle: Stroke) -> ShapeType {
-        if connectSimilarLines(lines: recogniseStraightLines(points: rectangle)).count <= 4 {
+        switch(numberOfStraightLines(in: rectangle)) {
+        case 0...4:
             return .curvedLine
+        default:
+            return .rectangle
         }
-        
-        return .rectangle
+    }
+    
+    // MARK: Line Recognition Functions
+    
+    ///Finds and counts the number of stright lines in a stoke
+    ///- Parameter stroke: Stroke to look for straight lines in
+    ///- Returns: Number of straight lines found
+    private func numberOfStraightLines(in stroke: Stroke) -> Int {
+        connectSimilarLines(lines: recogniseStraightLines(points: stroke)).count
     }
     
     ///Finds all the strait lines within the points.
