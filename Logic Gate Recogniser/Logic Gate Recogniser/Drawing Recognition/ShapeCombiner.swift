@@ -84,6 +84,9 @@ class ShapeCombiner {
         return shapes
     }
     
+    ///Combines a line and an incomplete triangle
+    ///- Parameter shapes: A list of shapes to analyse
+    ///- Returns: An update list of shapes
     func completeTriangleWithLine(shapes: [Shape]) -> [Shape] {
         let lines = shapes.shapes(matching: .isLine)
         let incompleteTriangles = shapes.shapes(matching: \.type == .incompleteTriangle)
@@ -107,24 +110,23 @@ class ShapeCombiner {
         return shapes
     }
     
-    ///Combines a line and rectangle into a rectangle
+    ///Combines a line and a curved line into a rectangle
     ///- Parameter shapes: A list of shapes to analyse
-    ///- Returns: An updated list of shapes
+    ///- Returns: An update list of shapes
     func combineToRectangle(shapes: [Shape]) -> [Shape] {
-        let list = shapes.shapes(matching: \.type == .straightTriangle && \.type == .rectangle)
+        let straightLines = shapes.shapes(matching: \.type == .line)
+        let curvedLines = shapes.shapes(matching: \.type == .curvedLine)
         
-        if list.count == 2 {
-            guard let combinedHull = analyser.convexHull(of: list.map(\.convexHull).reduce([], +)) else { return shapes }
-            let components = list.map(\.components).flatMap { $0 }
-            
-            let rect = Shape(type: .rectangle, convexHull: combinedHull, components: components)
-            NotificationCenter.default.post(name: .shapeRecognised, object: rect)
-            
-            var newList = shapes.withOut(matching: \.type == .straightTriangle && \.type == .rectangle)
-            newList.append(rect)
-            return newList
-        }
+        guard let straight = straightLines.first, let curved = curvedLines.first else { return shapes }
+        guard let combinedHull = analyser.convexHull(of: [straight, curved].map(\.convexHull).reduce([], +)) else { return shapes }
+        let components = [straight, curved].map(\.components).flatMap { $0 }
         
-        return shapes
+        let rect = Shape(type: .rectangle, convexHull: combinedHull, components: components)
+        NotificationCenter.default.post(name: .shapeRecognised, object: rect)
+        
+        var newList = shapes
+        newList.removeAll(where: { $0 == straight || $0 == curved })
+        newList.append(rect)
+        return newList
     }
 }
