@@ -52,7 +52,7 @@ class CanvasViewModel {
     func strokeFinished(stroke: Stroke, tool: DrawingTools) {
         if tool == .erasor {
             gates = gateManager.eraseGate(erasorStroke: stroke, in: gates)
-            adjacentShapes = shapeRecogniser.eraseShapes(erasorStroke: stroke, in: adjacentShapes)
+            adjacentShapes = shapeRecogniser.eraseShapes(eraserStroke: stroke, in: adjacentShapes)
         } else {
             adjacentShapes = shapeRecogniser.recogniseShape(from: stroke , into: adjacentShapes)
         }

@@ -55,7 +55,7 @@ class ShapeCombiner {
         }
         
         guard let gate = gates.first, gates.count == 1 else { return shapes }
-        let boundingBox = shapes.reduce(shapes.first!.boundingBox, { $0.union($1.boundingBox) })
+        let boundingBox = shapes.combinedBoundingBox
         NotificationCenter.default.post(name: .gateRecognised, object: GateType.buildGate(of: gate, at: boundingBox))
         return nil
     }

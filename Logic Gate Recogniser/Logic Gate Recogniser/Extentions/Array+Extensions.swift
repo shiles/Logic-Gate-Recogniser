@@ -117,3 +117,14 @@ extension Array where Element == CGPoint {
         return self.remove(at: self.firstIndex(of: minPoint)!)
     }
 }
+
+extension Array where Element == Shape {
+
+    ///Calculates and returns the union of all the bounding boxest within the list
+    ///- Returns: Comhined bounding boxest of all items within the list
+    var combinedBoundingBox: CGRect {
+        guard let first = self.first else { return .zero }
+        return self.reduce(first.boundingBox, { $0.union($1.boundingBox) })
+    }
+    
+}

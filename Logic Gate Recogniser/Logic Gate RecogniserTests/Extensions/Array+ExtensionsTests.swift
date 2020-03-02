@@ -273,4 +273,45 @@ class Array_ExtensionsTests: XCTestCase {
         XCTAssertEqual(minPoint, CGPoint(x: 0, y: 1))
         XCTAssertEqual(array, [CGPoint(x: 1, y: 1), CGPoint(x: 2, y: 3), CGPoint(x: 4, y: 5)])
     }
+    
+    // MARK: Shape Tests
+    
+    func testCombiningBoundingBoxesEmptyList() {
+        // Given
+        let shapes: [Shape] = []
+        
+        // When
+        let result = shapes.combinedBoundingBox
+        
+        // Then
+        XCTAssertEqual(result, CGRect.zero)
+    }
+    
+    func testCombinedBoundingBoxestSingleElement() {
+        // Given
+        let hull = [CGPoint(x: 0, y: 0), CGPoint(x: 0, y: 10), CGPoint(x: 10, y: 10), CGPoint(x: 10, y: 0)]
+        let shape = Shape(type: .rectangle, convexHull: hull)
+        let shapes = [shape]
+        
+        // When
+        let result = shapes.combinedBoundingBox
+        
+        // Then
+        XCTAssertEqual(result, CGRect(origin: CGPoint(x: 0, y: 0), size: CGSize(width: 10, height: 10)))
+    }
+    
+    func testCombinedBoundingBoxWithShapes() {
+        // Given
+        let hull1 = [CGPoint(x: 0, y: 0), CGPoint(x: 0, y: 10), CGPoint(x: 10, y: 10), CGPoint(x: 10, y: 0)]
+        let hull2 = [CGPoint(x: 0, y: 0), CGPoint(x: 0, y: 20), CGPoint(x: 20, y: 20), CGPoint(x: 20, y: 0)]
+        let shape1 = Shape(type: .rectangle, convexHull: hull1)
+        let shape2 = Shape(type: .rectangle, convexHull: hull2)
+        let shapes = [shape1, shape2]
+        
+        // When
+        let result = shapes.combinedBoundingBox
+        
+        // Then
+        XCTAssertEqual(result, CGRect(origin: CGPoint(x: 0, y: 0), size: CGSize(width: 20, height: 20)))
+    }
 }

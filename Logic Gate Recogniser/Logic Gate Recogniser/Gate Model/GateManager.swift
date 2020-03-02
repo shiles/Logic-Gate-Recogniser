@@ -18,7 +18,7 @@ class GateManager {
         var gates: [Gate] = []
         
         knownGates.forEach { gate in
-            if erasorStroke.map({ gate.path.contains($0) }).contains(false) {
+            if !erasorStroke.map({ gate.path.contains($0) }).contains(true) {
                 gates.append(gate)
             }
         }

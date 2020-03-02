@@ -8,6 +8,7 @@
 
 import Foundation
 import Combine
+import UIKit
 
 class ShapeRecogniser {
     
@@ -52,23 +53,32 @@ class ShapeRecogniser {
     ///- Parameter erasorStroke: The stroke indicating what the user would like to remove
     ///- Parameter adjacentShapes: The shapes which are grouped togther on the canvas
     ///- Returns: Retruns adjacent shapes with the analysed stroke added
-    func eraseShapes(erasorStroke: Stroke, in adjacentShapes: [[Shape]]) -> [[Shape]] {
+    func eraseShapes(eraserStroke: Stroke, in adjacentShapes: [[Shape]]) -> [[Shape]] {
+        let eraserBoundingBox = eraserStroke.boundingBox
         var shapes: [[Shape]] = []
         
         adjacentShapes.forEach { list in
-            var closeShapes: [Shape] = []
-            
-            list.forEach { shape in
-                let nonOverlapping = shape.components.filter { !$0.interesects(with: erasorStroke) }
+            if list.combinedBoundingBox.intersects(eraserBoundingBox) {
+                var closeShapes: [Shape] = []
                 
-                if nonOverlapping.count == shape.components.count {
-                    closeShapes.append(shape)
-                } else {
-                    closeShapes.append(contentsOf: nonOverlapping.compactMap(analyseStroke).map(analyseShapeDetails))
+                list.forEach { shape in
+                    if shape.boundingBox.intersects(eraserBoundingBox) {
+                        let nonOverlapping = shape.components.filter { !$0.interesects(with: eraserStroke) }
+                                          
+                        if nonOverlapping.count == shape.components.count {
+                            closeShapes.append(shape)
+                        } else {
+                            closeShapes.append(contentsOf: nonOverlapping.compactMap(analyseStroke).map(analyseShapeDetails))
+                        }
+                    } else {
+                        closeShapes.append(shape)
+                    }
                 }
+
+                if closeShapes.hasElements { shapes.append(closeShapes) }
+            } else {
+                shapes.append(list)
             }
-            
-            if closeShapes.hasElements { shapes.append(closeShapes) }
         }
         
         return shapes
