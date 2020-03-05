@@ -18,20 +18,23 @@ class CanvasViewModel {
     // Internal State
     private let shapeRecogniser = ShapeRecogniser()
     private let gateManager = GateManager()
-    private weak var analysisTimer: Timer?
     private var gateSubscriber: AnyCancellable?
+    
+    // Analysis Timer
+    private let waitInterval = TimeInterval(exactly: 1.0)!
+    private var analysisItem: DispatchWorkItem?
     
     // External State
     weak var delegate: CanvasDrawer?
     private(set) var gates: [Gate] = [] {
         didSet {
-            self.delegate?.updateCanvas()
+            DispatchQueue.main.async { self.delegate?.updateCanvas() }
         }
     }
     private(set) var adjacentShapes: [[Shape]] = [] {
         didSet {
             print(adjacentShapes)
-            self.delegate?.updateCanvas()
+            DispatchQueue.main.async { self.delegate?.updateCanvas() }
         }
     }
 
@@ -51,18 +54,22 @@ class CanvasViewModel {
     ///- Parameter tool: The tool the stroke was drawn with
     func strokeFinished(stroke: Stroke, tool: DrawingTools) {
         if tool == .erasor {
-            gates = gateManager.eraseGate(erasorStroke: stroke, in: gates)
-            adjacentShapes = shapeRecogniser.eraseShapes(eraserStroke: stroke, in: adjacentShapes)
+            DispatchQueue.global(qos: .userInitiated).async {
+                self.gates =  self.gateManager.eraseGate(erasorStroke: stroke, in:  self.gates)
+                self.adjacentShapes =  self.shapeRecogniser.eraseShapes(eraserStroke: stroke, in:  self.adjacentShapes)
+            }
         } else {
-            adjacentShapes = shapeRecogniser.recogniseShape(from: stroke , into: adjacentShapes)
+            DispatchQueue.global(qos: .userInitiated).async {
+                self.adjacentShapes = self.shapeRecogniser.recogniseShape(from: stroke , into: self.adjacentShapes)
+            }
         }
         
-        startTimer()
+        scheduleAnalysis()
     }
     
     ///Handle the user moving across canvas
     func strokeMoved() {
-        invalidateTimer()
+        invalidateAnalysis()
     }
     
     ///Resets the state of held by the canvas
@@ -71,28 +78,26 @@ class CanvasViewModel {
         adjacentShapes = []
     }
     
-    // MARK: Input Timer Functions
+    // MARK: Input Analysis Functions
     
     ///Invalidates the timer which is counting down because the user has interacted with the canvas
-    private func invalidateTimer() {
-        analysisTimer?.invalidate()
+    private func invalidateAnalysis() {
+        analysisItem?.cancel()
     }
     
-    ///Starts the timer which will perform the analysis of the shapes once the user is done with interacting with canvas
-    private func startTimer() {
-        analysisTimer = Timer.scheduledTimer(
-            timeInterval: 1.5,
-            target: self,
-            selector: #selector(performAnalysis),
-            userInfo: nil,
-            repeats: false)
+    ///Sets up the analaysis and executes it
+    private func scheduleAnalysis() {
+        analysisItem?.cancel()
+        
+        let workItem = DispatchWorkItem {
+             self.adjacentShapes = self.shapeRecogniser.performAnalysis(in: self.adjacentShapes)
+        }
+        
+        analysisItem = workItem
+        
+        DispatchQueue.global(qos: .userInitiated).asyncAfter(
+            deadline: .now() + waitInterval,
+            execute: workItem
+        )
     }
-    
-    // MARK: Analysis Methods
-    
-    ///Performs the analysis on the shapes that have been recognised once theyre
-    @objc private func performAnalysis() {
-        adjacentShapes = shapeRecogniser.performAnalysis(in: adjacentShapes)
-    }
-    
 }
