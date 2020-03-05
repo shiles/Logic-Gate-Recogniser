@@ -13,7 +13,7 @@ class DetailAnalyser {
     
     // MARK: Shape Analysis Functions
     
-    ///Analyses a triangle to determine if each of it's lines are strait or curved
+    ///Analyses a triangle to determine if each of it's lines are straight or curved
     ///- Parameter triangle: Input triangle
     ///- Returns: Detailed triangle
     func analyseTriangle(triangle: Stroke) -> ShapeType {
@@ -48,9 +48,9 @@ class DetailAnalyser {
         connectSimilarLines(lines: recogniseStraightLines(points: stroke)).count
     }
     
-    ///Finds all the strait lines within the points.
-    ///- Parameter points: Points of the line to check for strait lines
-    ///- Returns: A list of strait lines
+    ///Finds all the straight lines within the points.
+    ///- Parameter points: Points of the line to check for straight lines
+    ///- Returns: A list of straight lines
     private func recogniseStraightLines(points: [CGPoint]) -> [Line] {
         if isStraightLine(points: points) {
             return [ Line(startPoint: points.last!, endPoint:  points.first!) ]
@@ -62,9 +62,9 @@ class DetailAnalyser {
         
     // MARK: Manipulation Functions
     
-    ///Connects adjacent lines if their vectors are similar, combining the lines into one strait line
+    ///Connects adjacent lines if their vectors are similar, combining the lines into one straight line
     ///- Parameter lines: Input lines
-    ///- Returns: Connected straitlines
+    ///- Returns: Connected straight lines
     private func connectSimilarLines(lines: [Line]) -> [Line] {
         var combinedLines = lines
         
@@ -106,10 +106,10 @@ class DetailAnalyser {
 
     // MARK: Boolean Check Functions
     
-    ///Checks if the lines strait based on an allowed devience via root mean squared of all the points.
+    ///Checks if the lines straight based on an allowed devience via root mean squared of all the points.
     ///- Parameter points: Points of the line to check if is straight
-    ///- Parameter allowedDevience: Allowed devience to determine if the line is strait or not, defualt is 5.0
-    ///- Returns: A boolean indicating if the line is strait or not
+    ///- Parameter allowedDevience: Allowed devience to determine if the line is straight or not, defualt is 5.0
+    ///- Returns: A boolean indicating if the line is straight or not
     private func isStraightLine(points: [CGPoint], allowedDevience: CGFloat = 10.0) -> Bool {
         let xCoords = translate(points: points).map(\.x)
         return xCoords.rootMeanSquared() < allowedDevience
