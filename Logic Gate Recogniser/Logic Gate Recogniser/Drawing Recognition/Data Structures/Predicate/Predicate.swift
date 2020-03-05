@@ -82,7 +82,7 @@ extension Predicate where Target == GateType {
     ///Predicate for the gates that contain triangles
     static var containsTriangle: Self {
         Predicate {
-            [.not, .or, .xor, .xnor].contains($0)
+            [.not, .or, .nor, .xor, .xnor].contains($0)
         }
     }
     
@@ -113,5 +113,4 @@ extension Predicate where Target == GateType {
             [.not, .or, .nor, .and, .nand].contains($0)
         }
     }
-    
 }
