@@ -126,9 +126,9 @@ class ShapeAnalyser {
         
         //If there is less than three points the algorithm isn't possible
         if points.count < 3 { return nil }
-        var stack = Stack<CGPoint>(items: [minPoint, points[0], points[1]])
-        
+       
         //Build the convextHull
+        var stack = Stack<CGPoint>(items: [minPoint, points[0], points[1]])
         for i in 2...points.lastIndex {
             let point = points[i]
             while(orientation(from: stack.sndItem!, p1: stack.topItem!, p2:point) != .clockwise) {

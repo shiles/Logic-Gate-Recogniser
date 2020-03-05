@@ -129,5 +129,4 @@ class DetailAnalyser {
         
         return xDif < allowedDevience && yDif < allowedDevience
     }
-    
 }

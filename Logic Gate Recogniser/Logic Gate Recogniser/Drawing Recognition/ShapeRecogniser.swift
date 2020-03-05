@@ -107,8 +107,11 @@ class ShapeRecogniser {
     ///- Parameter stroke: The stroke the user has drawn
     ///- Returns: A optional, if a shape has been found
     private func analyseStroke(_ stroke: Stroke) -> Shape? {
-        guard let hull = analyser.convexHull(of: stroke) else { return nil }
-        guard let triangle = analyser.largestAreaTriangle(using: hull) else { return nil }
+        guard let hull = analyser.convexHull(of: stroke) else {
+            guard let first = stroke.first, let last = stroke.last, first != last else { return nil }
+            return Shape(type: .line, convexHull: [first, last], components: [stroke])
+        }
+        let triangle = analyser.largestAreaTriangle(using: hull) ?? Triangle.zero
         let container = analyser.boundingBox(using: hull)
 
         let attributes = findShapeAttributes(stroke: stroke, hull: hull, triangle: triangle, boundingBox: container)

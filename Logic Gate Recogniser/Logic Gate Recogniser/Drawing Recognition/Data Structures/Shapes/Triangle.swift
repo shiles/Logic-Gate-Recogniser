@@ -20,7 +20,17 @@ struct Triangle {
 
 extension Triangle {
     
+    ///Calculates the area of a triangle with vertexes given by the points
+    ///- Parameter a: Point `a`
+    ///- Parameter b: Point `b`
+    ///- Parameter c: Point `c`
+    ///- Returns: Area of the traingle with vertexes (`a`, `b`, `c`)
     static func area(a: CGPoint, b: CGPoint, c: CGPoint) -> CGFloat {
         return 0.5 * ((b.x - a.x)*(c.y - a.y) - (c.x - a.x)*(b.y - a.y))
+    }
+    
+    ///Initialises an empty triangle
+    static var zero: Triangle {
+        Triangle(a: CGPoint.zero, b: CGPoint.zero, c: CGPoint.zero)
     }
 }
