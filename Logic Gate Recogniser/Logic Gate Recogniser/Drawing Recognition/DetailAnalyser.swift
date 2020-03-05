@@ -32,7 +32,7 @@ class DetailAnalyser {
     ///- Returns: Detailed rectangle
     func analyseRectangle(rectangle: Stroke) -> ShapeType {
         switch(numberOfStraightLines(in: rectangle)) {
-        case 0...4:
+        case 0...3:
             return .curvedLine
         default:
             return .rectangle

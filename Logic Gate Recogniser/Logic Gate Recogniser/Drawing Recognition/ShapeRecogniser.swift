@@ -35,6 +35,7 @@ class ShapeRecogniser {
         var shapes = adjacentShapes
         
         for (i, _) in shapes.enumerated() {
+            if i >= shapes.count { break } // Added as if shapes shapes are removed i > count possibly
             shapes[i] = combiner.combineToTriangle(shapes: shapes[i])
             shapes[i] = combiner.completeTriangleWithLine(shapes: shapes[i])
             shapes[i] = combiner.combineToRectangle(shapes: shapes[i])
