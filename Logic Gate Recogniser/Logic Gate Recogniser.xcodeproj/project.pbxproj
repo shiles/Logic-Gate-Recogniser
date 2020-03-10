@@ -34,6 +34,7 @@
 		AB41AE0D2369A1EE00273845 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB41AE0C2369A1EE00273845 /* UIColor+Extensions.swift */; };
 		AB41AE0F2369AEDB00273845 /* Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB41AE0E2369AEDB00273845 /* Line.swift */; };
 		AB44795523630972000BF2A5 /* DetailAnalyser.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB44795423630972000BF2A5 /* DetailAnalyser.swift */; };
+		AB4B8019241795B1001EEB96 /* logicGateRecogniser.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AB4B8017241795B1001EEB96 /* logicGateRecogniser.xcdatamodeld */; };
 		AB5370BA23FBD7AE00E5FD3F /* CanvasViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5370B723FBD7A400E5FD3F /* CanvasViewModel.swift */; };
 		AB5370BC23FC005600E5FD3F /* GateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5370BB23FC005600E5FD3F /* GateManager.swift */; };
 		AB5370BE23FD2E7700E5FD3F /* Sequence+ExtensionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5370BD23FD2E7700E5FD3F /* Sequence+ExtensionsTests.swift */; };
@@ -114,6 +115,7 @@
 		AB41AE0C2369A1EE00273845 /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
 		AB41AE0E2369AEDB00273845 /* Line.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Line.swift; sourceTree = "<group>"; };
 		AB44795423630972000BF2A5 /* DetailAnalyser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailAnalyser.swift; sourceTree = "<group>"; };
+		AB4B8018241795B1001EEB96 /* Logic Gate Recogniser.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Logic Gate Recogniser.xcdatamodel"; sourceTree = "<group>"; };
 		AB5370B723FBD7A400E5FD3F /* CanvasViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasViewModel.swift; sourceTree = "<group>"; };
 		AB5370BB23FC005600E5FD3F /* GateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GateManager.swift; sourceTree = "<group>"; };
 		AB5370BD23FD2E7700E5FD3F /* Sequence+ExtensionsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sequence+ExtensionsTests.swift"; sourceTree = "<group>"; };
@@ -234,6 +236,7 @@
 				AB9F337A235887A100A39A44 /* View Controllers */,
 				AB9F3375235885A700A39A44 /* Storyboards */,
 				AB36BBE8235735CA006B8607 /* AppDelegate.swift */,
+				AB4B8017241795B1001EEB96 /* logicGateRecogniser.xcdatamodeld */,
 				AB36BC0A23574305006B8607 /* Logic Gate Recogniser.entitlements */,
 				AB36BBEA235735CA006B8607 /* SceneDelegate.swift */,
 				AB36BBF1235735CB006B8607 /* Assets.xcassets */,
@@ -544,6 +547,7 @@
 				AB34F90E2372D1FD000E7B86 /* Stack.swift in Sources */,
 				ABBDAB882362EDEE00DBFDC1 /* CanvasView.swift in Sources */,
 				AB93C97323F185FB00CD8006 /* Predicate.swift in Sources */,
+				AB4B8019241795B1001EEB96 /* logicGateRecogniser.xcdatamodeld in Sources */,
 				ABD5F1A72382B8B9002FFD16 /* Perimeter.swift in Sources */,
 				AB84F128237EC31200D4CE37 /* Matrix.swift in Sources */,
 				AB2540DD23F55A9400204C5F /* UIBezierPath+Extensions.swift in Sources */,
@@ -849,6 +853,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		AB4B8017241795B1001EEB96 /* logicGateRecogniser.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				AB4B8018241795B1001EEB96 /* Logic Gate Recogniser.xcdatamodel */,
+			);
+			currentVersion = AB4B8018241795B1001EEB96 /* Logic Gate Recogniser.xcdatamodel */;
+			path = logicGateRecogniser.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = AB36BBDD235735CA006B8607 /* Project object */;
 }
