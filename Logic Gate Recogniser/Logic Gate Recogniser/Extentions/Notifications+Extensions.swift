@@ -12,5 +12,6 @@ extension Notification.Name {
     
     static var gateRecognised:  Notification.Name { Notification.Name("gateRecognised") }
     static var shapeRecognised: Notification.Name { Notification.Name("shapeRecognised") }
+    static var testRecognised:  Notification.Name { Notification.Name("testRecognised") }
     
 }

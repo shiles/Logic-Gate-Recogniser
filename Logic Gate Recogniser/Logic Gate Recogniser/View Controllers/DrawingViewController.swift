@@ -9,9 +9,12 @@
 import UIKit
 import PencilKit
 import Combine
+import CoreData
 
 class DrawingViewController: UIViewController  {
 
+    let testHelper = TestHelper()
+    
     @IBOutlet weak var gateInfoView: DetectedGateInfoView!
     @IBOutlet weak var canvasView: CanvasView!
     @IBOutlet weak var penToolButton: UIBarButtonItem!
@@ -27,6 +30,9 @@ class DrawingViewController: UIViewController  {
         
         // Canvas Setup
         canvasView.canvasViewModel.delegate = canvasView
+        
+        // Test Setup
+        testHelper.delegate = self
     }
     
     @IBAction func penToolTapped(_ sender: Any) {
@@ -64,6 +70,17 @@ extension DrawingViewController: UIPencilInteractionDelegate {
             }
         }
     }
+}
+
+// MARK: Testing Extensions
+
+extension DrawingViewController: TestAlertShower {
     
+    func showTestAlert(for gate: TestRecognised) {
+        let alert = UIAlertController(title: "\(gate.description) Recognised", message: "Is this correct?", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { _ in self.testHelper.addObservation(with: gate, correct: true) }))
+        alert.addAction(UIAlertAction(title: "No", style: .destructive, handler: { _ in self.testHelper.addObservation(with: gate, correct: false) }))
+        self.present(alert, animated: true, completion: nil)
+    }
 }
 

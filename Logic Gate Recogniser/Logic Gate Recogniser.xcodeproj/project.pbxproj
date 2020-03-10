@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		AB0866FF2386C97000E30B50 /* ShapeDecider.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0866FE2386C97000E30B50 /* ShapeDecider.swift */; };
+		AB0AABCD2417A11E001BF2C7 /* TestHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0AABCC2417A11E001BF2C7 /* TestHelper.swift */; };
 		AB0BA48423F400F800288D37 /* Gate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0BA48323F400F800288D37 /* Gate.swift */; };
 		AB21A206236B256000BCE5E0 /* CGVector+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB21A205236B256000BCE5E0 /* CGVector+Extensions.swift */; };
 		AB21A208236B678700BCE5E0 /* CGFloat+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB21A207236B678700BCE5E0 /* CGFloat+Extensions.swift */; };
@@ -84,6 +85,7 @@
 
 /* Begin PBXFileReference section */
 		AB0866FE2386C97000E30B50 /* ShapeDecider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShapeDecider.swift; sourceTree = "<group>"; };
+		AB0AABCC2417A11E001BF2C7 /* TestHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestHelper.swift; sourceTree = "<group>"; };
 		AB0BA48323F400F800288D37 /* Gate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gate.swift; sourceTree = "<group>"; };
 		AB21A205236B256000BCE5E0 /* CGVector+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGVector+Extensions.swift"; sourceTree = "<group>"; };
 		AB21A207236B678700BCE5E0 /* CGFloat+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGFloat+Extensions.swift"; sourceTree = "<group>"; };
@@ -170,6 +172,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AB0AABCB2417A103001BF2C7 /* Testing */ = {
+			isa = PBXGroup;
+			children = (
+				AB0AABCC2417A11E001BF2C7 /* TestHelper.swift */,
+			);
+			path = Testing;
+			sourceTree = "<group>";
+		};
 		AB0BA48023F4005000288D37 /* Gate Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -235,6 +245,7 @@
 				AB0BA48023F4005000288D37 /* Gate Model */,
 				AB9F337A235887A100A39A44 /* View Controllers */,
 				AB9F3375235885A700A39A44 /* Storyboards */,
+				AB0AABCB2417A103001BF2C7 /* Testing */,
 				AB36BBE8235735CA006B8607 /* AppDelegate.swift */,
 				AB4B8017241795B1001EEB96 /* logicGateRecogniser.xcdatamodeld */,
 				AB36BC0A23574305006B8607 /* Logic Gate Recogniser.entitlements */,
@@ -554,6 +565,7 @@
 				AB5370BA23FBD7AE00E5FD3F /* CanvasViewModel.swift in Sources */,
 				AB84D0BC23E85652005E7DC7 /* CGRect+Extensions.swift in Sources */,
 				AB44795523630972000BF2A5 /* DetailAnalyser.swift in Sources */,
+				AB0AABCD2417A11E001BF2C7 /* TestHelper.swift in Sources */,
 				AB84F12A237EC38800D4CE37 /* Number.swift in Sources */,
 				AB34F90A2371B34F000E7B86 /* ShapeAnalyser.swift in Sources */,
 				ABCA2C6A23E173D200746742 /* Shape.swift in Sources */,

@@ -57,6 +57,8 @@ class ShapeCombiner {
         guard let gate = gates.first, gates.count == 1 else { return shapes }
         let boundingBox = shapes.combinedBoundingBox
         NotificationCenter.default.post(name: .gateRecognised, object: GateType.buildGate(of: gate, at: boundingBox))
+        NotificationCenter.default.post(name: .testRecognised,
+                                        object: TestRecognised(description: gate.rawValue, points: shapes.map(\.components).flatMap { $0 }.flatMap { $0 }))
         return nil
     }
     
