@@ -7,8 +7,8 @@
 //
 
 import UIKit
+import SwiftUI
 import PencilKit
-import Combine
 import CoreData
 
 class DrawingViewController: UIViewController  {
@@ -77,10 +77,17 @@ extension DrawingViewController: UIPencilInteractionDelegate {
 extension DrawingViewController: TestAlertShower {
     
     func showTestAlert(for gate: TestRecognised) {
-        let alert = UIAlertController(title: "\(gate.description) Recognised", message: "Is this correct?", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { _ in self.testHelper.addObservation(with: gate, correct: true) }))
-        alert.addAction(UIAlertAction(title: "No", style: .destructive, handler: { _ in self.testHelper.addObservation(with: gate, correct: false) }))
-        self.present(alert, animated: true, completion: nil)
+        var view = TestView(recognised: gate)  
+        view.model = testHelper
+        view.dismiss = {
+            self.dismiss(animated: true, completion: nil)
+        }
+        
+        // Display View
+        let vc = UIHostingController(rootView: view)
+        vc.modalPresentationStyle = .popover
+        vc.popoverPresentationController?.barButtonItem = resetCanvasButton
+        present(vc, animated: true, completion:nil)
     }
 }
 

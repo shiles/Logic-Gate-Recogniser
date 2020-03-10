@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		AB0866FF2386C97000E30B50 /* ShapeDecider.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0866FE2386C97000E30B50 /* ShapeDecider.swift */; };
 		AB0AABCD2417A11E001BF2C7 /* TestHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0AABCC2417A11E001BF2C7 /* TestHelper.swift */; };
+		AB0AABCF2417AB72001BF2C7 /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0AABCE2417AB72001BF2C7 /* TestView.swift */; };
 		AB0BA48423F400F800288D37 /* Gate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0BA48323F400F800288D37 /* Gate.swift */; };
 		AB21A206236B256000BCE5E0 /* CGVector+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB21A205236B256000BCE5E0 /* CGVector+Extensions.swift */; };
 		AB21A208236B678700BCE5E0 /* CGFloat+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB21A207236B678700BCE5E0 /* CGFloat+Extensions.swift */; };
@@ -86,6 +87,7 @@
 /* Begin PBXFileReference section */
 		AB0866FE2386C97000E30B50 /* ShapeDecider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShapeDecider.swift; sourceTree = "<group>"; };
 		AB0AABCC2417A11E001BF2C7 /* TestHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestHelper.swift; sourceTree = "<group>"; };
+		AB0AABCE2417AB72001BF2C7 /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
 		AB0BA48323F400F800288D37 /* Gate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gate.swift; sourceTree = "<group>"; };
 		AB21A205236B256000BCE5E0 /* CGVector+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGVector+Extensions.swift"; sourceTree = "<group>"; };
 		AB21A207236B678700BCE5E0 /* CGFloat+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGFloat+Extensions.swift"; sourceTree = "<group>"; };
@@ -176,6 +178,7 @@
 			isa = PBXGroup;
 			children = (
 				AB0AABCC2417A11E001BF2C7 /* TestHelper.swift */,
+				AB0AABCE2417AB72001BF2C7 /* TestView.swift */,
 			);
 			path = Testing;
 			sourceTree = "<group>";
@@ -532,6 +535,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AB0AABCF2417AB72001BF2C7 /* TestView.swift in Sources */,
 				AB9F337C235887C300A39A44 /* DetectedGateInfoView.swift in Sources */,
 				AB36BBED235735CA006B8607 /* DrawingViewController.swift in Sources */,
 				AB21A208236B678700BCE5E0 /* CGFloat+Extensions.swift in Sources */,

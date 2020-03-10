@@ -37,10 +37,16 @@ class TestHelper {
             .sink(receiveValue: { gate in self.delegate?.showTestAlert(for: gate) })
     }
     
-    func addObservation(with gate: TestRecognised, correct: Bool) {
+    func addObservation(with gate: TestRecognised, correct: Bool, intention: Int?) {
         guard let obs = NSEntityDescription.insertNewObject(forEntityName: "Observation", into: context) as? Observation else { return }
         obs.correct = correct
         obs.recognised = gate.description
+        
+        if let index = intention {
+            obs.intention = GateType.allTypes[index].rawValue
+        } else {
+            obs.intention = gate.description
+        }
         obs.points = gate.points as NSObject
         self.save()
     }
@@ -54,5 +60,11 @@ class TestHelper {
             }
         }
     }
+}
+
+extension String {
     
+    func capitalizingFirstLetter() -> String {
+        return prefix(1).capitalized + dropFirst()
+    }
 }
