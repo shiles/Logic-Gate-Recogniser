@@ -11,9 +11,10 @@ import UIKit
 
 extension CGPoint {
     
-    func toVector() -> CGVector {
-        return CGVector(dx: x, dy: y)
-    }
+    ///Bounding box of 50px around this point
+    var boundingBox: CGRect { CGRect(center: self) }
+    
+    func toVector() -> CGVector { CGVector(dx: x, dy: y)}
     
     static func -(lhs: CGPoint, rhs: CGPoint) -> CGPoint {
         return CGPoint(x: lhs.x - rhs.x, y: lhs.y - rhs.y)

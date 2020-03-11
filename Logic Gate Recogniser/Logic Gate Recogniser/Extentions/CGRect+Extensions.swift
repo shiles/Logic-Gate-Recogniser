@@ -10,6 +10,13 @@ import Foundation
 import UIKit
 
 extension CGRect {
+
+    /// Creates a CGRect at a central point of a given size
+    ///- parameter center: The center point of the rectangle
+    ///- parameter size: The size of the rectangle
+    init(center: CGPoint, size: CGSize = CGSize(width: 50.0, height: 50.0)) {
+        self.init(x: center.x - size.width / 2, y: center.y - size.height / 2, width: size.width, height: size.height)
+    }
     
     ///Inflates the size of the CGRect to increase a ratio by it's center poiont
     ///- Parameter amount: Ratio to increase the CGRect by
