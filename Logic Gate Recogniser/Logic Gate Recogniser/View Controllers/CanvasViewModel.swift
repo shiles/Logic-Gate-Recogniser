@@ -26,7 +26,7 @@ class CanvasViewModel {
     
     // External State
     weak var delegate: CanvasDrawer?
-    private(set) var gates: [Gate] = [] {
+    private(set) var gates: GateModel = [] {
         didSet {
             DispatchQueue.main.async { self.delegate?.updateCanvas() }
         }

@@ -14,8 +14,8 @@ class GateManager {
     ///- Parameter erasorStroke: The stroke indicating what the user would like to remove
     ///- Parameter knownGates: The gates are on the canvas
     ///- Returns: A list of gates that have been removed
-    func eraseGate(erasorStroke: Stroke, in knownGates: [Gate]) -> [Gate] {
-        var gates: [Gate] = []
+    func eraseGate(erasorStroke: Stroke, in knownGates: GateModel) -> GateModel {
+        var gates: GateModel = []
         
         knownGates.forEach { gate in
             if !erasorStroke.map({ gate.path.contains($0) }).contains(true) {
