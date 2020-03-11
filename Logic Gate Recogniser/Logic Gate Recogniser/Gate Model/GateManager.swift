@@ -26,4 +26,12 @@ class GateManager {
         return gates
     }
     
+    func eraseConnection() {
+        
+    }
+    
+    func addConnection() {
+        
+    }
+    
 }

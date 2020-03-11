@@ -59,4 +59,12 @@ class Not: Gate {
         hasChanged = output != val
         output = val
     }
+    
+}
+
+extension Not: Equatable {
+    
+    static func == (lhs: Not, rhs: Not) -> Bool {
+        lhs.boundingBox == rhs.boundingBox
+    }
 }

@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-public class Output: Gate {
+class Output: Gate {
     var boundingBox: CGRect
     var description: String = ""
     var inputs: [Gate] = []
@@ -34,5 +34,12 @@ public class Output: Gate {
         guard let first = inputs.first?.output else { fatalError() }
         output = first
         hasChanged = false
+    }
+}
+
+extension Output: Equatable {
+    
+    static func == (lhs: Output, rhs: Output) -> Bool {
+        lhs.boundingBox == rhs.boundingBox
     }
 }

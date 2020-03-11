@@ -33,3 +33,10 @@ class Input: Gate {
     
     func run() {}
 }
+
+extension Input: Equatable {
+    
+    static func == (lhs: Input, rhs: Input) -> Bool {
+        lhs.boundingBox == rhs.boundingBox
+    }
+}

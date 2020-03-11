@@ -60,3 +60,10 @@ class And: Gate {
     }
 }
 
+extension And: Equatable {
+    
+    static func == (lhs: And, rhs: And) -> Bool {
+        lhs.boundingBox == rhs.boundingBox
+    }
+}
+

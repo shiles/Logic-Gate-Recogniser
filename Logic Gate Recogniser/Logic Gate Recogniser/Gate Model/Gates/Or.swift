@@ -59,3 +59,10 @@ class Or: Gate {
         output = val
     }
 }
+
+extension Or: Equatable {
+    
+    static func == (lhs: Or, rhs: Or) -> Bool {
+        lhs.boundingBox == rhs.boundingBox
+    }
+}
