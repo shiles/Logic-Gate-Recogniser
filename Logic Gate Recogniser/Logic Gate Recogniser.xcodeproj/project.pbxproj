@@ -62,6 +62,18 @@
 		AB9F33792358862300A39A44 /* DetectedGateInfo.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB9F33782358862300A39A44 /* DetectedGateInfo.xib */; };
 		AB9F337C235887C300A39A44 /* DetectedGateInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9F337B235887C300A39A44 /* DetectedGateInfoView.swift */; };
 		AB9FC19923673BEB003D1A85 /* Array+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9FC19823673BEB003D1A85 /* Array+Extensions.swift */; };
+		ABAD75282419395400436619 /* Bool+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABAD75272419395400436619 /* Bool+Extensions.swift */; };
+		ABAD752A241939FA00436619 /* Not.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABAD7529241939FA00436619 /* Not.swift */; };
+		ABAD752C24193A3200436619 /* Or.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABAD752B24193A3200436619 /* Or.swift */; };
+		ABAD752E24193A5200436619 /* Nor.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABAD752D24193A5200436619 /* Nor.swift */; };
+		ABAD753024193A7100436619 /* And.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABAD752F24193A7100436619 /* And.swift */; };
+		ABAD753224193A8D00436619 /* Nand.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABAD753124193A8D00436619 /* Nand.swift */; };
+		ABAD753424193AA900436619 /* Xor.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABAD753324193AA900436619 /* Xor.swift */; };
+		ABAD753624193AC400436619 /* Xnor.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABAD753524193AC400436619 /* Xnor.swift */; };
+		ABAD753824193ADB00436619 /* Input.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABAD753724193ADB00436619 /* Input.swift */; };
+		ABAD753A24193AEA00436619 /* Output.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABAD753924193AEA00436619 /* Output.swift */; };
+		ABAD753C24193B3D00436619 /* Runner.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABAD753B24193B3D00436619 /* Runner.swift */; };
+		ABAD753E24193B5E00436619 /* GateModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABAD753D24193B5E00436619 /* GateModel.swift */; };
 		ABBDAB882362EDEE00DBFDC1 /* CanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABBDAB872362EDEE00DBFDC1 /* CanvasView.swift */; };
 		ABC76DF223798A22001A7A29 /* CGPoint+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC76DF123798A21001A7A29 /* CGPoint+Extensions.swift */; };
 		ABCA2C6823E171D400746742 /* Notifications+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCA2C6723E171D400746742 /* Notifications+Extensions.swift */; };
@@ -144,6 +156,18 @@
 		AB9F33782358862300A39A44 /* DetectedGateInfo.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetectedGateInfo.xib; sourceTree = "<group>"; };
 		AB9F337B235887C300A39A44 /* DetectedGateInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetectedGateInfoView.swift; sourceTree = "<group>"; };
 		AB9FC19823673BEB003D1A85 /* Array+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extensions.swift"; sourceTree = "<group>"; };
+		ABAD75272419395400436619 /* Bool+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bool+Extensions.swift"; sourceTree = "<group>"; };
+		ABAD7529241939FA00436619 /* Not.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Not.swift; sourceTree = "<group>"; };
+		ABAD752B24193A3200436619 /* Or.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Or.swift; sourceTree = "<group>"; };
+		ABAD752D24193A5200436619 /* Nor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Nor.swift; sourceTree = "<group>"; };
+		ABAD752F24193A7100436619 /* And.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = And.swift; sourceTree = "<group>"; };
+		ABAD753124193A8D00436619 /* Nand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Nand.swift; sourceTree = "<group>"; };
+		ABAD753324193AA900436619 /* Xor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Xor.swift; sourceTree = "<group>"; };
+		ABAD753524193AC400436619 /* Xnor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Xnor.swift; sourceTree = "<group>"; };
+		ABAD753724193ADB00436619 /* Input.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Input.swift; sourceTree = "<group>"; };
+		ABAD753924193AEA00436619 /* Output.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Output.swift; sourceTree = "<group>"; };
+		ABAD753B24193B3D00436619 /* Runner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Runner.swift; sourceTree = "<group>"; };
+		ABAD753D24193B5E00436619 /* GateModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GateModel.swift; sourceTree = "<group>"; };
 		ABBDAB872362EDEE00DBFDC1 /* CanvasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasView.swift; sourceTree = "<group>"; };
 		ABC76DF123798A21001A7A29 /* CGPoint+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGPoint+Extensions.swift"; sourceTree = "<group>"; };
 		ABCA2C6723E171D400746742 /* Notifications+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notifications+Extensions.swift"; sourceTree = "<group>"; };
@@ -188,6 +212,8 @@
 			children = (
 				AB557E9623F2B08D00D9FA5F /* Gates */,
 				AB5370BB23FC005600E5FD3F /* GateManager.swift */,
+				ABAD753B24193B3D00436619 /* Runner.swift */,
+				ABAD753D24193B5E00436619 /* GateModel.swift */,
 			);
 			path = "Gate Model";
 			sourceTree = "<group>";
@@ -295,6 +321,15 @@
 			children = (
 				AB557E9723F2B0AE00D9FA5F /* GateType.swift */,
 				AB0BA48323F400F800288D37 /* Gate.swift */,
+				ABAD7529241939FA00436619 /* Not.swift */,
+				ABAD752B24193A3200436619 /* Or.swift */,
+				ABAD752D24193A5200436619 /* Nor.swift */,
+				ABAD752F24193A7100436619 /* And.swift */,
+				ABAD753124193A8D00436619 /* Nand.swift */,
+				ABAD753324193AA900436619 /* Xor.swift */,
+				ABAD753524193AC400436619 /* Xnor.swift */,
+				ABAD753724193ADB00436619 /* Input.swift */,
+				ABAD753924193AEA00436619 /* Output.swift */,
 			);
 			path = Gates;
 			sourceTree = "<group>";
@@ -429,6 +464,7 @@
 				ABCA2C6723E171D400746742 /* Notifications+Extensions.swift */,
 				AB27163C23EAF92100323FAA /* Sequence+Extensions.swift */,
 				AB2540DC23F55A9400204C5F /* UIBezierPath+Extensions.swift */,
+				ABAD75272419395400436619 /* Bool+Extensions.swift */,
 			);
 			path = Extentions;
 			sourceTree = "<group>";
@@ -535,36 +571,45 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ABAD753024193A7100436619 /* And.swift in Sources */,
 				AB0AABCF2417AB72001BF2C7 /* TestView.swift in Sources */,
 				AB9F337C235887C300A39A44 /* DetectedGateInfoView.swift in Sources */,
 				AB36BBED235735CA006B8607 /* DrawingViewController.swift in Sources */,
 				AB21A208236B678700BCE5E0 /* CGFloat+Extensions.swift in Sources */,
 				AB84F130237F012E00D4CE37 /* ConvexHull.swift in Sources */,
+				ABAD753224193A8D00436619 /* Nand.swift in Sources */,
 				ABD5F1B22382CBCC002FFD16 /* ShapeRecogniser.swift in Sources */,
 				AB2540DF23F56FB000204C5F /* DrawingTools.swift in Sources */,
 				AB9F1DA82372F45900E9E81C /* Triangle.swift in Sources */,
+				ABAD75282419395400436619 /* Bool+Extensions.swift in Sources */,
 				AB27163D23EAF92100323FAA /* Sequence+Extensions.swift in Sources */,
+				ABAD753A24193AEA00436619 /* Output.swift in Sources */,
 				AB41AE0B23688D4200273845 /* Collection+Extensions.swift in Sources */,
 				ABF06A5823588CF6006C8E2B /* UIView+Extentions.swift in Sources */,
 				ABC76DF223798A22001A7A29 /* CGPoint+Extensions.swift in Sources */,
 				AB9FC19923673BEB003D1A85 /* Array+Extensions.swift in Sources */,
 				AB0866FF2386C97000E30B50 /* ShapeDecider.swift in Sources */,
 				AB5370BC23FC005600E5FD3F /* GateManager.swift in Sources */,
+				ABAD753C24193B3D00436619 /* Runner.swift in Sources */,
 				AB41AE0F2369AEDB00273845 /* Line.swift in Sources */,
 				AB557E9823F2B0AE00D9FA5F /* GateType.swift in Sources */,
 				AB93C97023F1841600CD8006 /* ShapeCombiner.swift in Sources */,
 				AB0BA48423F400F800288D37 /* Gate.swift in Sources */,
 				AB84F12E237F010A00D4CE37 /* BoundingBox.swift in Sources */,
+				ABAD753424193AA900436619 /* Xor.swift in Sources */,
 				ABCA2C6823E171D400746742 /* Notifications+Extensions.swift in Sources */,
 				AB21A206236B256000BCE5E0 /* CGVector+Extensions.swift in Sources */,
 				ABD5F1AA2382BB79002FFD16 /* Stroke.swift in Sources */,
 				AB41AE0D2369A1EE00273845 /* UIColor+Extensions.swift in Sources */,
+				ABAD753E24193B5E00436619 /* GateModel.swift in Sources */,
 				AB34F90E2372D1FD000E7B86 /* Stack.swift in Sources */,
 				ABBDAB882362EDEE00DBFDC1 /* CanvasView.swift in Sources */,
 				AB93C97323F185FB00CD8006 /* Predicate.swift in Sources */,
 				AB4B8019241795B1001EEB96 /* logicGateRecogniser.xcdatamodeld in Sources */,
 				ABD5F1A72382B8B9002FFD16 /* Perimeter.swift in Sources */,
 				AB84F128237EC31200D4CE37 /* Matrix.swift in Sources */,
+				ABAD753624193AC400436619 /* Xnor.swift in Sources */,
+				ABAD752E24193A5200436619 /* Nor.swift in Sources */,
 				AB2540DD23F55A9400204C5F /* UIBezierPath+Extensions.swift in Sources */,
 				AB5370BA23FBD7AE00E5FD3F /* CanvasViewModel.swift in Sources */,
 				AB84D0BC23E85652005E7DC7 /* CGRect+Extensions.swift in Sources */,
@@ -572,9 +617,12 @@
 				AB0AABCD2417A11E001BF2C7 /* TestHelper.swift in Sources */,
 				AB84F12A237EC38800D4CE37 /* Number.swift in Sources */,
 				AB34F90A2371B34F000E7B86 /* ShapeAnalyser.swift in Sources */,
+				ABAD752C24193A3200436619 /* Or.swift in Sources */,
 				ABCA2C6A23E173D200746742 /* Shape.swift in Sources */,
 				AB34F90C2371D22D000E7B86 /* Orientation.swift in Sources */,
 				AB36BBE9235735CA006B8607 /* AppDelegate.swift in Sources */,
+				ABAD752A241939FA00436619 /* Not.swift in Sources */,
+				ABAD753824193ADB00436619 /* Input.swift in Sources */,
 				AB2540E123F57A4100204C5F /* ShapeAttributes.swift in Sources */,
 				AB36BBEB235735CA006B8607 /* SceneDelegate.swift in Sources */,
 			);

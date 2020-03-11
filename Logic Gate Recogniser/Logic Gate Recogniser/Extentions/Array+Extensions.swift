@@ -17,6 +17,9 @@ extension Array {
     ///If the list has elements
     var hasElements: Bool { !isEmpty }
     
+    ///Gets the second element in the list if it exists
+    var second: Element? { self.count > 1 ? self[1] : nil }
+    
     ///Splits the array into two parts, with a single element overlap between the left and right sides of the split
     ///- Returns: Touple with left half and right half of array
     func split() -> (left: [Element], right: [Element]) {
