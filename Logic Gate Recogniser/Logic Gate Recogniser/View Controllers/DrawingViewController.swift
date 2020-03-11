@@ -12,13 +12,14 @@ import PencilKit
 import CoreData
 
 class DrawingViewController: UIViewController  {
-
-    let testHelper = TestHelper()
+    private let testHelper = TestHelper()
+    private var previousTool = DrawingTools.erasor
     
     @IBOutlet weak var gateInfoView: DetectedGateInfoView!
     @IBOutlet weak var canvasView: CanvasView!
     @IBOutlet weak var penToolButton: UIBarButtonItem!
     @IBOutlet weak var erasorToolButton: UIBarButtonItem!
+    @IBOutlet weak var linkToolButton: UIBarButtonItem!
     @IBOutlet weak var resetCanvasButton: UIBarButtonItem!
     
     override func viewDidLoad() {
@@ -43,6 +44,10 @@ class DrawingViewController: UIViewController  {
         canvasView.tool = .erasor
     }
     
+    @IBAction func connectorToolTapped(_ sender: Any) {
+        canvasView.tool = .connector
+    }
+    
     @IBAction func resetCanvasTapped(_ sender: Any) {
         canvasView.canvasViewModel.resetState()
     }
@@ -63,11 +68,9 @@ extension DrawingViewController: UIPencilInteractionDelegate {
         case .ignore:
             break
         default:
-            if canvasView.tool == .pen {
-                canvasView.tool = .erasor
-            } else {
-                canvasView.tool = .pen
-            }
+            let current = canvasView.tool
+            canvasView.tool = previousTool
+            previousTool = current
         }
     }
 }

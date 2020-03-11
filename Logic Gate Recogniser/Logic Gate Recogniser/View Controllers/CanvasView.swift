@@ -23,6 +23,7 @@ class CanvasView: UIImageView {
             switch tool {
                 case .pen: drawColor = .label
                 case .erasor: drawColor = .systemBackground
+                case .connector: drawColor = .red
             }
         }
     }

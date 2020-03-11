@@ -53,15 +53,21 @@ class CanvasViewModel {
     ///- Parameter stroke: Stroke that the user has drawn
     ///- Parameter tool: The tool the stroke was drawn with
     func strokeFinished(stroke: Stroke, tool: DrawingTools) {
+        if tool == .pen {
+            DispatchQueue.global(qos: .userInitiated).async {
+                self.adjacentShapes = self.shapeRecogniser.recogniseShape(from: stroke , into: self.adjacentShapes)
+            }
+        }
+        
         if tool == .erasor {
             DispatchQueue.global(qos: .userInitiated).async {
                 self.gates =  self.gateManager.eraseGate(erasorStroke: stroke, in:  self.gates)
                 self.adjacentShapes =  self.shapeRecogniser.eraseShapes(eraserStroke: stroke, in:  self.adjacentShapes)
             }
-        } else {
-            DispatchQueue.global(qos: .userInitiated).async {
-                self.adjacentShapes = self.shapeRecogniser.recogniseShape(from: stroke , into: self.adjacentShapes)
-            }
+        }
+        
+        if tool == .connector {
+            //Do something
         }
         
         scheduleAnalysis()

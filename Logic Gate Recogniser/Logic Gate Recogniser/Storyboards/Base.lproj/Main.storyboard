@@ -42,6 +42,11 @@
                             </connections>
                         </barButtonItem>
                         <rightBarButtonItems>
+                            <barButtonItem title="Item" image="link" catalog="system" id="sHL-j8-Ulo" userLabel="Connector Tool">
+                                <connections>
+                                    <action selector="connectorToolTapped:" destination="BYZ-38-t0r" id="EXt-qv-18n"/>
+                                </connections>
+                            </barButtonItem>
                             <barButtonItem title="Item" image="pencil.slash" catalog="system" id="wYw-hY-znR">
                                 <connections>
                                     <action selector="erasorToolTapped:" destination="BYZ-38-t0r" id="Act-qC-GAD"/>
@@ -58,6 +63,7 @@
                         <outlet property="canvasView" destination="3ee-VR-Vbu" id="pq0-TK-zdb"/>
                         <outlet property="erasorToolButton" destination="wYw-hY-znR" id="mDd-RD-gJZ"/>
                         <outlet property="gateInfoView" destination="yJf-Bs-aEP" id="I8K-kf-vLB"/>
+                        <outlet property="linkToolButton" destination="sHL-j8-Ulo" id="Lq5-TI-zvP"/>
                         <outlet property="penToolButton" destination="3xj-yy-UmH" id="xvu-kn-6jQ"/>
                         <outlet property="resetCanvasButton" destination="gcN-MP-9CO" id="t8t-9n-yFt"/>
                     </connections>
@@ -87,6 +93,7 @@
     </scenes>
     <resources>
         <image name="arrow.clockwise" catalog="system" width="115" height="128"/>
+        <image name="link" catalog="system" width="128" height="116"/>
         <image name="pencil" catalog="system" width="128" height="113"/>
         <image name="pencil.slash" catalog="system" width="128" height="113"/>
     </resources>
