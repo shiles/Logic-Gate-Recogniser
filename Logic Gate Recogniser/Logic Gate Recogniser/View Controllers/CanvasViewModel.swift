@@ -37,6 +37,11 @@ class CanvasViewModel {
             DispatchQueue.main.async { self.delegate?.updateCanvas() }
         }
     }
+    private(set) var connections: [Connection] = [] {
+        didSet {
+            DispatchQueue.main.async { self.delegate?.updateCanvas() }
+        }
+    }
 
     // MARK: Initialisers
     
@@ -61,13 +66,17 @@ class CanvasViewModel {
         
         if tool == .erasor {
             DispatchQueue.global(qos: .userInitiated).async {
-                self.gates =  self.gateManager.eraseGate(erasorStroke: stroke, in:  self.gates)
-                self.adjacentShapes =  self.shapeRecogniser.eraseShapes(eraserStroke: stroke, in:  self.adjacentShapes)
+                self.gates = self.gateManager.eraseGate(erasorStroke: stroke, in:  self.gates)
+                self.adjacentShapes = self.shapeRecogniser.eraseShapes(eraserStroke: stroke, in:  self.adjacentShapes)
             }
         }
         
         if tool == .connector {
-            //Do something
+            DispatchQueue.global(qos: .userInitiated).async {
+                let (connection, model) = self.gateManager.addConnection(connectionStroke: stroke, into: self.gates)
+                self.gates = model
+                if let connection = connection { self.connections.append(connection) }
+            }
         }
         
         scheduleAnalysis()
@@ -82,6 +91,7 @@ class CanvasViewModel {
     func resetState() {
         gates = []
         adjacentShapes = []
+        connections = []
     }
     
     // MARK: Input Analysis Functions

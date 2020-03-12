@@ -84,6 +84,7 @@
 		ABD5F1B02382C0EB002FFD16 /* StrokeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABD5F1AF2382C0EB002FFD16 /* StrokeTests.swift */; };
 		ABD5F1B22382CBCC002FFD16 /* ShapeRecogniser.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABD5F1B12382CBCC002FFD16 /* ShapeRecogniser.swift */; };
 		ABF06A5823588CF6006C8E2B /* UIView+Extentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF06A5723588CF6006C8E2B /* UIView+Extentions.swift */; };
+		ABF8046C241A1798007D14C7 /* Connection.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF8046B241A1798007D14C7 /* Connection.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -178,6 +179,7 @@
 		ABD5F1AF2382C0EB002FFD16 /* StrokeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StrokeTests.swift; sourceTree = "<group>"; };
 		ABD5F1B12382CBCC002FFD16 /* ShapeRecogniser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShapeRecogniser.swift; sourceTree = "<group>"; };
 		ABF06A5723588CF6006C8E2B /* UIView+Extentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extentions.swift"; sourceTree = "<group>"; };
+		ABF8046B241A1798007D14C7 /* Connection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Connection.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -481,6 +483,7 @@
 		ABF8046A241A15F9007D14C7 /* Connections */ = {
 			isa = PBXGroup;
 			children = (
+				ABF8046B241A1798007D14C7 /* Connection.swift */,
 			);
 			path = Connections;
 			sourceTree = "<group>";
@@ -599,6 +602,7 @@
 				AB9F1DA82372F45900E9E81C /* Triangle.swift in Sources */,
 				ABAD75282419395400436619 /* Bool+Extensions.swift in Sources */,
 				AB27163D23EAF92100323FAA /* Sequence+Extensions.swift in Sources */,
+				ABF8046C241A1798007D14C7 /* Connection.swift in Sources */,
 				ABAD753A24193AEA00436619 /* Output.swift in Sources */,
 				AB41AE0B23688D4200273845 /* Collection+Extensions.swift in Sources */,
 				ABF06A5823588CF6006C8E2B /* UIView+Extentions.swift in Sources */,
