@@ -8,12 +8,6 @@
 
 import Foundation
 
-typealias GateModel = [Gate]
+typealias GateModel = (connections: [Connection], gates: [Gate])
 
-extension GateModel {
-    
-    var outputsDidChange: Bool {
-        self.map(\.hasChanged).contains(true)
-    }
-    
-}
+

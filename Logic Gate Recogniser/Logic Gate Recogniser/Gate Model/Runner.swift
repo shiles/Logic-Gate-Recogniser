@@ -10,7 +10,7 @@ import Foundation
 
 class Runner {
     
-    static func simulate(_ model: GateModel) {
+    static func simulate(_ model: [Gate]) {
         model.compactMap{ $0 as? Output }.forEach { $0.hasChanged = true }
         
         while(model.outputsDidChange) {

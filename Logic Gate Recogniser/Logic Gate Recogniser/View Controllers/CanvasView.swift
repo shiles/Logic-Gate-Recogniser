@@ -122,12 +122,12 @@ extension CanvasView: CanvasDrawer {
         let context = UIGraphicsGetCurrentContext()!
         
         // Draw the connections
-        canvasViewModel.connections.forEach { connection in
+        canvasViewModel.gateModel.connections.forEach { connection in
             self.drawStroke(context: context, stroke: connection.stroke, colour: .red)
         }
         
         // Draw the gates that have been found
-        canvasViewModel.gates.forEach { gate in
+        canvasViewModel.gateModel.gates.forEach { gate in
             gate.draw(with: context)
         }
         

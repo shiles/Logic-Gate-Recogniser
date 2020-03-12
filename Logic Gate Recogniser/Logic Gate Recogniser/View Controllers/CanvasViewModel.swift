@@ -26,7 +26,7 @@ class CanvasViewModel {
     
     // External State
     weak var delegate: CanvasDrawer?
-    private(set) var gates: GateModel = [] {
+    private(set) var gateModel: GateModel = ([],[]) {
         didSet {
             DispatchQueue.main.async { self.delegate?.updateCanvas() }
         }
@@ -37,11 +37,6 @@ class CanvasViewModel {
             DispatchQueue.main.async { self.delegate?.updateCanvas() }
         }
     }
-    private(set) var connections: [Connection] = [] {
-        didSet {
-            DispatchQueue.main.async { self.delegate?.updateCanvas() }
-        }
-    }
 
     // MARK: Initialisers
     
@@ -49,7 +44,7 @@ class CanvasViewModel {
         // When a gate is found it adds it to the model
         gateSubscriber = NotificationCenter.Publisher(center: .default, name: .gateRecognised, object: nil)
             .map { notification in return notification.object as AnyObject as! Gate }
-            .sink(receiveValue: { gate in self.gates.append(gate) })
+            .sink(receiveValue: { gate in self.gateModel.gates.append(gate) })
     }
     
     // MARK: User Input Functions
@@ -60,22 +55,20 @@ class CanvasViewModel {
     func strokeFinished(stroke: Stroke, tool: DrawingTools) {
         if tool == .pen {
             DispatchQueue.global(qos: .userInitiated).async {
-                self.adjacentShapes = self.shapeRecogniser.recogniseShape(from: stroke , into: self.adjacentShapes)
+                self.adjacentShapes = self.shapeRecogniser.recogniseShape(from: stroke, into: self.adjacentShapes)
             }
         }
         
         if tool == .erasor {
             DispatchQueue.global(qos: .userInitiated).async {
-                self.gates = self.gateManager.eraseGate(erasorStroke: stroke, in:  self.gates)
+                self.gateModel = self.gateManager.eraseGate(erasorStroke: stroke, in:  self.gateModel)
                 self.adjacentShapes = self.shapeRecogniser.eraseShapes(eraserStroke: stroke, in:  self.adjacentShapes)
             }
         }
         
         if tool == .connector {
             DispatchQueue.global(qos: .userInitiated).async {
-                let (connection, model) = self.gateManager.addConnection(connectionStroke: stroke, into: self.gates)
-                self.gates = model
-                if let connection = connection { self.connections.append(connection) }
+                self.gateModel = self.gateManager.addConnection(connectionStroke: stroke, into: self.gateModel)
             }
         }
         
@@ -89,9 +82,8 @@ class CanvasViewModel {
     
     ///Resets the state of held by the canvas
     func resetState() {
-        gates = []
+        gateModel = ([],[])
         adjacentShapes = []
-        connections = []
     }
     
     // MARK: Input Analysis Functions

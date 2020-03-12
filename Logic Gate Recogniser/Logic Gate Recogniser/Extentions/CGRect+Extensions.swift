@@ -14,7 +14,7 @@ extension CGRect {
     /// Creates a CGRect at a central point of a given size
     ///- parameter center: The center point of the rectangle
     ///- parameter size: The size of the rectangle
-    init(center: CGPoint, size: CGSize = CGSize(width: 50.0, height: 50.0)) {
+    init(center: CGPoint, size: CGSize = CGSize(width: 20.0, height: 20.0)) {
         self.init(x: center.x - size.width / 2, y: center.y - size.height / 2, width: size.width, height: size.height)
     }
     

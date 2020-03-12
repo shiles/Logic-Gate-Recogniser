@@ -131,3 +131,12 @@ extension Array where Element == Shape {
     }
     
 }
+
+extension Array where Element == Gate {
+    
+    ///Calculates if any of the outputs for the gates in the list have changed
+    var outputsDidChange: Bool {
+        self.map(\.hasChanged).contains(true)
+    }
+    
+}
