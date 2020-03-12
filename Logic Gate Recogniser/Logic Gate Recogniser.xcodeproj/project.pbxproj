@@ -210,7 +210,7 @@
 		AB0BA48023F4005000288D37 /* Gate Model */ = {
 			isa = PBXGroup;
 			children = (
-				AB557E9623F2B08D00D9FA5F /* Gates */,
+				ABF80469241A15ED007D14C7 /* Gate Structures */,
 				AB5370BB23FC005600E5FD3F /* GateManager.swift */,
 				ABAD753B24193B3D00436619 /* Runner.swift */,
 				ABAD753D24193B5E00436619 /* GateModel.swift */,
@@ -298,7 +298,7 @@
 		AB4479532363095E000BF2A5 /* Drawing Recognition */ = {
 			isa = PBXGroup;
 			children = (
-				AB84F125237EC29400D4CE37 /* Data Structures */,
+				AB84F125237EC29400D4CE37 /* Drawing Structures */,
 				AB44795423630972000BF2A5 /* DetailAnalyser.swift */,
 				AB34F9092371B34F000E7B86 /* ShapeAnalyser.swift */,
 				AB0866FE2386C97000E30B50 /* ShapeDecider.swift */,
@@ -349,7 +349,7 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		AB84F125237EC29400D4CE37 /* Data Structures */ = {
+		AB84F125237EC29400D4CE37 /* Drawing Structures */ = {
 			isa = PBXGroup;
 			children = (
 				AB93C97123F185EC00CD8006 /* Predicate */,
@@ -358,7 +358,7 @@
 				AB84F126237EC2A000D4CE37 /* Matrix */,
 				AB84F12C237EFFDD00D4CE37 /* Stack */,
 			);
-			path = "Data Structures";
+			path = "Drawing Structures";
 			sourceTree = "<group>";
 		};
 		AB84F126237EC2A000D4CE37 /* Matrix */ = {
@@ -467,6 +467,22 @@
 				ABAD75272419395400436619 /* Bool+Extensions.swift */,
 			);
 			path = Extentions;
+			sourceTree = "<group>";
+		};
+		ABF80469241A15ED007D14C7 /* Gate Structures */ = {
+			isa = PBXGroup;
+			children = (
+				ABF8046A241A15F9007D14C7 /* Connections */,
+				AB557E9623F2B08D00D9FA5F /* Gates */,
+			);
+			path = "Gate Structures";
+			sourceTree = "<group>";
+		};
+		ABF8046A241A15F9007D14C7 /* Connections */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Connections;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

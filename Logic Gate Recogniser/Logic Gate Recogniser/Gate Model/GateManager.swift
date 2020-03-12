@@ -30,8 +30,11 @@ class GateManager {
         
     }
     
-    func addConnection() {
+    func addConnection(connection: Stroke, into model: GateModel) -> GateModel {
         
+        
+        
+        return model
     }
     
 }
