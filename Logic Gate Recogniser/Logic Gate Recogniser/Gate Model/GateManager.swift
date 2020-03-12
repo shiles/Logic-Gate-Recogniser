@@ -15,15 +15,18 @@ class GateManager {
     ///- Parameter model: The gates are on the canvas
     ///- Returns: A list of gates that have been removed
     func eraseGate(erasorStroke: Stroke, in gateModel: GateModel) -> GateModel {
+        var connections = gateModel.connections
         var gates: [Gate] = []
         
         gateModel.gates.forEach { gate in
             if !erasorStroke.map({ gate.path.contains($0) }).contains(true) {
                 gates.append(gate)
+            } else {
+                connections.removeAll(where: { $0.startGate == gate || $0.endGate == gate })
             }
         }
     
-        return (gateModel.connections, gates)
+        return (connections, gates)
     }
     
     ///Adds a conection between gates if both ends of the stroke connect with a gate

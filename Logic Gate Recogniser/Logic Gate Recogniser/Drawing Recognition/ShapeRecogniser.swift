@@ -32,18 +32,19 @@ class ShapeRecogniser {
     ///- Parameter adjacentShapes:: The shapes which are grouped togther on the canvas
     ///- Returns: Retruns adjacent shapes with the analysed stroke added
     func performAnalysis(in adjacentShapes: [[Shape]]) -> [[Shape]] {
-        var shapes = adjacentShapes
+        var shapes = adjacentShape
+        var i = 0
         
-        for (i, _) in shapes.enumerated() {
-            if i >= shapes.count { break } // Added as if shapes shapes are removed i > count possibly
+        while(i < shapes.count) {
             shapes[i] = combiner.combineToTriangle(shapes: shapes[i])
             shapes[i] = combiner.completeTriangleWithLine(shapes: shapes[i])
             shapes[i] = combiner.combineToRectangle(shapes: shapes[i])
 
             if let newList = combiner.combineShapesToGates(shapes: shapes[i]) {
                 shapes[i] = newList
+                i += 1
             } else {
-                shapes.remove(at: i)
+               shapes.remove(at: i)
             }
         }
         
