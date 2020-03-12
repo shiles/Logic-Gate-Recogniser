@@ -24,3 +24,7 @@ protocol Gate {
     ///Simulates the logic gate
     func run()
 }
+ 
+func == (lhs: Gate, rhs: Gate) -> Bool {
+    lhs.boundingBox == rhs.boundingBox
+}

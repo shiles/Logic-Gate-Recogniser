@@ -62,6 +62,7 @@ class CanvasViewModel {
         if tool == .erasor {
             DispatchQueue.global(qos: .userInitiated).async {
                 self.gateModel = self.gateManager.eraseGate(erasorStroke: stroke, in:  self.gateModel)
+                self.gateModel = self.gateManager.eraseConnection(erasorStroke: stroke, in: self.gateModel)
                 self.adjacentShapes = self.shapeRecogniser.eraseShapes(eraserStroke: stroke, in:  self.adjacentShapes)
             }
         }

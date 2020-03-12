@@ -62,10 +62,3 @@ class Nor: Gate {
         output = val
     }
 }
-
-extension Nor: Equatable {
-    
-    static func == (lhs: Nor, rhs: Nor) -> Bool {
-        lhs.boundingBox == rhs.boundingBox
-    }
-}

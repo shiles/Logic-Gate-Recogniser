@@ -61,10 +61,3 @@ class Xor: Gate {
         output = val
     }
 }
-
-extension Xor: Equatable {
-    
-    static func == (lhs: Xor, rhs: Xor) -> Bool {
-        lhs.boundingBox == rhs.boundingBox
-    }
-}

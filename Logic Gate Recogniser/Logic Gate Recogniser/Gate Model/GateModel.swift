@@ -10,4 +10,3 @@ import Foundation
 
 typealias GateModel = (connections: [Connection], gates: [Gate])
 
-

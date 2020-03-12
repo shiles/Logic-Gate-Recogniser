@@ -23,8 +23,8 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "17AD4920-66C5-4A4B-9A94-48003060F976"
-            shouldBeEnabled = "Yes"
+            uuid = "793E3A83-832E-4AE1-B583-4608D7F372BD"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Logic Gate Recogniser/View Controllers/CanvasViewModel.swift"

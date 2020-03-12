@@ -60,8 +60,21 @@ class GateManager {
     ///- Parameter model: The gates are on the canvas
     ///- Returns: A list of gates that have been removed
     func eraseConnection(erasorStroke: Stroke, in model: GateModel) -> GateModel {
+        let erasorBoundingBox = erasorStroke.boundingBox
+        var connections: [Connection] = []
+            
+        model.connections.forEach { connection in
+            if connection.stroke.boundingBox.intersects(erasorBoundingBox) {
+                if connection.stroke.interesects(with: erasorStroke) {
+                    var endGate = model.gates.first(where: { $0 == connection.endGate })
+                    endGate?.inputs.removeAll(where: {$0 == connection.startGate })
+                } else {
+                    connections.append(connection)
+                }
+            }
+        }
         
-        return model
+        return (connections, model.gates)
     }
         
 }

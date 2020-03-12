@@ -63,10 +63,3 @@ class Nand: Gate {
         output = val
     }
 }
-
-extension Nand: Equatable {
-    
-    static func == (lhs: Nand, rhs: Nand) -> Bool {
-        lhs.boundingBox == rhs.boundingBox
-    }
-}

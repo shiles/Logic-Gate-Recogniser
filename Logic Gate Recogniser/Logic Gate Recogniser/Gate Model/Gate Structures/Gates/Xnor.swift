@@ -65,10 +65,3 @@ class Xnor: Gate {
         output = val
     }
 }
-
-extension Xnor: Equatable {
-    
-    static func == (lhs: Xnor, rhs: Xnor) -> Bool {
-        lhs.boundingBox == rhs.boundingBox
-    }
-}

@@ -36,10 +36,3 @@ class Output: Gate {
         hasChanged = false
     }
 }
-
-extension Output: Equatable {
-    
-    static func == (lhs: Output, rhs: Output) -> Bool {
-        lhs.boundingBox == rhs.boundingBox
-    }
-}
