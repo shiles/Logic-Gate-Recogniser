@@ -25,4 +25,9 @@ struct Line: Equatable {
         path.addLine(to: endPoint)
         return path.bounds
     }
+    
+    ///Gets the length of the line
+    var length: CGFloat {
+        ((endPoint.x - startPoint.x).squared() + (endPoint.y - startPoint.y).squared()).squareRoot()
+    }
 }

@@ -41,7 +41,7 @@ class GateManager {
         
         if let _ = startGate, let _ = endGate {
             // Check that it doesn't already have to many inputs
-            if endGate!.description == "Not" {
+            if endGate!.has(matching: .isSingleInput) {
                 if endGate!.inputs.count >= 1 { return model }
             } else {
                 if endGate!.inputs.count >= 2 { return model }

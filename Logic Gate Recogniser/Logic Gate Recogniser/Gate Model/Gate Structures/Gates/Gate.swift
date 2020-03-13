@@ -28,3 +28,13 @@ protocol Gate {
 func == (lhs: Gate, rhs: Gate) -> Bool {
     lhs.boundingBox == rhs.boundingBox
 }
+
+extension Gate {
+    
+    ///Test to see if the gate matches a predicate
+    ///- Parameter predicate: Predicate to test against
+    ///- Returns: Boolean value wether the gate matches or doesn't
+    func has(matching predicate: Predicate<Gate>) -> Bool {
+        return predicate.matches(self)
+    }
+}

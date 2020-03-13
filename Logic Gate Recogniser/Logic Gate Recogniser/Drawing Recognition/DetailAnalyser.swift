@@ -17,7 +17,7 @@ class DetailAnalyser {
     ///- Parameter triangle: Input triangle
     ///- Returns: Detailed triangle
     func analyseTriangle(triangle: Stroke) -> ShapeType {
-        switch(numberOfStraightLines(in: triangle)) {
+        switch(straightLines(in: triangle).count) {
         case 0..<3:
             return .incompleteTriangle
         case 3:
@@ -31,10 +31,18 @@ class DetailAnalyser {
     ///- Parameter rectangle: Input rectangle
     ///- Returns: Detailed rectangle
     func analyseRectangle(rectangle: Stroke) -> ShapeType {
-        switch(numberOfStraightLines(in: rectangle)) {
+        let lines = straightLines(in: rectangle)
+        
+        switch(lines.count) {
         case 0...3:
             return .curvedLine
         default:
+            if isSquare(lines: lines) {
+                print("Square")
+                return .square
+            }
+            
+            print("Rectangle")
             return .rectangle
         }
     }
@@ -44,8 +52,8 @@ class DetailAnalyser {
     ///Finds and counts the number of stright lines in a stoke
     ///- Parameter stroke: Stroke to look for straight lines in
     ///- Returns: Number of straight lines found
-    private func numberOfStraightLines(in stroke: Stroke) -> Int {
-        connectSimilarLines(lines: recogniseStraightLines(points: stroke)).count
+    private func straightLines(in stroke: Stroke) -> [Line] {
+        connectSimilarLines(lines: recogniseStraightLines(points: stroke))
     }
     
     ///Finds all the straight lines within the points.
@@ -128,5 +136,18 @@ class DetailAnalyser {
         let yDif = abs(v1.dy - v2.dy)
         
         return xDif < allowedDevience && yDif < allowedDevience
+    }
+    
+    ///Checks if the 4 lines create a square
+    ///- Parameter lines: Lines found within the shape
+    ///- Returns: A boolean indicating if the lines consitute a square
+    private func isSquare(lines: [Line]) -> Bool {
+        if lines.count != 4 { return false }
+        let lengths = lines.map(\.length)
+        
+        guard let maxBound = lengths.max() else { return false }
+        let minBound = maxBound - (maxBound * 0.30)
+        
+        return lengths.map { (minBound...maxBound).contains($0) }.allSatisfy { $0 }
     }
 }

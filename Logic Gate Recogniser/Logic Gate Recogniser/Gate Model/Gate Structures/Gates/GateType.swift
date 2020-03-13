@@ -10,14 +10,14 @@ import Foundation
 import UIKit
 
 enum GateType: String {
-    case not, or, nor, and, nand, xor, xnor
+    case not, or, nor, and, nand, xor, xnor, output
 }
 
 extension GateType {
     
     ///All the types of gates
     static var allTypes: [GateType] {
-        [.not, .or, .nor, .and, .nand, .xor, .xnor]
+        [.not, .or, .nor, .and, .nand, .xor, .xnor, .output]
     }
     
     ///Builds the gate object using it's type
@@ -39,6 +39,8 @@ extension GateType {
             return Xor(boundingBox: boundingBox)
         case .xnor:
             return Xnor(boundingBox: boundingBox)
+        case .output:
+            return Output(boundingBox: boundingBox)
         }
     }
 }

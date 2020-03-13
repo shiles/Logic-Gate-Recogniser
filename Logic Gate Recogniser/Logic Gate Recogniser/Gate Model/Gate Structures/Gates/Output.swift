@@ -11,12 +11,34 @@ import UIKit
 
 class Output: Gate {
     var boundingBox: CGRect
-    var description: String = ""
+    var description: String = "Output"
     var inputs: [Gate] = []
     var output: Bool = false
     var hasChanged: Bool = true
     
-    var path: UIBezierPath = { UIBezierPath() }()
+    var path: UIBezierPath {
+        let path = UIBezierPath()
+            
+        //Draw the box
+        path.move(to: CGPoint(x: 0, y: 0))
+        path.addLine(to: CGPoint(x: 0, y: 1))
+        path.addLine(to: CGPoint(x: 1, y: 1))
+        path.addLine(to: CGPoint(x: 1, y: 0))
+        path.addLine(to: CGPoint(x: 0, y: 0))
+        
+        //Conditional on state (1 of 0)
+        if output {
+            path.move(to: CGPoint(x: 0.5, y: 0.8))
+            path.addLine(to: CGPoint(x: 0.5, y: 0.2))
+            path.addLine(to: CGPoint(x: 0.4, y: 0.3))
+        } else {
+            let oval = UIBezierPath(ovalIn: CGRect(origin: CGPoint(x: 0.3, y: 0.2), size: CGSize(width: 0.4, height: 0.6)))
+            path.append(oval)
+        }
+        
+        path.scaleToFit(boundingBox)
+        return path
+    }
     
     init(boundingBox: CGRect) {
         self.boundingBox = boundingBox

@@ -32,7 +32,7 @@ class ShapeRecogniser {
     ///- Parameter adjacentShapes:: The shapes which are grouped togther on the canvas
     ///- Returns: Retruns adjacent shapes with the analysed stroke added
     func performAnalysis(in adjacentShapes: [[Shape]]) -> [[Shape]] {
-        var shapes = adjacentShape
+        var shapes = adjacentShapes
         var i = 0
         
         while(i < shapes.count) {
@@ -99,7 +99,7 @@ class ShapeRecogniser {
                
         if shape.type == .rectangle {
             let analysedType = detailAnalyser.analyseRectangle(rectangle: shape.components.flatMap { $0 })
-           return Shape(type: analysedType, convexHull: shape.convexHull, components: shape.components)
+            return Shape(type: analysedType, convexHull: shape.convexHull, components: shape.components)
         }
         
         return shape
