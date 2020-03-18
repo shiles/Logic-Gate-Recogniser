@@ -53,19 +53,12 @@ class ShapeCombiner {
         } else {
             gates.remove(matching: .containsLine)
         }
-        
-        //Filter out gates that contain or don't contain squares
-        if shapes.has(matching: \.type == .square) {
-            gates.remove(matching: .notContainsSquare)
-        } else {
-            gates.remove(matching: .containsSquare)
-        }
-        
+    
         guard let gate = gates.first, gates.count == 1 else { return shapes }
         let boundingBox = shapes.combinedBoundingBox
         NotificationCenter.default.post(name: .gateRecognised, object: GateType.buildGate(of: gate, at: boundingBox))
-        NotificationCenter.default.post(name: .testRecognised,
-                                        object: TestRecognised(description: gate.rawValue, points: shapes.map(\.components).flatMap { $0 }.flatMap { $0 }))
+//        NotificationCenter.default.post(name: .testRecognised,
+//                                        object: TestRecognised(description: gate.rawValue, points: shapes.map(\.components).flatMap { $0 }.flatMap { $0 }))
         return nil
     }
     

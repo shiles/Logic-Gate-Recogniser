@@ -10,6 +10,11 @@ import Foundation
 
 class GateManager {
     
+    private let recogniser = ShapeRecogniser()
+    private let detailAnalyser = DetailAnalyser()
+    
+    // MARK: Manage Gates
+    
     ///Erases the gates from the list if the erasor strokes intersects the gate
     ///- Parameter erasorStroke: The stroke indicating what the user would like to remove
     ///- Parameter model: The gates are on the canvas
@@ -29,11 +34,49 @@ class GateManager {
         return (connections, gates)
     }
     
+
+    ///Finds if there is an input gate that has been drawn
+    ///- Parameter stroke: The stroke the user has drawn onto the canvas
+    ///- Returns: An optional gate, either input or output or nil if neither was found within the stroke
+    private func findCircuitGate(stroke: Stroke) -> Gate? {
+        guard let shape = recogniser.analyseStroke(stroke) else { return nil }
+        
+        if shape.type == .rectangle && detailAnalyser.analyseRectangle(rectangle: stroke) == .rectangle  {
+             return Output(boundingBox: shape.boundingBox)
+        }
+        
+        if shape.type == .unanalysedTriangle {
+            return Input(boundingBox: shape.boundingBox, initialValue: true)
+        }
+        
+        if shape.type == .circle {
+            return Input(boundingBox: shape.boundingBox, initialValue: false)
+        }
+        
+        return nil
+    }
+    
+    // MARK: Manage Connections
+    
+    ///Analyses the connection to see if it is a in/out gate or if it's a connection between gates and apply that to the model
+    ///- Parameter stroke: The stroke the user has drawn onto the canvas
+    ///- Parameter model: The gates and connections are on the canvas
+    ///- Returns: A model with ammended connections
+    func analyseConnections(stroke: Stroke, in model: GateModel) -> GateModel {
+        if let gate = findCircuitGate(stroke: stroke) {
+            var gates = model.gates
+            gates.append(gate)
+            return (model.connections, gates)
+        } else {
+            return addConnection(connectionStroke: stroke, into: model)
+        }
+    }
+    
     ///Adds a conection between gates if both ends of the stroke connect with a gate
     ///- Parameter connectionStroke:The stroke indicating the two lines that people want to connect
     ///- Parameter model: The gates that are on the canvas
     ///- Returns: A list of gates with the new connection added if possible
-    func addConnection(connectionStroke: Stroke, into model: GateModel) -> GateModel {
+    private func addConnection(connectionStroke: Stroke, into model: GateModel) -> GateModel {
         guard let start = connectionStroke.first, let end = connectionStroke.last else { return model }
         
         let startGate = model.gates.first(where: { $0.boundingBox.intersects(start.boundingBox) })
@@ -41,7 +84,9 @@ class GateManager {
         
         if let _ = startGate, let _ = endGate {
             // Check that it doesn't already have to many inputs
-            if endGate!.has(matching: .isSingleInput) {
+            if endGate!.has(matching: .isNoInput) {
+                return model
+            } else if endGate!.has(matching: .isSingleInput) {
                 if endGate!.inputs.count >= 1 { return model }
             } else {
                 if endGate!.inputs.count >= 2 { return model }

@@ -37,12 +37,6 @@ class DetailAnalyser {
         case 0...3:
             return .curvedLine
         default:
-            if isSquare(lines: lines) {
-                print("Square")
-                return .square
-            }
-            
-            print("Rectangle")
             return .rectangle
         }
     }
@@ -136,18 +130,5 @@ class DetailAnalyser {
         let yDif = abs(v1.dy - v2.dy)
         
         return xDif < allowedDevience && yDif < allowedDevience
-    }
-    
-    ///Checks if the 4 lines create a square
-    ///- Parameter lines: Lines found within the shape
-    ///- Returns: A boolean indicating if the lines consitute a square
-    private func isSquare(lines: [Line]) -> Bool {
-        if lines.count != 4 { return false }
-        let lengths = lines.map(\.length)
-        
-        guard let maxBound = lengths.max() else { return false }
-        let minBound = maxBound - (maxBound * 0.30)
-        
-        return lengths.map { (minBound...maxBound).contains($0) }.allSatisfy { $0 }
     }
 }

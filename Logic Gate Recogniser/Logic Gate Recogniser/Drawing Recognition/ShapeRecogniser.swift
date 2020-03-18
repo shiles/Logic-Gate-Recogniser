@@ -108,7 +108,7 @@ class ShapeRecogniser {
     ///Analyses the stroke and finds the shape that corresponds to it
     ///- Parameter stroke: The stroke the user has drawn
     ///- Returns: A optional, if a shape has been found
-    private func analyseStroke(_ stroke: Stroke) -> Shape? {
+    func analyseStroke(_ stroke: Stroke) -> Shape? {
         guard let hull = analyser.convexHull(of: stroke) else {
             guard let first = stroke.first, let last = stroke.last, first != last else { return nil }
             return Shape(type: .line, convexHull: [first, last], components: [stroke])

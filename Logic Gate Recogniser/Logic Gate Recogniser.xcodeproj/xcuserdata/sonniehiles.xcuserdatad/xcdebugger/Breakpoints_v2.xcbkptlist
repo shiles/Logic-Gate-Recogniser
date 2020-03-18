@@ -7,33 +7,33 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "572C6EEF-98E1-4C26-BEDB-14334E0EF642"
+            uuid = "3E32BED5-D44A-4A15-BDA2-2208D03587C7"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Logic Gate Recogniser/Extentions/UIBezierPath+Extensions.swift"
+            filePath = "Logic Gate Recogniser/View Controllers/CanvasView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "25"
-            endingLineNumber = "25"
-            landmarkName = "scaleToFit(_:)"
+            startingLineNumber = "126"
+            endingLineNumber = "126"
+            landmarkName = "updateCanvas()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "6F6CE6CF-F904-465D-A56A-C670D00D55F7"
-            shouldBeEnabled = "No"
+            uuid = "2C1EF6C8-DEC7-4DF3-B836-BD47A7606B4B"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Logic Gate Recogniser/Drawing Recognition/ShapeCombiner.swift"
+            filePath = "Logic Gate Recogniser/Drawing Recognition/Drawing Structures/Shapes/Shape.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "65"
-            endingLineNumber = "65"
-            landmarkName = "combineShapesToGates(shapes:)"
-            landmarkType = "7">
+            startingLineNumber = "14"
+            endingLineNumber = "14"
+            landmarkName = "Shape"
+            landmarkType = "14">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

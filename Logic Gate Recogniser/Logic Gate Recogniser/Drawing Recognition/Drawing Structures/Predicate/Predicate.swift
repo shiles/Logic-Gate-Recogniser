@@ -113,20 +113,6 @@ extension Predicate where Target == GateType {
             [.not, .or, .nor, .and, .nand].contains($0)
         }
     }
-    
-    ///Predicate for the gates that contain squares
-    static var containsSquare: Self {
-        Predicate {
-            [.output].contains($0)
-        }
-    }
-    
-    ///Predicate for the gates that doesn't contain squares
-    static var notContainsSquare: Self {
-        Predicate {
-            [.not, .or, .nor, .and, .nand, .xor, .xnor].contains($0)
-        }
-    }
 }
 
 extension Predicate where Target == Gate {
@@ -136,6 +122,14 @@ extension Predicate where Target == Gate {
         Predicate {
             if let _ = $0 as? Not { return true }
             if let _ = $0 as? Output { return true }
+            return false
+        }
+    }
+    
+    ///Predicate to determine if a gate is a no input gate
+    static var isNoInput: Self {
+        Predicate {
+            if let _ = $0 as? Input { return true }
             return false
         }
     }

@@ -48,6 +48,8 @@ class Output: Gate {
         UIGraphicsPushContext(context)
         let drawable = path
         drawable.setDefaultAttributes()
+        UIColor.red.setStroke()
+        drawable.lineWidth = 5
         drawable.stroke()
         UIGraphicsPopContext()
     }

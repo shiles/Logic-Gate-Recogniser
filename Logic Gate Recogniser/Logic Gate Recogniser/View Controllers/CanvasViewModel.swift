@@ -33,7 +33,6 @@ class CanvasViewModel {
     }
     private(set) var adjacentShapes: [[Shape]] = [] {
         didSet {
-            print(adjacentShapes)
             DispatchQueue.main.async { self.delegate?.updateCanvas() }
         }
     }
@@ -69,7 +68,7 @@ class CanvasViewModel {
         
         if tool == .connector {
             DispatchQueue.global(qos: .userInitiated).async {
-                self.gateModel = self.gateManager.addConnection(connectionStroke: stroke, into: self.gateModel)
+                self.gateModel = self.gateManager.analyseConnections(stroke: stroke, in: self.gateModel)
             }
         }
         
