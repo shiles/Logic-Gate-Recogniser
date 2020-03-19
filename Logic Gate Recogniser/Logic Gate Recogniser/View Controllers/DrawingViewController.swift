@@ -20,7 +20,7 @@ class DrawingViewController: UIViewController  {
     @IBOutlet weak var penToolButton: UIBarButtonItem!
     @IBOutlet weak var erasorToolButton: UIBarButtonItem!
     @IBOutlet weak var linkToolButton: UIBarButtonItem!
-    @IBOutlet weak var resetCanvasButton: UIBarButtonItem!
+    @IBOutlet weak var runSimulationButton: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,8 +48,8 @@ class DrawingViewController: UIViewController  {
         canvasView.tool = .connector
     }
     
-    @IBAction func resetCanvasTapped(_ sender: Any) {
-        canvasView.canvasViewModel.resetState()
+    @IBAction func runSimulationTapped(_ sender: Any) {
+        canvasView.canvasViewModel.runSimulation()
     }
 }
 
@@ -89,7 +89,7 @@ extension DrawingViewController: TestAlertShower {
         // Display View
         let vc = UIHostingController(rootView: view)
         vc.modalPresentationStyle = .popover
-        vc.popoverPresentationController?.barButtonItem = resetCanvasButton
+        vc.popoverPresentationController?.barButtonItem = runSimulationButton
         present(vc, animated: true, completion:nil)
     }
 }

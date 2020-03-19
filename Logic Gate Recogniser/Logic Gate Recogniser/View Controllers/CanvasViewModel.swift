@@ -19,6 +19,7 @@ class CanvasViewModel {
     private let shapeRecogniser = ShapeRecogniser()
     private let gateManager = GateManager()
     private var gateSubscriber: AnyCancellable?
+    private var gateUpdater: AnyCancellable?
     
     // Analysis Timer
     private let waitInterval = TimeInterval(exactly: 1.0)!
@@ -44,6 +45,9 @@ class CanvasViewModel {
         gateSubscriber = NotificationCenter.Publisher(center: .default, name: .gateRecognised, object: nil)
             .map { notification in return notification.object as AnyObject as! Gate }
             .sink(receiveValue: { gate in self.gateModel.gates.append(gate) })
+        // When a gates value changes it updates the UI
+        gateUpdater = NotificationCenter.Publisher(center: .default, name: .gateUpdated)
+            .sink(receiveValue: { _ in DispatchQueue.main.async { self.delegate?.updateCanvas() } })
     }
     
     // MARK: User Input Functions
@@ -80,10 +84,11 @@ class CanvasViewModel {
         invalidateAnalysis()
     }
     
-    ///Resets the state of held by the canvas
-    func resetState() {
-        gateModel = ([],[])
-        adjacentShapes = []
+    ///Simulates the logic gates found on the canvas
+    func runSimulation() {
+        DispatchQueue.global(qos: .userInitiated).async {
+            Runner.simulate(self.gateModel.gates)
+        }
     }
     
     // MARK: Input Analysis Functions

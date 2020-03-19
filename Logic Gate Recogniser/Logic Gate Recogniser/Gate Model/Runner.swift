@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Combine
 
 class Runner {
     
@@ -14,7 +15,10 @@ class Runner {
         model.compactMap{ $0 as? Output }.forEach { $0.hasChanged = true }
         
         while(model.outputsDidChange) {
-            model.forEach { gate in gate.run() }
+            model.forEach { gate in
+                gate.run()
+                if gate.hasChanged { NotificationCenter.default.post(name: .gateUpdated, object: nil) }
+            }
         }
     }
 }

@@ -36,9 +36,9 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" id="Izw-j8-hEu">
-                        <barButtonItem key="leftBarButtonItem" title="Item" image="arrow.clockwise" catalog="system" id="gcN-MP-9CO" userLabel="Reset Canvas Button">
+                        <barButtonItem key="leftBarButtonItem" title="Item" image="play.fill" catalog="system" id="gcN-MP-9CO" userLabel="Reset Canvas Button">
                             <connections>
-                                <action selector="resetCanvasTapped:" destination="BYZ-38-t0r" id="dJd-qQ-dJn"/>
+                                <action selector="runSimulationTapped:" destination="BYZ-38-t0r" id="dJd-qQ-dJn"/>
                             </connections>
                         </barButtonItem>
                         <rightBarButtonItems>
@@ -65,7 +65,7 @@
                         <outlet property="gateInfoView" destination="yJf-Bs-aEP" id="I8K-kf-vLB"/>
                         <outlet property="linkToolButton" destination="sHL-j8-Ulo" id="Lq5-TI-zvP"/>
                         <outlet property="penToolButton" destination="3xj-yy-UmH" id="xvu-kn-6jQ"/>
-                        <outlet property="resetCanvasButton" destination="gcN-MP-9CO" id="t8t-9n-yFt"/>
+                        <outlet property="runSimulationButton" destination="gcN-MP-9CO" id="t8t-9n-yFt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -92,9 +92,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="arrow.clockwise" catalog="system" width="115" height="128"/>
         <image name="link" catalog="system" width="128" height="116"/>
         <image name="pencil" catalog="system" width="128" height="113"/>
         <image name="pencil.slash" catalog="system" width="128" height="113"/>
+        <image name="play.fill" catalog="system" width="116" height="128"/>
     </resources>
 </document>
