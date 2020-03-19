@@ -27,5 +27,11 @@ extension CGRect {
         return insetBy(dx: width * ratio, dy: height * ratio)
     }
     
+    ///Squares out the current CGRect by taking it's height in both dimentions
+    ///- Returns: Squared CGRect which is height x height of the original
+    func squared() -> CGRect {
+        return CGRect(origin: self.origin, size: CGSize(width: self.height, height: self.height))
+    }
+    
 }
 

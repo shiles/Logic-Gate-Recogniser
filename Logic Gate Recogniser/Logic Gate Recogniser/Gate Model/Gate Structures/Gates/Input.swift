@@ -48,7 +48,7 @@ class Input: Gate {
     }
     
     init(boundingBox: CGRect, initialValue: Bool = false) {
-        self.boundingBox = boundingBox
+        self.boundingBox = boundingBox.squared()
         output = initialValue
     }
     

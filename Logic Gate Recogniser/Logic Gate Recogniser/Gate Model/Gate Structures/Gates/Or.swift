@@ -40,7 +40,7 @@ class Or: Gate {
     }
     
     init(boundingBox: CGRect) {
-        self.boundingBox = boundingBox
+        self.boundingBox = boundingBox.squared()
     }
     
     

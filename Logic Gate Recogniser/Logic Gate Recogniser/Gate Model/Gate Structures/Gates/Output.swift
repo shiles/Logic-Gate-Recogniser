@@ -41,7 +41,7 @@ class Output: Gate {
     }
     
     init(boundingBox: CGRect) {
-        self.boundingBox = boundingBox
+        self.boundingBox = boundingBox.squared()
     }
     
     func draw(with context: CGContext) {
