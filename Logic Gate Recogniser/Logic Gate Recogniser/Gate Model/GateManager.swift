@@ -22,13 +22,19 @@ class GateManager {
     func eraseGate(erasorStroke: Stroke, in gateModel: GateModel) -> GateModel {
         var connections = gateModel.connections
         var gates: [Gate] = []
+        var removedGates: [Gate] = []
         
         gateModel.gates.forEach { gate in
             if !erasorStroke.map({ gate.path.contains($0) }).contains(true) {
                 gates.append(gate)
             } else {
+                removedGates.append(gate)
                 connections.removeAll(where: { $0.startGate == gate || $0.endGate == gate })
             }
+        }
+        
+        for i in 0..<gates.count {
+            gates[i].inputs.removeAll(where: { gate in removedGates.filter{ $0 == gate}.count == 1 })
         }
     
         return (connections, gates)
@@ -64,9 +70,17 @@ class GateManager {
     ///- Returns: A model with ammended connections
     func analyseConnections(stroke: Stroke, in model: GateModel) -> GateModel {
         if let gate = findCircuitGate(stroke: stroke) {
-            var gates = model.gates
-            gates.append(gate)
-            return (model.connections, gates)
+            let intersects = model.gates.filter { $0.boundingBox.intersects(gate.boundingBox) }
+            if intersects.hasElements {
+                intersects.forEach {
+                    if let input = $0 as? Input { input.modifyOutput(to: gate.output) }
+                }
+                return model
+            } else {
+                var gates = model.gates
+                gates.append(gate)
+                return (model.connections, gates)
+            }
         } else {
             return addConnection(connectionStroke: stroke, into: model)
         }

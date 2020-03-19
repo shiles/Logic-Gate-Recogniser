@@ -63,4 +63,8 @@ class Input: Gate {
     }
     
     func run() {}
+    
+    func modifyOutput(to value: Bool) {
+        output = value
+    }
 }
