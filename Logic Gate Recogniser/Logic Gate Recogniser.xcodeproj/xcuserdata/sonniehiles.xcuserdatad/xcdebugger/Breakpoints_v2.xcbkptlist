@@ -7,22 +7,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "3E32BED5-D44A-4A15-BDA2-2208D03587C7"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Logic Gate Recogniser/View Controllers/CanvasView.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "126"
-            endingLineNumber = "126"
-            landmarkName = "updateCanvas()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "2C1EF6C8-DEC7-4DF3-B836-BD47A7606B4B"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
@@ -34,6 +18,102 @@
             endingLineNumber = "14"
             landmarkName = "Shape"
             landmarkType = "14">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "27524277-BA5C-41D3-8CC9-A3982F6A0B43"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Logic Gate Recogniser/View Controllers/CanvasView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "124"
+            endingLineNumber = "124"
+            landmarkName = "updateCanvas()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "27524277-BA5C-41D3-8CC9-A3982F6A0B43 - 4482bc6f71320d6c"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Recogniser.CanvasView.updateCanvas() -&gt; ()"
+                  moduleName = "Recogniser"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sonniehiles/Documents/University/Third%20Year/Dissertation/Test%20Projects/Logic-Gate-Recogniser/Logic%20Gate%20Recogniser/Logic%20Gate%20Recogniser/View%20Controllers/CanvasView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "125"
+                  endingLineNumber = "125"
+                  offsetFromSymbolStart = "340">
+               </Location>
+               <Location
+                  uuid = "27524277-BA5C-41D3-8CC9-A3982F6A0B43 - c00f3a1b1d7aa8fc"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Recogniser.Connection) -&gt; () in Recogniser.CanvasView.updateCanvas() -&gt; ()"
+                  moduleName = "Recogniser"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sonniehiles/Documents/University/Third%20Year/Dissertation/Test%20Projects/Logic-Gate-Recogniser/Logic%20Gate%20Recogniser/Logic%20Gate%20Recogniser/View%20Controllers/CanvasView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "126"
+                  endingLineNumber = "126"
+                  offsetFromSymbolStart = "140">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "DD53FDA2-8262-44AA-AD54-BEEC6A2FE4E5"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Logic Gate Recogniser/Gate Model/GateManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "34"
+            endingLineNumber = "34"
+            landmarkName = "eraseGate(erasorStroke:in:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "643FF24A-F83D-4CA3-A8EC-B9949C7B8187"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Logic Gate Recogniser/Gate Model/GateManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "100"
+            endingLineNumber = "100"
+            landmarkName = "addConnection(connectionStroke:into:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "3A381B58-F2EF-4692-86E6-5C26DF7CE2D6"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Logic Gate Recogniser/Gate Model/GateManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "103"
+            endingLineNumber = "103"
+            landmarkName = "addConnection(connectionStroke:into:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

@@ -116,9 +116,9 @@ class GateManager {
                 if connection.stroke.interesects(with: erasorStroke) {
                     var endGate = model.gates.first(where: { $0 == connection.endGate })
                     endGate?.inputs.removeAll(where: {$0 == connection.startGate })
-                } else {
-                    connections.append(connection)
                 }
+            } else {
+                connections.append(connection)
             }
         }
         
