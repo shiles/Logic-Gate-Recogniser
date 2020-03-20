@@ -71,7 +71,7 @@ class CanvasViewModel {
             }
         }
         
-        if tool == .connector {
+        if tool == .link {
             DispatchQueue.global(qos: .userInitiated).async {
                 self.gateModel = self.gateManager.analyseConnections(stroke: stroke, in: self.gateModel)
             }

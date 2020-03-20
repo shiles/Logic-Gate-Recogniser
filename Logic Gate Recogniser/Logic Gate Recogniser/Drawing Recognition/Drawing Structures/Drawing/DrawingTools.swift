@@ -10,6 +10,6 @@ import Foundation
 
 enum DrawingTools {
     case pen
-    case connector
+    case link
     case erasor
 }

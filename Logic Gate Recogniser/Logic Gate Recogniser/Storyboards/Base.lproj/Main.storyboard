@@ -42,17 +42,17 @@
                             </connections>
                         </barButtonItem>
                         <rightBarButtonItems>
-                            <barButtonItem title="Item" image="link" catalog="system" id="sHL-j8-Ulo" userLabel="Connector Tool">
+                            <barButtonItem title="Item" image="link.circle" catalog="system" id="sHL-j8-Ulo" userLabel="Connector Tool">
                                 <connections>
-                                    <action selector="connectorToolTapped:" destination="BYZ-38-t0r" id="EXt-qv-18n"/>
+                                    <action selector="linkToolTapped:" destination="BYZ-38-t0r" id="EXt-qv-18n"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem title="Item" image="pencil.slash" catalog="system" id="wYw-hY-znR">
+                            <barButtonItem title="Item" image="trash.circle" catalog="system" id="wYw-hY-znR">
                                 <connections>
                                     <action selector="erasorToolTapped:" destination="BYZ-38-t0r" id="Act-qC-GAD"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem title="Item" image="pencil" catalog="system" id="3xj-yy-UmH" userLabel="Pen Tool">
+                            <barButtonItem title="Item" image="pencil.circle.fill" catalog="system" id="3xj-yy-UmH" userLabel="Pen Tool">
                                 <connections>
                                     <action selector="penToolTapped:" destination="BYZ-38-t0r" id="5hf-ox-rIs"/>
                                 </connections>
@@ -92,9 +92,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="link" catalog="system" width="128" height="116"/>
-        <image name="pencil" catalog="system" width="128" height="113"/>
-        <image name="pencil.slash" catalog="system" width="128" height="113"/>
+        <image name="link.circle" catalog="system" width="128" height="121"/>
+        <image name="pencil.circle.fill" catalog="system" width="128" height="121"/>
         <image name="play.fill" catalog="system" width="116" height="128"/>
+        <image name="trash.circle" catalog="system" width="128" height="121"/>
     </resources>
 </document>

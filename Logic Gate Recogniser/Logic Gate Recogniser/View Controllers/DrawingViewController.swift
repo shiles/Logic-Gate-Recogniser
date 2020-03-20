@@ -41,31 +41,40 @@ class DrawingViewController: UIViewController  {
         // Simulation Setup
         simFinishedSub = NotificationCenter.Publisher(center: .default, name: .simulationFinished, object: nil)
             .sink(receiveValue: { [weak self] _ in
-                DispatchQueue.main.async { self?.runSimulationButton.image = UIImage(systemName  : "play.fill") }
+                DispatchQueue.main.async { self?.runSimulationButton.image = UIImage(systemName: "play.fill") }
             })
         simStartedSub = NotificationCenter.Publisher(center: .default, name: .simulationStarted, object: nil)
             .sink(receiveValue: { [weak self] _ in
-                DispatchQueue.main.async { self?.runSimulationButton.image = UIImage(systemName  : "stop.fill") }
+                DispatchQueue.main.async { self?.runSimulationButton.image = UIImage(systemName: "stop.fill") }
             })
     }
     
     @IBAction func penToolTapped(_ sender: Any) {
         canvasView.tool = .pen
         NotificationCenter.default.post(name: .endSimulation, object: nil)
+        updateSelectedBarButton(selected: .pen)
     }
     
     @IBAction func erasorToolTapped(_ sender: Any) {
         canvasView.tool = .erasor
         NotificationCenter.default.post(name: .endSimulation, object: nil)
+        updateSelectedBarButton(selected: .erasor)
     }
     
-    @IBAction func connectorToolTapped(_ sender: Any) {
-        canvasView.tool = .connector
+    @IBAction func linkToolTapped(_ sender: Any) {
+        canvasView.tool = .link
         NotificationCenter.default.post(name: .endSimulation, object: nil)
+        updateSelectedBarButton(selected: .link)
     }
     
     @IBAction func runSimulationTapped(_ sender: Any) {
         canvasView.canvasViewModel.toggleSimulation()
+    }
+    
+    private func updateSelectedBarButton(selected tool: DrawingTools) {
+        penToolButton.image = tool == .pen ? UIImage(systemName: "pencil.circle.fill") : UIImage(systemName: "pencil.circle")
+        erasorToolButton.image = tool == .erasor ? UIImage(systemName: "trash.circle.fill") : UIImage(systemName: "trash.circle")
+        linkToolButton.image = tool == .link ? UIImage(systemName: "link.circle.fill") : UIImage(systemName: "link.circle")
     }
 }
 
