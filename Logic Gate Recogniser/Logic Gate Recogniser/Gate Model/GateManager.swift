@@ -72,9 +72,7 @@ class GateManager {
         if let gate = findCircuitGate(stroke: stroke) {
             let intersects = model.gates.filter { $0.boundingBox.intersects(gate.boundingBox) }
             if intersects.hasElements {
-                intersects.forEach {
-                    if let input = $0 as? Input { input.modifyOutput(to: gate.output) }
-                }
+                intersects.compactMap { $0 as? Input }.forEach { $0.modifyOutput(to: gate.output) }
                 return model
             } else {
                 var gates = model.gates

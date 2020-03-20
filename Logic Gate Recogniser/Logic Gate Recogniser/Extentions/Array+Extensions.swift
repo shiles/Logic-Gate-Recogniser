@@ -139,4 +139,8 @@ extension Array where Element == Gate {
         self.map(\.hasChanged).contains(true)
     }
     
+    var noChange: Bool {
+        !self.map(\.hasChanged).contains(true)
+    }
+    
 }

@@ -87,7 +87,7 @@ class CanvasViewModel {
     ///Simulates the logic gates found on the canvas
     func runSimulation() {
         DispatchQueue.global(qos: .userInitiated).async {
-            Runner.simulate(self.gateModel.gates)
+            Runner.slowSimulate(self.gateModel.gates)
         }
     }
     
