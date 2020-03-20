@@ -9,10 +9,13 @@
 import UIKit
 import SwiftUI
 import PencilKit
-import CoreData
+import Combine
 
 class DrawingViewController: UIViewController  {
+    
     private let testHelper = TestHelper()
+    private var simFinishedSub: AnyCancellable?
+    private var simStartedSub: AnyCancellable?
     private var previousTool = DrawingTools.erasor
     
     @IBOutlet weak var gateInfoView: DetectedGateInfoView!
@@ -34,22 +37,35 @@ class DrawingViewController: UIViewController  {
         
         // Test Setup
         testHelper.delegate = self
+        
+        // Simulation Setup
+        simFinishedSub = NotificationCenter.Publisher(center: .default, name: .simulationFinished, object: nil)
+            .sink(receiveValue: { [weak self] _ in
+                DispatchQueue.main.async { self?.runSimulationButton.image = UIImage(systemName  : "play.fill") }
+            })
+        simStartedSub = NotificationCenter.Publisher(center: .default, name: .simulationStarted, object: nil)
+            .sink(receiveValue: { [weak self] _ in
+                DispatchQueue.main.async { self?.runSimulationButton.image = UIImage(systemName  : "stop.fill") }
+            })
     }
     
     @IBAction func penToolTapped(_ sender: Any) {
         canvasView.tool = .pen
+        NotificationCenter.default.post(name: .endSimulation, object: nil)
     }
     
     @IBAction func erasorToolTapped(_ sender: Any) {
         canvasView.tool = .erasor
+        NotificationCenter.default.post(name: .endSimulation, object: nil)
     }
     
     @IBAction func connectorToolTapped(_ sender: Any) {
         canvasView.tool = .connector
+        NotificationCenter.default.post(name: .endSimulation, object: nil)
     }
     
     @IBAction func runSimulationTapped(_ sender: Any) {
-        canvasView.canvasViewModel.runSimulation()
+        canvasView.canvasViewModel.toggleSimulation()
     }
 }
 

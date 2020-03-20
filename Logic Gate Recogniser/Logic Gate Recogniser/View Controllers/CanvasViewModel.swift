@@ -18,6 +18,7 @@ class CanvasViewModel {
     // Internal State
     private let shapeRecogniser = ShapeRecogniser()
     private let gateManager = GateManager()
+    private let runner = Runner()
     private var gateSubscriber: AnyCancellable?
     private var gateUpdater: AnyCancellable?
     
@@ -84,10 +85,11 @@ class CanvasViewModel {
         invalidateAnalysis()
     }
     
-    ///Simulates the logic gates found on the canvas
-    func runSimulation() {
+    ///Toggles the simulation and returns if the simulation is now running or not
+    ///- Returns: If the simulation is running or not
+    func toggleSimulation()  {
         DispatchQueue.global(qos: .userInitiated).async {
-            Runner.slowSimulate(self.gateModel.gates)
+            self.runner.toggleSimulation(self.gateModel.gates)
         }
     }
     

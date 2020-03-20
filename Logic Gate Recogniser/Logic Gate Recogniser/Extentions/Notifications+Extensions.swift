@@ -15,6 +15,9 @@ extension Notification.Name {
     static var shapeRecognised: Notification.Name { Notification.Name("shapeRecognised") }
     static var testRecognised:  Notification.Name { Notification.Name("testRecognised") }
 
-    //State changed in simulation
-    static var gateUpdated: Notification.Name { Notification.Name("gateUpdated")}
+    //State changesw in simulation
+    static var gateUpdated: Notification.Name { Notification.Name("gateUpdated") }
+    static var simulationFinished: Notification.Name { Notification.Name("simulationFinished") }
+    static var simulationStarted: Notification.Name { Notification.Name("simulationStarted") }
+    static var endSimulation: Notification.Name { Notification.Name("endSimulation" )}
 }
