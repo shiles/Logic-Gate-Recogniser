@@ -55,7 +55,11 @@ class Output: Gate {
     }
     
     func run() {
-        guard let first = inputs.first?.output else { fatalError() }
+        guard let first = inputs.first?.output else {
+            NotificationCenter.default.post(name: .endSimulation, object: nil)
+            return
+        }
+        
         output = first
         hasChanged = false
     }
