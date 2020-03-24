@@ -37,4 +37,17 @@ extension Gate {
     func has(matching predicate: Predicate<Gate>) -> Bool {
         return predicate.matches(self)
     }
+    
+    ///Adds the required inputs to a gate for testing
+    ///- Parameter inputA: First input for the gate
+    ///- Parameter inputB: Second optional input, provide if required
+    mutating func withInput(inputA: Bool, inputB: Bool? = nil) {
+        let inA = Input(boundingBox: .zero, initialValue: inputA)
+        var inB: Input?
+
+        if let inputB = inputB { inB = Input(boundingBox: .zero, initialValue: inputB) }
+
+        self.inputs = [inA, inB].compactMap { $0 }
+    }
+    
 }
