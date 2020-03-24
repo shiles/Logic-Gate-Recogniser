@@ -51,19 +51,16 @@ class DrawingViewController: UIViewController  {
     
     @IBAction func penToolTapped(_ sender: Any) {
         canvasView.tool = .pen
-        NotificationCenter.default.post(name: .endSimulation, object: nil)
         updateSelectedBarButton(selected: .pen)
     }
     
     @IBAction func erasorToolTapped(_ sender: Any) {
         canvasView.tool = .erasor
-        NotificationCenter.default.post(name: .endSimulation, object: nil)
         updateSelectedBarButton(selected: .erasor)
     }
     
     @IBAction func linkToolTapped(_ sender: Any) {
         canvasView.tool = .link
-        NotificationCenter.default.post(name: .endSimulation, object: nil)
         updateSelectedBarButton(selected: .link)
     }
     

@@ -83,6 +83,7 @@ class CanvasViewModel {
     ///Handle the user moving across canvas
     func strokeMoved() {
         invalidateAnalysis()
+        NotificationCenter.default.post(name: .endSimulation, object: nil)
     }
     
     ///Toggles the simulation and returns if the simulation is now running or not

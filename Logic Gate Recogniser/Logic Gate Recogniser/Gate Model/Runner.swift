@@ -23,11 +23,11 @@ class Runner {
         if let _ = timer {
             stopSimulation()
         } else {
-            slowSimulate(model)
+            simulate(model)
         }
     }
     
-    private func slowSimulate(_ model: [Gate]) {
+    private func simulate(_ model: [Gate]) {
         NotificationCenter.default.post(name: .simulationStarted, object: nil)
         model.compactMap{ $0 as? Output }.forEach { $0.hasChanged = true }
         
@@ -52,16 +52,5 @@ class Runner {
         timer?.invalidate()
         timer = nil
         NotificationCenter.default.post(name: .simulationFinished, object: nil)
-    }
-    
-    static func simulate(_ model: [Gate]) {
-        model.compactMap{ $0 as? Output }.forEach { $0.hasChanged = true }
-        
-        while(model.outputsDidChange) {
-            model.forEach { gate in
-                gate.run()
-                if gate.hasChanged { NotificationCenter.default.post(name: .gateUpdated, object: nil) }
-            }
-        }
     }
 }
