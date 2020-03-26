@@ -46,6 +46,7 @@
 		AB5370C723FD468600E5FD3F /* ConvexHullTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5370C623FD468600E5FD3F /* ConvexHullTests.swift */; };
 		AB5370C923FD481C00E5FD3F /* ShapeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5370C823FD481C00E5FD3F /* ShapeTests.swift */; };
 		AB557E9823F2B0AE00D9FA5F /* GateType.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB557E9723F2B0AE00D9FA5F /* GateType.swift */; };
+		AB620995242B52CF006E1CD1 /* RunnerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB620994242B52CF006E1CD1 /* RunnerTests.swift */; };
 		AB826CBA23A3C04F00A01D23 /* Array+ExtensionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB826CB923A3C04F00A01D23 /* Array+ExtensionsTests.swift */; };
 		AB84D0BC23E85652005E7DC7 /* CGRect+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB84D0BB23E85652005E7DC7 /* CGRect+Extensions.swift */; };
 		AB84F128237EC31200D4CE37 /* Matrix.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB84F127237EC31200D4CE37 /* Matrix.swift */; };
@@ -152,6 +153,7 @@
 		AB5370C623FD468600E5FD3F /* ConvexHullTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvexHullTests.swift; sourceTree = "<group>"; };
 		AB5370C823FD481C00E5FD3F /* ShapeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShapeTests.swift; sourceTree = "<group>"; };
 		AB557E9723F2B0AE00D9FA5F /* GateType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GateType.swift; sourceTree = "<group>"; };
+		AB620994242B52CF006E1CD1 /* RunnerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunnerTests.swift; sourceTree = "<group>"; };
 		AB826CB923A3C04F00A01D23 /* Array+ExtensionsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+ExtensionsTests.swift"; sourceTree = "<group>"; };
 		AB84D0BB23E85652005E7DC7 /* CGRect+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGRect+Extensions.swift"; sourceTree = "<group>"; };
 		AB84F127237EC31200D4CE37 /* Matrix.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Matrix.swift; sourceTree = "<group>"; };
@@ -497,6 +499,7 @@
 			children = (
 				ABF22AAA242A3A9000B826B3 /* Gates */,
 				ABF22AAD242A40AE00B826B3 /* MockTimer.swift */,
+				AB620994242B52CF006E1CD1 /* RunnerTests.swift */,
 			);
 			path = "Gate Structures";
 			sourceTree = "<group>";
@@ -711,6 +714,7 @@
 				AB8F6906237444C30024BC6D /* RecogniserTests.swift in Sources */,
 				AB826CBA23A3C04F00A01D23 /* Array+ExtensionsTests.swift in Sources */,
 				ABF22AAE242A40AE00B826B3 /* MockTimer.swift in Sources */,
+				AB620995242B52CF006E1CD1 /* RunnerTests.swift in Sources */,
 				AB9F1DAA2372F8F600E9E81C /* TriangleTests.swift in Sources */,
 				AB5370C723FD468600E5FD3F /* ConvexHullTests.swift in Sources */,
 				ABF22ABA242A4D8000B826B3 /* XorTests.swift in Sources */,

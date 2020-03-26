@@ -90,7 +90,11 @@ class CanvasViewModel {
     ///- Returns: If the simulation is running or not
     func toggleSimulation()  {
         DispatchQueue.global(qos: .userInitiated).async {
-            self.runner.toggleSimulation(self.gateModel.gates)
+            if self.runner.isTiming {
+                self.runner.stopSimulation()
+            } else {
+                self.runner.simulate(self.gateModel.gates)
+            }
         }
     }
     

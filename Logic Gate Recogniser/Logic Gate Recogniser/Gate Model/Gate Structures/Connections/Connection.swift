@@ -13,7 +13,3 @@ struct Connection {
     let endGate: Gate
     let stroke: Stroke
 }
-
-extension Connection: CustomStringConvertible {
-    var description: String { "Connection from \(startGate) to \(endGate)" }
-}

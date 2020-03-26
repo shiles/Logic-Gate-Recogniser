@@ -10,24 +10,25 @@ import Foundation
 import Combine
 
 class Runner {
-    
+ 
+    // Private State
     private var timer: Timer?
     private var endSimSub: AnyCancellable?
+
+    // Public state
+    var isTiming: Bool {
+        if let _ = timer {
+            return true
+        }
+        return false
+    }
     
     init() {
         endSimSub = NotificationCenter.Publisher(center: .default, name: .endSimulation, object: nil)
             .sink(receiveValue: { _ in self.stopSimulation() } )
     }
     
-    func toggleSimulation(_ model: [Gate]) {
-        if let _ = timer {
-            stopSimulation()
-        } else {
-            simulate(model)
-        }
-    }
-    
-    private func simulate(_ model: [Gate]) {
+    func simulate(_ model: [Gate]) {
         NotificationCenter.default.post(name: .simulationStarted, object: nil)
         model.compactMap{ $0 as? Output }.forEach { $0.hasChanged = true }
         
@@ -48,7 +49,7 @@ class Runner {
         runLoop.run()
     }
     
-    private func stopSimulation() {
+    func stopSimulation() {
         timer?.invalidate()
         timer = nil
         NotificationCenter.default.post(name: .simulationFinished, object: nil)

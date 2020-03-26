@@ -8,6 +8,7 @@
 
 import XCTest
 import UIKit
+@testable import Recogniser
 
 class Sequence_ExtensionsTests: XCTestCase {
 
