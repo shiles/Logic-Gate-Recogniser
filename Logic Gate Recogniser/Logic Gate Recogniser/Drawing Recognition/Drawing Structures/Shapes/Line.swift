@@ -15,7 +15,7 @@ struct Line: Equatable {
   
     ///Transform the line into a vector which has been transfromed to the origin (0,0).
     var vector: CGVector {
-        endPoint.applying(CGAffineTransform(translationX: -startPoint.x, y: -startPoint.y)).toVector()
+        endPoint.applying(CGAffineTransform(translationX: -startPoint.x, y: -startPoint.y)).vector
     }
     
     ///Gets the non-rotated bounding box of the stroke

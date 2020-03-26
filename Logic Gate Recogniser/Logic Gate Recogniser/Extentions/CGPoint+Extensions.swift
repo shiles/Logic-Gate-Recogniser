@@ -14,7 +14,8 @@ extension CGPoint {
     ///Bounding box of 50px around this point
     var boundingBox: CGRect { CGRect(center: self) }
     
-    func toVector() -> CGVector { CGVector(dx: x, dy: y)}
+    ///Equivelent vector represeting the point
+    var vector: CGVector { CGVector(dx: x, dy: y) }
     
     static func -(lhs: CGPoint, rhs: CGPoint) -> CGPoint {
         return CGPoint(x: lhs.x - rhs.x, y: lhs.y - rhs.y)
