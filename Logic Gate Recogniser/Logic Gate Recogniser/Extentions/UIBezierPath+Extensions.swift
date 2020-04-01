@@ -25,5 +25,4 @@ extension UIBezierPath {
         self.apply(CGAffineTransform(scaleX: boundingBox.height, y: boundingBox.height))
         self.apply(CGAffineTransform(translationX: boundingBox.minX, y: boundingBox.minY))
     }
-    
 }

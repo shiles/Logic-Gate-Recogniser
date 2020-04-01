@@ -45,5 +45,16 @@ class ConvexHullTests: XCTestCase {
         // Then
         XCTAssertNil(perimeter)
     }
+    
+    func testAreaOfConvexHull() {
+        // Given
+        let hull = [CGPoint(x: 0, y: 0), CGPoint(x: 0, y: 10), CGPoint(x: 10, y: 10), CGPoint(x: 10, y: 0)]
+        
+        // When
+        let area = hull.area
+        
+        // Then
+        XCTAssertEqual(area, 100)
+    }
 
 }

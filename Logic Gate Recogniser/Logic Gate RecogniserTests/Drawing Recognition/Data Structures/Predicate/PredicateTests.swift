@@ -223,4 +223,61 @@ class PredicateTests: XCTestCase {
         // Then
         XCTAssertFalse(hasLine)
     }
+    
+    // MARK: - Gate Tests
+    
+    func testIsSingleInputNotGate() {
+        // Given
+        let not = Not(boundingBox: .zero)
+        
+        // When
+        let isSingleInput = not.has(matching: .isSingleInput)
+        
+        // Then
+        XCTAssertTrue(isSingleInput)
+    }
+    
+    func testIsSingleInputOuputGate() {
+        // Given
+        let output = Output(boundingBox: .zero)
+        
+        // When
+        let isSingleInput = output.has(matching: .isSingleInput)
+        
+        // Then
+        XCTAssertTrue(isSingleInput)
+    }
+    
+    func testIsSingleInputOtherGate() {
+        // Given
+        let and = And(boundingBox: .zero)
+        
+        // When
+        let isSingleInput = and.has(matching: .isSingleInput)
+        
+        // Then
+        XCTAssertFalse(isSingleInput)
+    }
+    
+    func testIsNoInputInputGate() {
+        // Given
+        let input = Input(boundingBox: .zero)
+        
+        // When
+        let isSingleInput = input.has(matching: .isNoInput)
+        
+        // Then
+        XCTAssertTrue(isSingleInput)
+    }
+    
+    func testIsNoInputOtherGate() {
+        // Given
+        let and = And(boundingBox: .zero)
+        
+        // When
+        let isSingleInput = and.has(matching: .isNoInput)
+        
+        // Then
+        XCTAssertFalse(isSingleInput)
+    }
 }

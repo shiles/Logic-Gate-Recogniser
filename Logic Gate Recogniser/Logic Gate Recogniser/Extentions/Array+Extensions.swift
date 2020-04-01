@@ -45,7 +45,6 @@ extension Array {
         if isEmpty || index < 0 { return nil }
         return self[index % self.count]
     }
-    
 }
 
 extension Array {
@@ -87,7 +86,6 @@ extension Array where Element == CGFloat {
     func rootMeanSquared() -> CGFloat {
         return (self.map { $0.squared() }.reduce(0, +) / CGFloat(self.count)).squareRoot()
     }
-    
 }
 
 extension Array where Element: Hashable {
@@ -129,7 +127,6 @@ extension Array where Element == Shape {
         guard let first = self.first else { return .zero }
         return self.reduce(first.boundingBox, { $0.union($1.boundingBox) })
     }
-    
 }
 
 extension Array where Element == Gate {
@@ -138,5 +135,4 @@ extension Array where Element == Gate {
     var noChange: Bool {
         !self.map(\.hasChanged).contains(true)
     }
-    
 }

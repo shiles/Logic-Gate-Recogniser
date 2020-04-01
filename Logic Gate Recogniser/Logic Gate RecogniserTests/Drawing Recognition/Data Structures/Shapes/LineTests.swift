@@ -32,5 +32,16 @@ class LineTests: XCTestCase {
         // Then
         XCTAssertEqual(CGRect(origin: CGPoint(x: 0, y: 0), size: CGSize(width: 10, height: 10)), boundingBox)
     }
+    
+    func testLineLength() {
+        // Given
+        let line = Line(startPoint: CGPoint(x: 0, y: 0), endPoint: CGPoint(x: 1, y: 0))
+        
+        // When
+        let lenght = line.length
+        
+        // Then
+        XCTAssertEqual(1, lenght)
+    }
 
 }

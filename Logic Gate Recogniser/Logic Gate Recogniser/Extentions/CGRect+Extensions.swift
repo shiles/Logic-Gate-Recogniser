@@ -32,6 +32,4 @@ extension CGRect {
     func squared() -> CGRect {
         return CGRect(origin: self.origin, size: CGSize(width: self.height, height: self.height))
     }
-    
 }
-

@@ -17,7 +17,7 @@ class CGPoint_ExtensionsTests: XCTestCase {
         let point = CGPoint(x: 1, y: 1)
         
         // When
-        let vect = point.toVector()
+        let vect = point.vector
         
         // Then
         XCTAssertEqual(vect, CGVector(dx: 1, dy: 1))

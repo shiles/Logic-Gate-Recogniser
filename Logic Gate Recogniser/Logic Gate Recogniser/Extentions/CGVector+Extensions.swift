@@ -14,8 +14,8 @@ extension CGVector {
     ///Normalizes the vector described by the CGVector to length 1.0
     ///- Returns: Vector normalised to lenght of 1.0
     func normalized() -> CGVector {
-      let len = sqrt(dx*dx + dy*dy)
-      return len>0 ? self / len : CGVector.zero
+        let len = sqrt(dx*dx + dy*dy)
+        return len>0 ? self / len : CGVector.zero
     }
     
     /// Converts the vector to a point
@@ -26,7 +26,7 @@ extension CGVector {
     
     ///Divides the dx and dy fields of a CGVector by the same scalar value and
     static public func / (vector: CGVector, scalar: CGFloat) -> CGVector {
-      return CGVector(dx: vector.dx / scalar, dy: vector.dy / scalar)
+        return CGVector(dx: vector.dx / scalar, dy: vector.dy / scalar)
     }
     
     static public func - (rhs: CGVector, lhs: CGVector) -> CGVector {

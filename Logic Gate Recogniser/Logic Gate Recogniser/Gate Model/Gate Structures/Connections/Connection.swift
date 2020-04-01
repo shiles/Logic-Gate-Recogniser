@@ -13,3 +13,10 @@ struct Connection {
     let endGate: Gate
     let stroke: Stroke
 }
+
+extension Connection: Equatable {
+
+    static func == (lhs: Connection, rhs: Connection) -> Bool {
+        return lhs.startGate == rhs.startGate && lhs.endGate == rhs.endGate && lhs.stroke == rhs.stroke
+    }
+}
