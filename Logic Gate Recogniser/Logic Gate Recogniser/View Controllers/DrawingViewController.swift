@@ -92,6 +92,7 @@ extension DrawingViewController: UIPencilInteractionDelegate {
         default:
             let current = canvasView.tool
             canvasView.tool = previousTool
+            updateSelectedBarButton(selected: previousTool)
             previousTool = current
         }
     }
