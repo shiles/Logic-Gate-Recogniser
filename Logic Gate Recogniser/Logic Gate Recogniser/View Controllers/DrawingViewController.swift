@@ -13,7 +13,6 @@ import Combine
 
 class DrawingViewController: UIViewController  {
     
-    private let testHelper = TestHelper()
     private var simFinishedSub: AnyCancellable?
     private var simStartedSub: AnyCancellable?
     private var previousTool = DrawingTools.erasor
@@ -34,9 +33,6 @@ class DrawingViewController: UIViewController  {
         
         // Canvas Setup
         canvasView.canvasViewModel.delegate = canvasView
-        
-        // Test Setup
-        testHelper.delegate = self
         
         // Simulation Setup
         simFinishedSub = NotificationCenter.Publisher(center: .default, name: .simulationFinished, object: nil)
@@ -97,23 +93,3 @@ extension DrawingViewController: UIPencilInteractionDelegate {
         }
     }
 }
-
-// MARK: Testing Extensions
-
-extension DrawingViewController: TestAlertShower {
-    
-    func showTestAlert(for gate: TestRecognised) {
-        var view = TestView(recognised: gate)  
-        view.model = testHelper
-        view.dismiss = {
-            self.dismiss(animated: true, completion: nil)
-        }
-        
-        // Display View
-        let vc = UIHostingController(rootView: view)
-        vc.modalPresentationStyle = .popover
-        vc.popoverPresentationController?.barButtonItem = runSimulationButton
-        present(vc, animated: true, completion:nil)
-    }
-}
-
