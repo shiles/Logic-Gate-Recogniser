@@ -37,14 +37,24 @@ extension Predicate where Target == Shape {
     ///Predicate to check if the shape is a line, either `line` or `curvedLine`
     static var isLine: Self {
         Predicate {
-            $0.type == .line || $0.type == .curvedLine
+            switch($0.type){
+            case .line(type: _):
+                return true
+            default:
+                return false
+            }
         }
     }
     
     ///Predicate to check if the shape is a triangle, either `line` or `curvedLine`
     static var isTriangle: Self {
         Predicate {
-            $0.type == .curvedTriangle || $0.type == .straightTriangle
+            switch($0.type){
+            case .triangle(type: _):
+                return true
+            default:
+                return false
+            }
         }
     }
 }

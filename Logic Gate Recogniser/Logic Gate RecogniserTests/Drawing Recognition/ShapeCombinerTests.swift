@@ -103,7 +103,7 @@ class ShapeCombinerTests: XCTestCase {
         let results = shapeCombiner.combineToTriangle(shapes: shapes)
         
         // Then
-        XCTAssertEqual(results.first?.type, .straightTriangle)
+        XCTAssertEqual(results.first?.type, .triangle(type: .straight))
     }
     
     func testCombineCurvedLinesToTriangle() {
@@ -116,7 +116,7 @@ class ShapeCombinerTests: XCTestCase {
         let results = shapeCombiner.combineToTriangle(shapes: shapes)
         
         // Then
-        XCTAssertEqual(results.first?.type, .curvedTriangle)
+        XCTAssertEqual(results.first?.type, .triangle(type: .curved))
     }
 
     func testCombineLinesToTriangleWithOtherShapes() {
@@ -131,7 +131,7 @@ class ShapeCombinerTests: XCTestCase {
         
         // Then
         XCTAssertEqual(results.first?.type, .circle)
-        XCTAssertEqual(results.second?.type, .curvedTriangle)
+        XCTAssertEqual(results.second?.type, .triangle(type: .curved))
     }
     
     func testCombileLineAndTriangleToStraightTriangle() {
@@ -144,7 +144,7 @@ class ShapeCombinerTests: XCTestCase {
         let results = shapeCombiner.completeTriangleWithLine(shapes: shapes)
         
         // Then
-        XCTAssertEqual(results.first?.type, .straightTriangle)
+        XCTAssertEqual(results.first?.type, .triangle(type: .straight))
     }
     
     func testCombileLineAndTriangleToCurvedTriangle() {
@@ -157,7 +157,7 @@ class ShapeCombinerTests: XCTestCase {
         let results = shapeCombiner.completeTriangleWithLine(shapes: shapes)
         
         // Then
-        XCTAssertEqual(results.first?.type, .curvedTriangle)
+        XCTAssertEqual(results.first?.type, .triangle(type: .curved))
     }
     
     func testCombileLineAndTriangleToTriangleWithOtherShapes() {
@@ -172,7 +172,7 @@ class ShapeCombinerTests: XCTestCase {
         
         // Then
         XCTAssertEqual(results.first?.type, .circle)
-        XCTAssertEqual(results.second?.type, .curvedTriangle)
+        XCTAssertEqual(results.second?.type, .triangle(type: .curved))
     }
     
     func testLineAndCurvedToRectangle() {

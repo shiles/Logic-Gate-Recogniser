@@ -12,23 +12,23 @@ import Foundation
 class ShapeBuilder {
     
     static var straightLine: Shape {
-        Shape(type: .line, convexHull: StrokeBuilder.straightTriangle, components: [StrokeBuilder.straightTriangle])
+        Shape(type: .line(type: .straight), convexHull: StrokeBuilder.straightTriangle, components: [StrokeBuilder.straightTriangle])
     }
     
     static var curvedLine: Shape {
-        Shape(type: .curvedLine, convexHull: StrokeBuilder.curvedLine, components: [StrokeBuilder.curvedLine])
+        Shape(type: .line(type: .curved), convexHull: StrokeBuilder.curvedLine, components: [StrokeBuilder.curvedLine])
     }
     
     static var incompleteTriangle: Shape {
-        Shape(type: .incompleteTriangle, convexHull: StrokeBuilder.incompleteTriangle, components: [StrokeBuilder.incompleteTriangle])
+        Shape(type: .triangle(type: .incomplete), convexHull: StrokeBuilder.incompleteTriangle, components: [StrokeBuilder.incompleteTriangle])
     }
     
     static var straightTriangle: Shape {
-        Shape(type: .straightTriangle, convexHull: StrokeBuilder.straightTriangle, components: [StrokeBuilder.straightTriangle])
+        Shape(type: .triangle(type: .straight), convexHull: StrokeBuilder.straightTriangle, components: [StrokeBuilder.straightTriangle])
     }
     
     static var curvedTriangle: Shape {
-        Shape(type: .curvedTriangle, convexHull: StrokeBuilder.curvedTriangle, components: [StrokeBuilder.curvedTriangle])
+        Shape(type: .triangle(type: .curved), convexHull: StrokeBuilder.curvedTriangle, components: [StrokeBuilder.curvedTriangle])
     }
     
     static var rectangle: Shape {

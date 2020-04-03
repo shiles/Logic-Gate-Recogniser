@@ -47,19 +47,16 @@ class GateManager {
     private func findCircuitGate(stroke: Stroke) -> Gate? {
         guard let shape = recogniser.analyseStroke(stroke) else { return nil }
         
-        if shape.type == .rectangle && detailAnalyser.analyseRectangle(rectangle: stroke) == .rectangle  {
-             return Output(boundingBox: shape.boundingBox)
-        }
-        
-        if shape.type == .unanalysedTriangle {
+        switch shape.type {
+        case .rectangle where detailAnalyser.analyseRectangle(rectangle: stroke) == .rectangle:
+            return Output(boundingBox: shape.boundingBox)
+        case .triangle(type: .unanalysed):
             return Input(boundingBox: shape.boundingBox, initialValue: true)
-        }
-        
-        if shape.type == .circle {
+        case .circle:
             return Input(boundingBox: shape.boundingBox, initialValue: false)
+        default:
+            return nil
         }
-        
-        return nil
     }
     
     // MARK: Manage Connections
@@ -94,25 +91,22 @@ class GateManager {
         let startGate = model.gates.first(where: { $0.boundingBox.intersects(start.boundingBox) })
         var endGate = model.gates.first(where: { $0.boundingBox.intersects(end.boundingBox) })
         
-        if let _ = startGate, let _ = endGate {
-            // Check that it doesn't already have to many inputs
-            if endGate!.has(matching: .isNoInput) {
-                return model
-            } else if endGate!.has(matching: .isSingleInput) {
-                if endGate!.inputs.count >= 1 { return model }
-            } else {
-                if endGate!.inputs.count >= 2 { return model }
-            }
-            
-            // Create the conection
-            var connections = model.connections
-            connections.append(Connection(startGate: startGate!, endGate: endGate!, stroke: connectionStroke))
-            endGate!.inputs.append(startGate!)
-            
-            return (connections, model.gates)
+        guard let _ = startGate, let _ = endGate else { return model }
+        // Check that it doesn't already have to many inputs
+        if endGate!.has(matching: .isNoInput) {
+            return model
+        } else if endGate!.has(matching: .isSingleInput) {
+            if endGate!.inputs.count >= 1 { return model }
+        } else {
+            if endGate!.inputs.count >= 2 { return model }
         }
         
-        return model
+        // Create the conection
+        var connections = model.connections
+        connections.append(Connection(startGate: startGate!, endGate: endGate!, stroke: connectionStroke))
+        endGate!.inputs.append(startGate!)
+        
+        return (connections, model.gates)
     }
     
     ///Erases a connection from the list if the erasor stroke intersects the connection

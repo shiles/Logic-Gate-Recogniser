@@ -23,7 +23,7 @@ class DetailAnalyserTests: XCTestCase {
         let type = detailAnalyser.analyseTriangle(triangle: stroke)
         
         // Then
-        XCTAssertEqual(type, ShapeType.incompleteTriangle)
+        XCTAssertEqual(type, ShapeType.triangle(type: .incomplete))
     }
     
     func testAnalyseTriangleStraight() {
@@ -34,7 +34,7 @@ class DetailAnalyserTests: XCTestCase {
         let type = detailAnalyser.analyseTriangle(triangle: stroke)
         
         // Then
-        XCTAssertEqual(type, ShapeType.straightTriangle)
+        XCTAssertEqual(type, ShapeType.triangle(type: .straight))
     }
     
     func testAnalyseTriangleCurved() {
@@ -45,7 +45,7 @@ class DetailAnalyserTests: XCTestCase {
         let type = detailAnalyser.analyseTriangle(triangle: stroke)
         
         // Then
-        XCTAssertEqual(type, ShapeType.curvedTriangle)
+        XCTAssertEqual(type, ShapeType.triangle(type: .curved))
     }
     
     // MARK: - Square Tests
@@ -69,6 +69,6 @@ class DetailAnalyserTests: XCTestCase {
         let type = detailAnalyser.analyseRectangle(rectangle: stroke)
         
         // Then
-        XCTAssertEqual(type, ShapeType.curvedLine)
+        XCTAssertEqual(type, ShapeType.line(type: .curved))
     }
 }

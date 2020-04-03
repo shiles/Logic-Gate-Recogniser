@@ -15,7 +15,7 @@ class PredicateTests: XCTestCase {
     
     func testIsLineWithLine() {
         // Given
-        let list = [Shape(type: .line, convexHull: [])]
+        let list = [Shape(type: .line(type: .straight), convexHull: [])]
         
         // When
         let hasLine = list.has(matching: .isLine)
@@ -26,7 +26,7 @@ class PredicateTests: XCTestCase {
     
     func testIsLineWithCurvedLine() {
         // Given
-        let list = [Shape(type: .curvedLine, convexHull: [])]
+        let list = [Shape(type: .line(type: .curved), convexHull: [])]
         
         // When
         let hasLine = list.has(matching: .isLine)
@@ -37,7 +37,7 @@ class PredicateTests: XCTestCase {
     
     func testIsLineWithStraightTriangle() {
         // Given
-        let list = [Shape(type: .straightTriangle, convexHull: [])]
+        let list = [Shape(type: .triangle(type: .straight), convexHull: [])]
         
         // When
         let hasTriangle = list.has(matching: .isTriangle)
@@ -48,7 +48,7 @@ class PredicateTests: XCTestCase {
     
     func testIsLineWithCurvedTriangle() {
         // Given
-        let list = [Shape(type: .curvedTriangle, convexHull: [])]
+        let list = [Shape(type: .triangle(type: .curved), convexHull: [])]
         
         // When
         let hasTriangle = list.has(matching: .isTriangle)
@@ -59,7 +59,7 @@ class PredicateTests: XCTestCase {
         
     func testIsLineWithNoTriangle() {
         // Given
-        let list = [Shape(type: .line, convexHull: [])]
+        let list = [Shape(type: .line(type: .straight), convexHull: [])]
         
         // When
         let hasTriangle = list.has(matching: .isTriangle)

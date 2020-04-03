@@ -32,7 +32,7 @@ class ShapeDeciderTests: XCTestCase {
         let shape = sut.findShape(for: shapeAttributes)
         
         // Then
-        XCTAssertEqual(shape.type, ShapeType.line)
+        XCTAssertEqual(shape.type, ShapeType.line(type: .straight))
     }
     
     func testTriangle() {
@@ -43,7 +43,7 @@ class ShapeDeciderTests: XCTestCase {
         let shape = sut.findShape(for: shapeAttributes)
 
         // Then
-        XCTAssertEqual(shape.type, ShapeType.unanalysedTriangle)
+        XCTAssertEqual(shape.type, ShapeType.triangle(type: .unanalysed))
     }
     
     func testRectangle() {

@@ -19,11 +19,11 @@ class DetailAnalyser {
     func analyseTriangle(triangle: Stroke) -> ShapeType {
         switch(straightLines(in: triangle).count) {
         case 0..<3:
-            return .incompleteTriangle
+            return .triangle(type: .incomplete)
         case 3:
-            return .straightTriangle
+            return .triangle(type: .straight)
         default:
-            return .curvedTriangle
+            return .triangle(type: .curved)
         }
     }
     
@@ -33,7 +33,7 @@ class DetailAnalyser {
     func analyseRectangle(rectangle: Stroke) -> ShapeType {
         switch(straightLines(in: rectangle).count) {
         case 0...3:
-            return .curvedLine
+            return .line(type: .curved)
         default:
             return .rectangle
         }

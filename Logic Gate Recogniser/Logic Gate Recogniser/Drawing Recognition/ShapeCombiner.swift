@@ -38,7 +38,7 @@ class ShapeCombiner {
         
         //Filter out gates that contain or don't contain triangle
         if shapes.has(matching: .isTriangle) {
-            if shapes.has(matching: \.type == .straightTriangle) {
+            if shapes.has(matching: \.type == .triangle(type: .straight)) {
                 gates.remove(matching: .notContainsStraightTriangle)
             } else {
                 gates.remove(matching: .notContainsCurvedTriangle)
@@ -48,7 +48,7 @@ class ShapeCombiner {
         }
         
         //Filter out gates that contain or don't contain lines
-        if shapes.has(matching: \.type == .curvedLine) {
+        if shapes.has(matching: \.type == .line(type: .curved)) {
             gates.remove(matching: .notContainsLine)
         } else {
             gates.remove(matching: .containsLine)
@@ -70,7 +70,7 @@ class ShapeCombiner {
         
         if lines.count == 3 {
             guard let combinedHull = analyser.convexHull(of: lines.map(\.convexHull).reduce([],+)) else { return shapes }
-            let type: ShapeType = lines.has(matching: \.type == .curvedLine) ? .curvedTriangle : .straightTriangle
+            let type: ShapeType = .triangle(type: lines.has(matching: \.type == .line(type: .curved)) ? .curved : .straight)
             let components = lines.map(\.components).flatMap { $0 }
             
             let triangle = Shape(type: type, convexHull: combinedHull, components: components)
@@ -89,14 +89,14 @@ class ShapeCombiner {
     ///- Returns: An update list of shapes
     func completeTriangleWithLine(shapes: [Shape]) -> [Shape] {
         let lines = shapes.shapes(matching: .isLine)
-        let incompleteTriangles = shapes.shapes(matching: \.type == .incompleteTriangle)
+        let incompleteTriangles = shapes.shapes(matching: \.type == .triangle(type: .incomplete))
         
         if lines.hasElements && incompleteTriangles.hasElements {
             guard let line = lines.first, let incompleteTriangle = incompleteTriangles.first else { return shapes }
             guard let combinedHull = analyser.convexHull(of: [line.convexHull, incompleteTriangle.convexHull].reduce([],+)) else { return shapes }
             let components = [line, incompleteTriangle].map(\.components).flatMap { $0 }
             
-            let type: ShapeType = line.type == .line ? .straightTriangle : .curvedTriangle
+            let type: ShapeType = .triangle(type: line.type == .line(type: .straight) ? .straight : .curved)
             
             let triangle = Shape(type: type, convexHull: combinedHull, components: components)
             NotificationCenter.default.post(name: .shapeRecognised, object: triangle)
@@ -114,8 +114,8 @@ class ShapeCombiner {
     ///- Parameter shapes: A list of shapes to analyse
     ///- Returns: An update list of shapes
     func combineToRectangle(shapes: [Shape]) -> [Shape] {
-        let straightLines = shapes.shapes(matching: \.type == .line)
-        let curvedLines = shapes.shapes(matching: \.type == .curvedLine)
+        let straightLines = shapes.shapes(matching: \.type == .line(type: .straight))
+        let curvedLines = shapes.shapes(matching: \.type == .line(type: .curved))
         
         guard let straight = straightLines.first, let curved = curvedLines.first else { return shapes }
         guard let combinedHull = analyser.convexHull(of: [straight, curved].map(\.convexHull).reduce([], +)) else { return shapes }

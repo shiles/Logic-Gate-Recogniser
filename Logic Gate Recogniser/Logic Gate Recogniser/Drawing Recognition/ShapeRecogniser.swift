@@ -92,7 +92,7 @@ class ShapeRecogniser {
     ///- Parameter shape: The shape that has been recognised
     ///- Returns: A shape with further analysis done
     private func analyseShapeDetails(_ shape: Shape) -> Shape {
-        if shape.type == .unanalysedTriangle {
+        if shape.type == .triangle(type: .unanalysed) {
             let analysedType = detailAnalyser.analyseTriangle(triangle: shape.components.flatMap { $0 })
             return Shape(type: analysedType, convexHull: shape.convexHull, components: shape.components)
         }
@@ -111,7 +111,7 @@ class ShapeRecogniser {
     func analyseStroke(_ stroke: Stroke) -> Shape? {
         guard let hull = analyser.convexHull(of: stroke) else {
             guard let first = stroke.first, let last = stroke.last, first != last else { return nil }
-            return Shape(type: .line, convexHull: [first, last], components: [stroke])
+            return Shape(type: .line(type: .straight), convexHull: [first, last], components: [stroke])
         }
         let triangle = analyser.largestAreaTriangle(using: hull) ?? Triangle.zero
         let container = analyser.boundingBox(using: hull)

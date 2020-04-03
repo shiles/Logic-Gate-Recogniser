@@ -23,7 +23,7 @@ class ShapeRecogniserTests: XCTestCase {
         let adjacentShapes = shapeRecogniser.recogniseShape(from: stroke, into: [])
         
         // Then
-        XCTAssertEqual(adjacentShapes.first?.first?.type, .line)
+        XCTAssertEqual(adjacentShapes.first?.first?.type, .line(type: .straight))
     }
     
     func testRecogniseCurvedLine() {
@@ -34,7 +34,7 @@ class ShapeRecogniserTests: XCTestCase {
         let adjacentShapes = shapeRecogniser.recogniseShape(from: stroke, into: [])
         
         // Then
-        XCTAssertEqual(adjacentShapes.first?.first?.type, .curvedLine)
+        XCTAssertEqual(adjacentShapes.first?.first?.type, .line(type: .curved))
     }
     
     func testRecogniseCurvedIncompleteTriangle() {
@@ -45,7 +45,7 @@ class ShapeRecogniserTests: XCTestCase {
         let adjacentShapes = shapeRecogniser.recogniseShape(from: stroke, into: [])
         
         // Then
-        XCTAssertEqual(adjacentShapes.first?.first?.type, .incompleteTriangle)
+        XCTAssertEqual(adjacentShapes.first?.first?.type, .triangle(type: .incomplete))
     }
     
     func testRecogniseCurvedStraightTriangle() {
@@ -56,7 +56,7 @@ class ShapeRecogniserTests: XCTestCase {
         let adjacentShapes = shapeRecogniser.recogniseShape(from: stroke, into: [])
         
         // Then
-        XCTAssertEqual(adjacentShapes.first?.first?.type, .straightTriangle)
+        XCTAssertEqual(adjacentShapes.first?.first?.type, .triangle(type: .straight))
     }
 
     func testRecogniseCurvedCurvedTriangle() {
@@ -67,7 +67,7 @@ class ShapeRecogniserTests: XCTestCase {
         let adjacentShapes = shapeRecogniser.recogniseShape(from: stroke, into: [])
         
         // Then
-        XCTAssertEqual(adjacentShapes.first?.first?.type, .curvedTriangle)
+        XCTAssertEqual(adjacentShapes.first?.first?.type, .triangle(type: .curved))
     }
     
     func testRecogniseRectangle() {
@@ -118,7 +118,7 @@ class ShapeRecogniserTests: XCTestCase {
         let result = shapeRecogniser.performAnalysis(in: adjacentShapes)
         
         // Then
-        XCTAssertEqual(result.first?.first?.type, .straightTriangle)
+        XCTAssertEqual(result.first?.first?.type, .triangle(type: .straight))
     }
     
     func testCombineCurvedLineAndTriagleToCurvedTriangle() {
@@ -143,7 +143,7 @@ class ShapeRecogniserTests: XCTestCase {
         let result = shapeRecogniser.performAnalysis(in: adjacentShapes)
         
         // Then
-        XCTAssertEqual(result.first?.first?.type, .straightTriangle)
+        XCTAssertEqual(result.first?.first?.type, .triangle(type: .straight))
     }
     
     func testCombineCurvedLinesToCurvedTriangle() {
@@ -190,7 +190,7 @@ class ShapeRecogniserTests: XCTestCase {
     func testEraseShapeNonIntersectingStroke() {
         // Given
         let erasorStroke = [CGPoint(x: 0, y: 5), CGPoint(x: 5, y: 5)]
-        let adjacentShapes = [[Shape(type: .line, convexHull: [CGPoint(x: 10, y: 10), CGPoint(x: 20, y: 10)])]]
+        let adjacentShapes = [[Shape(type: .line(type: .straight), convexHull: [CGPoint(x: 10, y: 10), CGPoint(x: 20, y: 10)])]]
         
         // When
         let rslt = shapeRecogniser.eraseShapes(eraserStroke: erasorStroke, in: adjacentShapes)
@@ -203,7 +203,7 @@ class ShapeRecogniserTests: XCTestCase {
     func testEraseShapeIntersectingStroke() {
         // Given
         let erasorStroke = [CGPoint(x: 0, y: 5), CGPoint(x: 5, y: 5)]
-        let shape = Shape(type: .line, convexHull: [CGPoint(x: 2.5, y: 0), CGPoint(x: 2.5, y: 10)], components: [[CGPoint(x: 2.5, y: 0), CGPoint(x: 2.5, y: 10)]])
+        let shape = Shape(type: .line(type: .straight), convexHull: [CGPoint(x: 2.5, y: 0), CGPoint(x: 2.5, y: 10)], components: [[CGPoint(x: 2.5, y: 0), CGPoint(x: 2.5, y: 10)]])
         let adjacentShapes = [[shape]]
         
         // When

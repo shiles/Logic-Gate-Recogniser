@@ -15,12 +15,6 @@ struct Shape: Equatable {
     var components: [Stroke] = []
 }
 
-enum ShapeType: String {
-    case circle, rectangle, unknown
-    case line, curvedLine
-    case unanalysedTriangle, incompleteTriangle, straightTriangle, curvedTriangle
-}
-
 extension Shape {
     
     ///Gets the non-rotated bounding box of the shape
@@ -35,6 +29,3 @@ extension Shape {
     var inflatedBoundingBox: CGRect { boundingBox.inflate(by: 1.4) }
 }
 
-extension Shape: CustomStringConvertible {
-    var description: String { "\(type.rawValue) - \(components.count) components" }
-}
