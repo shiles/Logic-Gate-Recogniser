@@ -67,21 +67,17 @@ class ShapeCombiner {
     ///- Returns: An updated list of shapes
     func combineToTriangle(shapes: [Shape]) -> [Shape] {
         let lines = shapes.shapes(matching: .isLine)
+        guard lines.count == 3 else { return shapes }
         
-        if lines.count == 3 {
-            guard let combinedHull = analyser.convexHull(of: lines.map(\.convexHull).reduce([],+)) else { return shapes }
-            let type: ShapeType = .triangle(type: lines.has(matching: \.type == .line(type: .curved)) ? .curved : .straight)
-            let components = lines.map(\.components).flatMap { $0 }
-            
-            let triangle = Shape(type: type, convexHull: combinedHull, components: components)
-            NotificationCenter.default.post(name: .shapeRecognised, object: triangle)
-            
-            var newList = shapes.withOut(matching: .isLine)
-            newList.append(triangle)
-            return newList
-        }
-            
-        return shapes
+        guard let combinedHull = analyser.convexHull(of: lines.map(\.convexHull).reduce([],+)) else { return shapes }
+        let type: ShapeType = .triangle(type: lines.has(matching: \.type == .line(type: .curved)) ? .curved : .straight)
+        
+        let triangle = Shape(type: type, convexHull: combinedHull, components: lines.combinedComponents)
+        NotificationCenter.default.post(name: .shapeRecognised, object: triangle)
+        
+        var newList = shapes.withOut(matching: .isLine)
+        newList.append(triangle)
+        return newList
     }
     
     ///Combines a line and an incomplete triangle
@@ -90,24 +86,19 @@ class ShapeCombiner {
     func completeTriangleWithLine(shapes: [Shape]) -> [Shape] {
         let lines = shapes.shapes(matching: .isLine)
         let incompleteTriangles = shapes.shapes(matching: \.type == .triangle(type: .incomplete))
+        guard lines.hasElements && incompleteTriangles.hasElements else { return shapes }
         
-        if lines.hasElements && incompleteTriangles.hasElements {
-            guard let line = lines.first, let incompleteTriangle = incompleteTriangles.first else { return shapes }
-            guard let combinedHull = analyser.convexHull(of: [line.convexHull, incompleteTriangle.convexHull].reduce([],+)) else { return shapes }
-            let components = [line, incompleteTriangle].map(\.components).flatMap { $0 }
-            
-            let type: ShapeType = .triangle(type: line.type == .line(type: .straight) ? .straight : .curved)
-            
-            let triangle = Shape(type: type, convexHull: combinedHull, components: components)
-            NotificationCenter.default.post(name: .shapeRecognised, object: triangle)
-            
-            var newList = shapes
-            newList.removeAll(where: { $0 == line || $0 == incompleteTriangle })
-            newList.append(triangle)
-            return newList
-        }
+        guard let line = lines.first, let incompleteTriangle = incompleteTriangles.first else { return shapes }
+        guard let combinedHull = analyser.convexHull(of: [line.convexHull, incompleteTriangle.convexHull].reduce([],+)) else { return shapes }
+        let type: ShapeType = .triangle(type: line.type == .line(type: .straight) ? .straight : .curved)
         
-        return shapes
+        let triangle = Shape(type: type, convexHull: combinedHull, components:  [line, incompleteTriangle].combinedComponents)
+        NotificationCenter.default.post(name: .shapeRecognised, object: triangle)
+        
+        var newList = shapes
+        newList.removeAll(where: { $0 == line || $0 == incompleteTriangle })
+        newList.append(triangle)
+        return newList
     }
     
     ///Combines a line and a curved line into a rectangle
@@ -119,9 +110,8 @@ class ShapeCombiner {
         
         guard let straight = straightLines.first, let curved = curvedLines.first else { return shapes }
         guard let combinedHull = analyser.convexHull(of: [straight, curved].map(\.convexHull).reduce([], +)) else { return shapes }
-        let components = [straight, curved].map(\.components).flatMap { $0 }
         
-        let rect = Shape(type: .rectangle, convexHull: combinedHull, components: components)
+        let rect = Shape(type: .rectangle, convexHull: combinedHull, components: [straight, curved].combinedComponents)
         NotificationCenter.default.post(name: .shapeRecognised, object: rect)
         
         var newList = shapes

@@ -144,11 +144,9 @@ class ShapeRecogniser {
         var shapes = adjacentShapes
         let boundingBox = shape.inflatedBoundingBox
         
-        for (i, list) in shapes.enumerated() {
-            if list.contains(where: { $0.inflatedBoundingBox.intersects(boundingBox) }) {
-                shapes[i].append(shape)
-                return shapes
-           }
+        for (i, list) in shapes.enumerated() where list.contains(where: { $0.inflatedBoundingBox.intersects(boundingBox) }) {
+            shapes[i].append(shape)
+            return shapes
         }
         
         shapes.append([shape])

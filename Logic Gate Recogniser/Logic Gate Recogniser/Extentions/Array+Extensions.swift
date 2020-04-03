@@ -127,6 +127,12 @@ extension Array where Element == Shape {
         guard let first = self.first else { return .zero }
         return self.reduce(first.boundingBox, { $0.union($1.boundingBox) })
     }
+    
+    ///Calculates and returns a list of all of the components in the list of shapes
+    ///- Returns: Combined list of all components
+    var combinedComponents: [Stroke] {
+        self.map(\.components).flatMap { $0 }
+    }
 }
 
 extension Array where Element == Gate {
