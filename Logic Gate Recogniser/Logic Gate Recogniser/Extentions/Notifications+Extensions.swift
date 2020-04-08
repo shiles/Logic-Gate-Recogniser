@@ -10,9 +10,8 @@ import Foundation
 
 extension Notification.Name {
     
-    //Shapes + Gates Recognised
+    //Gates Recognised
     static var gateRecognised:  Notification.Name { Notification.Name("gateRecognised") }
-    static var shapeRecognised: Notification.Name { Notification.Name("shapeRecognised") }
 
     //State changesw in simulation
     static var gateUpdated: Notification.Name { Notification.Name("gateUpdated") }

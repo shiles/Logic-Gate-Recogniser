@@ -17,7 +17,6 @@ class DrawingViewController: UIViewController  {
     private var simStartedSub: AnyCancellable?
     private var previousTool = DrawingTools.erasor
     
-    @IBOutlet weak var gateInfoView: DetectedGateInfoView!
     @IBOutlet weak var canvasView: CanvasView!
     @IBOutlet weak var penToolButton: UIBarButtonItem!
     @IBOutlet weak var erasorToolButton: UIBarButtonItem!

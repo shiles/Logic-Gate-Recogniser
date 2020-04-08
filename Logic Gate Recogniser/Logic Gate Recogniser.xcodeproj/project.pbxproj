@@ -59,8 +59,6 @@
 		AB93C97323F185FB00CD8006 /* Predicate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB93C97223F185FB00CD8006 /* Predicate.swift */; };
 		AB9F1DA82372F45900E9E81C /* Triangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9F1DA72372F45900E9E81C /* Triangle.swift */; };
 		AB9F1DAA2372F8F600E9E81C /* TriangleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9F1DA92372F8F600E9E81C /* TriangleTests.swift */; };
-		AB9F33792358862300A39A44 /* DetectedGateInfo.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB9F33782358862300A39A44 /* DetectedGateInfo.xib */; };
-		AB9F337C235887C300A39A44 /* DetectedGateInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9F337B235887C300A39A44 /* DetectedGateInfoView.swift */; };
 		AB9FC19923673BEB003D1A85 /* Array+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9FC19823673BEB003D1A85 /* Array+Extensions.swift */; };
 		ABAD75282419395400436619 /* Bool+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABAD75272419395400436619 /* Bool+Extensions.swift */; };
 		ABAD752A241939FA00436619 /* Not.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABAD7529241939FA00436619 /* Not.swift */; };
@@ -85,7 +83,6 @@
 		ABD5F1AD2382BC61002FFD16 /* PerimeterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABD5F1AC2382BC61002FFD16 /* PerimeterTests.swift */; };
 		ABD5F1B02382C0EB002FFD16 /* StrokeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABD5F1AF2382C0EB002FFD16 /* StrokeTests.swift */; };
 		ABD5F1B22382CBCC002FFD16 /* ShapeRecogniser.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABD5F1B12382CBCC002FFD16 /* ShapeRecogniser.swift */; };
-		ABF06A5823588CF6006C8E2B /* UIView+Extentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF06A5723588CF6006C8E2B /* UIView+Extentions.swift */; };
 		ABF22AAC242A3ACB00B826B3 /* NotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF22AAB242A3ACB00B826B3 /* NotTests.swift */; };
 		ABF22AB2242A4AFF00B826B3 /* OrTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF22AB1242A4AFF00B826B3 /* OrTests.swift */; };
 		ABF22AB4242A4BD900B826B3 /* NorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF22AB3242A4BD900B826B3 /* NorTests.swift */; };
@@ -169,8 +166,6 @@
 		AB93C97223F185FB00CD8006 /* Predicate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Predicate.swift; sourceTree = "<group>"; };
 		AB9F1DA72372F45900E9E81C /* Triangle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Triangle.swift; sourceTree = "<group>"; };
 		AB9F1DA92372F8F600E9E81C /* TriangleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriangleTests.swift; sourceTree = "<group>"; };
-		AB9F33782358862300A39A44 /* DetectedGateInfo.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetectedGateInfo.xib; sourceTree = "<group>"; };
-		AB9F337B235887C300A39A44 /* DetectedGateInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetectedGateInfoView.swift; sourceTree = "<group>"; };
 		AB9FC19823673BEB003D1A85 /* Array+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extensions.swift"; sourceTree = "<group>"; };
 		ABAD75272419395400436619 /* Bool+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bool+Extensions.swift"; sourceTree = "<group>"; };
 		ABAD7529241939FA00436619 /* Not.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Not.swift; sourceTree = "<group>"; };
@@ -195,7 +190,6 @@
 		ABD5F1AC2382BC61002FFD16 /* PerimeterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerimeterTests.swift; sourceTree = "<group>"; };
 		ABD5F1AF2382C0EB002FFD16 /* StrokeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StrokeTests.swift; sourceTree = "<group>"; };
 		ABD5F1B12382CBCC002FFD16 /* ShapeRecogniser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShapeRecogniser.swift; sourceTree = "<group>"; };
-		ABF06A5723588CF6006C8E2B /* UIView+Extentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extentions.swift"; sourceTree = "<group>"; };
 		ABF22AAB242A3ACB00B826B3 /* NotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotTests.swift; sourceTree = "<group>"; };
 		ABF22AB1242A4AFF00B826B3 /* OrTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrTests.swift; sourceTree = "<group>"; };
 		ABF22AB3242A4BD900B826B3 /* NorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NorTests.swift; sourceTree = "<group>"; };
@@ -436,7 +430,6 @@
 			children = (
 				AB36BBEE235735CA006B8607 /* Main.storyboard */,
 				AB36BBF3235735CB006B8607 /* LaunchScreen.storyboard */,
-				AB9F33782358862300A39A44 /* DetectedGateInfo.xib */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -445,7 +438,6 @@
 			isa = PBXGroup;
 			children = (
 				AB36BBEC235735CA006B8607 /* DrawingViewController.swift */,
-				AB9F337B235887C300A39A44 /* DetectedGateInfoView.swift */,
 				ABBDAB872362EDEE00DBFDC1 /* CanvasView.swift */,
 				AB5370B723FBD7A400E5FD3F /* CanvasViewModel.swift */,
 			);
@@ -483,7 +475,6 @@
 		ABF06A5623588CA3006C8E2B /* Extentions */ = {
 			isa = PBXGroup;
 			children = (
-				ABF06A5723588CF6006C8E2B /* UIView+Extentions.swift */,
 				AB9FC19823673BEB003D1A85 /* Array+Extensions.swift */,
 				AB41AE0A23688D4200273845 /* Collection+Extensions.swift */,
 				AB21A205236B256000BCE5E0 /* CGVector+Extensions.swift */,
@@ -630,7 +621,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AB9F33792358862300A39A44 /* DetectedGateInfo.xib in Resources */,
 				AB36BBF5235735CB006B8607 /* LaunchScreen.storyboard in Resources */,
 				AB36BBF2235735CB006B8607 /* Assets.xcassets in Resources */,
 				AB36BBF0235735CA006B8607 /* Main.storyboard in Resources */,
@@ -652,7 +642,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				ABAD753024193A7100436619 /* And.swift in Sources */,
-				AB9F337C235887C300A39A44 /* DetectedGateInfoView.swift in Sources */,
 				AB36BBED235735CA006B8607 /* DrawingViewController.swift in Sources */,
 				AB21A208236B678700BCE5E0 /* CGFloat+Extensions.swift in Sources */,
 				AB84F130237F012E00D4CE37 /* ConvexHull.swift in Sources */,
@@ -666,7 +655,6 @@
 				ABF8046C241A1798007D14C7 /* Connection.swift in Sources */,
 				ABAD753A24193AEA00436619 /* Output.swift in Sources */,
 				AB41AE0B23688D4200273845 /* Collection+Extensions.swift in Sources */,
-				ABF06A5823588CF6006C8E2B /* UIView+Extentions.swift in Sources */,
 				ABC76DF223798A22001A7A29 /* CGPoint+Extensions.swift in Sources */,
 				AB9FC19923673BEB003D1A85 /* Array+Extensions.swift in Sources */,
 				AB0866FF2386C97000E30B50 /* ShapeDecider.swift in Sources */,

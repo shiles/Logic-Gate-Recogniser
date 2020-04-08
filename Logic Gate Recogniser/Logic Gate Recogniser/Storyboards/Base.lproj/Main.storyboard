@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16085" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="GTP-EC-d2e">
-    <device id="ipad11_0rounded" orientation="landscape" layout="fullscreen" appearance="light"/>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="GTP-EC-d2e">
+    <device id="ipad12_9rounded" orientation="portrait" layout="fullscreen" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16078.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -12,25 +12,19 @@
             <objects>
                 <viewController title="Drawing View Controller" id="BYZ-38-t0r" customClass="DrawingViewController" customModule="Recogniser" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC" userLabel="Canvas View">
-                        <rect key="frame" x="0.0" y="0.0" width="1194" height="834"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3ee-VR-Vbu" userLabel="Canvas View" customClass="CanvasView" customModule="Recogniser" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="1194" height="814"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                            </view>
-                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yJf-Bs-aEP" customClass="DetectedGateInfoView" customModule="Recogniser" customModuleProvider="target">
-                                <rect key="frame" x="477" y="373" width="240" height="88"/>
+                                <rect key="frame" x="0.0" y="0.0" width="1024" height="1346"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="3ee-VR-Vbu" secondAttribute="bottom" id="3dx-XO-1m7"/>
-                            <constraint firstItem="yJf-Bs-aEP" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="8" id="6tg-tL-pQR"/>
                             <constraint firstItem="3ee-VR-Vbu" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="ibT-3V-Hbv"/>
                             <constraint firstItem="3ee-VR-Vbu" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="jfC-dv-2v4"/>
-                            <constraint firstItem="yJf-Bs-aEP" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="uqK-QX-XA0"/>
                             <constraint firstItem="3ee-VR-Vbu" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="xfJ-Gi-7Os"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -62,7 +56,6 @@
                     <connections>
                         <outlet property="canvasView" destination="3ee-VR-Vbu" id="pq0-TK-zdb"/>
                         <outlet property="erasorToolButton" destination="wYw-hY-znR" id="mDd-RD-gJZ"/>
-                        <outlet property="gateInfoView" destination="yJf-Bs-aEP" id="I8K-kf-vLB"/>
                         <outlet property="linkToolButton" destination="sHL-j8-Ulo" id="Lq5-TI-zvP"/>
                         <outlet property="penToolButton" destination="3xj-yy-UmH" id="xvu-kn-6jQ"/>
                         <outlet property="runSimulationButton" destination="gcN-MP-9CO" id="t8t-9n-yFt"/>
@@ -78,7 +71,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="GTP-EC-d2e" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="KoQ-LW-p2I">
-                        <rect key="frame" x="0.0" y="0.0" width="1194" height="50"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="50"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>

@@ -66,14 +66,12 @@ class ShapeCombiner {
     ///- Parameter shapes: A list of shapes to analyse
     ///- Returns: An updated list of shapes
     func combineToTriangle(shapes: [Shape]) -> [Shape] {
-        let lines = shapes.shapes(matching: .isLine)
-        guard lines.count == 3 else { return shapes }
+        guard case let lines = shapes.shapes(matching: .isLine), lines.count == 3 else { return shapes }
         
         guard let combinedHull = analyser.convexHull(of: lines.map(\.convexHull).reduce([],+)) else { return shapes }
         let type: ShapeType = .triangle(type: lines.has(matching: \.type == .line(type: .curved)) ? .curved : .straight)
         
         let triangle = Shape(type: type, convexHull: combinedHull, components: lines.combinedComponents)
-        NotificationCenter.default.post(name: .shapeRecognised, object: triangle)
         
         var newList = shapes.withOut(matching: .isLine)
         newList.append(triangle)
@@ -93,7 +91,6 @@ class ShapeCombiner {
         let type: ShapeType = .triangle(type: line.type == .line(type: .straight) ? .straight : .curved)
         
         let triangle = Shape(type: type, convexHull: combinedHull, components:  [line, incompleteTriangle].combinedComponents)
-        NotificationCenter.default.post(name: .shapeRecognised, object: triangle)
         
         var newList = shapes
         newList.removeAll(where: { $0 == line || $0 == incompleteTriangle })
@@ -112,7 +109,6 @@ class ShapeCombiner {
         guard let combinedHull = analyser.convexHull(of: [straight, curved].map(\.convexHull).reduce([], +)) else { return shapes }
         
         let rect = Shape(type: .rectangle, convexHull: combinedHull, components: [straight, curved].combinedComponents)
-        NotificationCenter.default.post(name: .shapeRecognised, object: rect)
         
         var newList = shapes
         newList.removeAll(where: { $0 == straight || $0 == curved })

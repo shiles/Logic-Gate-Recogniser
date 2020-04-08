@@ -24,7 +24,6 @@ class ShapeRecogniser {
     func recogniseShape(from stroke: Stroke, into adjacentShapes: [[Shape]]) -> [[Shape]] {
         guard let newShape = analyseStroke(stroke) else { return adjacentShapes }
         let shape = analyseShapeDetails(newShape)
-        NotificationCenter.default.post(name: .shapeRecognised, object: shape)
         return findAdjacentShapes(shape: shape, in: adjacentShapes)
     }
     
