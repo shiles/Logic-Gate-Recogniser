@@ -1,7 +1,6 @@
 # Logic-Gate-Recogniser
 
-A test app, being developed to test the feasibility of detecting logic gates draw with either a apple pencil or finger. 
+This project, written as part of my dissertation aims to explore recognising logic gates sketch to the canvas, connecting them with inputs and outputs, then simulating them using either sequential or combinatorial logic. The seven base logic gates are supported: `Not, Or, Nor, And, Nand, Xor, Xnor` with two additional gates, `Input and Output` added to build circuits.
 
-The first attempt was implemented using CoreML, and can be found on the *machine-learning-test* branch. This used a model trained on using createML on drawings of the gates, which were input using the PencilKit framework. Accuracy with this quanity of drawings wasn't sufficient for the application. 
 
-Currently implementing recognition through the point data using a custom drawing implementation.
+
